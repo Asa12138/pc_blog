@@ -1,0 +1,42 @@
+library(pcutils)
+dna3.9=tibble::tribble(
+      ~ID,        ~DNA, ~qPCR_mean,
+    "1-1", "too lower",      31.56,
+    "1-2",     "0.026",      30.39,
+    "1-3", "too lower",      31.59,
+    "1-4", "too lower",       35.9,
+    "1-5", "too lower",      36.97,
+    "1-6", "too lower",       34.2,
+    "2-1", "too lower",      30.01,
+    "2-2",    "0.0284",      28.92,
+    "2-3", "too lower",      31.09,
+    "2-4", "too lower",      35.73,
+    "2-5", "too lower",      35.84,
+    "2-6", "too lower",      36.85,
+    "3-1", "too lower",      32.88,
+    "3-2",    "0.0216",       28.1,
+    "3-3", "too lower",      32.39,
+    "3-4", "too lower",      34.54,
+    "3-5", "too lower",      32.24,
+    "3-6", "too lower",      31.65
+    )
+NC=38.61
+summary(dna3.9$qPCR_mean)
+group_box(dna3.9$qPCR_mean)
+
+dna3.9$ID%>%strsplit("-")%>%sapply(.,as.numeric)%>%t()%>%as.data.frame()->group
+colnames(group)=c("Date","cabin")
+dna3.9=cbind(dna3.9,group)
+dna3.9$Date=as.factor(dna3.9$Date)
+dna3.9$cabin=as.factor(dna3.9$cabin)
+group_box(dna3.9[,"qPCR_mean",drop=F],"cabin",metadata = dna3.9)+
+    geom_hline(yintercept = NC,linetype=2,col="red")+
+    annotate("text",x=2,y=38,label=paste0("NC: ",NC),col="red")+theme_bw()
+
+ggplot(dna3.9,aes(x=cabin,y=qPCR_mean,color=Date))+geom_point()+
+    geom_hline(yintercept = NC,linetype=2,col="red")+
+    annotate("text",x=2,y=38,label=paste0("NC: ",NC),col="red")+theme_bw()
+
+cut(dna3.9$qPCR_mean,breaks = 2)%>%table
+
+cut(dna3.9$qPCR_mean,breaks = 2)->dna3.9$type
