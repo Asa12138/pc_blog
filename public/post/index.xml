@@ -5,7 +5,130 @@
         <link>/post/</link>
         <description>Recent content in Posts on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Tue, 14 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>R语言学习</title>
+        <link>/2023/03/16/r/</link>
+        <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/2023/03/16/r/</guid>
+        <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;linux&lt;/strong&gt;, &lt;strong&gt;python&lt;/strong&gt;和&lt;strong&gt;R语言&lt;/strong&gt;应该是生信学习中最重要的几个部分。&lt;/p&gt;
+&lt;p&gt;linux是一种操作系统，由于许多生物信息学软件仅提供支持linux平台的命令行版本，而不是图形化界面，所以掌握该操作系统的基础文件管理，安装使用软件，输入输出逻辑，简单shell脚本编写等十分重要。&lt;/p&gt;
+&lt;p&gt;python与R都是免费开源多平台的编程语言，并且都是较为容易学习上手的模仿自然语言语法的编程语言，且支持面向对象编程，两者在数据科学上都有着非常重要的应用。Python的生态系统非常丰富，拥有大量的数据科学库和框架，例如：NumPy、Pandas、Matplotlib、Seaborn、Scikit-learn、PyTorch、TensorFlow等，这些库可以帮助数据科学家快速处理和分析数据，构建模型。&lt;/p&gt;
+&lt;p&gt;R是一种专门用于统计分析和数据可视化的语言，其生态系统也非常丰富，拥有大量的统计分析库和可视化工具，例如：ggplot2、dplyr、tidyr、shiny等。 R拥有非常强大的数据分析和可视化能力，它提供了很多专业的统计分析函数和图形，这些函数和图形可以直接用于数据分析和可视化，使分析和可视化变得更加轻松和高效。&lt;/p&gt;
+&lt;p&gt;在此，我想先记录一下我使用的最多的R语言。&lt;/p&gt;
+&lt;h2 id=&#34;常用功能&#34;&gt;常用功能&lt;/h2&gt;
+&lt;h3 id=&#34;全面教程&#34;&gt;全面教程&lt;/h3&gt;
+&lt;p&gt;小白上手首推北大李老师的课程讲义&lt;a class=&#34;link&#34; href=&#34;https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《R语言教程》&lt;/a&gt;，中文讲义，简单易读，甚至整本书就是用Rbookdown编写的，电子书也比较好复制代码进行学习。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/search?q=R%E8%AF%AD%E8%A8%80%E5%AE%9E%E6%88%98&amp;amp;search_source=Entity&amp;amp;hybrid_search_source=Entity&amp;amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A217799209%7D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《R语言实战》&lt;/a&gt;,也有中文版，介绍地更加全面且有不少进阶知识，值得一看！&lt;/p&gt;
+&lt;p&gt;然后是著名的英文书和参考手册：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;cran.r-project.org/doc/manuals/R-intro.pdf&#34; &gt;《An Introduction to R》&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://rc2e.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《R Cookbook》&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更多关于R的书可以在&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Home | Bookdown&lt;/a&gt;这里找到。&lt;/p&gt;
+&lt;h3 id=&#34;数据处理&#34;&gt;数据处理&lt;/h3&gt;
+&lt;p&gt;我目前用的最多的是dplyr包进行数据处理，最开始是冲着类似linux下的&lt;code&gt;|&lt;/code&gt;管道符去的，&lt;code&gt;%&amp;gt;%&lt;/code&gt;符号真的挺好用的，可以让我们无需产生许多中间结果 (准确来说&lt;code&gt;%&amp;gt;%&lt;/code&gt;来自magrittr包，并且R4.1+也支持了原生管道符&lt;code&gt;|&amp;gt;&lt;/code&gt;，但用起来还是&lt;code&gt;%&amp;gt;%&lt;/code&gt;顺手，还有&lt;code&gt;%&amp;lt;&amp;gt;%&lt;/code&gt;等变体)：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(dplyr)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;head&lt;/span&gt;(iris)&lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(Species)&lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;unique&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;随后便发现了tidyverse全家桶，其中包含ggplot2，tibble，dplyr，readr，stringr等常用的全面的数据处理包，能够很好的满足我们下有数据处理需求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;读取数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;清洗数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;转换数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;合并数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;筛选数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可视化&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里给出官方教程：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/roy_schumacher/r4ds/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《R for Data Science》&lt;/a&gt;，非常建议熟读并使用。&lt;/p&gt;
+&lt;h3 id=&#34;可视化&#34;&gt;可视化&lt;/h3&gt;
+&lt;p&gt;可视化一直是R的突出优点，basic graphic和ggplot是我最常用的绘图系统（偶尔会用plotly画一些交互图形，但大多数是只需要presentation和文章里要用的静态图形），两者的绘图逻辑有所差异，推荐在学会R的基础使用和数据处理后就体验ggplot。&lt;/p&gt;
+&lt;p&gt;ggplot是由Hadley Wickham创建的，并被包含在R语言的ggplot2包中。主要思想是将数据可视化看作是图层的堆叠，其中每个图层代表了一个数据属性的可视化。ggplot提供了一系列的函数和参数，让用户能够轻松地组合这些图层，以及调整颜色、标签、轴等其他属性。&lt;/p&gt;
+&lt;p&gt;ggplot支持的图形类型包括散点图、折线图、直方图、密度图、箱线图等等，可以满足大多数数据可视化的需求。优点在于其语法简洁、易于理解和使用，并且生成的图表质量高、美观、易于理解。它也被广泛地应用于学术研究、数据分析、商业报告等领域。&lt;/p&gt;
+&lt;p&gt;同样给出官方教程：&lt;a class=&#34;link&#34; href=&#34;https://ggplot2-book.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《ggplot2: Elegant Graphics for Data Analysis》&lt;/a&gt;，优雅，太优雅了。这本书也是可以找到大佬们翻译的中文版的，可以当作作图工具书使用，许多无法直接Google到的细节问题可能能在书中找到。&lt;/p&gt;
+&lt;p&gt;此外要提一下ggpubr包，其名为Publication Ready Plots，提供一些方便的做出出版级figure的函数。&lt;a class=&#34;link&#34; href=&#34;http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ggpubr: Publication Ready Plots - Articles - STHDA&lt;/a&gt; 这个网站提供了不少好看图的绘制流程。&lt;/p&gt;
+&lt;p&gt;当掌握了基本的ggplot绘制逻辑后，还可以尝试各种基于同样逻辑的扩展包，如ggcor，ggtree等等。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exts.ggplot2.tidyverse.org/gallery/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;gg_extensions&lt;/a&gt; 这个网站收集了很多此类拓展包并支持制作上传自创的gg拓展（当然暂时有点难😮‍💨）&lt;/p&gt;
+&lt;p&gt;最后，强烈推荐一个为可视化而建的网站&lt;a class=&#34;link&#34; href=&#34;https://www.data-to-viz.com/#density2d&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;strong&gt;From data to Viz | Find the graphic you need (data-to-viz.com)&lt;/strong&gt;&lt;/a&gt;，就像网站名一样，丰富多彩的可视化形式帮我们找到适合自己数据的样式，并提供画某一类图的python，R甚至D3.js代码，真的非常方便地copy代码，替换我们的数据，少量的修改就能有很不错的效果😄。 &lt;img src=&#34;../2023/03/16/r/images/data2viz.png&#34;
+	width=&#34;1532&#34;
+	height=&#34;1614&#34;
+	srcset=&#34;../2023/03/16/r/images/data2viz_hu2949f787b14e5432e8dbe93255a87ee8_671473_480x0_resize_box_3.png 480w, ../2023/03/16/r/images/data2viz_hu2949f787b14e5432e8dbe93255a87ee8_671473_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;from data to viz website&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;94&#34;
+		data-flex-basis=&#34;227px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;r编程&#34;&gt;R编程&lt;/h3&gt;
+&lt;p&gt;R是一个宝库，几乎总能在上面找到合适的包实现我们想要的功能，但他也是一种编程语言，熟悉其编程语法对进阶使用十分重要。&lt;/p&gt;
+&lt;p&gt;基本的数据读取与输出，if else、switch、for循环与简单函数编写需要掌握。&lt;/p&gt;
+&lt;p&gt;同时因为R是一个比较&amp;quot;慢&amp;quot;的语言，尽量使用向量式编程、apply替代for循环、RCpp编写函数等方法提高其效率（后面可能会专门讲讲）。&lt;/p&gt;
+&lt;p&gt;这里推荐大佬的&lt;a class=&#34;link&#34; href=&#34;https://adv-r.hadley.nz/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《Advanced R》&lt;/a&gt;，对R高级编程技术进行讲解。&lt;/p&gt;
+&lt;h3 id=&#34;rmarkdown&#34;&gt;Rmarkdown&lt;/h3&gt;
+&lt;p&gt;R Markdown是一种文本格式和工具，用于创建具有代码、文本、图形和输出结果的可重复性报告。它是在R语言环境中开发的，但也可以与其他编程语言（如Python）结合使用。&lt;/p&gt;
+&lt;p&gt;使用R Markdown，您可以将代码、文本和图形组合到一个文件中，并使用R Markdown语法将它们组织成结构化的文档。然后，您可以使用R Markdown编译器将文档转换为HTML、PDF、Word或其他格式的报告。&lt;/p&gt;
+&lt;p&gt;R Markdown具有以下优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;可重复性：报告中的所有代码和结果都是可重复的，这有助于确保研究结果的可靠性和透明度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;效率：使用R Markdown，您可以在单个文件中组织和记录所有内容，从而节省时间和精力。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;灵活性：R Markdown支持多种格式和输出选项，因此您可以根据需要自定义报告的样式和布局。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Yihui Xie大佬的官方文档介绍：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/yihui/rmarkdown/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;R Markdown: The Definitive Guide (bookdown.org)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以及参考书：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;R Markdown Cookbook (bookdown.org)&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;rbookdown&#34;&gt;Rbookdown&lt;/h4&gt;
+&lt;p&gt;R的bookdown扩展包(&lt;a class=&#34;link&#34; href=&#34;https://github.com/rstudio/bookdown&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/rstudio/bookdown&lt;/a&gt;) 是继knitr和rmarkdown扩展包之后， 另一个增强markdown格式的扩展， 使得Rmd格式可以支持公式、定理、图表自动编号和引用、链接， 文献引用和链接等适用于编写书籍的功能。相当方便，我也稍微尝试写了一下：&lt;a class=&#34;link&#34; href=&#34;https://asa12138.github.io/MetaNet_tutorial/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MetaNet Tutorial (asa12138.github.io)&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;参考书：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/yihui/bookdown/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;bookdown: Authoring Books and Technical Documents with R Markdown&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;rblogdown&#34;&gt;Rblogdown&lt;/h4&gt;
+&lt;p&gt;R扩展包blogdown可以与Hugo软件配合制作简单的静态网站。 网站的所有文件都存在于一个目录中， 只要上传到任意的网站服务器就可以发布， 没有任何限制。这篇博客就是基于Rblogdown写的，还是非常友好易上手的。&lt;/p&gt;
+&lt;p&gt;参考书：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/yihui/blogdown/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;blogdown: Creating Websites with R Markdown (bookdown.org)&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;r-presentation&#34;&gt;R Presentation&lt;/h4&gt;
+&lt;p&gt;R Markdown文件(.Rmd)支持生成网页格式的幻灯片(&lt;code&gt;slidy_presentation&lt;/code&gt;)， 以及LaTeX beamer格式的PDF幻灯片(&lt;code&gt;beamer_presentation&lt;/code&gt;)， 和Microsoft Office的PowerPoint幻灯片(&lt;code&gt;powerpoint_presentation&lt;/code&gt;)格式。&lt;/p&gt;
+&lt;p&gt;目前稍微尝试了一些Yihui大佬的&amp;quot;写轮眼&amp;quot;包，但没有试着做自己的slides，以后有机会一定试试。&lt;/p&gt;
+&lt;h3 id=&#34;写r包&#34;&gt;写R包&lt;/h3&gt;
+&lt;p&gt;积极尝试&lt;/p&gt;
+&lt;p&gt;参考书：&lt;a class=&#34;link&#34; href=&#34;https://r-pkgs.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;R Packages (2e) (r-pkgs.org)&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>春之伊始</title>
         <link>/2023/03/14/%E6%98%A5%E4%B9%8B%E4%BC%8A%E5%A7%8B/</link>
         <pubDate>Tue, 14 Mar 2023 00:00:00 +0000</pubDate>

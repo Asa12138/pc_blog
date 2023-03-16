@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>R on Asa&#39;s blog</title>
-        <link>/categories/r/</link>
-        <description>Recent content in R on Asa&#39;s blog</description>
+        <title>编程 on Asa&#39;s blog</title>
+        <link>/tags/%E7%BC%96%E7%A8%8B/</link>
+        <description>Recent content in 编程 on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>R语言学习</title>
         <link>/2023/03/16/r/</link>
         <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
