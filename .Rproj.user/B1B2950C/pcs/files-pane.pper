@@ -2,8 +2,8 @@
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
         }
     ],
-    "path": "~/Documents/R/pc_blog"
+    "path": "~/Documents/R/pc_blog/content/post/2023-03-15-test"
 }
