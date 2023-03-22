@@ -1,10 +1,10 @@
 ---
-title: 关于
 menu:
-    main: 
-        weight: -90
-        params:
-            icon: user
+  main:
+    params:
+      icon: user
+    weight: -90
+title: 关于
 ---
 
-这是Asa的博客网站，有问题请联系pengchen2001@zju.edu.cn。
+This is a test page for i18n support.

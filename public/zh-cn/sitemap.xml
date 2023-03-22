@@ -61,41 +61,5 @@
                 hreflang="zh-cn"
                 href="/zh-cn/%E5%85%B3%E4%BA%8E/"
                 />
-  </url><url>
-    <loc>/zh-cn/archives/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/archives/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/zh-cn/archives/"
-                />
-  </url><url>
-    <loc>/zh-cn/%E9%93%BE%E6%8E%A5/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/links/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/zh-cn/%E9%93%BE%E6%8E%A5/"
-                />
-  </url><url>
-    <loc>/zh-cn/search/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/search/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/zh-cn/search/"
-                />
   </url>
 </urlset>

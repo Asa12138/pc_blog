@@ -13,19 +13,21 @@ math: ~
 license: ~
 hidden: no
 comments: yes
+bibliography: [../../bib/My Library.bib]
+link-citations: yes
+csl: ../../bib/science.csl
 ---
 
 ```{r include=FALSE}
-Packages <- c("dplyr","kableExtra")
+Packages <- c("dplyr","kableExtra","pctax","ggplot2")
 pcutils::lib_ps(Packages)
-knitr::opts_chunk$set(message = FALSE,warning = FALSE,cache = T,eval = F)
+knitr::opts_chunk$set(message = FALSE,warning = FALSE,cache = T,fig.width = 6)
 ```
 
 # Introduction
 
-This review is very comprehensive!
-
-1.  Zhou, J. & Ning, D. Stochastic Community Assembly: Does It Matter in Microbial Ecology? Microbiol Mol Biol Rev 81, e00002-17 (2017).
+Zhou, J. & Ning, D. Stochastic Community Assembly: Does It Matter in Microbial Ecology? Microbiol Mol Biol Rev 81, e00002-17 (2017).
+This review is very comprehensive @zhouStochasticCommunityAssembly2017！
 
 **周集中**老师实验室的长期研究兴趣集中在从基因组到生态系统的不同组织层面的环境微生物学，其中一项就是**宏基因组学和微生物生态学**：利用高通量基因组测序和相关基因组学技术检查不同栖息地的微生物群落多样性、微生物生物地理学和形成微生物多样性模式、分布和动态的机制；
 
@@ -37,16 +39,19 @@ Although, recently, it has been generally accepted that both deterministic and s
 
 # Methods
 
-目前在文章中普遍出现的计算群落构建的方法主要有三套： \## 1.Stegen （βNTI & RCbray-based）
+目前在文章中普遍出现的计算群落构建的方法主要有三套： 
 
-1.  Stegen, J. C., Lin, X., Konopka, A. E. & Fredrickson, J. K. Stochastic and deterministic assembly processes in subsurface microbial communities. ISME J 6, 1653--1664 (2012).
-2.  Stegen, J. C. et al. Quantifying community assembly processes and identifying features that impose them. ISME J 7, 2069--2079 (2013).
+## 1.Stegen （βNTI & RCbray-based）
+
+原始的文章 @stegenQuantifyingCommunityAssembly2013,  @stegenStochasticDeterministicAssembly2012
 
 ![](images/beta-nti.png)
 
 > 在确定性与随机性二分法的背景下塑造微生物群落多样性的生态过程。该方案显示了在文中讨论的假设下，基于系统发育和分类多样性划分各种生态过程的不同步骤。 NTI（最近分类单元指数）基于系统发育多样性指数 MNTD（平均最近分类单元距离）的空模型检验，RCBray（修正的 Raup-Crick 指数）基于 Bray-Curtis 的空模型检验分类多样性指数。这两个框分别表示确定性选择和未支配部分的主要组成部分。除了影响较小的选择外，未支配部分的弱选择也可能是由于抵消了有影响的选择因素和/或不同分类群的对比选择。该图主要是根据 Stegen 等人先前报告的数据制作的。
 
-**beta-NTI（nearest taxon index）：** ![](images/betanti.png)使用 NTI/NRI 指示单个群落内共存的分类单元相比偶然预期的关系更为紧密还是分散，使用 βNTI/βNRI 指示两两群落间的变化受确定性或随机性因素影响的大小。\
+**beta-NTI（nearest taxon index）：** ![](images/betanti.png)
+
+使用 NTI/NRI 指示单个群落内共存的分类单元相比偶然预期的关系更为紧密还是分散，使用 βNTI/βNRI 指示两两群落间的变化受确定性或随机性因素影响的大小。
 MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 NTI/NRI、βNTI/βNRI 的结果解释时其显著性的判断依据是其**临界值是否大于\|2\|**，实际上这是依据标准正态分布的 95%置信区间得到的，一般认为 NRI 或者 NTI 大于 1.96 或者小于-1.96 的结果，在 95%的水平是显著的。
 
 **RCbray**: 相异指数的一种。
@@ -56,27 +61,39 @@ MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 
 <https://blog.csdn.net/weixin_43367441/article/details/118515090>
 
 非常重要的一点：这类方法是**基于系统发育树**推断的，所以一定要有跟tax表对应的系统发育树。 但事实上，除非用的是16S/ITS测序，否则我们很难给自己的数据建一个树。 所以，替代方法是利用阶层分类关系（界门纲目科属种）来做一个拟系统发育树（枝长都为1） 参见自己写的`df2tree`函数
+```{r }
+data(otutab)
+df2tree(taxonomy)->phylo
+
+#计算
+nti_rc(otutab,phylo,metadata[,"Group",drop=F])->nti_res
+
+#可视化
+nti_res$type=factor(nti_res$type,levels = c("Homo_S","Heter_S","Homo_D","D_limit","Undominated"))
+table(nti_res$type,nti_res$variable)%>%reshape2::melt()->com_p
+colnames(com_p)=c("type","variable","n")
+ggplot(com_p,aes(x=variable,y=n))+geom_bar(stat = "identity",aes(fill=type),position = "fill")
+```
+
 
 ### iCAMP
 
-现在大家经常用的**iCAMP**包就是基于这个理论框架进行分析的。
-
-1.  Ning, D. et al. A quantitative framework reveals ecological drivers of grassland microbial community assembly in response to warming. Nat Commun 11, 4717 (2020).
+现在大家经常用的**iCAMP**包就是基于这个理论框架进行分析的 @ningQuantitativeFrameworkReveals2020。
 
 ## 2.ST，NST，MST （stochasticity ratio）
 
-1.  Ning, D., Deng, Y., Tiedje, J. M. & Zhou, J. A general framework for quantitatively assessing ecological stochasticity. Proceedings of the National Academy of Sciences 116, 16892--16898 (2019).
-
 [PNAS：NST方法定量生态过程中的随机性](https://mp.weixin.qq.com/s?__biz=MzI1OTk3NjEwMA==&mid=2247484988&idx=1&sn=5dfc3c289c24ad81fe327a8f3aa9d4cc&chksm=ea71f8f7dd0671e1ad683e1ea9616d5e2157d401d2d396e29cc6d8fb50961e72a59ff5be1e2b&scene=21#wechat_redirect)
 
-周老师的文章，开发出新的方法对生态过程中的随机性进行了定量。提出了一个新的指数，normalized stochasticity ratio (**NST**)，作为确定性主导（deterministic, \<50%）和随机性主导（stochastic, \>50%）的边界点。 ![](images/nst.jpeg)
+周老师的文章，开发出新的方法对生态过程中的随机性进行了定量。提出了一个新的指数，normalized stochasticity ratio (**NST**)，作为确定性主导（deterministic, \<50%）和随机性主导（stochastic, \>50%）的边界点 @ningGeneralFrameworkQuantitatively2019。
+
+![](images/nst.jpeg)
 
 ### code
 
 已经有相应的包了,NST
 
-```{r NST}
-install.packages("NST")
+```{r NST,warning=FALSE,message=FALSE,eval=TRUE}
+#install.packages("NST")
 library(NST)
 
 data(tda)
@@ -84,7 +101,7 @@ comm=tda$comm
 bray=beta.g(comm,dist.method="bray")
 bray.3col=dist.3col(bray)
 group=tda$group
-#最重要的函数，计算NST。有多种距离矩阵及零模型构建的方法可选。不同方法得到的结果存在一定的差异
+
 tnst=tNST(comm=comm, group=group, rand=20,
           output.rand=TRUE, nworker=1)
 #检验各组ST、NST的分布情况及各组ST、NST差异的显著性。
@@ -93,21 +110,20 @@ nst.bt=nst.boot(nst.result=tnst, group=NULL, rand=99,
                 between.group=FALSE, nworker=1)
 #ST和NST组间进行Permutational multivariate ANOVA
 nst.pova=nst.panova(nst.result=tnst, rand=99)
+
 #可视化
-group_box(tnst$index.pair.grp,col = 8,group = tnst$index.pair.grp$group)
+pcutils::group_box(tnst$index.pair.grp,col = 8,group = tnst$index.pair.grp$group)
 ```
 
 ### example
 
-![](images/nst_e.png)
+![](images/nst_e.png){width=50%}
 
 > 地下水微生物群落演替过程中估计的 NST 动态变化对乳化植物油注入的响应。 NST 是基于 (A) Jaccard 和 (B) Ru ziˇ cka 指标使用空模型算法 PF 计算的。在零模型 PF 中，类群发生的概率与观察到的发生频率成正比，并且每个样本中的类群丰富度是固定的（19）。当使用基于丰度的指标 Ru ziˇ cka 时，每个样本中的空分类群丰度被计算为观察到的个体数量的随机抽取，其概率与样本中空分类群的区域相对丰度成比例（26）。 W8 是植物油对其没有影响或影响最小的对照井。
 
 ## 3.Solan NCM
 
-1.  Sloan, W. T. et al. Quantifying the roles of immigration and chance in shaping prokaryote community structure. Environmental Microbiology 8, 732--740 (2006).
-
-只有当物种死亡或离开这个系统时，群落结构才会发生改变。此时，离开个体的生态位就会空余出来，其它个体会通过**来自群落外的迁移**或**群落内部的繁殖**来填补空出的生态位。因此可以把群落的动态描述为**死亡------繁殖/扩散------死亡**这样的循环。
+只有当物种死亡或离开这个系统时，群落结构才会发生改变。此时，离开个体的生态位就会空余出来，其它个体会通过**来自群落外的迁移**或**群落内部的繁殖**来填补空出的生态位。因此可以把群落的动态描述为**死亡------繁殖/扩散------死亡**这样的循环 @sloanQuantifyingRolesImmigration2006。
 
 **计算公式：**
 
@@ -119,7 +135,7 @@ group_box(tnst$index.pair.grp,col = 8,group = tnst$index.pair.grp$group)
 
 ### code
 
-```{r}
+```{r eval=FALSE}
 library(devtools)
 install_github("Russel88/MicEco")
 library(MicEco)
@@ -129,6 +145,14 @@ neutral.fit(t(otutab))#使用的是最大似然估计拟合模型，R2计算方�
 另一个代码来自<https://mp.weixin.qq.com/s/opFXl-TvkJfmPcWKFwhCFA>，比较经典，用的是非线性模型:
 
 N描述了宏群落规模（metacommunity size），在本文中为每个样本中所有OTU的总丰度。 m量化了群落层面的迁移率（migration rate），该值对于每个群落成员都是统一的（与物种无关），m值越小说明整个群落中物种扩散越受限制，反之m值越高则表明物种受到扩散限制越低。 Nm是元群落规模（N）与迁移率（m）的乘积 (Nm = N\*m)，量化了对群落之间扩散的估计，决定了发生频率和区域相对丰度之间的相关性。
+
+自己的绘图代码：
+```{r}
+data(otutab)
+ncm(otutab)->ncm_res
+plot(ncm_res)
+```
+
 
 R2代表了中性群落模型的整体拟合优度，**R2越高表明越接近中性模型，即群落的构建受随机性过程的影响越大，受确定性过程的影响越小。**
 
@@ -144,15 +168,16 @@ R2代表了中性群落模型的整体拟合优度，**R2越高表明越接近�
 
 ### example
 
-1.  Zhang, Y. et al. Insights into the Profile of the Human Expiratory Microbiota and Its Associations with Indoor Microbiotas. Environ. Sci. Technol. 56, 6282--6293 (2022).
+**随机过程，例如散布、出生、死亡、灭绝和移民，在呼气细菌和真菌群落的组装中发挥作用。**真菌微生物群的 SNM 拟合性能（图 2）优于细菌（细菌 R2 = 0.353，真菌 R2 = 0.683）。这种差异表明随机过程对于 EBC 真菌群落的组装可能相对更重要，而对 EBC 细菌群落的组装则不太重要。这种现象可能与细菌和真菌之间的大小差异有关，较小的细菌受扩散限制的影响较小，而受确定性过程的影响更大 @zhangInsightsProfileHuman2022。
 
-**随机过程，例如散布、出生、死亡、灭绝和移民，在呼气细菌和真菌群落的组装中发挥作用。**真菌微生物群的 SNM 拟合性能（图 2）优于细菌（细菌 R2 = 0.353，真菌 R2 = 0.683）。这种差异表明随机过程对于 EBC 真菌群落的组装可能相对更重要，而对 EBC 细菌群落的组装则不太重要。这种现象可能与细菌和真菌之间的大小差异有关，较小的细菌受扩散限制的影响较小，而受确定性过程的影响更大。 ![](images/ncm.gif)
+![](images/ncm.gif)
 
 > Stochastic processes played a role in assembling expiratory bacterial (A) and fungal (B) communities based on Sloan neutral model fitting. The black solid line represents the best fit, and the dotted lines represent the 95% CI (confidence interval) around the model fit. The blue dots refer to taxa that occur more frequently than predicted, and the red dots refer to taxa that occur less frequently than predicted. The green dots refer to taxa that occur in a manner consistent with predicted values.
 
 原核生物细胞直径大概在0.5 \~ 2.0 μm； 微真核生物个体大小大概在1 \~ 200 mm； 之前的研究已经报道了较小的生物不太可能受到扩散限制的影响，因为它们与较大的生物相比具有更高的扩散能力。因此假设在细菌群落中生态位过程的相对影响可能比在微真核生物群落中更强。微真核生物个体大，可能会影响其扩散过程。
 
 ## Others
+参考自历神公众号文章：https://mp.weixin.qq.com/s/nwNuPlY7x6VScJA44c0MjQ
 
 ### Competitive lottery
 
@@ -174,32 +199,5 @@ $DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}
 
 如果DNCI与0差异不显著，则可以认为扩散过程和生态位过程对群落构建的影响是相等的。 当DNCI显著低于0时，扩散过程是群落构建的主导驱动因素; 如果DNCI显著高于0，生态位过程是群落构建的主要决定因素。 注意，表明扩散过程优势的负DNCI值并不能提供实际扩散速率的信息。
 
-```{r}
-#下载
-devtools::install_github("Corentin-Gibert-Paleontology/DNCImper")
 
-library(DNCImper)
-#主要两个功能，PER-SIMPER和DNCI。函数用法一致。以PER-SIMPER为例：
-
-?PerSIMPER
-#PerSIMPER  #做PERSIMPER
-#用法
-PerSIMPER(
-  matrixSIMP,  #行为样本，列为物种
-  Groups,      #只允许两个组
-  leg = FALSE, #是否添加图例
-  count = TRUE,#显示完成置换的次数
-  dataTYPE = "prab", #prab为0-1数据；count为丰度数据
-  Nperm = 1000,#置换次数
-  plotSIMPER = TRUE
-)
-
-#例子
-A <- DNCImper:::PerSIMPER(Matrix, Group,Nperm = 100,count = FALSE)
-
-#上述只能针对两个组，若有更多的组，可用PerSIMPER_overall，计算整体的PerSIMPER
-
-#DNCI.ese  计算DNCI效应量,只允许两组。
-#三组或以上用DNCI.ses_overall，计算整体的DNCI。
-#三组或以上若用DNCI_multigroup，计算两两成对DNCI。
-```
+# References {-}

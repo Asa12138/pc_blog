@@ -5,336 +5,648 @@
         <link>/post/</link>
         <description>Recent content in Posts on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
+        <language>en-us</language>
         <lastBuildDate>Fri, 17 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>微生物群落构建（community assembly）</title>
-        <link>/2023/03/17/community-assembly/</link>
+        <link>/p/community-assembly/</link>
         <pubDate>Fri, 17 Mar 2023 00:00:00 +0000</pubDate>
         
-        <guid>/2023/03/17/community-assembly/</guid>
-        <description>
-
-&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34; id=&#34;toc-introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#methods&#34; id=&#34;toc-methods&#34;&gt;Methods&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#code&#34; id=&#34;toc-code&#34;&gt;code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#icamp&#34; id=&#34;toc-icamp&#34;&gt;iCAMP&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#stnstmst-stochasticity-ratio&#34; id=&#34;toc-stnstmst-stochasticity-ratio&#34;&gt;2.ST，NST，MST （stochasticity ratio）&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#code-1&#34; id=&#34;toc-code-1&#34;&gt;code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#example&#34; id=&#34;toc-example&#34;&gt;example&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#solan-ncm&#34; id=&#34;toc-solan-ncm&#34;&gt;3.Solan NCM&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#code-2&#34; id=&#34;toc-code-2&#34;&gt;code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#example-1&#34; id=&#34;toc-example-1&#34;&gt;example&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#others&#34; id=&#34;toc-others&#34;&gt;Others&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#competitive-lottery&#34; id=&#34;toc-competitive-lottery&#34;&gt;Competitive lottery&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#dnci&#34; id=&#34;toc-dnci&#34;&gt;DNCI&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;This review is very comprehensive!&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Zhou, J. &amp;amp; Ning, D. Stochastic Community Assembly: Does It Matter in Microbial Ecology? Microbiol Mol Biol Rev 81, e00002-17 (2017).&lt;/li&gt;
-&lt;/ol&gt;
+        <guid>/p/community-assembly/</guid>
+        <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Zhou, J. &amp;amp; Ning, D. Stochastic Community Assembly: Does It Matter in Microbial Ecology? Microbiol Mol Biol Rev 81, e00002-17 (2017).
+This review is very comprehensive (&lt;a class=&#34;link&#34; href=&#34;#ref-zhouStochasticCommunityAssembly2017&#34; &gt;&lt;em&gt;1&lt;/em&gt;&lt;/a&gt;)！&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;周集中&lt;/strong&gt;老师实验室的长期研究兴趣集中在从基因组到生态系统的不同组织层面的环境微生物学，其中一项就是&lt;strong&gt;宏基因组学和微生物生态学&lt;/strong&gt;：利用高通量基因组测序和相关基因组学技术检查不同栖息地的微生物群落多样性、微生物生物地理学和形成微生物多样性模式、分布和动态的机制；&lt;/p&gt;
 &lt;p&gt;Understanding the mechanisms controlling community diversity, functions, succession, and biogeography is a central, but poorly understood, topic in ecology, particularly in microbial ecology. &lt;strong&gt;Traditional niche-based theory&lt;/strong&gt; hypothesizes that deterministic factors such as species traits, inter-species interactions (e.g., competition, predation, mutualisms, and trade-offs), and environmental conditions (e.g., pH, temperature, salt, and moisture) govern community structure, which are often referred to as &lt;strong&gt;deterministic processes&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;In contrast, &lt;strong&gt;neutral theory&lt;/strong&gt; assumes that community structures are independent of species traits and governed by &lt;strong&gt;stochastic processes&lt;/strong&gt; of birth, death, colonization, extinction, and speciation.&lt;/p&gt;
 &lt;p&gt;Although, recently, it has been generally accepted that both deterministic and stochastic processes occur simultaneously in the assembly of local communities, a central debate is on their relative importance in controlling community structure, succession, and biogeography.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;methods&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Methods&lt;/h1&gt;
-&lt;p&gt;目前在文章中普遍出现的计算群落构建的方法主要有三套： ## 1.Stegen （βNTI &amp;amp; RCbray-based）&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Stegen, J. C., Lin, X., Konopka, A. E. &amp;amp; Fredrickson, J. K. Stochastic and deterministic assembly processes in subsurface microbial communities. ISME J 6, 1653–1664 (2012).&lt;/li&gt;
-&lt;li&gt;Stegen, J. C. et al. Quantifying community assembly processes and identifying features that impose them. ISME J 7, 2069–2079 (2013).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;images/beta-nti.png&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;methods&#34;&gt;Methods&lt;/h1&gt;
+&lt;p&gt;目前在文章中普遍出现的计算群落构建的方法主要有三套：&lt;/p&gt;
+&lt;h2 id=&#34;1stegen-βnti--rcbray-based&#34;&gt;1.Stegen （βNTI &amp;amp; RCbray-based）&lt;/h2&gt;
+&lt;p&gt;原始的文章 (&lt;a class=&#34;link&#34; href=&#34;#ref-stegenQuantifyingCommunityAssembly2013&#34; &gt;&lt;em&gt;2&lt;/em&gt;&lt;/a&gt;), (&lt;a class=&#34;link&#34; href=&#34;#ref-stegenStochasticDeterministicAssembly2012&#34; &gt;&lt;em&gt;3&lt;/em&gt;&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/community-assembly/images/beta-nti.png&#34;
+	width=&#34;1500&#34;
+	height=&#34;664&#34;
+	srcset=&#34;/p/community-assembly/images/beta-nti_hu0e5d537b7b1bd11a6273cdedf9809624_358635_480x0_resize_box_3.png 480w, /p/community-assembly/images/beta-nti_hu0e5d537b7b1bd11a6273cdedf9809624_358635_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;225&#34;
+		data-flex-basis=&#34;542px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在确定性与随机性二分法的背景下塑造微生物群落多样性的生态过程。该方案显示了在文中讨论的假设下，基于系统发育和分类多样性划分各种生态过程的不同步骤。 NTI（最近分类单元指数）基于系统发育多样性指数 MNTD（平均最近分类单元距离）的空模型检验，RCBray（修正的 Raup-Crick 指数）基于 Bray-Curtis 的空模型检验分类多样性指数。这两个框分别表示确定性选择和未支配部分的主要组成部分。除了影响较小的选择外，未支配部分的弱选择也可能是由于抵消了有影响的选择因素和/或不同分类群的对比选择。该图主要是根据 Stegen 等人先前报告的数据制作的。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;beta-NTI（nearest taxon index）：&lt;/strong&gt; &lt;img src=&#34;images/betanti.png&#34; /&gt;使用 NTI/NRI 指示单个群落内共存的分类单元相比偶然预期的关系更为紧密还是分散，使用 βNTI/βNRI 指示两两群落间的变化受确定性或随机性因素影响的大小。&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;beta-NTI（nearest taxon index）：&lt;/strong&gt; &lt;img src=&#34;/p/community-assembly/images/betanti.png&#34;
+	width=&#34;874&#34;
+	height=&#34;636&#34;
+	srcset=&#34;/p/community-assembly/images/betanti_hud3cf74c020a016e2a70e9d2074ce87a7_237181_480x0_resize_box_3.png 480w, /p/community-assembly/images/betanti_hud3cf74c020a016e2a70e9d2074ce87a7_237181_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;329px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;使用 NTI/NRI 指示单个群落内共存的分类单元相比偶然预期的关系更为紧密还是分散，使用 βNTI/βNRI 指示两两群落间的变化受确定性或随机性因素影响的大小。
 MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 NTI/NRI、βNTI/βNRI 的结果解释时其显著性的判断依据是其&lt;strong&gt;临界值是否大于|2|&lt;/strong&gt;，实际上这是依据标准正态分布的 95%置信区间得到的，一般认为 NRI 或者 NTI 大于 1.96 或者小于-1.96 的结果，在 95%的水平是显著的。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;RCbray&lt;/strong&gt;: 相异指数的一种。&lt;/p&gt;
-&lt;div id=&#34;code&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;code&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/weixin_43367441/article/details/118515090&#34; class=&#34;uri&#34;&gt;https://blog.csdn.net/weixin_43367441/article/details/118515090&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;code&#34;&gt;code&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/weixin_43367441/article/details/118515090&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/weixin_43367441/article/details/118515090&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;非常重要的一点：这类方法是&lt;strong&gt;基于系统发育树&lt;/strong&gt;推断的，所以一定要有跟tax表对应的系统发育树。 但事实上，除非用的是16S/ITS测序，否则我们很难给自己的数据建一个树。 所以，替代方法是利用阶层分类关系（界门纲目科属种）来做一个拟系统发育树（枝长都为1） 参见自己写的&lt;code&gt;df2tree&lt;/code&gt;函数&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;otutab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;df2tree&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;taxonomy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;phylo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#计算&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;nti_rc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;otutab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;phylo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;metadata[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Group&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;drop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;F&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nti_res&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;div id=&#34;icamp&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;iCAMP&lt;/h3&gt;
-&lt;p&gt;现在大家经常用的&lt;strong&gt;iCAMP&lt;/strong&gt;包就是基于这个理论框架进行分析的。&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Ning, D. et al. A quantitative framework reveals ecological drivers of grassland microbial community assembly in response to warming. Nat Commun 11, 4717 (2020).&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#可视化&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nti_res&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;factor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nti_res&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;levels&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Homo_S&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Heter_S&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Homo_D&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;D_limit&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Undominated&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nti_res&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nti_res&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;variable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reshape2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;melt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com_p&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;colnames&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com_p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;variable&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;n&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com_p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;variable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;geom_bar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;identity&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fill&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;position&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;fill&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;div id=&#34;stnstmst-stochasticity-ratio&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2.ST，NST，MST （stochasticity ratio）&lt;/h2&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Ning, D., Deng, Y., Tiedje, J. M. &amp;amp; Zhou, J. A general framework for quantitatively assessing ecological stochasticity. Proceedings of the National Academy of Sciences 116, 16892–16898 (2019).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MzI1OTk3NjEwMA==&amp;amp;mid=2247484988&amp;amp;idx=1&amp;amp;sn=5dfc3c289c24ad81fe327a8f3aa9d4cc&amp;amp;chksm=ea71f8f7dd0671e1ad683e1ea9616d5e2157d401d2d396e29cc6d8fb50961e72a59ff5be1e2b&amp;amp;scene=21#wechat_redirect&#34;&gt;PNAS：NST方法定量生态过程中的随机性&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;周老师的文章，开发出新的方法对生态过程中的随机性进行了定量。提出了一个新的指数，normalized stochasticity ratio (&lt;strong&gt;NST&lt;/strong&gt;)，作为确定性主导（deterministic, &amp;lt;50%）和随机性主导（stochastic, &amp;gt;50%）的边界点。 &lt;img src=&#34;images/nst.jpeg&#34; /&gt;&lt;/p&gt;
-&lt;div id=&#34;code-1&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;code&lt;/h3&gt;
+&lt;/div&gt;&lt;img src=&#34;/p/community-assembly/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;576&#34; /&gt;
+&lt;h3 id=&#34;icamp&#34;&gt;iCAMP&lt;/h3&gt;
+&lt;p&gt;现在大家经常用的&lt;strong&gt;iCAMP&lt;/strong&gt;包就是基于这个理论框架进行分析的 (&lt;a class=&#34;link&#34; href=&#34;#ref-ningQuantitativeFrameworkReveals2020&#34; &gt;&lt;em&gt;4&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
+&lt;h2 id=&#34;2stnstmst-stochasticity-ratio&#34;&gt;2.ST，NST，MST （stochasticity ratio）&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s?__biz=MzI1OTk3NjEwMA==&amp;amp;mid=2247484988&amp;amp;idx=1&amp;amp;sn=5dfc3c289c24ad81fe327a8f3aa9d4cc&amp;amp;chksm=ea71f8f7dd0671e1ad683e1ea9616d5e2157d401d2d396e29cc6d8fb50961e72a59ff5be1e2b&amp;amp;scene=21#wechat_redirect&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PNAS：NST方法定量生态过程中的随机性&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;周老师的文章，开发出新的方法对生态过程中的随机性进行了定量。提出了一个新的指数，normalized stochasticity ratio (&lt;strong&gt;NST&lt;/strong&gt;)，作为确定性主导（deterministic, &amp;lt;50%）和随机性主导（stochastic, &amp;gt;50%）的边界点 (&lt;a class=&#34;link&#34; href=&#34;#ref-ningGeneralFrameworkQuantitatively2019&#34; &gt;&lt;em&gt;5&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/community-assembly/images/nst.jpeg&#34;
+	width=&#34;635&#34;
+	height=&#34;284&#34;
+	srcset=&#34;/p/community-assembly/images/nst_hu816993041960fc65ecb763bda9f3f62d_36430_480x0_resize_q75_box.jpeg 480w, /p/community-assembly/images/nst_hu816993041960fc65ecb763bda9f3f62d_36430_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;536px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;code-1&#34;&gt;code&lt;/h3&gt;
 &lt;p&gt;已经有相应的包了,NST&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;NST&amp;quot;)
-library(NST)
-
-data(tda)
-comm=tda$comm
-bray=beta.g(comm,dist.method=&amp;quot;bray&amp;quot;)
-bray.3col=dist.3col(bray)
-group=tda$group
-#最重要的函数，计算NST。有多种距离矩阵及零模型构建的方法可选。不同方法得到的结果存在一定的差异
-tnst=tNST(comm=comm, group=group, rand=20,
-          output.rand=TRUE, nworker=1)
-#检验各组ST、NST的分布情况及各组ST、NST差异的显著性。
-nst.bt=nst.boot(nst.result=tnst, group=NULL, rand=99,
-                trace=TRUE, two.tail=FALSE, out.detail=FALSE,
-                between.group=FALSE, nworker=1)
-#ST和NST组间进行Permutational multivariate ANOVA
-nst.pova=nst.panova(nst.result=tnst, rand=99)
-#可视化
-group_box(tnst$index.pair.grp,col = 8,group = tnst$index.pair.grp$group)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#install.packages(&amp;#34;NST&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tda&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;comm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tda&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comm&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;bray&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;beta.g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dist.method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;bray&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;bray.3col&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;dist.3col&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;group&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tda&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;group&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;tnst&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;tNST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;group&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;group&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rand&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;n&#34;&gt;output.rand&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nworker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#检验各组ST、NST的分布情况及各组ST、NST差异的显著性。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nst.bt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;nst.boot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nst.result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tnst&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;group&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rand&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;99&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;trace&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;two.tail&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out.detail&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;between.group&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nworker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#ST和NST组间进行Permutational multivariate ANOVA&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nst.pova&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;nst.panova&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nst.result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tnst&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rand&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;99&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#可视化&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pcutils&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;group_box&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tnst&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index.pair.grp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;group&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tnst&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index.pair.grp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;group&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;div id=&#34;example&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;example&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;images/nst_e.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;img src=&#34;/p/community-assembly/index_files/figure-html/NST-1.png&#34; width=&#34;576&#34; /&gt;
+&lt;h3 id=&#34;example&#34;&gt;example&lt;/h3&gt;
+&lt;img src=&#34;images/nst_e.png&#34; style=&#34;width:50.0%&#34; /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;地下水微生物群落演替过程中估计的 NST 动态变化对乳化植物油注入的响应。 NST 是基于 (A) Jaccard 和 (B) Ru ziˇ cka 指标使用空模型算法 PF 计算的。在零模型 PF 中，类群发生的概率与观察到的发生频率成正比，并且每个样本中的类群丰富度是固定的（19）。当使用基于丰度的指标 Ru ziˇ cka 时，每个样本中的空分类群丰度被计算为观察到的个体数量的随机抽取，其概率与样本中空分类群的区域相对丰度成比例（26）。 W8 是植物油对其没有影响或影响最小的对照井。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;solan-ncm&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3.Solan NCM&lt;/h2&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Sloan, W. T. et al. Quantifying the roles of immigration and chance in shaping prokaryote community structure. Environmental Microbiology 8, 732–740 (2006).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;只有当物种死亡或离开这个系统时，群落结构才会发生改变。此时，离开个体的生态位就会空余出来，其它个体会通过&lt;strong&gt;来自群落外的迁移&lt;/strong&gt;或&lt;strong&gt;群落内部的繁殖&lt;/strong&gt;来填补空出的生态位。因此可以把群落的动态描述为&lt;strong&gt;死亡——繁殖/扩散——死亡&lt;/strong&gt;这样的循环。&lt;/p&gt;
+&lt;h2 id=&#34;3solan-ncm&#34;&gt;3.Solan NCM&lt;/h2&gt;
+&lt;p&gt;只有当物种死亡或离开这个系统时，群落结构才会发生改变。此时，离开个体的生态位就会空余出来，其它个体会通过&lt;strong&gt;来自群落外的迁移&lt;/strong&gt;或&lt;strong&gt;群落内部的繁殖&lt;/strong&gt;来填补空出的生态位。因此可以把群落的动态描述为&lt;strong&gt;死亡——繁殖/扩散——死亡&lt;/strong&gt;这样的循环 (&lt;a class=&#34;link&#34; href=&#34;#ref-sloanQuantifyingRolesImmigration2006&#34; &gt;&lt;em&gt;6&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;计算公式：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(Pr(\frac{N_i+1}{N_i})=(\frac{N_T-N_i}{N_T})[mp_i+(1+\alpha_i)(1-m)(\frac{N_i}{N_T-1})\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(Pr(\frac{N_i}{N_i})=\frac{N_i}{N_T}[mp_i+{(1+\alpha_i)}(1-m)(\frac{N_i-1}{N_T-1})]+(\frac{N_T-N_i}{N_T})[m(1-p_i)+{red}{(1-\alpha_i)}(1-m)(\frac{N_T-N_i-1}{N_T-1})]\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(Pr(\frac{N_i-1}{N_i})=\frac{N_i}{N_T}[m(1-p_i)+(1-\alpha_i)(1-m)(\frac{N_T-N_i}{N_T-1})]\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;$(Pr(\frac{N_i+1}{N_i})=(\frac{N_T-N_i}{N_T})[mp_i+(1+\alpha_i)(1-m)(\frac{N_i}{N_T-1}))$&lt;/li&gt;
+&lt;li&gt;$(Pr(\frac{N_i}{N_i})=\frac{N_i}{N_T}[mp_i+{(1+\alpha_i)}(1-m)(\frac{N_i-1}{N_T-1})]+(\frac{N_T-N_i}{N_T})[m(1-p_i)+{red}{(1-\alpha_i)}(1-m)(\frac{N_T-N_i-1}{N_T-1})])$&lt;/li&gt;
+&lt;li&gt;$(Pr(\frac{N_i-1}{N_i})=\frac{N_i}{N_T}[m(1-p_i)+(1-\alpha_i)(1-m)(\frac{N_T-N_i}{N_T-1})])$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;物种 i 占居的频率（occurrence frequency: row sums of binary OTU table/number of sites）为其概率密度函数的积分。 此时该分布是一个beta分布，我们就可以在R语言中利用beta分布对其进行[拟合]，获得参数m的评估值。&lt;/p&gt;
-&lt;div id=&#34;code-2&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;code&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(devtools)
-install_github(&amp;quot;Russel88/MicEco&amp;quot;)
-library(MicEco)
-neutral.fit(t(otutab))#使用的是最大似然估计拟合模型，R2计算方法也不同&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;另一个代码来自&lt;a href=&#34;https://mp.weixin.qq.com/s/opFXl-TvkJfmPcWKFwhCFA&#34; class=&#34;uri&#34;&gt;https://mp.weixin.qq.com/s/opFXl-TvkJfmPcWKFwhCFA&lt;/a&gt;，比较经典，用的是非线性模型:&lt;/p&gt;
+&lt;h3 id=&#34;code-2&#34;&gt;code&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;devtools&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;install_github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Russel88/MicEco&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MicEco&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;neutral.fit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;otutab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;#使用的是最大似然估计拟合模型，R2计算方法也不同&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;另一个代码来自&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/opFXl-TvkJfmPcWKFwhCFA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mp.weixin.qq.com/s/opFXl-TvkJfmPcWKFwhCFA&lt;/a&gt;，比较经典，用的是非线性模型:&lt;/p&gt;
 &lt;p&gt;N描述了宏群落规模（metacommunity size），在本文中为每个样本中所有OTU的总丰度。 m量化了群落层面的迁移率（migration rate），该值对于每个群落成员都是统一的（与物种无关），m值越小说明整个群落中物种扩散越受限制，反之m值越高则表明物种受到扩散限制越低。 Nm是元群落规模（N）与迁移率（m）的乘积 (Nm = N*m)，量化了对群落之间扩散的估计，决定了发生频率和区域相对丰度之间的相关性。&lt;/p&gt;
+&lt;p&gt;自己的绘图代码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;otutab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;ncm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;otutab&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ncm_res&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ncm_res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;img src=&#34;/p/community-assembly/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;576&#34; /&gt;
 &lt;p&gt;R2代表了中性群落模型的整体拟合优度，&lt;strong&gt;R2越高表明越接近中性模型，即群落的构建受随机性过程的影响越大，受确定性过程的影响越小。&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;值得注意，&lt;strong&gt;R方不是某个数值的平方，可以是负值&lt;/strong&gt;。因为拟合程度没有下限，可以无限差，R方的范围是(−∞,1]。R方的取值，有以下的可能性：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;等于1。理想状况，该模型对所有的真值预测准确，没有偏差。泼个冷水，如果某篇文章里出现了R方=1，要么是问题过于简单没有研究价值，要么是模型过于复杂，对数据进行了过度拟合。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;小于1大于0。这是常见状况，表明该模型的拟合水平比均值模型好。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;等于0。该模型的拟合水平接近于均值模型。该模型没有价值。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;小于0。该模型的拟合水平不如均值模型。同样，该模型没有价值。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;等于1。理想状况，该模型对所有的真值预测准确，没有偏差。泼个冷水，如果某篇文章里出现了R方=1，要么是问题过于简单没有研究价值，要么是模型过于复杂，对数据进行了过度拟合。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;小于1大于0。这是常见状况，表明该模型的拟合水平比均值模型好。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;等于0。该模型的拟合水平接近于均值模型。该模型没有价值。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;小于0。该模型的拟合水平不如均值模型。同样，该模型没有价值。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;div id=&#34;example-1&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;example&lt;/h3&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Zhang, Y. et al. Insights into the Profile of the Human Expiratory Microbiota and Its Associations with Indoor Microbiotas. Environ. Sci. Technol. 56, 6282–6293 (2022).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;随机过程，例如散布、出生、死亡、灭绝和移民，在呼气细菌和真菌群落的组装中发挥作用。&lt;/strong&gt;真菌微生物群的 SNM 拟合性能（图 2）优于细菌（细菌 R2 = 0.353，真菌 R2 = 0.683）。这种差异表明随机过程对于 EBC 真菌群落的组装可能相对更重要，而对 EBC 细菌群落的组装则不太重要。这种现象可能与细菌和真菌之间的大小差异有关，较小的细菌受扩散限制的影响较小，而受确定性过程的影响更大。 &lt;img src=&#34;images/ncm.gif&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;example-1&#34;&gt;example&lt;/h3&gt;
+&lt;p&gt;**随机过程，例如散布、出生、死亡、灭绝和移民，在呼气细菌和真菌群落的组装中发挥作用。**真菌微生物群的 SNM 拟合性能（图 2）优于细菌（细菌 R2 = 0.353，真菌 R2 = 0.683）。这种差异表明随机过程对于 EBC 真菌群落的组装可能相对更重要，而对 EBC 细菌群落的组装则不太重要。这种现象可能与细菌和真菌之间的大小差异有关，较小的细菌受扩散限制的影响较小，而受确定性过程的影响更大 (&lt;a class=&#34;link&#34; href=&#34;#ref-zhangInsightsProfileHuman2022&#34; &gt;&lt;em&gt;7&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/community-assembly/images/ncm.gif&#34;
+	width=&#34;500&#34;
+	height=&#34;154&#34;
+	srcset=&#34;/p/community-assembly/images/ncm_hu10b4486a6c818c663931f8673bad16ba_25925_480x0_resize_box_1.gif 480w, /p/community-assembly/images/ncm_hu10b4486a6c818c663931f8673bad16ba_25925_1024x0_resize_box_1.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;324&#34;
+		data-flex-basis=&#34;779px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Stochastic processes played a role in assembling expiratory bacterial (A) and fungal (B) communities based on Sloan neutral model fitting. The black solid line represents the best fit, and the dotted lines represent the 95% CI (confidence interval) around the model fit. The blue dots refer to taxa that occur more frequently than predicted, and the red dots refer to taxa that occur less frequently than predicted. The green dots refer to taxa that occur in a manner consistent with predicted values.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;原核生物细胞直径大概在0.5 ~ 2.0 μm； 微真核生物个体大小大概在1 ~ 200 mm； 之前的研究已经报道了较小的生物不太可能受到扩散限制的影响，因为它们与较大的生物相比具有更高的扩散能力。因此假设在细菌群落中生态位过程的相对影响可能比在微真核生物群落中更强。微真核生物个体大，可能会影响其扩散过程。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;others&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Others&lt;/h2&gt;
-&lt;div id=&#34;competitive-lottery&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Competitive lottery&lt;/h3&gt;
+&lt;h2 id=&#34;others&#34;&gt;Others&lt;/h2&gt;
+&lt;p&gt;参考自历神公众号文章：https://mp.weixin.qq.com/s/nwNuPlY7x6VScJA44c0MjQ&lt;/p&gt;
+&lt;h3 id=&#34;competitive-lottery&#34;&gt;Competitive lottery&lt;/h3&gt;
 &lt;p&gt;基于竞争彩票模型(competitive lottery model)的群落构建 假设一个两步模型:在第一步中，样本的总丰度(100%)根据某个未知的过程在组之间分配。 然后在第二步中，分配给每个小组的丰度会根据一个竞争彩票模式在小组成员之间进行分配。 竞争彩票模型的概念说明:&lt;/p&gt;
 &lt;p&gt;在第一阶段，每个样本的总丰度(100%)在一组预定义的组之间进行分割。&lt;/p&gt;
 &lt;p&gt;在第二阶段，每一组的丰度分配根据竞争彩票模型在子组之间进行分配，其中一个子组获得了大部分的丰度。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;dnci&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;DNCI&lt;/h3&gt;
+&lt;h3 id=&#34;dnci&#34;&gt;DNCI&lt;/h3&gt;
 &lt;p&gt;在PER-SIMPER方法的基础上，提出了一个新的度量指标: dispersal–niche continuum index (&lt;strong&gt;DNCI&lt;/strong&gt;)，该指数可估计是扩散过程还是生态位过程主导群落的构建，并便于不同数据集之间的比较。&lt;/p&gt;
 &lt;p&gt;PER-SIMPER利用物种在不同站点之间的矩阵，在排列过程中生成三种不同的零模型： 通过&lt;strong&gt;约束行(生态位构建)、约束列(扩散构建)或两者都约束&lt;/strong&gt;。 PER-SIMPER利用SIMPER方法对原始群落矩阵组成相似度模式进行建模，并与三个零模型比较。 PER-SIMPER通过识别哪个零模型与经验分析最匹配来进行定性评估。然而，大多数群落都是由生态位和扩散过程共同构成的，这限制了构建机制定性方法的敏感性。此外简单决策过程的定性特性使不同群落之间的构建过程难以进行精确比较。&lt;/p&gt;
 &lt;p&gt;PER-SIMPER分析返回三个E-metric分布,这与SIMPER经验值与三个PER-SIMPER零模型之间的偏差相关。本文提出的新的DNCI是由这些计算的E值推导而来的。 定量结果是基于标准效应量En(即来自”生态位”模型的E-metric分布)减去标准效应量Ed (即来自”扩散”模型的E-metric分布)。 DNCI提供了一种方法来量化和比较跨数据集构建过程的强度。&lt;strong&gt;DNCI值正或负表明生态位或分散过程分别是群组构建的主要过程。指数的绝对值越高，代表占主导地位的构建过程的潜力越大。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)-\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{n(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;$(DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)-\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{n(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right))$&lt;/p&gt;
 &lt;p&gt;如果DNCI与0差异不显著，则可以认为扩散过程和生态位过程对群落构建的影响是相等的。 当DNCI显著低于0时，扩散过程是群落构建的主导驱动因素; 如果DNCI显著高于0，生态位过程是群落构建的主要决定因素。 注意，表明扩散过程优势的负DNCI值并不能提供实际扩散速率的信息。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#下载
-devtools::install_github(&amp;quot;Corentin-Gibert-Paleontology/DNCImper&amp;quot;)
-
-library(DNCImper)
-#主要两个功能，PER-SIMPER和DNCI。函数用法一致。以PER-SIMPER为例：
-
-?PerSIMPER
-#PerSIMPER  #做PERSIMPER
-#用法
-PerSIMPER(
-  matrixSIMP,  #行为样本，列为物种
-  Groups,      #只允许两个组
-  leg = FALSE, #是否添加图例
-  count = TRUE,#显示完成置换的次数
-  dataTYPE = &amp;quot;prab&amp;quot;, #prab为0-1数据；count为丰度数据
-  Nperm = 1000,#置换次数
-  plotSIMPER = TRUE
-)
-
-#例子
-A &amp;lt;- DNCImper:::PerSIMPER(Matrix, Group,Nperm = 100,count = FALSE)
-
-#上述只能针对两个组，若有更多的组，可用PerSIMPER_overall，计算整体的PerSIMPER
-
-#DNCI.ese  计算DNCI效应量,只允许两组。
-#三组或以上用DNCI.ses_overall，计算整体的DNCI。
-#三组或以上若用DNCI_multigroup，计算两两成对DNCI。&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
+&lt;div id=&#34;ref-zhouStochasticCommunityAssembly2017&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;1. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;J. Zhou, D. Ning, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1128/MMBR.00002-17&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stochastic Community Assembly: Does It Matter in Microbial Ecology?&lt;/a&gt; &lt;em&gt;Microbiology and Molecular Biology Reviews&lt;/em&gt;. &lt;strong&gt;81&lt;/strong&gt;, e00002–17 (2017).&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
+&lt;div id=&#34;ref-stegenQuantifyingCommunityAssembly2013&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;2. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;J. C. Stegen, X. Lin, J. K. Fredrickson, X. Chen, D. W. Kennedy, C. J. Murray, M. L. Rockhold, A. Konopka, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1038/ismej.2013.93&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Quantifying community assembly processes and identifying features that impose them&lt;/a&gt;. &lt;em&gt;The ISME Journal&lt;/em&gt;. &lt;strong&gt;7&lt;/strong&gt;, 2069–2079 (2013).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-stegenStochasticDeterministicAssembly2012&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;3. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;J. C. Stegen, X. Lin, A. E. Konopka, J. K. Fredrickson, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1038/ismej.2012.22&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stochastic and deterministic assembly processes in subsurface microbial communities&lt;/a&gt;. &lt;em&gt;The ISME Journal&lt;/em&gt;. &lt;strong&gt;6&lt;/strong&gt;, 1653–1664 (2012).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-ningQuantitativeFrameworkReveals2020&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;4. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;D. Ning, M. Yuan, L. Wu, Y. Zhang, X. Guo, X. Zhou, Y. Yang, A. P. Arkin, M. K. Firestone, J. Zhou, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1038/s41467-020-18560-z&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;A quantitative framework reveals ecological drivers of grassland microbial community assembly in response to warming&lt;/a&gt;. &lt;em&gt;Nature Communications&lt;/em&gt;. &lt;strong&gt;11&lt;/strong&gt;, 4717 (2020).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-ningGeneralFrameworkQuantitatively2019&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;5. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;D. Ning, Y. Deng, J. M. Tiedje, J. Zhou, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1073/pnas.1904623116&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;A general framework for quantitatively assessing ecological stochasticity&lt;/a&gt;. &lt;em&gt;Proceedings of the National Academy of Sciences&lt;/em&gt;. &lt;strong&gt;116&lt;/strong&gt;, 16892–16898 (2019).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-sloanQuantifyingRolesImmigration2006&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;6. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;W. T. Sloan, M. Lunn, S. Woodcock, I. M. Head, S. Nee, T. P. Curtis, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1111/j.1462-2920.2005.00956.x&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Quantifying the roles of immigration and chance in shaping prokaryote community structure&lt;/a&gt;. &lt;em&gt;Environmental Microbiology&lt;/em&gt;. &lt;strong&gt;8&lt;/strong&gt;, 732–740 (2006).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-zhangInsightsProfileHuman2022&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;7. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;Y. Zhang, F. Shen, Y. Yang, M. Niu, D. Chen, L. Chen, S. Wang, Y. Zheng, Y. Sun, F. Zhou, H. Qian, Y. Wu, T. Zhu, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1021/acs.est.2c00688&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Insights into the Profile of the Human Expiratory Microbiota and Its Associations with Indoor Microbiotas&lt;/a&gt;. &lt;em&gt;Environmental Science &amp;amp; Technology&lt;/em&gt;. &lt;strong&gt;56&lt;/strong&gt;, 6282–6293 (2022).&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
         </item>
         <item>
         <title>R语言学习</title>
-        <link>/2023/03/16/r/</link>
+        <link>/p/r/</link>
         <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
         
-        <guid>/2023/03/16/r/</guid>
-        <description>
-
-&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#简介&#34; id=&#34;toc-简介&#34;&gt;简介&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#常用功能&#34; id=&#34;toc-常用功能&#34;&gt;常用功能&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#全面教程&#34; id=&#34;toc-全面教程&#34;&gt;全面教程&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#数据处理&#34; id=&#34;toc-数据处理&#34;&gt;数据处理&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#可视化&#34; id=&#34;toc-可视化&#34;&gt;可视化&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#r编程&#34; id=&#34;toc-r编程&#34;&gt;R编程&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#rmarkdown&#34; id=&#34;toc-rmarkdown&#34;&gt;Rmarkdown&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#写r包&#34; id=&#34;toc-写r包&#34;&gt;写R包&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;简介&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;简介&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;linux&lt;/strong&gt;, &lt;strong&gt;python&lt;/strong&gt;和&lt;strong&gt;R语言&lt;/strong&gt;应该是生信学习中最重要的几个&lt;font size=1&gt;部分&lt;/font&gt;。&lt;/p&gt;
+        <guid>/p/r/</guid>
+        <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;linux&lt;/strong&gt;, &lt;strong&gt;python&lt;/strong&gt;和&lt;strong&gt;R语言&lt;/strong&gt;应该是生信学习中最重要的几个部分。&lt;/p&gt;
 &lt;p&gt;linux是一种操作系统，由于许多生物信息学软件仅提供支持linux平台的命令行版本，而不是图形化界面，所以掌握该操作系统的基础文件管理，安装使用软件，输入输出逻辑，简单shell脚本编写等十分重要。&lt;/p&gt;
 &lt;p&gt;python与R都是免费开源多平台的编程语言，并且都是较为容易学习上手的模仿自然语言语法的编程语言，且支持面向对象编程，两者在数据科学上都有着非常重要的应用。Python的生态系统非常丰富，拥有大量的数据科学库和框架，例如：NumPy、Pandas、Matplotlib、Seaborn、Scikit-learn、PyTorch、TensorFlow等，这些库可以帮助数据科学家快速处理和分析数据，构建模型。&lt;/p&gt;
 &lt;p&gt;R是一种专门用于统计分析和数据可视化的语言，其生态系统也非常丰富，拥有大量的统计分析库和可视化工具，例如：ggplot2、dplyr、tidyr、shiny等。 R拥有非常强大的数据分析和可视化能力，它提供了很多专业的统计分析函数和图形，这些函数和图形可以直接用于数据分析和可视化，使分析和可视化变得更加轻松和高效。&lt;/p&gt;
 &lt;p&gt;在此，我想先记录一下我使用的最多的R语言。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;常用功能&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;常用功能&lt;/h2&gt;
-&lt;div id=&#34;全面教程&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;全面教程&lt;/h3&gt;
-&lt;p&gt;小白上手首推北大李老师的课程讲义&lt;a href=&#34;https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html&#34;&gt;《R语言教程》&lt;/a&gt;，中文讲义，简单易读，甚至整本书就是用Rbookdown编写的，电子书也比较好复制代码进行学习。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/search?q=R%E8%AF%AD%E8%A8%80%E5%AE%9E%E6%88%98&amp;amp;search_source=Entity&amp;amp;hybrid_search_source=Entity&amp;amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A217799209%7D&#34;&gt;《R语言实战》&lt;/a&gt;,也有中文版，介绍地更加全面且有不少进阶知识，值得一看！&lt;/p&gt;
+&lt;h2 id=&#34;常用功能&#34;&gt;常用功能&lt;/h2&gt;
+&lt;h3 id=&#34;全面教程&#34;&gt;全面教程&lt;/h3&gt;
+&lt;p&gt;小白上手首推北大李老师的课程讲义&lt;a class=&#34;link&#34; href=&#34;https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《R语言教程》&lt;/a&gt;，中文讲义，简单易读，甚至整本书就是用Rbookdown编写的，电子书也比较好复制代码进行学习。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/search?q=R%E8%AF%AD%E8%A8%80%E5%AE%9E%E6%88%98&amp;amp;search_source=Entity&amp;amp;hybrid_search_source=Entity&amp;amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A217799209%7D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《R语言实战》&lt;/a&gt;,也有中文版，介绍地更加全面且有不少进阶知识，值得一看！&lt;/p&gt;
 &lt;p&gt;然后是著名的英文书和参考手册：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;cran.r-project.org/doc/manuals/R-intro.pdf&#34;&gt;《An Introduction to R》&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://rc2e.com/&#34;&gt;《R Cookbook》&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;cran.r-project.org/doc/manuals/R-intro.pdf&#34; &gt;《An Introduction to R》&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://rc2e.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《R Cookbook》&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;更多关于R的书可以在&lt;a href=&#34;https://bookdown.org/&#34;&gt;Home | Bookdown&lt;/a&gt;这里找到。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;数据处理&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;数据处理&lt;/h3&gt;
+&lt;p&gt;更多关于R的书可以在&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Home | Bookdown&lt;/a&gt;这里找到。&lt;/p&gt;
+&lt;h3 id=&#34;数据处理&#34;&gt;数据处理&lt;/h3&gt;
 &lt;p&gt;我目前用的最多的是dplyr包进行数据处理，最开始是冲着类似linux下的&lt;code&gt;|&lt;/code&gt;管道符去的，&lt;code&gt;%&amp;gt;%&lt;/code&gt;符号真的挺好用的，可以让我们无需产生许多中间结果 (准确来说&lt;code&gt;%&amp;gt;%&lt;/code&gt;来自magrittr包，并且R4.1+也支持了原生管道符&lt;code&gt;|&amp;gt;&lt;/code&gt;，但用起来还是&lt;code&gt;%&amp;gt;%&lt;/code&gt;顺手，还有&lt;code&gt;%&amp;lt;&amp;gt;%&lt;/code&gt;等变体)：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
-head(iris)%&amp;gt;%select(Species)%&amp;gt;%unique()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;随后便发现了tidyverse全家桶，其中包含ggplot2，tibble，dplyr，readr，stringr等常用的全面的数据处理包，能够很好的满足我们下有数据处理需求：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;读取数据&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;清洗数据&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;转换数据&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;合并数据&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;筛选数据&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;可视化&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这里给出官方教程：&lt;a href=&#34;https://bookdown.org/roy_schumacher/r4ds/&#34;&gt;《R for Data Science》&lt;/a&gt;，非常建议熟读并使用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dplyr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iris&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Species&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;unique&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;div id=&#34;可视化&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;可视化&lt;/h3&gt;
+&lt;/div&gt;&lt;p&gt;随后便发现了tidyverse全家桶，其中包含ggplot2，tibble，dplyr，readr，stringr等常用的全面的数据处理包，能够很好的满足我们下有数据处理需求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;读取数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;清洗数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;转换数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;合并数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;筛选数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可视化&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里给出官方教程：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/roy_schumacher/r4ds/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《R for Data Science》&lt;/a&gt;，非常建议熟读并使用。&lt;/p&gt;
+&lt;h3 id=&#34;可视化&#34;&gt;可视化&lt;/h3&gt;
 &lt;p&gt;可视化一直是R的突出优点，basic graphic和ggplot是我最常用的绘图系统（偶尔会用plotly画一些交互图形，但大多数是只需要presentation和文章里要用的静态图形），两者的绘图逻辑有所差异，推荐在学会R的基础使用和数据处理后就体验ggplot。&lt;/p&gt;
 &lt;p&gt;ggplot是由Hadley Wickham创建的，并被包含在R语言的ggplot2包中。主要思想是将数据可视化看作是图层的堆叠，其中每个图层代表了一个数据属性的可视化。ggplot提供了一系列的函数和参数，让用户能够轻松地组合这些图层，以及调整颜色、标签、轴等其他属性。&lt;/p&gt;
 &lt;p&gt;ggplot支持的图形类型包括散点图、折线图、直方图、密度图、箱线图等等，可以满足大多数数据可视化的需求。优点在于其语法简洁、易于理解和使用，并且生成的图表质量高、美观、易于理解。它也被广泛地应用于学术研究、数据分析、商业报告等领域。&lt;/p&gt;
-&lt;p&gt;同样给出官方教程：&lt;a href=&#34;https://ggplot2-book.org/&#34;&gt;《ggplot2: Elegant Graphics for Data Analysis》&lt;/a&gt;，优雅，太优雅了。这本书也是可以找到大佬们翻译的中文版的，可以当作作图工具书使用，许多无法直接Google到的细节问题可能能在书中找到。&lt;/p&gt;
-&lt;p&gt;此外要提一下ggpubr包，其名为Publication Ready Plots，提供一些方便的做出出版级figure的函数。&lt;a href=&#34;http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/&#34;&gt;ggpubr: Publication Ready Plots - Articles - STHDA&lt;/a&gt; 这个网站提供了不少好看图的绘制流程。&lt;/p&gt;
+&lt;p&gt;同样给出官方教程：&lt;a class=&#34;link&#34; href=&#34;https://ggplot2-book.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《ggplot2: Elegant Graphics for Data Analysis》&lt;/a&gt;，优雅，太优雅了。这本书也是可以找到大佬们翻译的中文版的，可以当作作图工具书使用，许多无法直接Google到的细节问题可能能在书中找到。&lt;/p&gt;
+&lt;p&gt;此外要提一下ggpubr包，其名为Publication Ready Plots，提供一些方便的做出出版级figure的函数。&lt;a class=&#34;link&#34; href=&#34;http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ggpubr: Publication Ready Plots - Articles - STHDA&lt;/a&gt; 这个网站提供了不少好看图的绘制流程。&lt;/p&gt;
 &lt;p&gt;当掌握了基本的ggplot绘制逻辑后，还可以尝试各种基于同样逻辑的扩展包，如ggcor，ggtree等等。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://exts.ggplot2.tidyverse.org/gallery/&#34;&gt;gg_extensions&lt;/a&gt; 这个网站收集了很多此类拓展包并支持制作上传自创的gg拓展（当然暂时有点难😮‍💨）&lt;/p&gt;
-&lt;p&gt;最后，强烈推荐一个为可视化而建的网站&lt;a href=&#34;https://www.data-to-viz.com/#density2d&#34;&gt;&lt;strong&gt;From data to Viz | Find the graphic you need (data-to-viz.com)&lt;/strong&gt;&lt;/a&gt;，就像网站名一样，丰富多彩的可视化形式帮我们找到适合自己数据的样式，并提供画某一类图的python，R甚至D3.js代码，真的非常方便地copy代码，替换我们的数据，少量的修改就能有很不错的效果😄。 &lt;img src=&#34;images/data2viz.png&#34; style=&#34;width:50.0%&#34; alt=&#34;from data to viz website&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;r编程&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;R编程&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exts.ggplot2.tidyverse.org/gallery/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;gg_extensions&lt;/a&gt; 这个网站收集了很多此类拓展包并支持制作上传自创的gg拓展（当然暂时有点难😮‍💨）&lt;/p&gt;
+&lt;p&gt;最后，强烈推荐一个为可视化而建的网站&lt;a class=&#34;link&#34; href=&#34;https://www.data-to-viz.com/#density2d&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;strong&gt;From data to Viz | Find the graphic you need (data-to-viz.com)&lt;/strong&gt;&lt;/a&gt;，就像网站名一样，丰富多彩的可视化形式帮我们找到适合自己数据的样式，并提供画某一类图的python，R甚至D3.js代码，真的非常方便地copy代码，替换我们的数据，少量的修改就能有很不错的效果😄。&lt;/p&gt;
+&lt;img src=&#34;images/data2viz.png&#34; width=&#34;70%&#34; /&gt;
+&lt;h3 id=&#34;r编程&#34;&gt;R编程&lt;/h3&gt;
 &lt;p&gt;R是一个宝库，几乎总能在上面找到合适的包实现我们想要的功能，但他也是一种编程语言，熟悉其编程语法对进阶使用十分重要。&lt;/p&gt;
 &lt;p&gt;基本的数据读取与输出，if else、switch、for循环与简单函数编写需要掌握。&lt;/p&gt;
-&lt;p&gt;同时因为R是一个比较”慢”的语言，尽量使用向量式编程、apply替代for循环、RCpp编写函数等方法提高其效率（后面可能会专门讲讲）。&lt;/p&gt;
-&lt;p&gt;这里推荐大佬的&lt;a href=&#34;https://adv-r.hadley.nz/&#34;&gt;《Advanced R》&lt;/a&gt;，对R高级编程技术进行讲解。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;rmarkdown&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Rmarkdown&lt;/h3&gt;
+&lt;p&gt;同时因为R是一个比较&amp;quot;慢&amp;quot;的语言，尽量使用向量式编程、apply替代for循环、RCpp编写函数等方法提高其效率（后面可能会专门讲讲）。&lt;/p&gt;
+&lt;p&gt;这里推荐大佬的&lt;a class=&#34;link&#34; href=&#34;https://adv-r.hadley.nz/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;《Advanced R》&lt;/a&gt;，对R高级编程技术进行讲解。&lt;/p&gt;
+&lt;h3 id=&#34;rmarkdown&#34;&gt;Rmarkdown&lt;/h3&gt;
 &lt;p&gt;R Markdown是一种文本格式和工具，用于创建具有代码、文本、图形和输出结果的可重复性报告。它是在R语言环境中开发的，但也可以与其他编程语言（如Python）结合使用。&lt;/p&gt;
 &lt;p&gt;使用R Markdown，您可以将代码、文本和图形组合到一个文件中，并使用R Markdown语法将它们组织成结构化的文档。然后，您可以使用R Markdown编译器将文档转换为HTML、PDF、Word或其他格式的报告。&lt;/p&gt;
 &lt;p&gt;R Markdown具有以下优点：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;可重复性：报告中的所有代码和结果都是可重复的，这有助于确保研究结果的可靠性和透明度。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;效率：使用R Markdown，您可以在单个文件中组织和记录所有内容，从而节省时间和精力。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;灵活性：R Markdown支持多种格式和输出选项，因此您可以根据需要自定义报告的样式和布局。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可重复性：报告中的所有代码和结果都是可重复的，这有助于确保研究结果的可靠性和透明度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;效率：使用R Markdown，您可以在单个文件中组织和记录所有内容，从而节省时间和精力。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;灵活性：R Markdown支持多种格式和输出选项，因此您可以根据需要自定义报告的样式和布局。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Yihui Xie大佬的官方文档介绍：&lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/&#34;&gt;R Markdown: The Definitive Guide (bookdown.org)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;以及参考书：&lt;a href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/&#34;&gt;R Markdown Cookbook (bookdown.org)&lt;/a&gt;&lt;/p&gt;
-&lt;div id=&#34;rbookdown&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Rbookdown&lt;/h4&gt;
-&lt;p&gt;R的bookdown扩展包(&lt;a href=&#34;https://github.com/rstudio/bookdown&#34; class=&#34;uri&#34;&gt;https://github.com/rstudio/bookdown&lt;/a&gt;) 是继knitr和rmarkdown扩展包之后， 另一个增强markdown格式的扩展， 使得Rmd格式可以支持公式、定理、图表自动编号和引用、链接， 文献引用和链接等适用于编写书籍的功能。相当方便，我也稍微尝试写了一下：&lt;a href=&#34;https://asa12138.github.io/MetaNet_tutorial/&#34;&gt;MetaNet Tutorial (asa12138.github.io)&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;参考书：&lt;a href=&#34;https://bookdown.org/yihui/bookdown/&#34;&gt;bookdown: Authoring Books and Technical Documents with R Markdown&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;rblogdown&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Rblogdown&lt;/h4&gt;
+&lt;p&gt;Yihui Xie大佬的官方文档介绍：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/yihui/rmarkdown/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;R Markdown: The Definitive Guide (bookdown.org)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以及参考书：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;R Markdown Cookbook (bookdown.org)&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;rbookdown&#34;&gt;Rbookdown&lt;/h4&gt;
+&lt;p&gt;R的bookdown扩展包(&lt;a class=&#34;link&#34; href=&#34;https://github.com/rstudio/bookdown&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/rstudio/bookdown&lt;/a&gt;) 是继knitr和rmarkdown扩展包之后， 另一个增强markdown格式的扩展， 使得Rmd格式可以支持公式、定理、图表自动编号和引用、链接， 文献引用和链接等适用于编写书籍的功能。相当方便，我也稍微尝试写了一下：&lt;a class=&#34;link&#34; href=&#34;https://asa12138.github.io/MetaNet_tutorial/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MetaNet Tutorial (asa12138.github.io)&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;参考书：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/yihui/bookdown/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;bookdown: Authoring Books and Technical Documents with R Markdown&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;rblogdown&#34;&gt;Rblogdown&lt;/h4&gt;
 &lt;p&gt;R扩展包blogdown可以与Hugo软件配合制作简单的静态网站。 网站的所有文件都存在于一个目录中， 只要上传到任意的网站服务器就可以发布， 没有任何限制。这篇博客就是基于Rblogdown写的，还是非常友好易上手的。&lt;/p&gt;
-&lt;p&gt;参考书：&lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34;&gt;blogdown: Creating Websites with R Markdown (bookdown.org)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考书：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/yihui/blogdown/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;blogdown: Creating Websites with R Markdown (bookdown.org)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;3.21更新：&lt;/p&gt;
-&lt;p&gt;大多数网站的修改要在themes中实现，比如我现在使用的主题不支持latex渲染，想要加上这个功能，我先找到了yihui大佬的主题实现这个功能的Javascript代码，即hugo-lithium/layouts/partials/footer_mathjax.html，然后把它复制到目前用的主题的footer目录下（可能没有这个目录，而是footer.html同目录下），记得在include.html或者其他layout文件中加入&lt;code&gt;{{ partial &#34;footer/footer_mathjax.html&#34; . }}&lt;/code&gt;，这样就能顺利调用mathjax了。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;r-presentation&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;R Presentation&lt;/h4&gt;
+&lt;p&gt;大多数网站的修改要在themes中实现，比如我现在使用的主题不支持latex渲染，想要加上这个功能，我先找到了yihui大佬的主题实现这个功能的Javascript代码，即hugo-lithium/layouts/partials/footer_mathjax.html，然后把它复制到目前用的主题的footer目录下（可能没有这个目录，而是footer.html同目录下），记得在include.html或者其他layout文件中加入&lt;code&gt;{{ partial &amp;quot;footer/footer_mathjax.html&amp;quot; . }}&lt;/code&gt;，这样就能顺利调用mathjax了。&lt;/p&gt;
+&lt;h4 id=&#34;r-presentation&#34;&gt;R Presentation&lt;/h4&gt;
 &lt;p&gt;R Markdown文件(.Rmd)支持生成网页格式的幻灯片(&lt;code&gt;slidy_presentation&lt;/code&gt;)， 以及LaTeX beamer格式的PDF幻灯片(&lt;code&gt;beamer_presentation&lt;/code&gt;)， 和Microsoft Office的PowerPoint幻灯片(&lt;code&gt;powerpoint_presentation&lt;/code&gt;)格式。&lt;/p&gt;
-&lt;p&gt;目前稍微尝试了一些Yihui大佬的&#34;写轮眼&#34;包，但没有试着做自己的slides，以后有机会一定试试。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;写r包&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;写R包&lt;/h3&gt;
+&lt;p&gt;目前稍微尝试了一些Yihui大佬的&amp;quot;写轮眼&amp;quot;包，但没有试着做自己的slides，以后有机会一定试试。&lt;/p&gt;
+&lt;h3 id=&#34;写r包&#34;&gt;写R包&lt;/h3&gt;
 &lt;p&gt;积极尝试&lt;/p&gt;
-&lt;p&gt;参考书：&lt;a href=&#34;https://r-pkgs.org/&#34;&gt;R Packages (2e) (r-pkgs.org)&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;参考书：&lt;a class=&#34;link&#34; href=&#34;https://r-pkgs.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;R Packages (2e) (r-pkgs.org)&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>春之伊始</title>
-        <link>/2023/03/14/%E6%98%A5%E4%B9%8B%E4%BC%8A%E5%A7%8B/</link>
+        <link>/p/%E6%98%A5%E4%B9%8B%E4%BC%8A%E5%A7%8B/</link>
         <pubDate>Tue, 14 Mar 2023 00:00:00 +0000</pubDate>
         
-        <guid>/2023/03/14/%E6%98%A5%E4%B9%8B%E4%BC%8A%E5%A7%8B/</guid>
-        <description>
-
-
-&lt;p&gt;最近倒腾了不少新玩意，比如这个博客系统，在此写下第一篇博客。&lt;/p&gt;
+        <guid>/p/%E6%98%A5%E4%B9%8B%E4%BC%8A%E5%A7%8B/</guid>
+        <description>&lt;p&gt;最近倒腾了不少新玩意，比如这个博客系统，在此写下第一篇博客。&lt;/p&gt;
 &lt;p&gt;从刚开始接触生信到现在已经3年了，我也从本科生变成了博士生，专业从生物科学变成了生物信息学。走上科研道路，可能是种种巧合与选择的结果，但现在脑子里想的就是将二十来年的各种知识运用在研究上，做一些有意思的东西。&lt;/p&gt;
 &lt;p&gt;希望自己有空可以多更新，帮助自己整理思路，记录一些实验和数据分析的方法技巧，调节一下心情😂。&lt;/p&gt;
 </description>
+        </item>
+        <item>
+        <title>Markdown Syntax Guide</title>
+        <link>/p/markdown-syntax-guide/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>/p/markdown-syntax-guide/</guid>
+        <description>&lt;img src="/p/markdown-syntax-guide/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
+&lt;h2 id=&#34;formula&#34;&gt;Formula&lt;/h2&gt;
+&lt;p&gt;$a=sum_i^2 $&lt;/p&gt;
+&lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;
+&lt;p&gt;The following HTML &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;—&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; elements represent six levels of section headings. &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; is the highest section level while &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; is the lowest.&lt;/p&gt;
+&lt;h1 id=&#34;h1&#34;&gt;H1&lt;/h1&gt;
+&lt;h2 id=&#34;h2&#34;&gt;H2&lt;/h2&gt;
+&lt;h3 id=&#34;h3&#34;&gt;H3&lt;/h3&gt;
+&lt;h4 id=&#34;h4&#34;&gt;H4&lt;/h4&gt;
+&lt;h5 id=&#34;h5&#34;&gt;H5&lt;/h5&gt;
+&lt;h6 id=&#34;h6&#34;&gt;H6&lt;/h6&gt;
+&lt;h2 id=&#34;paragraph&#34;&gt;Paragraph&lt;/h2&gt;
+&lt;p&gt;Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.&lt;/p&gt;
+&lt;p&gt;Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.&lt;/p&gt;
+&lt;h2 id=&#34;blockquotes&#34;&gt;Blockquotes&lt;/h2&gt;
+&lt;p&gt;The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a &lt;code&gt;footer&lt;/code&gt; or &lt;code&gt;cite&lt;/code&gt; element, and optionally with in-line changes such as annotations and abbreviations.&lt;/p&gt;
+&lt;h4 id=&#34;blockquote-without-attribution&#34;&gt;Blockquote without attribution&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+&lt;strong&gt;Note&lt;/strong&gt; that you can use &lt;em&gt;Markdown syntax&lt;/em&gt; within a blockquote.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;blockquote-with-attribution&#34;&gt;Blockquote with attribution&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br&gt;
+— &lt;cite&gt;Rob Pike&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;tables&#34;&gt;Tables&lt;/h2&gt;
+&lt;p&gt;Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Age&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Bob&lt;/td&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Alice&lt;/td&gt;
+&lt;td&gt;23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;inline-markdown-within-tables&#34;&gt;Inline Markdown within tables&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Italics&lt;/th&gt;
+&lt;th&gt;Bold&lt;/th&gt;
+&lt;th&gt;Code&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;italics&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;code&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;A&lt;/th&gt;
+&lt;th&gt;B&lt;/th&gt;
+&lt;th&gt;C&lt;/th&gt;
+&lt;th&gt;D&lt;/th&gt;
+&lt;th&gt;E&lt;/th&gt;
+&lt;th&gt;F&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/td&gt;
+&lt;td&gt;Phasellus ultricies, sapien non euismod aliquam, dui ligula tincidunt odio, at accumsan nulla sapien eget ex.&lt;/td&gt;
+&lt;td&gt;Proin eleifend dictum ipsum, non euismod ipsum pulvinar et. Vivamus sollicitudin, quam in pulvinar aliquam, metus elit pretium purus&lt;/td&gt;
+&lt;td&gt;Proin sit amet velit nec enim imperdiet vehicula.&lt;/td&gt;
+&lt;td&gt;Ut bibendum vestibulum quam, eu egestas turpis gravida nec&lt;/td&gt;
+&lt;td&gt;Sed scelerisque nec turpis vel viverra. Vivamus vitae pretium sapien&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;code-blocks&#34;&gt;Code Blocks&lt;/h2&gt;
+&lt;h4 id=&#34;code-block-with-backticks&#34;&gt;Code block with backticks&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Example HTML5 Document&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;code-block-indented-with-four-spaces&#34;&gt;Code block indented with four spaces&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+  &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+  &amp;lt;title&amp;gt;Example HTML5 Document&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;p&amp;gt;Test&amp;lt;/p&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;code-block-with-hugos-internal-highlight-shortcode&#34;&gt;Code block with Hugo&amp;rsquo;s internal highlight shortcode&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Example HTML5 Document&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;diff-code-block&#34;&gt;Diff code block&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[dependencies.bevy]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git = &amp;#34;https://github.com/bevyengine/bevy&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rev = &amp;#34;11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gd&#34;&gt;- features = [&amp;#34;dynamic&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gd&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;+ features = [&amp;#34;jpeg&amp;#34;, &amp;#34;dynamic&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;list-types&#34;&gt;List Types&lt;/h2&gt;
+&lt;h4 id=&#34;ordered-list&#34;&gt;Ordered List&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;First item&lt;/li&gt;
+&lt;li&gt;Second item&lt;/li&gt;
+&lt;li&gt;Third item&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;unordered-list&#34;&gt;Unordered List&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;List item&lt;/li&gt;
+&lt;li&gt;Another item&lt;/li&gt;
+&lt;li&gt;And another item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;nested-list&#34;&gt;Nested list&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Fruit
+&lt;ul&gt;
+&lt;li&gt;Apple&lt;/li&gt;
+&lt;li&gt;Orange&lt;/li&gt;
+&lt;li&gt;Banana&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Dairy
+&lt;ul&gt;
+&lt;li&gt;Milk&lt;/li&gt;
+&lt;li&gt;Cheese&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;other-elements--abbr-sub-sup-kbd-mark&#34;&gt;Other Elements — abbr, sub, sup, kbd, mark&lt;/h2&gt;
+&lt;p&gt;&lt;abbr title=&#34;Graphics Interchange Format&#34;&gt;GIF&lt;/abbr&gt; is a bitmap image format.&lt;/p&gt;
+&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;X&lt;sup&gt;n&lt;/sup&gt; + Y&lt;sup&gt;n&lt;/sup&gt; = Z&lt;sup&gt;n&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Press &lt;kbd&gt;&lt;kbd&gt;CTRL&lt;/kbd&gt;+&lt;kbd&gt;ALT&lt;/kbd&gt;+&lt;kbd&gt;Delete&lt;/kbd&gt;&lt;/kbd&gt; to end the session.&lt;/p&gt;
+&lt;p&gt;Most &lt;mark&gt;salamanders&lt;/mark&gt; are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p&gt;
+&lt;h2 id=&#34;hyperlinked-image&#34;&gt;Hyperlinked image&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://google.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;img src=&#34;https://www.google.com/images/branding/googlelogo/1x/googlelogo_light_color_272x92dp.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google&#34;
+	
+	
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;The above quote is excerpted from Rob Pike&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=PAAkCSZUG1c&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;talk&lt;/a&gt; during Gopherfest, November 18, 2015.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
         </item>
         
     </channel>
