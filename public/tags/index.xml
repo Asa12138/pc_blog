@@ -5,7 +5,16 @@
         <link>/tags/</link>
         <description>Recent content in Tags on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>en</language>
+        <lastBuildDate>Fri, 17 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>community assembly</title>
+        <link>/tags/community-assembly/</link>
+        <pubDate>Fri, 17 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/community-assembly/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>R</title>
         <link>/tags/r/</link>
         <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction Methods code iCAMP 2.ST，NST，MST （stochasticity ratio） code example 3.Solan NCM code example Others Competitive lottery DNCI Introduction This review is very comprehensive!
+Zhou, J. &amp;amp; Ning, D. Stochastic Community Assembly: Does It Matter in Microbial Ecology? Microbiol Mol Biol Rev 81, e00002-17 (2017). 周集中老师实验室的长期研究兴趣集中在从基因组到生态系统的不同组织层面的环境微生物学，其中一项就是宏基因组学和微生物生态学：利用高通量基因组测序和相关基因组学技术检查不同栖息地的微生物群落多样性、微生物生物地理学和形成微生物多样性模式、分布和动态的机制；
+Understanding the mechanisms controlling community diversity, functions, succession, and biogeography is a central, but poorly understood, topic in ecology, particularly in microbial ecology. Traditional niche-based theory hypothesizes that deterministic factors such as species traits, inter-species interactions (e.'>
+<title>微生物群落构建（community assembly）</title>
+
+<link rel='canonical' href='../../../../2023/03/17/community-assembly/'>
+
+<link rel="stylesheet" href="../../../../scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='微生物群落构建（community assembly）'>
+<meta property='og:description' content='Introduction Methods code iCAMP 2.ST，NST，MST （stochasticity ratio） code example 3.Solan NCM code example Others Competitive lottery DNCI Introduction This review is very comprehensive!
+Zhou, J. &amp;amp; Ning, D. Stochastic Community Assembly: Does It Matter in Microbial Ecology? Microbiol Mol Biol Rev 81, e00002-17 (2017). 周集中老师实验室的长期研究兴趣集中在从基因组到生态系统的不同组织层面的环境微生物学，其中一项就是宏基因组学和微生物生态学：利用高通量基因组测序和相关基因组学技术检查不同栖息地的微生物群落多样性、微生物生物地理学和形成微生物多样性模式、分布和动态的机制；
+Understanding the mechanisms controlling community diversity, functions, succession, and biogeography is a central, but poorly understood, topic in ecology, particularly in microbial ecology. Traditional niche-based theory hypothesizes that deterministic factors such as species traits, inter-species interactions (e.'>
+<meta property='og:url' content='/2023/03/17/community-assembly/'>
+<meta property='og:site_name' content='Asa&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='community assembly' /><meta property='article:published_time' content='2023-03-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-17T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="微生物群落构建（community assembly）">
+<meta name="twitter:description" content="Introduction Methods code iCAMP 2.ST，NST，MST （stochasticity ratio） code example 3.Solan NCM code example Others Competitive lottery DNCI Introduction This review is very comprehensive!
+Zhou, J. &amp;amp; Ning, D. Stochastic Community Assembly: Does It Matter in Microbial Ecology? Microbiol Mol Biol Rev 81, e00002-17 (2017). 周集中老师实验室的长期研究兴趣集中在从基因组到生态系统的不同组织层面的环境微生物学，其中一项就是宏基因组学和微生物生态学：利用高通量基因组测序和相关基因组学技术检查不同栖息地的微生物群落多样性、微生物生物地理学和形成微生物多样性模式、分布和动态的机制；
+Understanding the mechanisms controlling community diversity, functions, succession, and biogeography is a central, but poorly understood, topic in ecology, particularly in microbial ecology. Traditional niche-based theory hypothesizes that deterministic factors such as species traits, inter-species interactions (e.">
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="../../../../">
+                
+                    
+                    
+                    
+                        
+                        <img src="../../../../img/guodong1_hu19ef19e107d2cae4138b147ef6582252_202975_300x0_resize_q75_box.jpg" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐟</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="../../../../">Asa&#39;s blog</a></h1>
+            <h2 class="site-description">Work hard, live happily.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Asa12138'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='../../../../' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='../../../../archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='../../../../search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='../../../../links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='../../../../about/' >
+                
+                
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="/" selected>English</option>
+                        
+                            <option value="/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="../../../../categories/microbial-ecology/" >
+                microbial ecology
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="../../../../2023/03/17/community-assembly/">微生物群落构建（community assembly）</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 17, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#methods" id="toc-methods">Methods</a>
+<ul>
+<li><a href="#code" id="toc-code">code</a></li>
+<li><a href="#icamp" id="toc-icamp">iCAMP</a></li>
+<li><a href="#stnstmst-stochasticity-ratio" id="toc-stnstmst-stochasticity-ratio">2.ST，NST，MST （stochasticity ratio）</a>
+<ul>
+<li><a href="#code-1" id="toc-code-1">code</a></li>
+<li><a href="#example" id="toc-example">example</a></li>
+</ul></li>
+<li><a href="#solan-ncm" id="toc-solan-ncm">3.Solan NCM</a>
+<ul>
+<li><a href="#code-2" id="toc-code-2">code</a></li>
+<li><a href="#example-1" id="toc-example-1">example</a></li>
+</ul></li>
+<li><a href="#others" id="toc-others">Others</a>
+<ul>
+<li><a href="#competitive-lottery" id="toc-competitive-lottery">Competitive lottery</a></li>
+<li><a href="#dnci" id="toc-dnci">DNCI</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This review is very comprehensive!</p>
+<ol style="list-style-type: decimal">
+<li>Zhou, J. &amp; Ning, D. Stochastic Community Assembly: Does It Matter in Microbial Ecology? Microbiol Mol Biol Rev 81, e00002-17 (2017).</li>
+</ol>
+<p><strong>周集中</strong>老师实验室的长期研究兴趣集中在从基因组到生态系统的不同组织层面的环境微生物学，其中一项就是<strong>宏基因组学和微生物生态学</strong>：利用高通量基因组测序和相关基因组学技术检查不同栖息地的微生物群落多样性、微生物生物地理学和形成微生物多样性模式、分布和动态的机制；</p>
+<p>Understanding the mechanisms controlling community diversity, functions, succession, and biogeography is a central, but poorly understood, topic in ecology, particularly in microbial ecology. <strong>Traditional niche-based theory</strong> hypothesizes that deterministic factors such as species traits, inter-species interactions (e.g., competition, predation, mutualisms, and trade-offs), and environmental conditions (e.g., pH, temperature, salt, and moisture) govern community structure, which are often referred to as <strong>deterministic processes</strong>.</p>
+<p>In contrast, <strong>neutral theory</strong> assumes that community structures are independent of species traits and governed by <strong>stochastic processes</strong> of birth, death, colonization, extinction, and speciation.</p>
+<p>Although, recently, it has been generally accepted that both deterministic and stochastic processes occur simultaneously in the assembly of local communities, a central debate is on their relative importance in controlling community structure, succession, and biogeography.</p>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>目前在文章中普遍出现的计算群落构建的方法主要有三套： ## 1.Stegen （βNTI &amp; RCbray-based）</p>
+<ol style="list-style-type: decimal">
+<li>Stegen, J. C., Lin, X., Konopka, A. E. &amp; Fredrickson, J. K. Stochastic and deterministic assembly processes in subsurface microbial communities. ISME J 6, 1653–1664 (2012).</li>
+<li>Stegen, J. C. et al. Quantifying community assembly processes and identifying features that impose them. ISME J 7, 2069–2079 (2013).</li>
+</ol>
+<p><img src="images/beta-nti.png" /></p>
+<blockquote>
+<p>在确定性与随机性二分法的背景下塑造微生物群落多样性的生态过程。该方案显示了在文中讨论的假设下，基于系统发育和分类多样性划分各种生态过程的不同步骤。 NTI（最近分类单元指数）基于系统发育多样性指数 MNTD（平均最近分类单元距离）的空模型检验，RCBray（修正的 Raup-Crick 指数）基于 Bray-Curtis 的空模型检验分类多样性指数。这两个框分别表示确定性选择和未支配部分的主要组成部分。除了影响较小的选择外，未支配部分的弱选择也可能是由于抵消了有影响的选择因素和/或不同分类群的对比选择。该图主要是根据 Stegen 等人先前报告的数据制作的。</p>
+</blockquote>
+<p><strong>beta-NTI（nearest taxon index）：</strong> <img src="images/betanti.png" />使用 NTI/NRI 指示单个群落内共存的分类单元相比偶然预期的关系更为紧密还是分散，使用 βNTI/βNRI 指示两两群落间的变化受确定性或随机性因素影响的大小。<br />
+MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 NTI/NRI、βNTI/βNRI 的结果解释时其显著性的判断依据是其<strong>临界值是否大于|2|</strong>，实际上这是依据标准正态分布的 95%置信区间得到的，一般认为 NRI 或者 NTI 大于 1.96 或者小于-1.96 的结果，在 95%的水平是显著的。</p>
+<p><strong>RCbray</strong>: 相异指数的一种。</p>
+<div id="code" class="section level3">
+<h3>code</h3>
+<p><a href="https://blog.csdn.net/weixin_43367441/article/details/118515090" class="uri">https://blog.csdn.net/weixin_43367441/article/details/118515090</a></p>
+<p>非常重要的一点：这类方法是<strong>基于系统发育树</strong>推断的，所以一定要有跟tax表对应的系统发育树。 但事实上，除非用的是16S/ITS测序，否则我们很难给自己的数据建一个树。 所以，替代方法是利用阶层分类关系（界门纲目科属种）来做一个拟系统发育树（枝长都为1） 参见自己写的<code>df2tree</code>函数</p>
+</div>
+<div id="icamp" class="section level3">
+<h3>iCAMP</h3>
+<p>现在大家经常用的<strong>iCAMP</strong>包就是基于这个理论框架进行分析的。</p>
+<ol style="list-style-type: decimal">
+<li>Ning, D. et al. A quantitative framework reveals ecological drivers of grassland microbial community assembly in response to warming. Nat Commun 11, 4717 (2020).</li>
+</ol>
+</div>
+<div id="stnstmst-stochasticity-ratio" class="section level2">
+<h2>2.ST，NST，MST （stochasticity ratio）</h2>
+<ol style="list-style-type: decimal">
+<li>Ning, D., Deng, Y., Tiedje, J. M. &amp; Zhou, J. A general framework for quantitatively assessing ecological stochasticity. Proceedings of the National Academy of Sciences 116, 16892–16898 (2019).</li>
+</ol>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI1OTk3NjEwMA==&amp;mid=2247484988&amp;idx=1&amp;sn=5dfc3c289c24ad81fe327a8f3aa9d4cc&amp;chksm=ea71f8f7dd0671e1ad683e1ea9616d5e2157d401d2d396e29cc6d8fb50961e72a59ff5be1e2b&amp;scene=21#wechat_redirect">PNAS：NST方法定量生态过程中的随机性</a></p>
+<p>周老师的文章，开发出新的方法对生态过程中的随机性进行了定量。提出了一个新的指数，normalized stochasticity ratio (<strong>NST</strong>)，作为确定性主导（deterministic, &lt;50%）和随机性主导（stochastic, &gt;50%）的边界点。 <img src="images/nst.jpeg" /></p>
+<div id="code-1" class="section level3">
+<h3>code</h3>
+<p>已经有相应的包了,NST</p>
+<pre class="r"><code>install.packages(&quot;NST&quot;)
+library(NST)
+
+data(tda)
+comm=tda$comm
+bray=beta.g(comm,dist.method=&quot;bray&quot;)
+bray.3col=dist.3col(bray)
+group=tda$group
+#最重要的函数，计算NST。有多种距离矩阵及零模型构建的方法可选。不同方法得到的结果存在一定的差异
+tnst=tNST(comm=comm, group=group, rand=20,
+          output.rand=TRUE, nworker=1)
+#检验各组ST、NST的分布情况及各组ST、NST差异的显著性。
+nst.bt=nst.boot(nst.result=tnst, group=NULL, rand=99,
+                trace=TRUE, two.tail=FALSE, out.detail=FALSE,
+                between.group=FALSE, nworker=1)
+#ST和NST组间进行Permutational multivariate ANOVA
+nst.pova=nst.panova(nst.result=tnst, rand=99)
+#可视化
+group_box(tnst$index.pair.grp,col = 8,group = tnst$index.pair.grp$group)</code></pre>
+</div>
+<div id="example" class="section level3">
+<h3>example</h3>
+<p><img src="images/nst_e.png" /></p>
+<blockquote>
+<p>地下水微生物群落演替过程中估计的 NST 动态变化对乳化植物油注入的响应。 NST 是基于 (A) Jaccard 和 (B) Ru ziˇ cka 指标使用空模型算法 PF 计算的。在零模型 PF 中，类群发生的概率与观察到的发生频率成正比，并且每个样本中的类群丰富度是固定的（19）。当使用基于丰度的指标 Ru ziˇ cka 时，每个样本中的空分类群丰度被计算为观察到的个体数量的随机抽取，其概率与样本中空分类群的区域相对丰度成比例（26）。 W8 是植物油对其没有影响或影响最小的对照井。</p>
+</blockquote>
+</div>
+</div>
+<div id="solan-ncm" class="section level2">
+<h2>3.Solan NCM</h2>
+<ol style="list-style-type: decimal">
+<li>Sloan, W. T. et al. Quantifying the roles of immigration and chance in shaping prokaryote community structure. Environmental Microbiology 8, 732–740 (2006).</li>
+</ol>
+<p>只有当物种死亡或离开这个系统时，群落结构才会发生改变。此时，离开个体的生态位就会空余出来，其它个体会通过<strong>来自群落外的迁移</strong>或<strong>群落内部的繁殖</strong>来填补空出的生态位。因此可以把群落的动态描述为<strong>死亡——繁殖/扩散——死亡</strong>这样的循环。</p>
+<p><strong>计算公式：</strong></p>
+<ul>
+<li><span class="math inline">\(Pr(\frac{N_i+1}{N_i})=(\frac{N_T-N_i}{N_T})[mp_i+(1+\alpha_i)(1-m)(\frac{N_i}{N_T-1})\)</span></li>
+<li><span class="math inline">\(Pr(\frac{N_i}{N_i})=\frac{N_i}{N_T}[mp_i+{(1+\alpha_i)}(1-m)(\frac{N_i-1}{N_T-1})]+(\frac{N_T-N_i}{N_T})[m(1-p_i)+{red}{(1-\alpha_i)}(1-m)(\frac{N_T-N_i-1}{N_T-1})]\)</span></li>
+<li><span class="math inline">\(Pr(\frac{N_i-1}{N_i})=\frac{N_i}{N_T}[m(1-p_i)+(1-\alpha_i)(1-m)(\frac{N_T-N_i}{N_T-1})]\)</span></li>
+</ul>
+<p>物种 i 占居的频率（occurrence frequency: row sums of binary OTU table/number of sites）为其概率密度函数的积分。 此时该分布是一个beta分布，我们就可以在R语言中利用beta分布对其进行[拟合]，获得参数m的评估值。</p>
+<div id="code-2" class="section level3">
+<h3>code</h3>
+<pre class="r"><code>library(devtools)
+install_github(&quot;Russel88/MicEco&quot;)
+library(MicEco)
+neutral.fit(t(otutab))#使用的是最大似然估计拟合模型，R2计算方法也不同</code></pre>
+<p>另一个代码来自<a href="https://mp.weixin.qq.com/s/opFXl-TvkJfmPcWKFwhCFA" class="uri">https://mp.weixin.qq.com/s/opFXl-TvkJfmPcWKFwhCFA</a>，比较经典，用的是非线性模型:</p>
+<p>N描述了宏群落规模（metacommunity size），在本文中为每个样本中所有OTU的总丰度。 m量化了群落层面的迁移率（migration rate），该值对于每个群落成员都是统一的（与物种无关），m值越小说明整个群落中物种扩散越受限制，反之m值越高则表明物种受到扩散限制越低。 Nm是元群落规模（N）与迁移率（m）的乘积 (Nm = N*m)，量化了对群落之间扩散的估计，决定了发生频率和区域相对丰度之间的相关性。</p>
+<p>R2代表了中性群落模型的整体拟合优度，<strong>R2越高表明越接近中性模型，即群落的构建受随机性过程的影响越大，受确定性过程的影响越小。</strong></p>
+<blockquote>
+<p>值得注意，<strong>R方不是某个数值的平方，可以是负值</strong>。因为拟合程度没有下限，可以无限差，R方的范围是(−∞,1]。R方的取值，有以下的可能性：</p>
+<ul>
+<li><p>等于1。理想状况，该模型对所有的真值预测准确，没有偏差。泼个冷水，如果某篇文章里出现了R方=1，要么是问题过于简单没有研究价值，要么是模型过于复杂，对数据进行了过度拟合。</p></li>
+<li><p>小于1大于0。这是常见状况，表明该模型的拟合水平比均值模型好。</p></li>
+<li><p>等于0。该模型的拟合水平接近于均值模型。该模型没有价值。</p></li>
+<li><p>小于0。该模型的拟合水平不如均值模型。同样，该模型没有价值。</p></li>
+</ul>
+</blockquote>
+</div>
+<div id="example-1" class="section level3">
+<h3>example</h3>
+<ol style="list-style-type: decimal">
+<li>Zhang, Y. et al. Insights into the Profile of the Human Expiratory Microbiota and Its Associations with Indoor Microbiotas. Environ. Sci. Technol. 56, 6282–6293 (2022).</li>
+</ol>
+<p><strong>随机过程，例如散布、出生、死亡、灭绝和移民，在呼气细菌和真菌群落的组装中发挥作用。</strong>真菌微生物群的 SNM 拟合性能（图 2）优于细菌（细菌 R2 = 0.353，真菌 R2 = 0.683）。这种差异表明随机过程对于 EBC 真菌群落的组装可能相对更重要，而对 EBC 细菌群落的组装则不太重要。这种现象可能与细菌和真菌之间的大小差异有关，较小的细菌受扩散限制的影响较小，而受确定性过程的影响更大。 <img src="images/ncm.gif" /></p>
+<blockquote>
+<p>Stochastic processes played a role in assembling expiratory bacterial (A) and fungal (B) communities based on Sloan neutral model fitting. The black solid line represents the best fit, and the dotted lines represent the 95% CI (confidence interval) around the model fit. The blue dots refer to taxa that occur more frequently than predicted, and the red dots refer to taxa that occur less frequently than predicted. The green dots refer to taxa that occur in a manner consistent with predicted values.</p>
+</blockquote>
+<p>原核生物细胞直径大概在0.5 ~ 2.0 μm； 微真核生物个体大小大概在1 ~ 200 mm； 之前的研究已经报道了较小的生物不太可能受到扩散限制的影响，因为它们与较大的生物相比具有更高的扩散能力。因此假设在细菌群落中生态位过程的相对影响可能比在微真核生物群落中更强。微真核生物个体大，可能会影响其扩散过程。</p>
+</div>
+</div>
+<div id="others" class="section level2">
+<h2>Others</h2>
+<div id="competitive-lottery" class="section level3">
+<h3>Competitive lottery</h3>
+<p>基于竞争彩票模型(competitive lottery model)的群落构建 假设一个两步模型:在第一步中，样本的总丰度(100%)根据某个未知的过程在组之间分配。 然后在第二步中，分配给每个小组的丰度会根据一个竞争彩票模式在小组成员之间进行分配。 竞争彩票模型的概念说明:</p>
+<p>在第一阶段，每个样本的总丰度(100%)在一组预定义的组之间进行分割。</p>
+<p>在第二阶段，每一组的丰度分配根据竞争彩票模型在子组之间进行分配，其中一个子组获得了大部分的丰度。</p>
+</div>
+<div id="dnci" class="section level3">
+<h3>DNCI</h3>
+<p>在PER-SIMPER方法的基础上，提出了一个新的度量指标: dispersal–niche continuum index (<strong>DNCI</strong>)，该指数可估计是扩散过程还是生态位过程主导群落的构建，并便于不同数据集之间的比较。</p>
+<p>PER-SIMPER利用物种在不同站点之间的矩阵，在排列过程中生成三种不同的零模型： 通过<strong>约束行(生态位构建)、约束列(扩散构建)或两者都约束</strong>。 PER-SIMPER利用SIMPER方法对原始群落矩阵组成相似度模式进行建模，并与三个零模型比较。 PER-SIMPER通过识别哪个零模型与经验分析最匹配来进行定性评估。然而，大多数群落都是由生态位和扩散过程共同构成的，这限制了构建机制定性方法的敏感性。此外简单决策过程的定性特性使不同群落之间的构建过程难以进行精确比较。</p>
+<p>PER-SIMPER分析返回三个E-metric分布,这与SIMPER经验值与三个PER-SIMPER零模型之间的偏差相关。本文提出的新的DNCI是由这些计算的E值推导而来的。 定量结果是基于标准效应量En(即来自”生态位”模型的E-metric分布)减去标准效应量Ed (即来自”扩散”模型的E-metric分布)。 DNCI提供了一种方法来量化和比较跨数据集构建过程的强度。<strong>DNCI值正或负表明生态位或分散过程分别是群组构建的主要过程。指数的绝对值越高，代表占主导地位的构建过程的潜力越大。</strong></p>
+<p><span class="math inline">\(DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)-\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{n(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)\)</span></p>
+<p>如果DNCI与0差异不显著，则可以认为扩散过程和生态位过程对群落构建的影响是相等的。 当DNCI显著低于0时，扩散过程是群落构建的主导驱动因素; 如果DNCI显著高于0，生态位过程是群落构建的主要决定因素。 注意，表明扩散过程优势的负DNCI值并不能提供实际扩散速率的信息。</p>
+<pre class="r"><code>#下载
+devtools::install_github(&quot;Corentin-Gibert-Paleontology/DNCImper&quot;)
+
+library(DNCImper)
+#主要两个功能，PER-SIMPER和DNCI。函数用法一致。以PER-SIMPER为例：
+
+?PerSIMPER
+#PerSIMPER  #做PERSIMPER
+#用法
+PerSIMPER(
+  matrixSIMP,  #行为样本，列为物种
+  Groups,      #只允许两个组
+  leg = FALSE, #是否添加图例
+  count = TRUE,#显示完成置换的次数
+  dataTYPE = &quot;prab&quot;, #prab为0-1数据；count为丰度数据
+  Nperm = 1000,#置换次数
+  plotSIMPER = TRUE
+)
+
+#例子
+A &lt;- DNCImper:::PerSIMPER(Matrix, Group,Nperm = 100,count = FALSE)
+
+#上述只能针对两个组，若有更多的组，可用PerSIMPER_overall，计算整体的PerSIMPER
+
+#DNCI.ese  计算DNCI效应量,只允许两组。
+#三组或以上用DNCI.ses_overall，计算整体的DNCI。
+#三组或以上若用DNCI_multigroup，计算两两成对DNCI。</code></pre>
+</div>
+</div>
+</div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="../../../../tags/community-assembly/">community assembly</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "asa12138" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Asa&#39;s blog
+    </section>
+    
+    <section class="powerby">
+        
+            Email: pengchen2001@zju.edu.cn <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="../../../../ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    </body>
+</html>
