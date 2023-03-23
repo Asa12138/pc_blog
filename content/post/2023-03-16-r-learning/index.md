@@ -9,7 +9,7 @@ tags:
   - R
   - 编程
 description: ~
-image: ~
+image: images/data2viz.png
 math: ~
 license: ~
 hidden: no
@@ -20,7 +20,7 @@ comments: yes
 
 ## 简介
 
-**linux**, **python**和**R语言**应该是生信学习中最重要的几个部分。
+**linux**, **python**和**R语言**应该是生信学习中最重要的几个部分。 
 
 linux是一种操作系统，由于许多生物信息学软件仅提供支持linux平台的命令行版本，而不是图形化界面，所以掌握该操作系统的基础文件管理，安装使用软件，输入输出逻辑，简单shell脚本编写等十分重要。
 
@@ -89,7 +89,7 @@ ggplot支持的图形类型包括散点图、折线图、直方图、密度图�
 
 最后，强烈推荐一个为可视化而建的网站[**From data to Viz \| Find the graphic you need (data-to-viz.com)**](https://www.data-to-viz.com/#density2d)，就像网站名一样，丰富多彩的可视化形式帮我们找到适合自己数据的样式，并提供画某一类图的python，R甚至D3.js代码，真的非常方便地copy代码，替换我们的数据，少量的修改就能有很不错的效果😄。 
 
-<img src="images/data2viz.png" width="70%" />
+<img src="images/data2viz.png" title="from data to viz website" width="65%"/>
 
 ### R编程
 
