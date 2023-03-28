@@ -4,7 +4,7 @@ author: Peng Chen
 date: '2023-03-17'
 slug: community-assembly
 categories:
-  - microbial ecology
+  - microbial-ecology
 tags:
   - community assembly
 description: ~

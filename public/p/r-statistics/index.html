@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction 统计分析在生物信息学中具有非常重要的意义，因为生物信息学研究的数据量庞大、复杂性高，而统计分析可以帮助我们更好地理解和解释这些数据。下面是统计分析对生物信息学的几个重要意义：
+数据清洗和预处理：生物信息学研究中经常需要处理大规模的数据，而这些数据可能存在噪声、错误和缺失值等问题。统计分析可以帮助我们对数据进行清洗和预处理，以确保数据的质量和可靠性。 数据可视化：统计分析可以帮助我们将复杂的数据转化为可视化图形，从而更好地理解数据的分布、关系和趋势。这些图形可以帮助我们发现隐藏在数据中的模式和规律。 数据分析：生物信息学研究中需要对大量的数据进行分析，例如比较基因组学、转录组学、蛋白质组学等。统计分析可以帮助我们对数据进行建模和预测，从而深入探究生物学的复杂现象和机制。 数据挖掘：生物信息学研究中需要挖掘大量的数据来发现新的生物学现象和机制。统计分析可以帮助我们从数据中提取出有用的信息和知识，进而推动生物学的研究和发展。 R语言是一个专门用于数据分析和统计建模的编程语言，它有以下几个优点，使其成为做统计分析的理想选择：
+免费和开源：R语言是一个免费和开源的软件，可以在不付出额外成本的情况下使用和定制。这使得许多学生、学者和数据分析师选择R语言作为他们的首选统计分析工具。
+强大的数据处理能力：R语言具有强大的数据处理能力，支持多种数据结构和数据类型，可以轻松地进行数据清洗、整合、变换和分析。
+丰富的统计分析函数库：R语言具有丰富的统计分析函数库，包括线性回归、逻辑回归、聚类分析、主成分分析、时间序列分析等等。这些函数库提供了许多常用的统计分析方法，可以满足不同数据分析需求。
+图形可视化功能：R语言具有强大的图形可视化功能，可以轻松地创建各种类型的图表，包括散点图、条形图、折线图、热图等。这些图表可以帮助数据分析师更好地理解数据、发现规律和提取信息。
+社区支持和生态系统：R语言拥有庞大的用户社区和生态系统，用户可以轻松地找到并使用数千种可用的统计分析工具和R包，这些工具和R包可以帮助用户更加高效地完成统计分析任务。
+我想在这里稍微记录一下我使用R常用的一些初等统计分析方法，如回归，方差分析，广义线性模型等，主要参考资料是《R语言教程》 VII部分统计分析的内容。
+Statistics 基础用法 单样本均值检验 1 2 3 4 5 6 7 ?t.test() #install.packages(&amp;#34;ggstatsplot&amp;#34;,dependencies = T) library(ggstatsplot) #这个包会在画图的过程中计算很多统计量，帮我们更好地把握数据的性质 #比如我们想看tooth length均值是否和25有显著差异 t.test(ToothGrowth$len,mu = 25,alternative = &amp;#34;two.sided&amp;#34;) ## ## One Sample t-test ## ## data: ToothGrowth$len ## t = -6.2648, df = 59, p-value = 0.00000004681 ## alternative hypothesis: true mean is not equal to 25 ## 95 percent confidence interval: ## 16.'>
+<title>R-statistics</title>
+
+<link rel='canonical' href='/p/r-statistics/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='R-statistics'>
+<meta property='og:description' content='Introduction 统计分析在生物信息学中具有非常重要的意义，因为生物信息学研究的数据量庞大、复杂性高，而统计分析可以帮助我们更好地理解和解释这些数据。下面是统计分析对生物信息学的几个重要意义：
+数据清洗和预处理：生物信息学研究中经常需要处理大规模的数据，而这些数据可能存在噪声、错误和缺失值等问题。统计分析可以帮助我们对数据进行清洗和预处理，以确保数据的质量和可靠性。 数据可视化：统计分析可以帮助我们将复杂的数据转化为可视化图形，从而更好地理解数据的分布、关系和趋势。这些图形可以帮助我们发现隐藏在数据中的模式和规律。 数据分析：生物信息学研究中需要对大量的数据进行分析，例如比较基因组学、转录组学、蛋白质组学等。统计分析可以帮助我们对数据进行建模和预测，从而深入探究生物学的复杂现象和机制。 数据挖掘：生物信息学研究中需要挖掘大量的数据来发现新的生物学现象和机制。统计分析可以帮助我们从数据中提取出有用的信息和知识，进而推动生物学的研究和发展。 R语言是一个专门用于数据分析和统计建模的编程语言，它有以下几个优点，使其成为做统计分析的理想选择：
+免费和开源：R语言是一个免费和开源的软件，可以在不付出额外成本的情况下使用和定制。这使得许多学生、学者和数据分析师选择R语言作为他们的首选统计分析工具。
+强大的数据处理能力：R语言具有强大的数据处理能力，支持多种数据结构和数据类型，可以轻松地进行数据清洗、整合、变换和分析。
+丰富的统计分析函数库：R语言具有丰富的统计分析函数库，包括线性回归、逻辑回归、聚类分析、主成分分析、时间序列分析等等。这些函数库提供了许多常用的统计分析方法，可以满足不同数据分析需求。
+图形可视化功能：R语言具有强大的图形可视化功能，可以轻松地创建各种类型的图表，包括散点图、条形图、折线图、热图等。这些图表可以帮助数据分析师更好地理解数据、发现规律和提取信息。
+社区支持和生态系统：R语言拥有庞大的用户社区和生态系统，用户可以轻松地找到并使用数千种可用的统计分析工具和R包，这些工具和R包可以帮助用户更加高效地完成统计分析任务。
+我想在这里稍微记录一下我使用R常用的一些初等统计分析方法，如回归，方差分析，广义线性模型等，主要参考资料是《R语言教程》 VII部分统计分析的内容。
+Statistics 基础用法 单样本均值检验 1 2 3 4 5 6 7 ?t.test() #install.packages(&amp;#34;ggstatsplot&amp;#34;,dependencies = T) library(ggstatsplot) #这个包会在画图的过程中计算很多统计量，帮我们更好地把握数据的性质 #比如我们想看tooth length均值是否和25有显著差异 t.test(ToothGrowth$len,mu = 25,alternative = &amp;#34;two.sided&amp;#34;) ## ## One Sample t-test ## ## data: ToothGrowth$len ## t = -6.2648, df = 59, p-value = 0.00000004681 ## alternative hypothesis: true mean is not equal to 25 ## 95 percent confidence interval: ## 16.'>
+<meta property='og:url' content='/p/r-statistics/'>
+<meta property='og:site_name' content='Asa&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='statistics' /><meta property='article:tag' content='R' /><meta property='article:published_time' content='2023-03-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-24T00:00:00&#43;00:00'/><meta property='og:image' content='/' />
+<meta name="twitter:title" content="R-statistics">
+<meta name="twitter:description" content="Introduction 统计分析在生物信息学中具有非常重要的意义，因为生物信息学研究的数据量庞大、复杂性高，而统计分析可以帮助我们更好地理解和解释这些数据。下面是统计分析对生物信息学的几个重要意义：
+数据清洗和预处理：生物信息学研究中经常需要处理大规模的数据，而这些数据可能存在噪声、错误和缺失值等问题。统计分析可以帮助我们对数据进行清洗和预处理，以确保数据的质量和可靠性。 数据可视化：统计分析可以帮助我们将复杂的数据转化为可视化图形，从而更好地理解数据的分布、关系和趋势。这些图形可以帮助我们发现隐藏在数据中的模式和规律。 数据分析：生物信息学研究中需要对大量的数据进行分析，例如比较基因组学、转录组学、蛋白质组学等。统计分析可以帮助我们对数据进行建模和预测，从而深入探究生物学的复杂现象和机制。 数据挖掘：生物信息学研究中需要挖掘大量的数据来发现新的生物学现象和机制。统计分析可以帮助我们从数据中提取出有用的信息和知识，进而推动生物学的研究和发展。 R语言是一个专门用于数据分析和统计建模的编程语言，它有以下几个优点，使其成为做统计分析的理想选择：
+免费和开源：R语言是一个免费和开源的软件，可以在不付出额外成本的情况下使用和定制。这使得许多学生、学者和数据分析师选择R语言作为他们的首选统计分析工具。
+强大的数据处理能力：R语言具有强大的数据处理能力，支持多种数据结构和数据类型，可以轻松地进行数据清洗、整合、变换和分析。
+丰富的统计分析函数库：R语言具有丰富的统计分析函数库，包括线性回归、逻辑回归、聚类分析、主成分分析、时间序列分析等等。这些函数库提供了许多常用的统计分析方法，可以满足不同数据分析需求。
+图形可视化功能：R语言具有强大的图形可视化功能，可以轻松地创建各种类型的图表，包括散点图、条形图、折线图、热图等。这些图表可以帮助数据分析师更好地理解数据、发现规律和提取信息。
+社区支持和生态系统：R语言拥有庞大的用户社区和生态系统，用户可以轻松地找到并使用数千种可用的统计分析工具和R包，这些工具和R包可以帮助用户更加高效地完成统计分析任务。
+我想在这里稍微记录一下我使用R常用的一些初等统计分析方法，如回归，方差分析，广义线性模型等，主要参考资料是《R语言教程》 VII部分统计分析的内容。
+Statistics 基础用法 单样本均值检验 1 2 3 4 5 6 7 ?t.test() #install.packages(&amp;#34;ggstatsplot&amp;#34;,dependencies = T) library(ggstatsplot) #这个包会在画图的过程中计算很多统计量，帮我们更好地把握数据的性质 #比如我们想看tooth length均值是否和25有显著差异 t.test(ToothGrowth$len,mu = 25,alternative = &amp;#34;two.sided&amp;#34;) ## ## One Sample t-test ## ## data: ToothGrowth$len ## t = -6.2648, df = 59, p-value = 0.00000004681 ## alternative hypothesis: true mean is not equal to 25 ## 95 percent confidence interval: ## 16."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/guodong1_hu19ef19e107d2cae4138b147ef6582252_202975_300x0_resize_q75_box.jpg" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐛🐶</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Asa&#39;s blog</a></h1>
+            <h2 class="site-description">work hard, live happily.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Asa12138'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="/" selected>English</option>
+                        
+                            <option value="/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#statistics">Statistics</a>
+      <ol>
+        <li><a href="#基础用法">基础用法</a>
+          <ol>
+            <li><a href="#单样本均值检验">单样本均值检验</a></li>
+            <li><a href="#均值比较">均值比较</a></li>
+            <li><a href="#比例检验">比例检验</a></li>
+            <li><a href="#方差的假设检验">方差的假设检验</a></li>
+            <li><a href="#拟合优度检验">拟合优度检验</a></li>
+            <li><a href="#检验分布类型">检验分布类型</a></li>
+            <li><a href="#独立性卡方检验">独立性卡方检验</a></li>
+            <li><a href="#非参数检验">非参数检验</a></li>
+          </ol>
+        </li>
+        <li><a href="#回归分析">回归分析</a>
+          <ol>
+            <li><a href="#相关分析">相关分析</a></li>
+            <li><a href="#一元回归">一元回归</a></li>
+            <li><a href="#多元回归">多元回归</a></li>
+            <li><a href="#非参数回归">非参数回归</a></li>
+            <li><a href="#泊松回归">泊松回归</a></li>
+            <li><a href="#逻辑斯谛回归">逻辑斯谛回归</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/r/" style="background-color: #bebada; color: #fff;">
+                R
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/r-statistics/">R-statistics</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 24, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    11 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="introduction">Introduction</h2>
+<p>统计分析在生物信息学中具有非常重要的意义，因为生物信息学研究的数据量庞大、复杂性高，而统计分析可以帮助我们更好地理解和解释这些数据。下面是统计分析对生物信息学的几个重要意义：</p>
+<ol>
+<li>数据清洗和预处理：生物信息学研究中经常需要处理大规模的数据，而这些数据可能存在噪声、错误和缺失值等问题。统计分析可以帮助我们对数据进行清洗和预处理，以确保数据的质量和可靠性。</li>
+<li>数据可视化：统计分析可以帮助我们将复杂的数据转化为可视化图形，从而更好地理解数据的分布、关系和趋势。这些图形可以帮助我们发现隐藏在数据中的模式和规律。</li>
+<li>数据分析：生物信息学研究中需要对大量的数据进行分析，例如比较基因组学、转录组学、蛋白质组学等。统计分析可以帮助我们对数据进行建模和预测，从而深入探究生物学的复杂现象和机制。</li>
+<li>数据挖掘：生物信息学研究中需要挖掘大量的数据来发现新的生物学现象和机制。统计分析可以帮助我们从数据中提取出有用的信息和知识，进而推动生物学的研究和发展。</li>
+</ol>
+<p>R语言是一个专门用于数据分析和统计建模的编程语言，它有以下几个优点，使其成为做统计分析的理想选择：</p>
+<ol>
+<li>
+<p>免费和开源：R语言是一个免费和开源的软件，可以在不付出额外成本的情况下使用和定制。这使得许多学生、学者和数据分析师选择R语言作为他们的首选统计分析工具。</p>
+</li>
+<li>
+<p>强大的数据处理能力：R语言具有强大的数据处理能力，支持多种数据结构和数据类型，可以轻松地进行数据清洗、整合、变换和分析。</p>
+</li>
+<li>
+<p>丰富的统计分析函数库：R语言具有丰富的统计分析函数库，包括线性回归、逻辑回归、聚类分析、主成分分析、时间序列分析等等。这些函数库提供了许多常用的统计分析方法，可以满足不同数据分析需求。</p>
+</li>
+<li>
+<p>图形可视化功能：R语言具有强大的图形可视化功能，可以轻松地创建各种类型的图表，包括散点图、条形图、折线图、热图等。这些图表可以帮助数据分析师更好地理解数据、发现规律和提取信息。</p>
+</li>
+<li>
+<p>社区支持和生态系统：R语言拥有庞大的用户社区和生态系统，用户可以轻松地找到并使用数千种可用的统计分析工具和R包，这些工具和R包可以帮助用户更加高效地完成统计分析任务。</p>
+</li>
+</ol>
+<p>我想在这里稍微记录一下我使用R常用的一些初等统计分析方法，如回归，方差分析，广义线性模型等，主要参考资料是<a class="link" href="https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html"  target="_blank" rel="noopener"
+    >《R语言教程》</a> VII部分统计分析的内容。</p>
+<h2 id="statistics">Statistics</h2>
+<h3 id="基础用法">基础用法</h3>
+<h4 id="单样本均值检验">单样本均值检验</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="o">?</span><span class="nf">t.test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#install.packages(&#34;ggstatsplot&#34;,dependencies = T)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggstatsplot</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#这个包会在画图的过程中计算很多统计量，帮我们更好地把握数据的性质</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#比如我们想看tooth length均值是否和25有显著差异</span>
+</span></span><span class="line"><span class="cl"><span class="nf">t.test</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="o">$</span><span class="n">len</span><span class="p">,</span><span class="n">mu</span> <span class="o">=</span> <span class="m">25</span><span class="p">,</span><span class="n">alternative</span> <span class="o">=</span> <span class="s">&#34;two.sided&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	One Sample t-test
+## 
+## data:  ToothGrowth$len
+## t = -6.2648, df = 59, p-value = 0.00000004681
+## alternative hypothesis: true mean is not equal to 25
+## 95 percent confidence interval:
+##  16.83731 20.78936
+## sample estimates:
+## mean of x 
+##  18.81333
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">gghistostats</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span>            <span class="o">=</span> <span class="n">ToothGrowth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span>               <span class="o">=</span> <span class="n">len</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">xlab</span>            <span class="o">=</span> <span class="s">&#34;Tooth length&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">test.value</span> <span class="o">=</span> <span class="m">25</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-2-1.png" width="576" />
+<p>检验的功效， 是指对立假设成立时检验拒绝$H_0$的概率$1-\beta$， 其中$\beta$是第二类错误， 即当对立假设成立时错误地接受$H_0$的概率。 需要足够大的样本量才能使得检验能够发现实际存在的显著差异。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pwr</span><span class="o">::</span><span class="nf">pwr.t.test</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;one.sample&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">alternative</span><span class="o">=</span><span class="s">&#34;greater&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="m">7.25</span> <span class="o">-</span> <span class="m">7.0</span><span class="p">)</span><span class="o">/</span><span class="m">1.052</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sig.level</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">power</span> <span class="o">=</span> <span class="m">0.80</span> <span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-3-1.png" width="576" />
+<h4 id="均值比较">均值比较</h4>
+<p>独立两样本t检验</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">t.test</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">am</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">mtcars</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Welch Two Sample t-test
+## 
+## data:  mpg by am
+## t = -3.7671, df = 18.332, p-value = 0.001374
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##  -11.280194  -3.209684
+## sample estimates:
+## mean in group 0 mean in group 1 
+##        17.14737        24.39231
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggbetweenstats</span><span class="p">(</span><span class="n">mtcars</span><span class="p">,</span> <span class="n">am</span><span class="p">,</span> <span class="n">mpg</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-4-1.png" width="576" />
+<h4 id="比例检验">比例检验</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#抽查400个样本100个异常，异常比例是否显著大于0.2</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prop.test</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">400</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="m">0.20</span><span class="p">,</span> <span class="n">alternative</span> <span class="o">=</span> <span class="s">&#34;greater&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	1-sample proportions test with continuity correction
+## 
+## data:  100 out of 400, null probability 0.2
+## X-squared = 5.9414, df = 1, p-value = 0.007395
+## alternative hypothesis: true p is greater than 0.2
+## 95 percent confidence interval:
+##  0.2149649 1.0000000
+## sample estimates:
+##    p 
+## 0.25
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#两次抽查的比例是否一致</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prop.test</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">35</span><span class="p">,</span><span class="m">27</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="m">250</span><span class="p">,</span><span class="m">300</span><span class="p">),</span> <span class="n">alternative</span> <span class="o">=</span> <span class="s">&#34;two.sided&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	2-sample test for equality of proportions with continuity correction
+## 
+## data:  c(35, 27) out of c(250, 300)
+## X-squared = 2.9268, df = 1, p-value = 0.08712
+## alternative hypothesis: two.sided
+## 95 percent confidence interval:
+##  -0.007506845  0.107506845
+## sample estimates:
+## prop 1 prop 2 
+##   0.14   0.09
+</code></pre>
+<h4 id="方差的假设检验">方差的假设检验</h4>
+<p>检查两组数据的方差有误显著差异？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">var.test</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="m">20.5</span><span class="p">,</span> <span class="m">18.8</span><span class="p">,</span> <span class="m">19.8</span><span class="p">,</span> <span class="m">20.9</span><span class="p">,</span> <span class="m">21.5</span><span class="p">,</span> <span class="m">19.5</span><span class="p">,</span> <span class="m">21.0</span><span class="p">,</span> <span class="m">21.2</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="m">17.7</span><span class="p">,</span> <span class="m">20.3</span><span class="p">,</span> <span class="m">20.0</span><span class="p">,</span> <span class="m">18.8</span><span class="p">,</span> <span class="m">19.0</span><span class="p">,</span> <span class="m">20.1</span><span class="p">,</span> <span class="m">20.2</span><span class="p">,</span> <span class="m">19.1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">alternative</span> <span class="o">=</span> <span class="s">&#34;two.sided&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	F test to compare two variances
+## 
+## data:  c(20.5, 18.8, 19.8, 20.9, 21.5, 19.5, 21, 21.2) and c(17.7, 20.3, 20, 18.8, 19, 20.1, 20.2, 19.1)
+## F = 1.069, num df = 7, denom df = 7, p-value = 0.9322
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.214011 5.339386
+## sample estimates:
+## ratio of variances 
+##           1.068966
+</code></pre>
+<h4 id="拟合优度检验">拟合优度检验</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#6类face的count比例是否相等，卡方检验</span>
+</span></span><span class="line"><span class="cl"><span class="nf">chisq.test</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">168</span><span class="p">,</span> <span class="m">159</span><span class="p">,</span> <span class="m">168</span><span class="p">,</span> <span class="m">180</span><span class="p">,</span> <span class="m">167</span><span class="p">,</span> <span class="m">158</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Chi-squared test for given probabilities
+## 
+## data:  c(168, 159, 168, 180, 167, 158)
+## X-squared = 1.892, df = 5, p-value = 0.8639
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggpiestats</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span>         <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">face</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                 <span class="n">counts</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">168</span><span class="p">,</span> <span class="m">159</span><span class="p">,</span> <span class="m">168</span><span class="p">,</span> <span class="m">180</span><span class="p">,</span> <span class="m">167</span><span class="p">,</span> <span class="m">158</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span>            <span class="o">=</span> <span class="n">face</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">counts</span>       <span class="o">=</span> <span class="n">counts</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">title</span>        <span class="o">=</span> <span class="s">&#34;Dice equality&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-7-1.png" width="576" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#各类比例是否为指定值</span>
+</span></span><span class="line"><span class="cl"><span class="nf">chisq.test</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">48</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">54</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0.2</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Chi-squared test for given probabilities
+## 
+## data:  c(48, 98, 54)
+## X-squared = 7.34, df = 2, p-value = 0.02548
+</code></pre>
+<h4 id="检验分布类型">检验分布类型</h4>
+<p>vcd包提供了一个goodfit函数， 可以用来拟合指定的某种理论分布(包括泊松、二项、负二项分布）， 并检验服从该理论分布的零假设。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">101</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">datax</span> <span class="o">&lt;-</span> <span class="nf">rpois</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">vcd</span><span class="o">::</span><span class="nf">goodfit</span><span class="p">(</span><span class="n">datax</span><span class="p">,</span> <span class="s">&#34;poisson&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	 Goodness-of-fit test for poisson distribution
+## 
+##                       X^2 df  P(&gt; X^2)
+## Likelihood Ratio 4.289456  5 0.5085374
+</code></pre>
+<h4 id="独立性卡方检验">独立性卡方检验</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ctab.beer</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="m">20</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">c</span><span class="p">(</span><span class="m">30</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">ctab.beer</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Light&#34;</span><span class="p">,</span> <span class="s">&#34;Regular&#34;</span><span class="p">,</span> <span class="s">&#34;Dark&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">rownames</span><span class="p">(</span><span class="n">ctab.beer</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Male&#34;</span><span class="p">,</span> <span class="s">&#34;Female&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">addmargins</span><span class="p">(</span><span class="n">ctab.beer</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>##        Light Regular Dark Sum
+## Male      20      40   20  80
+## Female    30      30   10  70
+## Sum       50      70   30 150
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#列联表独立性检验：</span>
+</span></span><span class="line"><span class="cl"><span class="nf">chisq.test</span><span class="p">(</span><span class="n">ctab.beer</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Pearson's Chi-squared test
+## 
+## data:  ctab.beer
+## X-squared = 6.1224, df = 2, p-value = 0.04683
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#在0.05水平下认为啤酒类型偏好与性别有关</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="非参数检验">非参数检验</h4>
+<p>常用的有独立两样本比较的Wilcoxon秩和检验， 单样本的符号秩检验和符号检验等</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.80</span><span class="p">,</span> <span class="m">0.83</span><span class="p">,</span> <span class="m">1.89</span><span class="p">,</span> <span class="m">1.04</span><span class="p">,</span> <span class="m">1.45</span><span class="p">,</span> <span class="m">1.38</span><span class="p">,</span> <span class="m">1.91</span><span class="p">,</span> <span class="m">1.64</span><span class="p">,</span> <span class="m">0.73</span><span class="p">,</span> <span class="m">1.46</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1.15</span><span class="p">,</span> <span class="m">0.88</span><span class="p">,</span> <span class="m">0.90</span><span class="p">,</span> <span class="m">0.74</span><span class="p">,</span> <span class="m">1.21</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">wilcox.test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Wilcoxon signed rank exact test
+## 
+## data:  x
+## V = 55, p-value = 0.001953
+## alternative hypothesis: true location is not equal to 0.7
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">wilcox.test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alternative</span> <span class="o">=</span> <span class="s">&#34;g&#34;</span><span class="p">)</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Wilcoxon rank sum exact test
+## 
+## data:  x and y
+## W = 35, p-value = 0.1272
+## alternative hypothesis: true location shift is greater than 0
+</code></pre>
+<h3 id="回归分析">回归分析</h3>
+<h4 id="相关分析">相关分析</h4>
+<ol>
+<li>Pearson相关系数：
+$$
+\rho(X,Y)=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}
+$$</li>
+</ol>
+<p>相关系数绝对值在0.8以上认为高度相关。
+在0.5到0.8之间认为中度相关。
+在0.3到0.5之间认为低度相关。
+在0.3以下认为不相关或相关性很弱以至于没有实际价值。
+当然，在特别重要的问题中， 只要经过检验显著不等于零的相关都认为是有意义的。</p>
+<p>相关系数检验：</p>
+<p>检验统计量:
+$$
+t=\frac{r\sqrt{n-2}}{\sqrt{1-r^2}}
+$$
+p值为：$P(|t(n-2)|&gt;|t_0|)$</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">runif</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">xx</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="n">length.out</span> <span class="o">=</span> <span class="m">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">&lt;-</span> <span class="m">40</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span><span class="m">-7</span><span class="p">)</span><span class="n">^2</span> <span class="o">+</span> <span class="nf">rnorm</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">yy</span> <span class="o">&lt;-</span> <span class="m">40</span> <span class="o">-</span> <span class="p">(</span><span class="n">xx</span><span class="m">-7</span><span class="p">)</span><span class="n">^2</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">lines</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-11-1.png" width="576" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">cor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;pearson&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## [1] 0.8244374
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">cor.test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;pearson&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Pearson's product-moment correlation
+## 
+## data:  x and y
+## t = 7.7083, df = 28, p-value = 0.00000002136
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.6602859 0.9134070
+## sample estimates:
+##       cor 
+## 0.8244374
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ggstatsplot</span><span class="o">::</span><span class="nf">ggscatterstats</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span>     <span class="o">=</span> <span class="n">x</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">y</span>     <span class="o">=</span> <span class="n">y</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-11-2.png" width="576" />
+相关性矩阵，`n*n`或`n*m`的$r$ 和$p-value$矩阵
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ggstatsplot</span><span class="o">::</span><span class="nf">ggcorrmat</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span>     <span class="o">=</span> <span class="n">mtcars</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-12-1.png" width="576" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pcutils</span><span class="o">::</span><span class="nf">cor_plot</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-12-2.png" width="576" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">corrplot</span><span class="o">::</span><span class="nf">corrplot</span><span class="p">(</span><span class="nf">cor</span><span class="p">(</span><span class="n">mtcars</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-12-3.png" width="576" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ggcorrplot</span><span class="o">::</span><span class="nf">ggcorrplot</span><span class="p">(</span><span class="nf">cor</span><span class="p">(</span><span class="n">mtcars</span><span class="p">),</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;circle&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-12-4.png" width="576" />
+<ol start="2">
+<li>
+<p>Spearman秩相关系数
+Spearman rho系数， 是两个变量的秩统计量的相关系数</p>
+</li>
+<li>
+<p>Kendall tau系数
+当变量正相关性很强时， 任意两个观测的X值的大小顺序应该与Y值的大小顺序相同； 如果独立， 一对观测的X值比较和Y值比较顺序相同与顺序相反的数目应该基本相同。Kandall tau系数也是取值于区间[-1,1]， 用这样的思想表示两个变量的相关性和正负。</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">cor.test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;spearman&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Spearman's rank correlation rho
+## 
+## data:  x and y
+## S = 922, p-value = 0.000001339
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.7948832
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">cor.test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;kendall&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Kendall's rank correlation tau
+## 
+## data:  x and y
+## T = 354, p-value = 0.000000159
+## alternative hypothesis: true tau is not equal to 0
+## sample estimates:
+##       tau 
+## 0.6275862
+</code></pre>
+<h4 id="一元回归">一元回归</h4>
+<p>$$
+Y=a+bX+\varepsilon, \varepsilon \sim N(0,\sigma^2)
+$$</p>
+<p>最小二乘法
+$$
+\hat{b}=\frac{\sum_i(x_i-\overline{x})(y_i-\overline{y})}{\sum_i{(x-x_i)}^2}=r_{xy}\frac{S_y}{S_x}
+$$</p>
+<p>$$
+\hat{a}=\overline{y}-\hat{b}\overline{x}
+$$
+回归有效性可以用$R^2$和$p-valuie$来度量，
+$R^2=1-\frac{SSE}{SST}$</p>
+<p>统计量$F=\frac{SSR}{SSE/(n-2)}$,$p-value$为$P(F(1,n-2)&gt;c)$,c为F的值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">lm1</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y</span> <span class="o">~</span> <span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">lm1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -17.856  -4.549   2.141   6.048   9.664 
+## 
+## Coefficients:
+##             Estimate Std. Error t value     Pr(&gt;|t|)    
+## (Intercept)   9.9855     2.6930   3.708     0.000914 ***
+## x             3.5396     0.4592   7.708 0.0000000214 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 7.302 on 28 degrees of freedom
+## Multiple R-squared:  0.6797,	Adjusted R-squared:  0.6683 
+## F-statistic: 59.42 on 1 and 28 DF,  p-value: 0.00000002136
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#prediction</span>
+</span></span><span class="line"><span class="cl"><span class="nf">predict</span><span class="p">(</span><span class="n">lm1</span><span class="p">,</span><span class="n">newdata</span> <span class="o">=</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">15</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>##        1        2        3 
+## 27.68364 45.38182 63.08000
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pcutils</span><span class="o">::</span><span class="nf">my_lm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-14-1.png" width="576" />
+<h4 id="多元回归">多元回归</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">lm2</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span> <span class="o">~</span> <span class="n">cyl</span> <span class="o">+</span> <span class="n">disp</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">lm2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## Call:
+## lm(formula = mpg ~ cyl + disp, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.4213 -2.1722 -0.6362  1.1899  7.0516 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 34.66099    2.54700  13.609 4.02e-14 ***
+## cyl         -1.58728    0.71184  -2.230   0.0337 *  
+## disp        -0.02058    0.01026  -2.007   0.0542 .  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.055 on 29 degrees of freedom
+## Multiple R-squared:  0.7596,	Adjusted R-squared:  0.743 
+## F-statistic: 45.81 on 2 and 29 DF,  p-value: 0.000000001058
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ggstatsplot</span><span class="o">::</span><span class="nf">ggcoefstats</span><span class="p">(</span><span class="n">lm2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-15-1.png" width="576" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#回归自变量筛选</span>
+</span></span><span class="line"><span class="cl"><span class="n">lm3</span> <span class="o">&lt;-</span> <span class="nf">step</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span> <span class="o">~</span> <span class="n">cyl</span> <span class="o">+</span> <span class="n">disp</span><span class="o">+</span><span class="n">hp</span><span class="o">+</span><span class="n">drat</span><span class="o">+</span><span class="n">vs</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## Start:  AIC=77.08
+## mpg ~ cyl + disp + hp + drat + vs
+## 
+##        Df Sum of Sq    RSS    AIC
+## - vs    1    0.3134 244.90 75.124
+## - cyl   1    7.6839 252.27 76.073
+## - drat  1   14.3330 258.92 76.905
+## - disp  1   14.6709 259.26 76.947
+## &lt;none&gt;              244.59 77.083
+## - hp    1   19.8255 264.41 77.577
+## 
+## Step:  AIC=75.12
+## mpg ~ cyl + disp + hp + drat
+## 
+##        Df Sum of Sq    RSS    AIC
+## - cyl   1     8.444 253.35 74.209
+## - disp  1    14.765 259.67 74.997
+## &lt;none&gt;              244.90 75.124
+## - drat  1    16.467 261.37 75.206
+## - hp    1    19.613 264.51 75.589
+## 
+## Step:  AIC=74.21
+## mpg ~ disp + hp + drat
+## 
+##        Df Sum of Sq    RSS    AIC
+## &lt;none&gt;              253.35 74.209
+## - drat  1    30.148 283.49 75.806
+## - disp  1    38.107 291.45 76.693
+## - hp    1    49.550 302.90 77.925
+</code></pre>
+<p>多重共线性</p>
+<p>狭义的多重共线性（multicollinearity）： 自变量的数据存在线性组合近似地等于零， 使得解线性方程组求解回归系数时结果不稳定， 回归结果很差。</p>
+<p>广义的多重共线性： 自变量之间存在较强的相关性， 这样自变量是联动的， 互相之间有替代作用。 甚至于斜率项的正负号都因为这种替代作用而可能是错误的方向。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#car包的vif()函数计算方差膨胀因子</span>
+</span></span><span class="line"><span class="cl"><span class="n">car</span><span class="o">::</span><span class="nf">vif</span><span class="p">(</span><span class="n">lm3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>##     disp       hp     drat 
+## 4.621988 2.868264 2.166843
+</code></pre>
+<h4 id="非参数回归">非参数回归</h4>
+<p>所谓参数回归， 是指回归函数有预先确定的公式， 仅需要估计的未知参数； 非参数回归， 就是没有预先确定的公式， 的形式本身也依赖于输入的样本, 。 下面描述的核回归就是这样典型的非参数回归， 样条平滑、样条函数回归一般也看作是非参数回归。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#样条平滑</span>
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nsamp</span> <span class="o">&lt;-</span> <span class="m">30</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">runif</span><span class="p">(</span><span class="n">nsamp</span><span class="p">,</span> <span class="m">-10</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">xx</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-10</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="n">length.out</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">&lt;-</span> <span class="m">10</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="m">10</span><span class="o">*</span><span class="kc">pi</span><span class="p">)</span><span class="n">^2</span> <span class="o">+</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">nsamp</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">curve</span><span class="p">(</span><span class="m">10</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="m">10</span><span class="o">*</span><span class="kc">pi</span><span class="p">)</span><span class="n">^2</span><span class="p">,</span> <span class="m">-10</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">splines</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">smooth.spline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">lines</span><span class="p">(</span><span class="nf">spline</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">x</span><span class="p">,</span> <span class="n">res</span><span class="o">$</span><span class="n">y</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="s">&#34;red&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res2</span> <span class="o">&lt;-</span> <span class="nf">loess</span><span class="p">(</span><span class="n">y</span> <span class="o">~</span> <span class="n">x</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="m">0.3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">lines</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="nf">predict</span><span class="p">(</span><span class="n">res2</span><span class="p">,</span> <span class="n">newdata</span><span class="o">=</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xx</span><span class="p">)),</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">col</span><span class="o">=</span><span class="s">&#34;blue&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">legend</span><span class="p">(</span><span class="s">&#34;top&#34;</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">       <span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;black&#34;</span><span class="p">,</span> <span class="s">&#34;red&#34;</span><span class="p">,</span> <span class="s">&#34;blue&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">       <span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;real data&#34;</span><span class="p">,</span> <span class="s">&#34;smooth.spline&#34;</span><span class="p">,</span> <span class="s">&#34;local lm&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-17-1.png" width="576" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">## 线性可加模型</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## R扩展包mgcv的gam()函数可以执行这样的可加模型的非参数回归拟合。</span>
+</span></span><span class="line"><span class="cl"><span class="n">lm.rock</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">perm</span><span class="p">)</span> <span class="o">~</span> <span class="n">area</span> <span class="o">+</span> <span class="n">peri</span> <span class="o">+</span> <span class="n">shape</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">rock</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">lm.rock</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## Call:
+## lm(formula = log(perm) ~ area + peri + shape, data = rock)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.8092 -0.5413  0.1734  0.6493  1.4788 
+## 
+## Coefficients:
+##                Estimate  Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  5.33314499  0.54867792   9.720 1.59e-12 ***
+## area         0.00048498  0.00008657   5.602 1.29e-06 ***
+## peri        -0.00152661  0.00017704  -8.623 5.24e-11 ***
+## shape        1.75652601  1.75592362   1.000    0.323    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.8521 on 44 degrees of freedom
+## Multiple R-squared:  0.7483,	Adjusted R-squared:  0.7311 
+## F-statistic:  43.6 on 3 and 44 DF,  p-value: 3.094e-13
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">gam.rock1</span> <span class="o">&lt;-</span> <span class="n">mgcv</span><span class="o">::</span><span class="nf">gam</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">perm</span><span class="p">)</span> <span class="o">~</span> <span class="nf">s</span><span class="p">(</span><span class="n">area</span><span class="p">)</span> <span class="o">+</span> <span class="nf">s</span><span class="p">(</span><span class="n">peri</span><span class="p">)</span> <span class="o">+</span> <span class="nf">s</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">rock</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">gam.rock1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## log(perm) ~ s(area) + s(peri) + s(shape)
+## 
+## Parametric coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   5.1075     0.1222   41.81   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Approximate significance of smooth terms:
+##            edf Ref.df     F    p-value    
+## s(area)  1.000  1.000 29.13 0.00000307 ***
+## s(peri)  1.000  1.000 71.30    &lt; 2e-16 ***
+## s(shape) 1.402  1.705  0.58      0.437    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.735   Deviance explained = 75.4%
+## GCV = 0.78865  Scale est. = 0.71631   n = 48
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">gam.rock1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-17-2.png" width="576" /><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-17-3.png" width="576" /><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-17-4.png" width="576" /></p>
+<p>##方差分析</p>
+<p>单因素方差分析可以看成基础统计中两样本t检验的一个推广， 要比较试验观测值的某个因变量（称为“指标”）按照一个分组变量（称为“因素”）分组后， 各组的因变量均值有无显著差异。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="o">=</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">aov.manu</span> <span class="o">&lt;-</span> <span class="nf">aov</span><span class="p">(</span><span class="n">mpg</span> <span class="o">~</span> <span class="n">cyl</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">aov.manu</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>##             Df Sum Sq Mean Sq F value        Pr(&gt;F)    
+## cyl          2  824.8   412.4    39.7 0.00000000498 ***
+## Residuals   29  301.3    10.4                          
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pcutils</span><span class="o">::</span><span class="nf">group_box</span><span class="p">(</span><span class="n">mtcars[</span><span class="s">&#34;mpg&#34;</span><span class="n">]</span><span class="p">,</span><span class="n">group</span> <span class="o">=</span> <span class="s">&#34;cyl&#34;</span><span class="p">,</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">mtcars</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-18-1.png" width="576" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#非参数形式</span>
+</span></span><span class="line"><span class="cl"><span class="nf">kruskal.test</span><span class="p">(</span><span class="n">mpg</span> <span class="o">~</span> <span class="n">cyl</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## 	Kruskal-Wallis rank sum test
+## 
+## data:  mpg by cyl
+## Kruskal-Wallis chi-squared = 25.746, df = 2, p-value = 0.000002566
+</code></pre>
+<p>进行多个假设检验（如均值比较）的操作称为*“多重比较”*（multiple comparison， 或multiple testing）， 多次检验会使得总第一类错误概率增大。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pcutils</span><span class="o">::</span><span class="nf">multitest</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span><span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## ====================================1.ANOVA:==================================== 
+##             Df Sum Sq Mean Sq F value        Pr(&gt;F)    
+## group        2  824.8   412.4    39.7 0.00000000498 ***
+## Residuals   29  301.3    10.4                          
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## ================================2.Kruskal.test:================================ 
+## 
+## 	Kruskal-Wallis rank sum test
+## 
+## data:  var by group
+## Kruskal-Wallis chi-squared = 25.746, df = 2, p-value = 0.000002566
+## 
+## ==========================3.LSDtest, bonferroni p-adj:========================== 
+##        var groups
+## 4 26.66364      a
+## 6 19.74286      b
+## 8 15.10000      c
+## ==================================4.tukeyHSD:================================== 
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = var ~ group)
+## 
+## $group
+##           diff        lwr        upr     p adj
+## 6-4  -6.920779 -10.769350 -3.0722086 0.0003424
+## 8-4 -11.563636 -14.770779 -8.3564942 0.0000000
+## 8-6  -4.642857  -8.327583 -0.9581313 0.0112287
+## 
+## =================================5.Wilcox-test:================================= 
+##               4            6             8
+## 4 1.00000000000 0.0006658148 0.00002774715
+## 6 0.00066581478 1.0000000000 0.00101304469
+## 8 0.00002774715 0.0010130447 1.00000000000
+</code></pre>
+<p>##广义线性模型</p>
+<h4 id="泊松回归">泊松回归</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">counts</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">18</span><span class="p">,</span><span class="m">17</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">25</span><span class="p">,</span><span class="m">13</span><span class="p">,</span><span class="m">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">outcome</span> <span class="o">&lt;-</span> <span class="nf">gl</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">9</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">treatment</span> <span class="o">&lt;-</span> <span class="nf">gl</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">D93</span><span class="o">=</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">treatment</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span> <span class="c1">## showing data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">D93</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">counts</span><span class="p">))</span> <span class="o">+</span><span class="nf">geom_bar</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-20-1.png" width="576" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">glm.D93</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">counts</span> <span class="o">~</span> <span class="n">outcome</span> <span class="o">+</span> <span class="n">treatment</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">D93</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="nf">poisson</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">glm.D93</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## 
+## Call:
+## glm(formula = counts ~ outcome + treatment, family = poisson(), 
+##     data = D93)
+## 
+## Deviance Residuals: 
+##        1         2         3         4         5         6         7         8  
+## -0.67125   0.96272  -0.16965  -0.21999  -0.95552   1.04939   0.84715  -0.09167  
+##        9  
+## -0.96656  
+## 
+## Coefficients:
+##               Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  3.045e+00  1.709e-01  17.815   &lt;2e-16 ***
+## outcome2    -4.543e-01  2.022e-01  -2.247   0.0246 *  
+## outcome3    -2.930e-01  1.927e-01  -1.520   0.1285    
+## treatment2  -3.242e-16  2.000e-01   0.000   1.0000    
+## treatment3  -2.148e-16  2.000e-01   0.000   1.0000    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 10.5814  on 8  degrees of freedom
+## Residual deviance:  5.1291  on 4  degrees of freedom
+## AIC: 56.761
+## 
+## Number of Fisher Scoring iterations: 4
+</code></pre>
+<h4 id="逻辑斯谛回归">逻辑斯谛回归</h4>
+<p>….</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/statistics/">statistics</a>
+        
+            <a href="/tags/r/">R</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/rshiny/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">开发我的Rshiny应用</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/r/">
+        
+        
+            <div class="article-image">
+                <img src="/p/r/images/data2viz.651ec7891090db14ef0203dcbb62af54_hu2949f787b14e5432e8dbe93255a87ee8_671473_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post R语言学习"
+                        data-key="r" 
+                        data-hash="md5-ZR7HiRCQ2xTvAgPcu2KvVA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">R语言学习</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="Asa12138/pc_blog"
+        issue-term="pathname"
+        
+        label="none"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Asa&#39;s blog
+    </section>
+    
+    <section class="powerby">
+        
+            Email: pengchen2001@zju.edu.cn <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

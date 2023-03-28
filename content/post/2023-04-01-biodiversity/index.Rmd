@@ -4,7 +4,7 @@ author: Peng Chen
 date: '2023-04-01'
 slug: biodiversity
 categories:
-  - microbial ecology
+  - microbial-ecology
 tags:
   - 物种多样性
 description: ~

@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction 宏基因组（Metagenome）是指对一个生态系统中的所有微生物进行DNA分析的过程，可以帮助研究人员了解微生物的多样性、功能和互作关系。
+宏基因组的应用非常广泛，包括：
+生物多样性研究：通过对宏基因组进行分析，可以了解不同生态系统中微生物的多样性和分布情况。
+生态学研究：宏基因组可以帮助研究人员了解微生物在生态系统中的功能、互作关系和生态位等。
+生物技术：宏基因组可以用于筛选具有特定功能的微生物，例如，寻找能够降解有害物质的微生物。
+宏基因组的分析一般包括以下步骤：
+DNA提取与建库。
+高通量测序：使用高通量测序技术对扩增后的DNA进行测序，得到原始序列数据。
+数据清洗和组装：对原始数据进行质量控制、去除低质量序列和冗余序列，将序列拼接成较长的连续序列（contigs）。
+基因注释：将contigs中的基因进行注释，得到基因功能信息。
+数据分析：了解微生物多样性、群落结构、功能特征等信息（更多是指获取了物种丰度表或功能丰度表之后的进一步分析）。
+MAGs binning， 进化动态等进一步分析
+这是我常用的一套基本流程(Figure 1)，当然在面对不同项目时应该有不同的侧重点和适用的分析方法，可以在此基础上添加或修改。
+最早这方面的分析我都是参考刘永鑫老师的EasyMetagenome,现在这套流程也发文章了 (1)，值得参考，对上手16S测序数据或宏基因组数据都很有帮助。
+Figure 1: Basic workflow preprocess 绝大多数这里介绍的软件都是仅支持linux平台的，我们做测序文件的上游分析也肯定是在服务器上做，个人PC一般很难满足需求，所以在做这些分析前必须先学习linux基础知识如文件系统，shell脚本编写，软件安装等。
+安装软件建议使用conda或mamba（新建环境和管理），有很多参考方法。
+我们服务器使用的是slurm作业管理系统，尽量先学习一下slurm的使用再尝试提交作业。
+一般把所有样本的测序双端文件放在一个文件夹下
+质控：fastp 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 #!/bin/bash #SBATCH --job-name=fastp #SBATCH --output=/share/home/jianglab/pengchen/work/asthma/fastp/log/%x_%a.out #SBATCH --error=/share/home/jianglab/pengchen/work/asthma/fastp/log/%x_%a.err #SBATCH --array=1-33 #SBATCH --partition=short #SBATCH --cpus-per-task=8 echo start: `date &#43;&amp;#39;%Y-%m-%d %T&amp;#39;` start=`date &#43;%s` echo &amp;#34;SLURM_ARRAY_TASK_ID: &amp;#34; $SLURM_ARRAY_TASK_ID sample=$(head -n $SLURM_ARRAY_TASK_ID ~/work/asthma/data/namelist | tail -1) #sample=$(head -n 1 namelist | tail -1) echo handling: $sample #################### fastp -w 8 -i ~/work/asthma/data/$sample/$sample&amp;#39;_f1.'>
+<title>Metagenomic workflow</title>
+
+<link rel='canonical' href='/p/metagenomic-workflow/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Metagenomic workflow'>
+<meta property='og:description' content='Introduction 宏基因组（Metagenome）是指对一个生态系统中的所有微生物进行DNA分析的过程，可以帮助研究人员了解微生物的多样性、功能和互作关系。
+宏基因组的应用非常广泛，包括：
+生物多样性研究：通过对宏基因组进行分析，可以了解不同生态系统中微生物的多样性和分布情况。
+生态学研究：宏基因组可以帮助研究人员了解微生物在生态系统中的功能、互作关系和生态位等。
+生物技术：宏基因组可以用于筛选具有特定功能的微生物，例如，寻找能够降解有害物质的微生物。
+宏基因组的分析一般包括以下步骤：
+DNA提取与建库。
+高通量测序：使用高通量测序技术对扩增后的DNA进行测序，得到原始序列数据。
+数据清洗和组装：对原始数据进行质量控制、去除低质量序列和冗余序列，将序列拼接成较长的连续序列（contigs）。
+基因注释：将contigs中的基因进行注释，得到基因功能信息。
+数据分析：了解微生物多样性、群落结构、功能特征等信息（更多是指获取了物种丰度表或功能丰度表之后的进一步分析）。
+MAGs binning， 进化动态等进一步分析
+这是我常用的一套基本流程(Figure 1)，当然在面对不同项目时应该有不同的侧重点和适用的分析方法，可以在此基础上添加或修改。
+最早这方面的分析我都是参考刘永鑫老师的EasyMetagenome,现在这套流程也发文章了 (1)，值得参考，对上手16S测序数据或宏基因组数据都很有帮助。
+Figure 1: Basic workflow preprocess 绝大多数这里介绍的软件都是仅支持linux平台的，我们做测序文件的上游分析也肯定是在服务器上做，个人PC一般很难满足需求，所以在做这些分析前必须先学习linux基础知识如文件系统，shell脚本编写，软件安装等。
+安装软件建议使用conda或mamba（新建环境和管理），有很多参考方法。
+我们服务器使用的是slurm作业管理系统，尽量先学习一下slurm的使用再尝试提交作业。
+一般把所有样本的测序双端文件放在一个文件夹下
+质控：fastp 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 #!/bin/bash #SBATCH --job-name=fastp #SBATCH --output=/share/home/jianglab/pengchen/work/asthma/fastp/log/%x_%a.out #SBATCH --error=/share/home/jianglab/pengchen/work/asthma/fastp/log/%x_%a.err #SBATCH --array=1-33 #SBATCH --partition=short #SBATCH --cpus-per-task=8 echo start: `date &#43;&amp;#39;%Y-%m-%d %T&amp;#39;` start=`date &#43;%s` echo &amp;#34;SLURM_ARRAY_TASK_ID: &amp;#34; $SLURM_ARRAY_TASK_ID sample=$(head -n $SLURM_ARRAY_TASK_ID ~/work/asthma/data/namelist | tail -1) #sample=$(head -n 1 namelist | tail -1) echo handling: $sample #################### fastp -w 8 -i ~/work/asthma/data/$sample/$sample&amp;#39;_f1.'>
+<meta property='og:url' content='/p/metagenomic-workflow/'>
+<meta property='og:site_name' content='Asa&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='shell' /><meta property='article:tag' content='编程' /><meta property='article:published_time' content='2023-03-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-26T00:00:00&#43;00:00'/><meta property='og:image' content='/' />
+<meta name="twitter:title" content="Metagenomic workflow">
+<meta name="twitter:description" content="Introduction 宏基因组（Metagenome）是指对一个生态系统中的所有微生物进行DNA分析的过程，可以帮助研究人员了解微生物的多样性、功能和互作关系。
+宏基因组的应用非常广泛，包括：
+生物多样性研究：通过对宏基因组进行分析，可以了解不同生态系统中微生物的多样性和分布情况。
+生态学研究：宏基因组可以帮助研究人员了解微生物在生态系统中的功能、互作关系和生态位等。
+生物技术：宏基因组可以用于筛选具有特定功能的微生物，例如，寻找能够降解有害物质的微生物。
+宏基因组的分析一般包括以下步骤：
+DNA提取与建库。
+高通量测序：使用高通量测序技术对扩增后的DNA进行测序，得到原始序列数据。
+数据清洗和组装：对原始数据进行质量控制、去除低质量序列和冗余序列，将序列拼接成较长的连续序列（contigs）。
+基因注释：将contigs中的基因进行注释，得到基因功能信息。
+数据分析：了解微生物多样性、群落结构、功能特征等信息（更多是指获取了物种丰度表或功能丰度表之后的进一步分析）。
+MAGs binning， 进化动态等进一步分析
+这是我常用的一套基本流程(Figure 1)，当然在面对不同项目时应该有不同的侧重点和适用的分析方法，可以在此基础上添加或修改。
+最早这方面的分析我都是参考刘永鑫老师的EasyMetagenome,现在这套流程也发文章了 (1)，值得参考，对上手16S测序数据或宏基因组数据都很有帮助。
+Figure 1: Basic workflow preprocess 绝大多数这里介绍的软件都是仅支持linux平台的，我们做测序文件的上游分析也肯定是在服务器上做，个人PC一般很难满足需求，所以在做这些分析前必须先学习linux基础知识如文件系统，shell脚本编写，软件安装等。
+安装软件建议使用conda或mamba（新建环境和管理），有很多参考方法。
+我们服务器使用的是slurm作业管理系统，尽量先学习一下slurm的使用再尝试提交作业。
+一般把所有样本的测序双端文件放在一个文件夹下
+质控：fastp 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 #!/bin/bash #SBATCH --job-name=fastp #SBATCH --output=/share/home/jianglab/pengchen/work/asthma/fastp/log/%x_%a.out #SBATCH --error=/share/home/jianglab/pengchen/work/asthma/fastp/log/%x_%a.err #SBATCH --array=1-33 #SBATCH --partition=short #SBATCH --cpus-per-task=8 echo start: `date &#43;&amp;#39;%Y-%m-%d %T&amp;#39;` start=`date &#43;%s` echo &amp;#34;SLURM_ARRAY_TASK_ID: &amp;#34; $SLURM_ARRAY_TASK_ID sample=$(head -n $SLURM_ARRAY_TASK_ID ~/work/asthma/data/namelist | tail -1) #sample=$(head -n 1 namelist | tail -1) echo handling: $sample #################### fastp -w 8 -i ~/work/asthma/data/$sample/$sample&amp;#39;_f1."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/guodong1_hu19ef19e107d2cae4138b147ef6582252_202975_300x0_resize_q75_box.jpg" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐛🐶</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Asa&#39;s blog</a></h1>
+            <h2 class="site-description">work hard, live happily.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Asa12138'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="/" selected>English</option>
+                        
+                            <option value="/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#preprocess">preprocess</a>
+      <ol>
+        <li><a href="#质控fastp">质控：fastp</a></li>
+        <li><a href="#去宿主bowtie2">去宿主：bowtie2</a></li>
+        <li><a href="#基本信息统计">基本信息统计</a></li>
+      </ol>
+    </li>
+    <li><a href="#reads-based">reads-based</a>
+      <ol>
+        <li><a href="#物种注释kraken2">物种注释：kraken2</a>
+          <ol>
+            <li><a href="#输出文件格式">输出文件格式</a></li>
+          </ol>
+        </li>
+        <li><a href="#humann">HUMAnN</a></li>
+      </ol>
+    </li>
+    <li><a href="#contigs-based">contigs-based</a>
+      <ol>
+        <li><a href="#组装megahit">组装：megahit</a></li>
+        <li><a href="#组装评估quast">组装评估：QUAST</a></li>
+        <li><a href="#基因预测prodigal">基因预测：Prodigal</a></li>
+        <li><a href="#去冗余-cd-hit">去冗余： Cd-hit</a></li>
+        <li><a href="#基因定量salmon">基因定量：salmon</a></li>
+        <li><a href="#功能基因注释">功能基因注释</a>
+          <ol>
+            <li><a href="#1-eggnogcogkeggcazy">1 eggNOG(COG/KEGG/CAZy)</a></li>
+            <li><a href="#2-碳水化合物dbcan2">2 碳水化合物dbCAN2</a></li>
+            <li><a href="#3-argscard">3 ARGs（CARD）</a></li>
+            <li><a href="#4-毒力因子vfdb">4 毒力因子VFDB</a></li>
+            <li><a href="#5-其他各种数据库">5 其他各种数据库</a></li>
+          </ol>
+        </li>
+        <li><a href="#功能注释合并">功能注释合并</a></li>
+      </ol>
+    </li>
+    <li><a href="#binning">binning</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/metagenomic/" style="background-color: #8dd3c7; color: #fff;">
+                metagenomic
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/metagenomic-workflow/">Metagenomic workflow</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 26, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    9 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="introduction">Introduction</h2>
+<p>宏基因组（Metagenome）是指对一个生态系统中的所有微生物进行DNA分析的过程，可以帮助研究人员了解微生物的多样性、功能和互作关系。</p>
+<p>宏基因组的应用非常广泛，包括：</p>
+<ul>
+<li>
+<p>生物多样性研究：通过对宏基因组进行分析，可以了解不同生态系统中微生物的多样性和分布情况。</p>
+</li>
+<li>
+<p>生态学研究：宏基因组可以帮助研究人员了解微生物在生态系统中的功能、互作关系和生态位等。</p>
+</li>
+<li>
+<p>生物技术：宏基因组可以用于筛选具有特定功能的微生物，例如，寻找能够降解有害物质的微生物。</p>
+</li>
+</ul>
+<p>宏基因组的分析一般包括以下步骤：</p>
+<ol>
+<li>
+<p>DNA提取与建库。</p>
+</li>
+<li>
+<p>高通量测序：使用高通量测序技术对扩增后的DNA进行测序，得到原始序列数据。</p>
+</li>
+<li>
+<p>数据清洗和组装：对原始数据进行质量控制、去除低质量序列和冗余序列，将序列拼接成较长的连续序列（contigs）。</p>
+</li>
+<li>
+<p>基因注释：将contigs中的基因进行注释，得到基因功能信息。</p>
+</li>
+<li>
+<p>数据分析：了解微生物多样性、群落结构、功能特征等信息（更多是指获取了物种丰度表或功能丰度表之后的进一步分析）。</p>
+</li>
+<li>
+<p>MAGs binning， 进化动态等进一步分析</p>
+</li>
+</ol>
+<p>这是我常用的一套基本流程(Figure <a href="#fig:1-work">1</a>)，当然在面对不同项目时应该有不同的侧重点和适用的分析方法，可以在此基础上添加或修改。</p>
+<p>最早这方面的分析我都是参考刘永鑫老师的<a class="link" href="https://github.com/YongxinLiu/EasyMetagenome"  target="_blank" rel="noopener"
+    ><strong>EasyMetagenome</strong></a>,现在这套流程也发文章了 (<a class="link" href="#ref-liuPracticalGuideAmplicon2021" ><em>1</em></a>)，值得参考，对上手16S测序数据或宏基因组数据都很有帮助。</p>
+<div class="figure">
+<img src="images/workflow.png" alt="Basic workflow" width="80%" />
+<p class="caption">
+Figure 1: Basic workflow
+</p>
+</div>
+<h2 id="preprocess">preprocess</h2>
+<p>绝大多数这里介绍的软件都是仅支持linux平台的，我们做测序文件的上游分析也肯定是在服务器上做，个人PC一般很难满足需求，所以在做这些分析前必须先学习linux基础知识如文件系统，shell脚本编写，软件安装等。</p>
+<p>安装软件建议使用conda或mamba（新建环境和管理），有很多参考方法。</p>
+<p>我们服务器使用的是slurm作业管理系统，尽量先学习一下<a class="link" href="https://docs.hpc.sjtu.edu.cn/job/slurm.html"  target="_blank" rel="noopener"
+    >slurm的使用</a>再尝试提交作业。</p>
+<p>一般把所有样本的测序双端文件放在一个文件夹下</p>
+<h3 id="质控fastp">质控：fastp</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=fastp</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/fastp/log/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/fastp/log/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --array=1-33</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=short</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=8</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;SLURM_ARRAY_TASK_ID: &#34;</span> <span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sample</span><span class="o">=</span><span class="k">$(</span>head -n <span class="nv">$SLURM_ARRAY_TASK_ID</span> ~/work/asthma/data/namelist <span class="p">|</span> tail -1<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#sample=$(head -n 1 namelist | tail -1)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> handling: <span class="nv">$sample</span>
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl">fastp -w <span class="m">8</span> -i ~/work/asthma/data/<span class="nv">$sample</span>/<span class="nv">$sample</span><span class="s1">&#39;_f1.fastq&#39;</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span>_1 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-I ~/work/asthma/data/<span class="nv">$sample</span>/<span class="nv">$sample</span><span class="s1">&#39;_r2.fastq&#39;</span> -O <span class="si">${</span><span class="nv">i</span><span class="si">}</span>_2 -j ~/work/asthma/fastp/<span class="si">${</span><span class="nv">i</span><span class="si">}</span>.json
+</span></span><span class="line"><span class="cl"><span class="c1">#delete outputfile</span>
+</span></span><span class="line"><span class="cl">rm -rf <span class="si">${</span><span class="nv">i</span><span class="si">}</span>_1 <span class="si">${</span><span class="nv">i</span><span class="si">}</span>_2
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span>s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>后面接一个python脚本就可以统计常用指标了。</p>
+<p>把所有的.json文件移到一个文件夹里，report/下，就可以统计了。</p>
+<h3 id="去宿主bowtie2">去宿主：bowtie2</h3>
+<p>其实就是将序列比对到人类基因组上，没有比对到的序列整合成新文件就是去宿主后的了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=rm_human</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/meta/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/meta/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=32</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=short</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#############</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in C1 C2
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">bowtie2 -p <span class="m">32</span> -x ~/db/humangenome/hg38 -1 seq/<span class="si">${</span><span class="nv">i</span><span class="si">}</span>_1.fq.gz <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> -2 seq/<span class="si">${</span><span class="nv">i</span><span class="si">}</span>_2.fq.gz -S <span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sam --un-conc <span class="si">${</span><span class="nv">i</span><span class="si">}</span>.fq --very-sensitive
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span>s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="基本信息统计">基本信息统计</h3>
+<p>可以用FastqCount：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">~/biosoft/FastqCount-master/FastqCount_v0.5 xx.fastq.gz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Total Reads     Total Bases     N Bases Q20     Q30     GC
+</span></span><span class="line"><span class="cl"><span class="m">11568822</span> <span class="o">(</span>11.57 M<span class="o">)</span>      <span class="m">1702829127</span> <span class="o">(</span>1.70 G<span class="o">)</span>     0.00%   98.00%  94.00%  54.00%
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="reads-based">reads-based</h2>
+<h3 id="物种注释kraken2">物种注释：kraken2</h3>
+<p>Kraken 2是一个用于对高通量测序数据进行分类和标识物种的软件。它使用参考数据库中的基因组序列来进行分类，并使用k-mer方法来实现快速和准确的分类。</p>
+<p>使用Kraken 2进行基本分类的简单步骤：</p>
+<ol>
+<li>
+<p>准备参考数据库：Kraken 2需要一个参考数据库，以便对测序数据进行分类。可以从NCBI、Ensembl或其他数据库下载相应的基因组序列，并使用Kraken 2内置的工具来构建数据库。</p>
+</li>
+<li>
+<p>安装Kraken 2：可以从Kraken 2官方网站下载并安装Kraken 2软件。</p>
+</li>
+<li>
+<p>运行Kraken 2：使用Kraken 2对测序数据进行分类需要使用以下命令：</p>
+</li>
+</ol>
+<p><code>kraken2 \--db \&lt;path_to_database\&gt; \&lt;input_file\&gt; \--output \&lt;output_file\&gt;</code></p>
+<p>这里，**<code>&lt;path_to_database&gt;</code><strong>是参考数据库的路径，</strong><code>&lt;input_file&gt;</code><strong>是需要进行分类的输入文件，</strong><code>&lt;output_file&gt;</code>**是输出文件的名称。Kraken 2将输出一个分类报告文件和一个序列文件。</p>
+<p><code>kraken2-build --standard --threads 24 --db ./</code></p>
+<p>&ndash;standard标准模式下只下载5种数据库：古菌archaea、细菌bacteria、人类human、载体UniVec_Core、病毒viral。也可选直接下载作者构建的索引，还包括bracken的索引。</p>
+<p>这个kraken数据库是可以自己构建的，所以适用于各种项目的物种注释，我做的比较多的是环境样本的宏基因组，就可能需要更全面的物种数据库（甚至除了各种微生物，还要动植物数据等），实验室的WX师姐收集构建了一个超大的物种库。</p>
+<p>需要注意的是kraken运行至少要提供数据库大小的内存大小（运行内存），因为它会把整个数据库载入内存后进行序列的注释，所以如果发现无法载入数据库的报错，可以尝试调大内存资源。</p>
+<p>kraken软件运行时载入数据库是一个十分耗时的步骤，而每条序列的鉴定时间差不多，所以我们可以将很多样本的fastq文件合并成一个大文件后输入kraken注释，之后再按照序列的数量拆分结果文件，这样多个样本也只需要载入一次数据库，节省时间。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=kraken2M</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/kraken/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/kraken/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --time=14-00:00:00</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=mem</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=32</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --mem-per-cpu=100G</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">fqp</span><span class="o">=</span>~/work/asthma/data/CRR205159/
+</span></span><span class="line"><span class="cl">python /share/home/jianglab/shared/krakenDB/K2ols/kraken2M.py -t <span class="m">32</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -i <span class="si">${</span><span class="nv">fqp</span><span class="si">}</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -c 0.05 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -s _f1.fastq,_r2.fastq <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o ~/work/asthma/kraken/ <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -d /share/home/jianglab/shared/krakenDB/mydb2 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -k ~/miniconda3/envs/waste/bin/kraken2 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -kt /share/home/jianglab/shared/krakenDB/K2ols/KrakenTools 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="输出文件格式">输出文件格式</h4>
+<p>Kraken标准输出格式</p>
+<p>五列表 output</p>
+<ul>
+<li>
+<p>C/U代表分类classified或非分类unclassifed</p>
+</li>
+<li>
+<p>序列ID</p>
+</li>
+<li>
+<p>物种注释</p>
+</li>
+<li>
+<p>比序列注释的区域，如98|94代表左端98bp，右端94bp比对至数据库</p>
+</li>
+<li>
+<p>LCA比对结果，如”562:13 561:4”代表13 k-mer比对至物种#562，4 k-mer比对至#561物种</p>
+</li>
+</ul>
+<p>报告输出格式 report</p>
+<p>包括6列，方便整理下游分析。</p>
+<ol>
+<li>
+<p>百分比</p>
+</li>
+<li>
+<p>count</p>
+</li>
+<li>
+<p>count最优</p>
+</li>
+<li>
+<p>(U)nclassified, (R)oot, (D)omain, (K)ingdom, (P)hylum, (C)lass, (O)rder, (F)amily, (G)enus, or (S)pecies. “G2”代表位于属一种间</p>
+</li>
+<li>
+<p>NCBI物种ID</p>
+</li>
+<li>
+<p>科学物种名</p>
+</li>
+</ol>
+<p>常用的物种丰度表格式除了kraken report，还有mpa，spf，krona等格式，关于kraken结果的整理以及格式转换方式，有一些现成的脚本或者自己写。</p>
+<p><a class="link" href="https://ccb.jhu.edu/software/krakentools/"  target="_blank" rel="noopener"
+    >KrakenTools (jhu.edu)</a> 就是一套很好用的kraken工具包，其中常用的有：</p>
+<ol>
+<li>extract_kraken_reads.py</li>
+</ol>
+<p>此程序提取读取在任何用户指定的分类id处分类的内容。用户必须指定Kraken输出文件、序列文件和至少一个分类法ID。下面指定了其他选项。截至2021年4月19日，此脚本与KrakenUniq/Kraken2Uniq报告兼容。</p>
+<ol start="2">
+<li>combine_kreports.py</li>
+</ol>
+<p>This script combines multiple Kraken reports into a combined report file.</p>
+<p><code>python combine_kreports.py</code></p>
+<ul>
+<li>
+<p>-r 1.KREPORT 2.KREPORT&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;Kraken-style reports to combine</p>
+</li>
+<li>
+<p>-o COMBINED.KREPORT&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;Output file</p>
+</li>
+</ul>
+<ol start="3">
+<li>kreport2krona.py</li>
+</ol>
+<p>This program takes a Kraken report file and prints out a krona-compatible TEXT file</p>
+<p>换成krona文件好画图。嘿嘿</p>
+<p>krona装了一个excel的插件可以很容易画图<br>
+<code>python kreport2krona.py</code></p>
+<ul>
+<li>
+<p>-r/&ndash;report MYFILE.KREPORT&hellip;.….Kraken report file</p>
+</li>
+<li>
+<p>-o/&ndash;output MYFILE.KRONA&hellip;&hellip;.…Output Krona text file</p>
+</li>
+</ul>
+<p>then, <code>ktImportText MYSAMPLE.krona -o MYSAMPLE.krona.html</code></p>
+<p>好看的网页就出来了。</p>
+<ol start="4">
+<li>kreport2mpa.py</li>
+</ol>
+<p>This program takes a Kraken report file and prints out a mpa (MetaPhlAn) -style TEXT file</p>
+<p><code>python kreport2mpa.py</code></p>
+<ul>
+<li>
+<p>-r/&ndash;report MYFILE.KREPORT&hellip;.….Kraken report file</p>
+</li>
+<li>
+<p>-o/&ndash;output MYFILE.MPA.TXT&hellip;.….Output MPA-STYLE text file</p>
+</li>
+</ul>
+<ol start="5">
+<li>combine_mpa.py</li>
+</ol>
+<p><code>python combine_mpa.py</code></p>
+<ul>
+<li>
+<p>-i/&ndash;input MYFILE1.MPA MYFILE2.MPA&hellip;.…Multiple MPA-STYLE text files (separated by spaces)</p>
+</li>
+<li>
+<p>-o/&ndash;output MYFILE.COMBINED.MPA&hellip;&hellip;.…Output MPA-STYLE text file</p>
+</li>
+</ul>
+<p>This program combines multiple outputs from <a class="link" href="#kreport2mpapy" >kreport2mpa.py</a>. Files to be combined must have been generated using the same kreport2mpa.py options.</p>
+<p><code>python combine_mpa.py -i -o --intermediate-ranks</code></p>
+<h3 id="humann">HUMAnN</h3>
+<p>HUMAnN2（The HMP Unified Metabolic Analysis Network 2）是一款用于分析人类微生物组的功能和代谢能力的工具。它通过将宏基因组序列与参考基因组数据库比对，利用MetaCyc代谢通路数据库和UniRef蛋白质序列数据库，分析微生物组在功能和代谢通路水平上的组成和活性。HUMAnN2还提供了多样性分析、关联分析和可视化工具，可用于深入研究人类微生物组对宿主健康的影响和治疗策略的制定等方面。</p>
+<p>HUMAnN2是由美国国家人类微生物组计划（HMP）开发的，目前最新版本为<a class="link" href="https://github.com/biobakery/humann"  target="_blank" rel="noopener"
+    >HUMAnN3</a>，于2020年发布。与HUMAnN2相比，HUMAnN3改进了基因家族注释的方法，提高了注释精度和速度，并提供了新的功能和工具，如功能韧度分析、代谢指纹识别和多样性分析等。</p>
+<p>但是HUMAnN2的数据库基本都是与人相关的微生物，比较适合做各种人体微生物组（肠道，肺部，口腔，皮肤等等），对于环境样本可能unclassified比较多。</p>
+<p><strong>HUMAnN2要求双端序列合并的文件作为输入</strong>，for循环根据实验设计样本名批量双端序列合并。</p>
+<ul>
+<li>
+<p><strong>物种组成调用MetaPhlAn2, bowtie2比对至核酸序列</strong>，解决有哪些微生物存在的问题；</p>
+</li>
+<li>
+<p><strong>功能组成为humann2调用diamond比对至蛋白库11Gb</strong>，解决这些微生物参与哪些功能通路的问题；</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> alldata
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="sb">`</span>cat ~/work/asthma/data/namelist<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="nv">$i</span>
+</span></span><span class="line"><span class="cl">cat <span class="si">${</span><span class="nv">i</span><span class="si">}</span>_f1.fastq <span class="si">${</span><span class="nv">i</span><span class="si">}</span>_r2.fastq &gt;<span class="si">${</span><span class="nv">i</span><span class="si">}</span>_paired.fastq
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#!/bin/bash</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --job-name=humann2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/humann/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/humann/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --array=1-32</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=24</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=cpu</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl"><span class="nv">myarray</span><span class="o">=(</span><span class="sb">`</span>cat ~/work/asthma/data/namelist<span class="sb">`</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#this is your single file name</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sample</span><span class="o">=</span><span class="si">${</span><span class="nv">myarray</span><span class="p">[</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="p">]</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> handling: <span class="nv">$sample</span>
+</span></span><span class="line"><span class="cl">humann2 --input data/alldata/<span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_paired.fastq  <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --output temp/humann2/ --threads <span class="m">24</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1">## 链接重要文件至humann2目录</span>
+</span></span><span class="line"><span class="cl">ln temp/humann2/<span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_paired_humann2_temp/<span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_paired_metaphlan_bugs_list.tsv temp/humann2/
+</span></span><span class="line"><span class="cl"><span class="c1">## 删除临时文件</span>
+</span></span><span class="line"><span class="cl">rm -rf temp/humann2/<span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_paired_humann2_temp
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span>s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 合并、修正样本名、预览</span>
+</span></span><span class="line"><span class="cl">merge_metaphlan_tables2.py <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  temp/humann2/*_metaphlan_bugs_list.tsv <span class="p">|</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  sed <span class="s1">&#39;s/_metaphlan_bugs_list//g&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  &gt; metaphlan2/taxonomy.tsv
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="contigs-based">contigs-based</h2>
+<h3 id="组装megahit">组装：megahit</h3>
+<p>MegaHit是一个用于对高通量测序数据进行de novo组装的软件。它使用了一种基于短读比对和图形构建的算法来组装基因组，可以高效地处理大规模的数据集。以下是MegaHit的一些优点和适用情况：</p>
+<ol>
+<li>
+<p>速度快：MegaHit的算法非常高效，可以处理大规模的数据集，通常比其他de novo组装工具更快。</p>
+</li>
+<li>
+<p>高质量的组装：MegaHit在组装结果的连通性和准确性方面表现优异，尤其在处理高GC含量基因组时效果显著。</p>
+</li>
+<li>
+<p>适用于不同类型的测序数据：MegaHit支持多种不同类型的测序数据，包括 Illumina HiSeq/MiSeq、IonTorrent和PacBio等平台。</p>
+</li>
+<li>
+<p>易于使用：MegaHit具有简单的命令行语法，方便用户进行组装操作，且具有中断点，避免失败后全部重跑。</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=asthma_megahit</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/megahit/log/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/megahit/log/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --array=1-33</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=cpu</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=32</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;SLURM_ARRAY_TASK_ID: &#34;</span> <span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sample</span><span class="o">=</span><span class="k">$(</span>head -n <span class="nv">$SLURM_ARRAY_TASK_ID</span> ~/work/asthma/data/namelist <span class="p">|</span> tail -1<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#sample=$(head -n 1 namelist | tail -1)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> handling: <span class="nv">$sample</span>	
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl">megahit -t <span class="m">32</span> -1 ~/work/asthma/data/<span class="nv">$sample</span>/<span class="nv">$sample</span><span class="s1">&#39;_f1.fastq&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-2 ~/work/asthma/data/<span class="nv">$sample</span>/<span class="nv">$sample</span><span class="s1">&#39;_r2.fastq&#39;</span> -o ~/work/asthma/megahit/<span class="nv">$sample</span> --out-prefix <span class="nv">$sample</span>
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span>s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="组装评估quast">组装评估：QUAST</h3>
+<p><strong>QUAST</strong>代表质量评估工具。 QUAST可以使用参考基因组以及不使用参考基因组来评估装配。 QUAST生成详细的报告，表格和图解，以显示装配的不同方面。</p>
+<h3 id="基因预测prodigal">基因预测：Prodigal</h3>
+<p>输入文件：拼装好的序列文件 megahit/final.contigs.fa</p>
+<p>输出文件：prodigal预测的基因序列 prodigal/gene.fa</p>
+<p>prodigal不支持多线程运行，所以我们可以自行分割序列文件调用多个prodigal程序分别跑实现伪多线程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=prodigal</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/prodigal/log/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/prodigal/log/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --array=1-33</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=cpu</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;SLURM_ARRAY_TASK_ID: &#34;</span> <span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sample</span><span class="o">=</span><span class="k">$(</span>head -n <span class="nv">$SLURM_ARRAY_TASK_ID</span> ~/work/asthma/data/namelist <span class="p">|</span> tail -1<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#sample=$(head -n 1 namelist | tail -1)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> handling: <span class="nv">$sample</span>
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl">prodigal -i ~/work/asthma/megahit/contigs/<span class="nv">$sample</span>.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -d ~/work/asthma/prodigal/<span class="nv">$sample</span>.gene.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o ~/work/asthma/prodigal/<span class="nv">$sample</span>.gene.gff <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -p meta -f gff 
+</span></span><span class="line"><span class="cl">grep <span class="s1">&#39;partial=00&#39;</span> ~/work/asthma/prodigal/<span class="nv">$sample</span>.gene.fa <span class="p">|</span> cut -f1 -d <span class="s1">&#39; &#39;</span><span class="p">|</span> sed <span class="s1">&#39;s/&gt;//&#39;</span> &gt; ~/work/asthma/prodigal/<span class="nv">$sample</span>.fullid
+</span></span><span class="line"><span class="cl">seqkit grep -f ~/work/asthma/prodigal/<span class="nv">$sample</span>.fullid ~/work/asthma/prodigal/<span class="nv">$sample</span>.gene.fa &gt; ~/work/asthma/prodigal/fullgene/<span class="nv">$sample</span>.gene.fa
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span><span class="nv">s</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">============================================================================</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 统计基因数量</span>
+</span></span><span class="line"><span class="cl">grep -c <span class="s1">&#39;&gt;&#39;</span> temp/prodigal/gene.fa 
+</span></span><span class="line"><span class="cl"><span class="c1">## 统计完整基因数量，数据量大可只用完整基因部分</span>
+</span></span><span class="line"><span class="cl">grep -c <span class="s1">&#39;partial=00&#39;</span> temp/prodigal/gene.fa 
+</span></span><span class="line"><span class="cl"><span class="c1">## 提取完整基因(完整片段获得的基因全为完整，如成环的细菌基因组)</span>
+</span></span><span class="line"><span class="cl">grep <span class="s1">&#39;partial=00&#39;</span> temp/prodigal/gene.fa <span class="p">|</span> cut -f1 -d <span class="s1">&#39; &#39;</span><span class="p">|</span> sed <span class="s1">&#39;s/&gt;//&#39;</span> &gt; temp/prodigal/full_length.id
+</span></span><span class="line"><span class="cl">seqkit grep -f temp/prodigal/full_length.id temp/prodigal/gene.fa &gt; temp/prodigal/full_length.fa
+</span></span><span class="line"><span class="cl">seqkit stat temp/prodigal/full_length.fa
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="去冗余-cd-hit">去冗余： Cd-hit</h3>
+<p>上面产生了n个样本的基因预测结果文件，gene.fa文件要想办法整合为一个文件再去去冗余。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#修改每条序列的名称，加上样本名</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="sb">`</span>cat ~/work/asthma/data/namelist<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="nv">$i</span>
+</span></span><span class="line"><span class="cl">sed -i <span class="s2">&#34;/&gt;/s/&gt;/&gt;</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">_/&#34;</span> <span class="nv">$i</span>.gene.fa 
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;start merge&#39;</span>
+</span></span><span class="line"><span class="cl">cat *.gene.fa&gt;all.fullgene.fa
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;done&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=cdhit</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=32</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=short</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 输入文件：prodigal预测的基因序列 all.fullgene.fa</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 输出文件：去冗余后的基因和蛋白序列：NR/nucleotide.fa;NR/protein.fa</span>
+</span></span><span class="line"><span class="cl">mkdir NR
+</span></span><span class="line"><span class="cl"><span class="c1">## aS覆盖度，c相似度，G局部比对，g最优解，T多线程，M内存0不限制</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2万基因2m，2千万需要2000h，多线程可加速	</span>
+</span></span><span class="line"><span class="cl">cd-hit-est -i prodigal/fullgene/all.fullgene.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o NR/nucleotide.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -aS 0.9 -c 0.9 -G <span class="m">0</span> -g <span class="m">0</span> -T <span class="m">0</span> -M <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 统计非冗余基因数量，单次拼接结果数量下降不大，多批拼接冗余度高</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;after remove, the number of genes: &#39;</span>
+</span></span><span class="line"><span class="cl">grep -c <span class="s1">&#39;&gt;&#39;</span> NR/nucleotide.fa
+</span></span><span class="line"><span class="cl"><span class="c1">## 翻译核酸为对应蛋白序列，emboss</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## emboss transeq工具，93.9 MB</span>
+</span></span><span class="line"><span class="cl">conda install emboss -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">transeq -sequence NR/nucleotide.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -outseq NR/protein.fa -trim Y 
+</span></span><span class="line"><span class="cl"><span class="c1">## 序列名自动添加了_1，为与核酸对应要去除</span>
+</span></span><span class="line"><span class="cl">sed -i <span class="s1">&#39;s/_1 / /&#39;</span> NR/protein.fa
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span>s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="基因定量salmon">基因定量：salmon</h3>
+<ol>
+<li>建立索引</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=salmon-index</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=32</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=short</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl">mkdir -p temp/salmon
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 建索引, -t序列, -i 索引，10s</span>
+</span></span><span class="line"><span class="cl">salmon index <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -t NR/nucleotide.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p <span class="m">32</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -i temp/salmon/index 
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span>s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>对每个样本定量</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=salmon</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/salmon/log/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/salmon/log/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --array=1-33</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=cpu</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=32</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;SLURM_ARRAY_TASK_ID: &#34;</span> <span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sample</span><span class="o">=</span><span class="k">$(</span>head -n <span class="nv">$SLURM_ARRAY_TASK_ID</span> ~/work/asthma/data/namelist <span class="p">|</span> tail -1<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#sample=$(head -n 1 namelist | tail -1)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> handling: <span class="nv">$sample</span>
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 输入文件：去冗余后的基因和蛋白序列：NR/nucleotide.fa</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 输出文件：Salmon定量后的结果：salmon/gene.count;salmon/gene.TPM</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 定量，l文库类型自动选择，p线程，--meta宏基因组模式</span>
+</span></span><span class="line"><span class="cl">salmon quant <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -i temp/salmon/index -l A -p <span class="m">32</span> --meta <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -1 data/alldata/<span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_f1.fastq <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -2 data/alldata/<span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_r2.fastq <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o temp/salmon/<span class="si">${</span><span class="nv">sample</span><span class="si">}</span>.quant
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span>s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>合并各样本结果</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 合并</span>
+</span></span><span class="line"><span class="cl">mkdir -p salmon
+</span></span><span class="line"><span class="cl">salmon quantmerge <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --quants temp/salmon/*.quant <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o salmon/gene.TPM
+</span></span><span class="line"><span class="cl">salmon quantmerge <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --quants temp/salmon/*.quant <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --column NumReads -o salmon/gene.count
+</span></span><span class="line"><span class="cl">sed -i <span class="s1">&#39;1 s/.quant//g&#39;</span> salmon/gene.*
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 预览结果表格</span>
+</span></span><span class="line"><span class="cl">head -n3 salmon/gene.*
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="功能基因注释">功能基因注释</h3>
+<p>上一步已经有了所有的基因和每个样本所有基因的read count定量结果，我们只需要对上一步的基因序列（或蛋白质序列）进行不同数据库的注释（很多软件都是用diamond比对，如果没有专用软件的数据库我们也可以自己用diamond比对），合并注释结果得到的就是功能丰度表。</p>
+<p>diamond选择&ndash;outfmt 6的输出结果和blastp一样：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.</td>
+<td>qseqid</td>
+<td>query sequence id</td>
+</tr>
+<tr>
+<td>2.</td>
+<td>sseqid</td>
+<td>subject (e.g., reference genome) sequence id</td>
+</tr>
+<tr>
+<td>3.</td>
+<td>pident</td>
+<td>percentage of identical matches</td>
+</tr>
+<tr>
+<td>4.</td>
+<td>length</td>
+<td>alignment length</td>
+</tr>
+<tr>
+<td>5.</td>
+<td>mismatch</td>
+<td>number of mismatches</td>
+</tr>
+<tr>
+<td>6.</td>
+<td>gapopen</td>
+<td>number of gap openings</td>
+</tr>
+<tr>
+<td>7.</td>
+<td>qstart</td>
+<td>start of alignment in query</td>
+</tr>
+<tr>
+<td>8.</td>
+<td>qend</td>
+<td>end of alignment in query</td>
+</tr>
+<tr>
+<td>9.</td>
+<td>sstart</td>
+<td>start of alignment in subject</td>
+</tr>
+<tr>
+<td>10.</td>
+<td>send</td>
+<td>end of alignment in subject</td>
+</tr>
+<tr>
+<td>11.</td>
+<td>evalue</td>
+<td>expect value</td>
+</tr>
+<tr>
+<td>12.</td>
+<td>bitscore</td>
+<td>bit score</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="1-eggnogcogkeggcazy">1 eggNOG(COG/KEGG/CAZy)</h4>
+<p><a class="link" href="http://eggnogdb.embl.de/"  target="_blank" rel="noopener"
+    >EggNOG数据库</a>收集了COG（Clusters of Orthologous Groups of proteins，直系同源蛋白簇）,构成每个COG的蛋白都是被假定为来自于一个祖先蛋白，因此是orthologs或者是paralogs。通过把所有完整基因组的编码蛋白一个一个的互相比较确定的。在考虑来自一个给定基因组的蛋白时，这种比较将给出每个其他基因组的一个最相似的蛋白（因此需要用完整的基因组来定义COG），这些基因的每一个都轮番地被考虑。如果在这些蛋白（或子集）之间一个相互的最佳匹配关系被发现，那么那些相互的最佳匹配将形成一个COG。这样，一个COG中的成员将与这个COG中的其他成员比起被比较的基因组中的其他蛋白更相像。</p>
+<p><a class="link" href="http://eggnogdb.embl.de/"  target="_blank" rel="noopener"
+    >EggNOG</a>里面包含了GO，KEGG，CAZy等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 下载常用数据库，注意设置下载位置</span>
+</span></span><span class="line"><span class="cl">mkdir -p <span class="si">${</span><span class="nv">db</span><span class="si">}</span>/eggnog5 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="si">${</span><span class="nv">db</span><span class="si">}</span>/eggnog5
+</span></span><span class="line"><span class="cl"><span class="c1">## -y默认同意，-f强制下载，eggnog.db.gz 7.9G+4.9G</span>
+</span></span><span class="line"><span class="cl">download_eggnog_data.py -y -f --data_dir ./
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 下载方式2(可选)：链接直接下载</span>
+</span></span><span class="line"><span class="cl">wget -c http://eggnog5.embl.de/download/emapperdb-5.0.0/eggnog.db.gz <span class="c1">## 7.9G</span>
+</span></span><span class="line"><span class="cl">wget -c http://eggnog5.embl.de/download/emapperdb-5.0.0/eggnog_proteins.dmnd.gz <span class="c1">## 4.9G</span>
+</span></span><span class="line"><span class="cl">gunzip *.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=eggo</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/%x_%j.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/%x_%j.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=32</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=cpu</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#切换环境</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## diamond比对基因至eggNOG 5.0数据库, 1~9h，默认diamond 1e-3</span>
+</span></span><span class="line"><span class="cl">mkdir -p temp/eggnog
+</span></span><span class="line"><span class="cl">emapper.py --no_annot --no_file_comments --override <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data_dir ~/db/eggnog5 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -i NR/protein.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cpu <span class="m">32</span> -m diamond <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -o temp/eggnog/protein
+</span></span><span class="line"><span class="cl"><span class="c1">## 比对结果功能注释, 1h</span>
+</span></span><span class="line"><span class="cl">emapper.py <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --annotate_hits_table temp/eggnog/protein.emapper.seed_orthologs <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data_dir ~/db/eggnog5 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cpu <span class="m">32</span> --no_file_comments --override <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -o temp/eggnog/output
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 添表头, 1列为ID，9列KO，16列CAZy，21列COG，22列描述</span>
+</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;1 i Name\tortholog\tevalue\tscore\ttaxonomic\tprotein\tGO\tEC\tKO\tPathway\tModule\tReaction\trclass\tBRITE\tTC\tCAZy\tBiGG\ttax_scope\tOG\tbestOG\tCOG\tdescription&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  temp/eggnog/output.emapper.annotations <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  &gt; temp/eggnog/output
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span>s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-碳水化合物dbcan2">2 碳水化合物dbCAN2</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## dbCAN2 http://bcb.unl.edu/dbCAN2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 创建数据库存放目录并进入</span>
+</span></span><span class="line"><span class="cl">mkdir -p <span class="si">${</span><span class="nv">db</span><span class="si">}</span>/dbCAN2 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="si">${</span><span class="nv">db</span><span class="si">}</span>/dbCAN2
+</span></span><span class="line"><span class="cl"><span class="c1">## 下载序列和描述</span>
+</span></span><span class="line"><span class="cl">wget -c http://bcb.unl.edu/dbCAN2/download/CAZyDB.07312020.fa
+</span></span><span class="line"><span class="cl">wget -c http://bcb.unl.edu/dbCAN2/download/Databases/CAZyDB.07302020.fam-activities.txt
+</span></span><span class="line"><span class="cl"><span class="c1">## 备用数据库下载地址并解压 </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#wget -c http://210.75.224.110/db/dbcan2/CAZyDB.07312020.fa.gz</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#gunzip CAZyDB.07312020.fa.gz</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## diamond建索引，800M，1m</span>
+</span></span><span class="line"><span class="cl">diamond --version <span class="c1">## 0.8.22/2.0.5</span>
+</span></span><span class="line"><span class="cl"><span class="nb">time</span> diamond makedb <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --in CAZyDB.07312020.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --db CAZyDB.07312020
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 比对CAZy数据库, 用时2~18m; 加--sensitive更全但慢至1h</span>
+</span></span><span class="line"><span class="cl">mkdir -p temp/dbcan2
+</span></span><span class="line"><span class="cl">diamond blastp   <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--db ~/db/dbcan2/CAZyDB.07312020  <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--query NR/protein.fa   <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--threads <span class="m">64</span> -e 1e-5 --outfmt <span class="m">6</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--max-target-seqs <span class="m">1</span> --quiet <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--out temp/dbcan2/gene_diamond.f6
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3-argscard">3 ARGs（CARD）</h4>
+<p>## Github: <a class="link" href="https://github.com/arpcard/rgi"  target="_blank" rel="noopener"
+    >https://github.com/arpcard/rgi</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#SBATCH --job-name=rgi</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --output=/share/home/jianglab/pengchen/work/asthma/%x_%a.out</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --error=/share/home/jianglab/pengchen/work/asthma/%x_%a.err</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --cpus-per-task=32</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SBATCH --partition=cpu</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> start: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">start</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl">mkdir -p card
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">rgi main --input_sequence ~/work/asthma/temp/protein.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--output_file card/protein <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--input_type protein --num_threads <span class="m">32</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--clean --alignment_tool DIAMOND
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">##############</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> end: <span class="sb">`</span>date +<span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span><span class="o">=</span><span class="sb">`</span>date +%s<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> TIME:<span class="sb">`</span>expr <span class="nv">$end</span> - <span class="nv">$start</span><span class="sb">`</span>s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="4-毒力因子vfdb">4 毒力因子VFDB</h4>
+<p>官网地址：<a class="link" href="http://www.mgc.ac.cn/VFs/"  target="_blank" rel="noopener"
+    >http://www.mgc.ac.cn/VFs/</a> 在官网下载数据库时，带有setA 的库为VFDB数据库核心库(set A)，而setB为全库(setB), 其中setA仅包含经实验验证过的毒力基因，而setB则在setA的基础上增加了预测的毒力基因，选择好数据库后，直接用blast/diamond即可完成注释。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p temp/vfdb
+</span></span><span class="line"><span class="cl">diamond blastp   <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--db ~/db/VFDB/VFDB_setB_pro  <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--query NR/protein.fa   <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--threads <span class="m">32</span> -e 1e-5 --outfmt <span class="m">6</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--max-target-seqs <span class="m">1</span> --quiet <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--out temp/vfdb/gene_diamond.f6
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="5-其他各种数据库">5 其他各种数据库</h4>
+<h3 id="功能注释合并">功能注释合并</h3>
+<p>写一个python脚本，将表1（基因-功能的对应表）与表2（基因丰度表）合并，即不同基因可能注释到相同功能，把它们的丰度加在一起得到新表3（功能丰度表）</p>
+<h2 id="binning">binning</h2>
+<p>宏基因组binning是指将不同的序列集合（如metagenome序列集合）根据它们的物种归类到不同的bins中，以便进一步研究它们的组成和功能。这个过程可以将类似的序列组合在一起，形成代表不同物种或基因组的bins，以便进行后续分析，如物种注释、基因组组装等。</p>
+<p>以下是常用的宏基因组binning方法：</p>
+<ol>
+<li>
+<p>基于聚类的方法：该方法使用序列聚类将相似序列分到同一个bin中。一般来说，聚类算法可分为两类：无监督聚类（如k-means、DBSCAN等）和有监督聚类（如CAMI、MyCC等）。</p>
+</li>
+<li>
+<p>基于组装的方法：该方法使用de novo组装来将相似序列组装成连续的序列，再根据这些序列的基因组信息来将其分类到不同的bins中。这种方法的优点是可以更好地处理重复序列，缺点是需要大量的计算资源和时间。</p>
+</li>
+<li>
+<p>基于分类器的方法：该方法使用机器学习分类器来将序列分配到不同的bins中。这种方法的优点是可以自动学习特征并在处理大规模数据时效率高，缺点是需要先建立一个分类器并进行训练。</p>
+</li>
+</ol>
+<p>在进行宏基因组binning时，通常需要使用多个方法进行比较，以选择最适合数据集的方法。可以使用一些流行的工具来进行binning，如MetaBAT、MaxBin、CONCOCT和MEGAN等。这些工具通常包含各种binning方法，可以根据数据集和分析目的选择适合的方法。</p>
+<p>篇幅限制，具体的方法放在另一篇里面讲解吧。</p>
+<h2 id="reference">Reference</h2>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-liuPracticalGuideAmplicon2021" class="csl-entry">
+<p><span class="csl-left-margin">1. </span><span class="csl-right-inline">Y.-X. Liu, Y. Qin, T. Chen, M. Lu, X. Qian, X. Guo, Y. Bai, <a class="link" href="https://doi.org/10.1007/s13238-020-00724-8"  target="_blank" rel="noopener"
+    >A practical guide to amplicon and metagenomic analysis of microbiome data</a>. <em>Protein &amp; Cell</em>. <strong>12</strong>, 315–330 (2021).</span></p>
+</div>
+</div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/shell/">shell</a>
+        
+            <a href="/tags/%E7%BC%96%E7%A8%8B/">编程</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="Asa12138/pc_blog"
+        issue-term="pathname"
+        
+        label="none"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Asa&#39;s blog
+    </section>
+    
+    <section class="powerby">
+        
+            Email: pengchen2001@zju.edu.cn <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

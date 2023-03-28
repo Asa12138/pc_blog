@@ -4,7 +4,7 @@ author: Peng Chen
 date: '2023-04-03'
 slug: antibiotics-resistance
 categories:
-  - microbial ecology
+  - microbial-ecology
 tags:
   - antibiotics
   - ARGs
