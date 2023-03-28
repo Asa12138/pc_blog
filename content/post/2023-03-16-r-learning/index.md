@@ -146,3 +146,11 @@ R Markdown文件(.Rmd)支持生成网页格式的幻灯片(`slidy_presentation`)
 积极尝试
 
 参考书：[R Packages (2e) (r-pkgs.org)](https://r-pkgs.org/)
+
+### 制作shiny应用
+
+积极尝试
+
+官方教程：[Shiny Learning Resources](https://shiny.rstudio.com/tutorial/)
+
+参考书：[Mastering Shiny](https://mastering-shiny.org/)

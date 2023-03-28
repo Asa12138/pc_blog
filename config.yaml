@@ -58,7 +58,7 @@ params:
 
     sidebar:
         emoji: 🐛🐶
-        subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        subtitle: work hard, live happily.
         avatar:
             enabled: true
             local: true
@@ -107,7 +107,7 @@ params:
 
     defaultImage:
         opengraph:
-            enabled: false
+            enabled: true
             local: false
             src:
 
