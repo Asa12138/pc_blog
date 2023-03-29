@@ -30,7 +30,7 @@ editor_options:
 
 rblogdown 渲染Rmd成md会把我写的公式语法改变：
 
-例如： `$a=sum_i^2$`变成了`\(a=sum_i^2\)`
+例如： `$a=sum_i^2$`变成$a=sum_i^2$
 
 但是stack主题识别不了后面那种语法，这个比较简单：
 
@@ -42,7 +42,7 @@ import re
 pattern = r'\\\((.*?)\\\)'  
 
 # 定义一个字符串，包含要处理的LaTeX字符串
-latex_string = r'For the equation `\(\sum_{i=1}^n i^2\)`'
+latex_string = r'For the equation$\sum_{i=1}^n i^2$'
 
 # 使用sub()函数替换匹配到的文本
 processed_string = re.sub(pattern, r'$\1$', latex_string)
@@ -50,7 +50,7 @@ processed_string = re.sub(pattern, r'$\1$', latex_string)
 # 输出处理后的字符串
 print(processed_string)
 
-a=re.sub(r'`\\\((.*?)\\\)`',r'$\1$',"`\(a=sum_i^2\)`jjjhg`\(a=sum_i^2\)`")
+a=re.sub(r'`\\\((.*?)\\\)`',r'$\1$',$a=sum_i^2$jjjh$a=sum_i^2$")
 ```
 
 ## 图片大小调整
@@ -235,7 +235,7 @@ for file_path in new_md_files:
 ## 解决方法
 
 调教了一下ChatGPT后，就得到了整个更新问题的方法了：
-首先整理一个[refresh_md_to_fit_stack.py](https://github.com/Asa12138/pc_blog/refresh_md_to_fit_stack.py)放在网站根目录下，
+首先整理一个[refresh_md_to_fit_stack.py](https://github.com/Asa12138/pc_blog/R/refresh_md_to_fit_stack.py)放在网站根目录下，
 然后在R文件夹的（如果你是用Rblogdown生成的网站，那就会有这个文件夹）的build2.R中加入一行：
 
 `system("python refresh_md_to_fit_stack.py")`

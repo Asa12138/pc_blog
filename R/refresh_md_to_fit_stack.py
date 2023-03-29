@@ -2,7 +2,7 @@ import re
 
 def convert_markdown_to_html(markdown_text):
     # 将插入图片的Markdown语法转换为HTML语法
-    pattern = r"[^`]!\[(.*?)\]\((.*?)\){(.*?)}"
+    pattern = r"[^`\"]!\[(.*?)\]\((.*?)\){(.*?)}"
     matches = re.findall(pattern, markdown_text)
     for match in matches:
         title = match[0]

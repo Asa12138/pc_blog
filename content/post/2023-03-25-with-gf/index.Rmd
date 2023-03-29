@@ -7,6 +7,8 @@ categories:
   - 随笔
 tags:
   - 花鸟
+  - 群青
+  - 摄影
 description: ~
 image: images/西府.jpg
 math: ~
@@ -14,6 +16,10 @@ license: ~
 hidden: no
 comments: yes
 ---
+```{r eval=FALSE,include=FALSE}
+system("python ../../../R/add_Watermark.py 'images copy' 群青 --output_folder images --font_size 0.05 --position 30 30 --font SmileySans-Oblique --font_color 220 220 220 --opacity 10 ")
+```
+
 春分刚过，校园许多花儿都争相绽放。天气还是有点冷，但还是想跟群青同学一起逛逛紫金港，赏赏花，观观鸟。
 
 这个时候校园里最多的便是蔷薇科的花了，虽然我向来是”桃李杏梅樱，傻傻分不清”的😂，这次在群青同学的帮助下收集到了九宫格：菊花桃，碧桃，垂丝海棠，西府海棠，湖北海棠，大岛樱，日本晚樱，日本樱花，蓬蘽(疑似)
@@ -64,7 +70,7 @@ comments: yes
         <td rowspan=2><center><img src="images/喜鹊.jpg"> 喜鹊 </center></td>
         <td rowspan=2><center><img src="images/夜鹭.jpg"> 夜鹭 </center></td>
         <td rowspan=2><center><img src="images/乌鸫.jpg"> 乌鸫 </center></td>
-        <td ><center><img src="images/黑翅长脚鹬.jpeg"> 黑翅长脚鹬 <font size="1px">（浙江大学B站号）</font> </center></td>
+        <td ><center><img src="images/黑翅长脚鹬.jpg"> 黑翅长脚鹬 <font size="1px">（浙江大学B站号）</font> </center></td>
     </tr>
     <tr>
         <td ><center><img src="images/红嘴蓝鹊.jpg"> 红嘴蓝鹊 </center></td>
