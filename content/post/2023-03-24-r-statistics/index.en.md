@@ -9,7 +9,7 @@ tags:
   - statistics
   - R
 description: ~
-image: ~
+image: index.en_files/figure-html/unnamed-chunk-4-1.png
 math: ~
 license: ~
 hidden: no

@@ -1,1 +1,3 @@
-Example site modified from https://github.com/gohugoio/hugoBasicExample
+### Asa's blog
+
+share knowledge about bioinformatics and microbiome
