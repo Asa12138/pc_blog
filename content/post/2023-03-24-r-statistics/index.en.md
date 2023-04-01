@@ -433,7 +433,7 @@ $$
 $$
 \hat{a}=\overline{y}-\hat{b}\overline{x}
 $$
-回归有效性可以用$R^2$和$p-valuie$来度量，
+回归有效性可以用$R^2$和$p-value$来度量，
 $R^2=1-\frac{SSE}{SST}$
 
 统计量$F=\frac{SSR}{SSE/(n-2)}$,$p-value$为$P(F(1,n-2)>c)$,c为F的值。

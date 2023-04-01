@@ -6,7 +6,268 @@
         <description>Recent content in microbial-ecology on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 17 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/microbial-ecology/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 01 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/microbial-ecology/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>物种多样性研究的理论和方法</title>
+        <link>/p/biodiversity/</link>
+        <pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/p/biodiversity/</guid>
+        <description>&lt;img src="/p/biodiversity/images/diversity.png" alt="Featured image of post 物种多样性研究的理论和方法" /&gt;&lt;script src=&#34;/p/biodiversity/index_files/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/p/biodiversity/index_files/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;p&gt;Theories and Methods of Species Diversity Research&lt;/p&gt;
+&lt;p&gt;这是我在一门研究生课程上的课程任务，查阅了一些文献总结整理了物种多样性研究理论与方法，比较基础，没有对一些理论和模型深入讲解，仅做分享。&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Biological diversity largely describes the change of life from genes
+to ecosystems, comprising their existences, genetic variations, their
+environment, populations and the ecosystem in which they are existing
+and other evolutionary developments that keep the system functioning,
+changing and adapting.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;生物多样性是度量生命的变异和变异能力的指标，又分成遗传多样性，物种多样性，生态系统多样性三个层次，我这里主要介绍物种多样性。
+他又有三个尺度和三个维度，分别是α，β，γ分类多样性，谱系多样性，功能多样性，这里的每个交集都是可以研究的。&lt;/p&gt;
+&lt;table class=&#34; lightable-classic&#34; style=&#34;font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Scale\Dimension &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Taxa &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Phylogenetic &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Functional &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Remark &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; α &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Taxa-α &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Phylogenetic-α &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Functional-α &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Species diversity in a community or habitat &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; β &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Taxa-β &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Phylogenetic-β &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Functional-β &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; The rate and extent of change in species diversity on a gradient from one habitat to another &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; γ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Taxa-γ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Phylogenetic-γ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Functional-γ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Species diversity in a range of habitats within a geographic region(vector) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Remark &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Taxonomy &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Molecular systematics &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Functional Characteristics &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; β = γ/α &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;data-collection-methods&#34;&gt;Data collection methods&lt;/h2&gt;
+&lt;p&gt;我们应该如何进行物种多样性研究呢？&lt;/p&gt;
+&lt;p&gt;首先当然是&lt;strong&gt;制定研究方案&lt;/strong&gt;，进行取样，
+对于自己的研究对象，可以进行随机取样，系统取样，或者其他的一些方法，
+也可能是一块有代表性的永久样地，可以研究它的动态变化。&lt;/p&gt;
+&lt;p&gt;然后是开始&lt;strong&gt;调查获取数据&lt;/strong&gt;，传统的方法里，植物群落一般会进行实地调查或者使用遥感图像收集数据，动物会用到自动音视频记录，昆虫的话还会有灯光诱捕法等。&lt;/p&gt;
+&lt;p&gt;还有对微生物进行调查的，用直接培养方法或者测序手段。&lt;/p&gt;
+&lt;p&gt;当然这些方法不是一定专用的，一些新的方法也可以交叉使用，比如eDNA方法：
+eDNA是指在环境样品中所有被发现的不同生物的基因组DNA的混合，环境可以包括土壤、沉积物、排泄物、空气、水体，甚至生物个体本身。
+动物在某个环境中生活，身上的各种痕迹会携带着自身DNA掉落到四周，所以用这个方法有调查各种物种的潜力，有篇文章就用空气的eDNA调查了附近的动物。&lt;/p&gt;
+&lt;p&gt;此外还有整合的方法，比如这篇文章就提出，将遥感，田间调查和测序结合在一起，来获得完整的物种风度表。&lt;/p&gt;
+&lt;img src=&#34;images/4.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;p&gt;有了这些方法后，我们还要&lt;strong&gt;明确自己要获取的有哪些数据&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;我认为主要有三个方面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一个就是&lt;strong&gt;群落的特征&lt;/strong&gt;，包括各个物种的丰度，密度，频度，群落的生物量；如果是植物的话，还要收集盖度、树冠直径、树高、位置等等。&lt;/li&gt;
+&lt;li&gt;第二个重要的方面是我们每个样方的&lt;strong&gt;环境因子数据&lt;/strong&gt;：
+包括气候数据，如降水，相对湿度，温度等等，地形数据，如海拔，坡度等等，土壤数据，如土壤的粒径保水量和各种化学元素等等，有条件的话可以做微生物和人类因素的数据收集。&lt;/li&gt;
+&lt;li&gt;第三个方面是&lt;strong&gt;物种的特征&lt;/strong&gt;：比如植物的生活型，生长型，功能类型等，这个对后面功能多样性的研究很关键
+还有就是各个物种的系统发育位置，可以去找各种植物志，动物志或者NCBI的数据库来获得，这个对谱系多样性研究很重要。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/5.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;h2 id=&#34;measure-methods&#34;&gt;Measure methods&lt;/h2&gt;
+&lt;p&gt;获取了以上这些数据后，接下来就是使用一些指标对多样性进行度量。&lt;/p&gt;
+&lt;h3 id=&#34;taxa-α-diversity&#34;&gt;Taxa α diversity&lt;/h3&gt;
+&lt;p&gt;首先是分类的a多样性指数，主要有以下几个类别：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用物种数指示&lt;/li&gt;
+&lt;li&gt;物种数和物种总个体数&lt;/li&gt;
+&lt;li&gt;物种数和物种总个体数和每个物种的个体数（还有一些专门用在测序数据表征多样性的，因为测序手段我们能获得的丰度表是不传统的。这种树我看到了几棵，那个动物有几只等等，而是用测序测到了多少条DNA来表征的，所以会有很多测不到的，或者只能测到几条序列的，就有Chao1和ACE指数来考虑这些非常低的物种）&lt;/li&gt;
+&lt;li&gt;用信息公示表示（常用的shannon-wiener指数就在这里）&lt;/li&gt;
+&lt;li&gt;均一性表示&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/6.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;img src=&#34;images/7.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;img src=&#34;images/8.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;img src=&#34;images/9.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;h3 id=&#34;taxa-β-diversity&#34;&gt;Taxa β diversity&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;beta多样性的三个常用的简单指标：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/10.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;基于相异系数进行计算：
+这里收集了目前会用到的各种距离的算法，比如我们常用的欧式距离，还有这个bray距离等，这样算出来就是一个距离矩阵，我们可以知道哪些样方之间差异大或者差异小&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/11.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;h3 id=&#34;taxa-γ-diversity&#34;&gt;Taxa γ diversity&lt;/h3&gt;
+&lt;p&gt;gamma多样性，沿着长江取样来举个例子，图中每个取样点本身的微生物多样性是α-多样性（单个群落水平）；将1～9这九个样点归为一组，则这一组内各样点之间的差异，可以理解为β-多样性（局部或者区域水平）；当我们把所有取样点放在一起，站在一个更高、更广阔的尺度上时，这时候的多样性就是所谓的γ-多样性。这个指标就是α-多样性在尺度上的一个推广。&lt;/p&gt;
+&lt;img src=&#34;images/12.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;一个例子总结三个尺度上的物种多样性：&lt;/p&gt;
+&lt;img src=&#34;images/13.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;三个生态区九座山峰的生物多样性指数。每个符号代表不同的物种；有些物种只在一个峰上有种群，而另一些则在两个或更多峰上。每个峰上物种丰富度的变化导致每个生态区的不同
+alpha、gamma 和 beta 多样性值。&lt;/p&gt;
+&lt;p&gt;这种变化对我们如何分配有限的资源以最大限度地保护资源有影响。如果只能保护一个生态区，生态区
+3可能是一个不错的选择，因为它具有高伽马（总）多样性。但是，如果只能保护一个山峰，是否应该保护生态区
+1（有许多分布广泛的物种）或生态区3（有几个独特的、范围受限的物种）中的山峰？&lt;/p&gt;
+&lt;h3 id=&#34;phylogenetic-α-diversity&#34;&gt;Phylogenetic α diversity&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;群落系统发育多样性PD：谱系树的总枝长度&lt;/li&gt;
+&lt;li&gt;净相关指数NRI：
+计算所有物种对的平均谱系距离MPD，保持物种数量和个体数不变&lt;/li&gt;
+&lt;li&gt;最近邻体指数NTI：
+计算所有物种对的平均谱系距离MNPD，保持物种数量和个体数不变&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/14.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;可以看上图右边的例子，3个样方发现的四种物种丰度表，我们确定了他们的系统发育关系就可以进行计算。&lt;/p&gt;
+&lt;h3 id=&#34;phylogenetic-β-diversity&#34;&gt;Phylogenetic β diversity&lt;/h3&gt;
+&lt;p&gt;Beta的计算会稍微复杂一点，公式没有一个个列出，但是有相关的R包进行计算（vegan）。&lt;/p&gt;
+&lt;img src=&#34;images/15.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;h3 id=&#34;functional-diversity&#34;&gt;Functional diversity&lt;/h3&gt;
+&lt;p&gt;最后就是&lt;strong&gt;功能多样性指数&lt;/strong&gt;，他是影响种群生存、群落和生态系统稳定的重要因素，
+能更好地反映生态系统生产、养分平衡等功能。&lt;/p&gt;
+&lt;img src=&#34;images/16.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;img src=&#34;images/17.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;这个怎么计算呢，要收集好物种的功能类型，比如对于植物来说，有光和途径等等，也同样整理为功能表，功能表和物种丰度表mapping合并一下可以得到功能丰度表，然后就可以计算各种指数了。&lt;/p&gt;
+&lt;h2 id=&#34;analytical-methods&#34;&gt;Analytical methods&lt;/h2&gt;
+&lt;p&gt;我们应该怎么做数据分析呢？（具体的流程和代码下次分享，这里先简单描述一下）&lt;/p&gt;
+&lt;img src=&#34;images/18.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;首先拿到丰度表，可以对整个表进行重采样，每次采样计算一次a多样性指数，就可以做出这个稀释曲线，他可以说明我们在这个样方里的调查或者说测序手段是否是充足的。&lt;/p&gt;
+&lt;p&gt;然后是计算每个样方的a多样性指数，
+通过结合环境因子数据，我们可以做组间多重比较，比如说
+对于一些数值数据，我们可以计算相关性，或者做回归分析。
+这个回归又分为很多方式，比如线性回归，广义线性回归等等，这个可以帮我们发现那些因素会以怎样的方式影响a多样性，比如这里，可能海拔越高多样性越低。&lt;/p&gt;
+&lt;img src=&#34;images/19.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;对于beta多样性，我们首先计算相异矩阵，这里就是样本与样本间的距离
+我们可以做热图展示各样本间的距离，
+或者做一个相似系数-地理距离的回归分析，一般来说，地理距离越远，可能beta多样性越高。&lt;/p&gt;
+&lt;p&gt;或者具体看看组间差异，这里可以看到KO_OE组beta多样性最大，
+还能做聚类分析，看看到底哪些样本更加类似。&lt;/p&gt;
+&lt;img src=&#34;images/20.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;Beta多样性的另一种展示方法是排序方法，也叫降维分析，我们常用的方法有PCA，PcoA等等，
+另外可以加上环境因子数据，做约束排序，比如RDA，CCA等方法，不仅能看到样本间的差异，还可以看到这种差异主要是由那种环境因子影响的，比如这里，在轴一上的差异主要是由env1这个变量引起的。&lt;/p&gt;
+&lt;h2 id=&#34;theories&#34;&gt;Theories&lt;/h2&gt;
+&lt;img src=&#34;images/21.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;img src=&#34;images/22.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;物种多样性的&lt;strong&gt;中性理论&lt;/strong&gt;做出了一个具有挑战性的假设，即所有个体在生态上都是相同的，并且不需要生态位差异来解释生物多样性模式。
+根据中性理论，等同物种的高度多样化群落的出现是因为偶然的灭绝被物种形成所平衡。具体来说，适应性等价假设与随机或随机过程相结合，包括死亡、来自区域物种库的移民和物种形成，可以导致物种丰富的种群。（有关生态位和中性作用对多样性影响，专门有研究这种&lt;strong&gt;群落构建&lt;/strong&gt;的）&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;img src=&#34;images/23.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+</description>
+        </item>
+        <item>
+        <title>CRISPR 相关学习</title>
+        <link>/p/crispr/</link>
+        <pubDate>Tue, 28 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/p/crispr/</guid>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;CRISPR规律成簇间隔短回文重复：clustered regularly interspaced short
+palindromic repeats&lt;/p&gt;
+&lt;p&gt;CRISPR是存在于细菌基因组中的一种元件，其中含有曾经攻击过该细菌的病毒的基因片段。细菌透过这些基因片段来侦测并抵抗相同病毒的攻击，并摧毁其DNA，这类基因组是细菌（和古菌）免疫系统的关键组成部分。&lt;/p&gt;
+&lt;h3 id=&#34;work-mechanism&#34;&gt;Work mechanism&lt;/h3&gt;
+&lt;p&gt;CRISPR整体工作流程基本如下 (&lt;a class=&#34;link&#34; href=&#34;#ref-carterSnapShotCRISPRRNAGuidedAdaptive2015&#34; &gt;&lt;em&gt;1&lt;/em&gt;&lt;/a&gt;)：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/crispr/images/crispr_overall.png&#34;
+	width=&#34;2352&#34;
+	height=&#34;1514&#34;
+	srcset=&#34;/p/crispr/images/crispr_overall_hu2b99bc15595c9e40832f00a0c0da6f02_905654_480x0_resize_box_3.png 480w, /p/crispr/images/crispr_overall_hu2b99bc15595c9e40832f00a0c0da6f02_905654_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;372px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;阶段1. 外源DNA采集&lt;/p&gt;
+&lt;p&gt;外来核酸被Cas蛋白识别，入侵DNA的短片段（30-50个碱基对）（称为原型间隔子）被插入宿主的CRISPR基因座作为间隔序列，由重复序列分隔。在I型和II型系统中，原型间隔子选自侧翼有2-5称为PAM（protospacer
+adjacent
+motif）的核苷酸(nt)基序。原型间隔子通常结合在CRISPR基因座的一端，称为领导者，通过涉及Cas1、Cas2和原型间隔子上的游离3’羟基的机制。Protospacer整合伴随着重复前导末端重复序列，可能涉及宿主聚合酶和DNA修复机制。&lt;/p&gt;
+&lt;p&gt;阶段2. crRNA生物合成&lt;/p&gt;
+&lt;p&gt;CRISPR
+RNA生物合成始于转录，然后将初级转录本（pre-crRNA）核解加工成短的CRISPR衍生RNA文库(crRNAs)，每个都包含与先前遇到的外来DNA互补的序列。crRNA指导序列的两侧是相邻重复区域。在I型和III型系统中，初级CRISPR转录物由在重复序列内切割的CRISPR特异性内切核糖核酸酶（Cas6或Cas5d）处理。在许多I型系统中，重复序列是回文序列，并且Cas6与crRNA3’端的茎环稳定相关。在III型系统中，Cas6与CRISPR
+RNA瞬时结合，crRNA的3’端被未知核酸酶进一步修剪。CRISPR
+RNA加工类型II系统依赖于反式作用crRNA(tracrRNA)，它包含与重复序列互补的序列。这些双链区域在Cas9存在的情况下由RNase
+III处理。在II型系统中，tracrRNA和crRNA都是目标干扰所需的。该系统的两个RNA已融合成一个单向导RNA(sgRNA)，Cas9已成为一个强大的工具用于在多种细胞类型和多细胞生物中进行靶向基因组工程。&lt;/p&gt;
+&lt;p&gt;阶段3. 目标干扰&lt;/p&gt;
+&lt;p&gt;成熟的crRNA将Cas蛋白引导至互补目标。目标序列被专用Cas核酸酶降解，但目标降解的机制多种多样。I型和II型系统均以包含PAM和互补原型间隔子的dsDNA底物为目标顺序。II型系统中的目标切割由单个蛋白质(Cas9)和两个RNA执行，而I型系统依赖于多亚基监视复合物结合dsDNA底物然后募集Cas3，这是一种反式作用核酸酶，通常与ATP依赖性解旋酶融合。像I型系统，III型系统还依赖多亚基复合物进行目标检测，但与I型系统不同，这些复合物表现出内源性核酸酶活性，以转录依赖性方式降解互补RNA和靶DNA。III型系统不依赖PAM进行目标识别；相反，碱基配对延伸超出指导序列并进入crRNA信号”自身”的5’句柄（CRISPR基因座包含与指导和5’互补的序列handle)并防止目标切割。&lt;/p&gt;
+&lt;h3 id=&#34;pam&#34;&gt;PAM&lt;/h3&gt;
+&lt;p&gt;使用CRISPR/Cas9系统进行基因编辑时需要考虑PAM，PAM的含义和重要性：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Protospacer adjacent motif（PAM）原间隔序列邻近模块序列。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CRISPR/Cas9 (或 gRNA)所靶向的 DNA 序列称为 protospacer，PAM
+是与之紧邻的一小段 DNA 序列(常用的 SpCas9 识别的 PAM 为 NGG)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cas9/sgRNA 不能结合、切割没有 PAM 的靶向序列。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PAM 是细菌区分自身 DNA 与外源 DNA 的重要标志。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;改变 PAM 或与其相邻的 protospacer/target DNA
+序列会严重影响核酸酶(Cas9, Cpf1 等) 对 DNA 的切割效率。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;某些基因编辑操作(如敲入点突变)可能需要人为将 PAM 或与其相邻的 DNA
+序列进行突变，以避免核酸酶对该位点的反复切割，从而提高编辑效率。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;class-type-subtype&#34;&gt;Class, Type, Subtype&lt;/h3&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;center&gt;
+&lt;img src=&#34;images/class1.png&#34;&gt; 1类
+&lt;/center&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;center&gt;
+&lt;img src=&#34;images/class2.png&#34;&gt; 2类
+&lt;/center&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;原核生物的CRISPR-Cas适应性免疫系统根据效应子模块组织分为两个不同的类别。
+1类CRISPR-Cas系统利用&lt;strong&gt;多蛋白效应复合物&lt;/strong&gt; (&lt;a class=&#34;link&#34; href=&#34;#ref-makarovaSnapShotClassCRISPRCas2017&#34; &gt;&lt;em&gt;2&lt;/em&gt;&lt;/a&gt;)，而2类CRISPR-Cas系统利用&lt;strong&gt;单一蛋白效应器&lt;/strong&gt; (&lt;a class=&#34;link&#34; href=&#34;#ref-makarovaSnapShotClassCRISPRCas2017a&#34; &gt;&lt;em&gt;3&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
+&lt;p&gt;基于不同的效应蛋白家族，1类系统分为3种类型和12种亚型。1类系统代表CRISPR-Cas基因座的约90％，并且存在于不同的细菌和古菌门中;嗜热菌富含III型系统。除效应子基因之外，大部分1类基因座编码适应模块蛋白质Cas1和Cas2，以及多种辅助蛋白质，例如Cas4，逆转录酶，CARF（CRISPR相关的Rossmann折叠）结构域蛋白质等。
+III型和IV型系统在其各自的基因座中经常缺少适应性模块基因和/或CRISPR阵列。所有I型系统也编码DNA解旋酶Cas3，其通常与HD家族核酸酶结构域融合。在I型系统中，PAM在不同亚型之间变化，位于（原型）间隔区的5’或3’，对于适应和干扰都是必需的。&lt;/p&gt;
+&lt;p&gt;基于不同的效应蛋白家族，第2类系统可分为3种类型和9个亚型。第十亚型（V-U）包括许多假定的系统，其免疫（或可能是调节）功能仍有待证明。 2类系统占CRISPR-Cas基因座的约10％，在不同的细菌被发现，但在古细菌中几乎不存在。除了效应器蛋白质，大部分2类基因组编码适应性模块蛋白质，Cas1和Cas2以及辅助蛋白质，例如Cas4。 II型和V-B型基因座还包括tracrRNA（反式激活CRISPR RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然而，某些2类系统，特别是类型6的系统仅由CRISPR阵列和效应蛋白组成。&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
+&lt;div id=&#34;ref-carterSnapShotCRISPRRNAGuidedAdaptive2015&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;1. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;J. Carter, B. Wiedenheft, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.cell.2015.09.011&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SnapShot: CRISPR-RNA-Guided Adaptive Immune Systems&lt;/a&gt;. &lt;em&gt;Cell&lt;/em&gt;. &lt;strong&gt;163&lt;/strong&gt;, 260–260.e1 (2015).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-makarovaSnapShotClassCRISPRCas2017&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;2. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;K. S. Makarova, F. Zhang, E. V. Koonin, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.cell.2017.02.018&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SnapShot: Class 1 CRISPR-Cas Systems&lt;/a&gt;. &lt;em&gt;Cell&lt;/em&gt;. &lt;strong&gt;168&lt;/strong&gt;, 946–946.e1 (2017).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-makarovaSnapShotClassCRISPRCas2017a&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;3. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;K. S. Makarova, F. Zhang, E. V. Koonin, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.cell.2016.12.038&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SnapShot: Class 2 CRISPR-Cas Systems&lt;/a&gt;. &lt;em&gt;Cell&lt;/em&gt;. &lt;strong&gt;168&lt;/strong&gt;, 328–328.e1 (2017).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
         <title>微生物群落构建（community assembly）</title>
         <link>/p/community-assembly/</link>
         <pubDate>Fri, 17 Mar 2023 00:00:00 +0000</pubDate>
@@ -167,9 +428,9 @@ MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 
 &lt;h3 id=&#34;3solan-ncm&#34;&gt;3.Solan NCM&lt;/h3&gt;
 &lt;p&gt;只有当物种死亡或离开这个系统时，群落结构才会发生改变。此时，离开个体的生态位就会空余出来，其它个体会通过&lt;strong&gt;来自群落外的迁移&lt;/strong&gt;或&lt;strong&gt;群落内部的繁殖&lt;/strong&gt;来填补空出的生态位。因此可以把群落的动态描述为&lt;strong&gt;死亡——繁殖/扩散——死亡&lt;/strong&gt;这样的循环 (&lt;a class=&#34;link&#34; href=&#34;#ref-sloanQuantifyingRolesImmigration2006&#34; &gt;&lt;em&gt;6&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;计算公式：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;-$Pr(\frac{N_i+1}{N_i})=(\frac{N_T-N_i}{N_T})[mp_i+(1+\alpha_i)(1-m)(\frac{N_i}{N_T-1})$
--$Pr(\frac{N_i}{N_i})=\frac{N_i}{N_T}[mp_i+{(1+\alpha_i)}(1-m)(\frac{N_i-1}{N_T-1})]+(\frac{N_T-N_i}{N_T})[m(1-p_i)+{red}{(1-\alpha_i)}(1-m)(\frac{N_T-N_i-1}{N_T-1})]$
--$Pr(\frac{N_i-1}{N_i})=\frac{N_i}{N_T}[m(1-p_i)+(1-\alpha_i)(1-m)(\frac{N_T-N_i}{N_T-1})]$&lt;/p&gt;
+&lt;p&gt;-$Pr(\frac{N_i+1}{N_i})=(\frac{N_T-N_i}{N_T})[mp_i+(1+\alpha_i)(1-m)(\frac{N_i}{N_T-1})$&lt;/p&gt;
+&lt;p&gt;-$Pr(\frac{N_i}{N_i})=\frac{N_i}{N_T}[mp_i+{(1+\alpha_i)}(1-m)(\frac{N_i-1}{N_T-1})]+(\frac{N_T-N_i}{N_T})[m(1-p_i)+{red}{(1-\alpha_i)}(1-m)(\frac{N_T-N_i-1}{N_T-1})]$&lt;/p&gt;
+&lt;p&gt;-$Pr(\frac{N_i-1}{N_i})=\frac{N_i}{N_T}[m(1-p_i)+(1-\alpha_i)(1-m)(\frac{N_T-N_i}{N_T-1})]$&lt;/p&gt;
 &lt;p&gt;物种 i 占居的频率（occurrence frequency: row sums of binary OTU table/number of sites）为其概率密度函数的积分。 此时该分布是一个beta分布，我们就可以在R语言中利用beta分布对其进行[拟合]，获得参数m的评估值。&lt;/p&gt;
 &lt;h4 id=&#34;code-2&#34;&gt;code&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -248,8 +509,8 @@ MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 
 &lt;h4 id=&#34;dnci&#34;&gt;DNCI&lt;/h4&gt;
 &lt;p&gt;在PER-SIMPER方法的基础上，提出了一个新的度量指标: dispersal–niche continuum index (&lt;strong&gt;DNCI&lt;/strong&gt;)，该指数可估计是扩散过程还是生态位过程主导群落的构建，并便于不同数据集之间的比较。&lt;/p&gt;
 &lt;p&gt;PER-SIMPER利用物种在不同站点之间的矩阵，在排列过程中生成三种不同的零模型： 通过&lt;strong&gt;约束行(生态位构建)、约束列(扩散构建)或两者都约束&lt;/strong&gt;。 PER-SIMPER利用SIMPER方法对原始群落矩阵组成相似度模式进行建模，并与三个零模型比较。 PER-SIMPER通过识别哪个零模型与经验分析最匹配来进行定性评估。然而，大多数群落都是由生态位和扩散过程共同构成的，这限制了构建机制定性方法的敏感性。此外简单决策过程的定性特性使不同群落之间的构建过程难以进行精确比较。&lt;/p&gt;
-&lt;p&gt;PER-SIMPER分析返回三个E-metric分布,这与SIMPER经验值与三个PER-SIMPER零模型之间的偏差相关。本文提出的新的DNCI是由这些计算的E值推导而来的。 定量结果是基于标准效应量En(即来自”生态位”模型的E-metric分布)减去标准效应量Ed (即来自”扩散”模型的E-metric分布)。 DNCI提供了一种方法来量化和比较跨数据集构建过程的强度。&lt;strong&gt;DNCI值正或负表明生态位或分散过程分别是群组构建的主要过程。指数的绝对值越高，代表占主导地位的构建过程的潜力越大。&lt;/strong&gt;
-$DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)-\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{n(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)$&lt;/p&gt;
+&lt;p&gt;PER-SIMPER分析返回三个E-metric分布,这与SIMPER经验值与三个PER-SIMPER零模型之间的偏差相关。本文提出的新的DNCI是由这些计算的E值推导而来的。 定量结果是基于标准效应量En(即来自”生态位”模型的E-metric分布)减去标准效应量Ed (即来自”扩散”模型的E-metric分布)。 DNCI提供了一种方法来量化和比较跨数据集构建过程的强度。&lt;strong&gt;DNCI值正或负表明生态位或分散过程分别是群组构建的主要过程。指数的绝对值越高，代表占主导地位的构建过程的潜力越大。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)-\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{n(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)$&lt;/p&gt;
 &lt;p&gt;如果DNCI与0差异不显著，则可以认为扩散过程和生态位过程对群落构建的影响是相等的。 当DNCI显著低于0时，扩散过程是群落构建的主导驱动因素; 如果DNCI显著高于0，生态位过程是群落构建的主要决定因素。 注意，表明扩散过程优势的负DNCI值并不能提供实际扩散速率的信息。&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;

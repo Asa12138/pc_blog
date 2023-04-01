@@ -9,7 +9,7 @@ tags:
   - R
   - 编程
 description: ~
-image: ~
+image: Rshiny.jpg
 math: ~
 license: ~
 hidden: no

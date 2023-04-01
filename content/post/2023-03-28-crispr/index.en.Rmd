@@ -1,7 +1,7 @@
 ---
 title: CRISPR 相关学习
 author: Peng Chen
-date: '2023-03-28'
+date: '2023-04-20'
 slug: crispr
 categories:
   - microbial-ecology
@@ -101,6 +101,30 @@ RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然
 大部分的CRISPR array中的spacer尚未与它们识别的病毒相关联，被命名为
 **CRISPR 暗物质**。
 
-### membranome and CRISPR-Cas systems \@rubioAnalysisBacterialPangenomes2023
+### membranome and CRISPR-Cas systems 
+
+最新的这篇文章分析了被称为 ESKAPE 的细菌组的数千个基因组,
+看有crispr系统的基因组比没有的基因组多的特殊功能\@rubioAnalysisBacterialPangenomes2023
+
+1.  总体crispr概况
+
+cirspr type 分布，spacer到plasmid/phage的比例。。。
+
+在肠沙门氏菌中，已表明这些系统可以调节鞭毛基因的表达，最终与生物膜形成有关。
+
+平均而言，具有 CRISPR-Cas 系统的基因组呈现出较少数量的抗性和毒力基因。
+
+2.  crispr phylogeny
+
+CRISPR-Cas 系统似乎遍布整个系统发育树
+
+CRISPR-Cas 系统不会出现在具有固定辅助基因集合的基因组中
+
+具有 CRISPR-Cas
+系统的基因组是否以比没有这些系统的基因组更高的频率呈现特定基因？（进一步看这个）
+
+3. CRISPR-Cas 相关基因富集膜蛋白
+4. 具有 CRISPR-Cas I 型系统和特定膜蛋白的基因组显示出独特的spacer和噬菌体
+
 
 ## Reference

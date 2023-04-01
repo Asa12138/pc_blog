@@ -1,0 +1,23 @@
+---
+title: R绘制好看的地图
+author: Peng Chen
+date: '2023-04-06'
+slug: r-map
+categories:
+  - R
+tags:
+  - 地图
+  - R
+  - 可视化
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+```{r include=FALSE}
+Packages <- c("dplyr","kableExtra","ggplot2")
+pcutils::lib_ps(Packages)
+knitr::opts_chunk$set(message = FALSE,warning = FALSE,eval = FALSE)
+```

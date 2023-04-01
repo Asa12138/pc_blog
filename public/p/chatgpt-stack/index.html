@@ -5,9 +5,9 @@
 我很快发现了问题是Rmd产生的md文件可能跟stack主题不太匹配，一开始想看看yaml文件能不能修改解决，但找了不少地方都没找到😭。
 因为问题还比较确定，可以试试自己写脚本转换Rmd产生的md文件。
 公式问题 rblogdown 渲染Rmd成md会把我写的公式语法改变：
-例如： $a=sum_i^2$变成了\(a=sum_i^2\)
+例如： $a=sum_i^2$变成$a=sum_i^2$
 但是stack主题识别不了后面那种语法，这个比较简单：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 import re # 定义一个正则表达式，匹配LaTeX数学公式中的起始和结束行内数学模式符号 pattern = r&amp;#39;\\\((.*?)\\\)&amp;#39; # 定义一个字符串，包含要处理的LaTeX字符串 latex_string = r&amp;#39;For the equation `\(\sum_{i=1}^n i^2\)`&amp;#39; # 使用sub()函数替换匹配到的文本 processed_string = re.sub(pattern, r&amp;#39;$\1$&amp;#39;, latex_string) # 输出处理后的字符串 print(processed_string) a=re.sub(r&amp;#39;`\\\((.*?)\\\)`&amp;#39;,r&amp;#39;$\1$&amp;#39;,&amp;#34;`\(a=sum_i^2\)`jjjhg`\(a=sum_i^2\)`&amp;#34;) 图片大小调整 因为![from data to viz website](images/data2viz.png){width=60%}这种语法是stack主题不支持的， 但是
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 import re # 定义一个正则表达式，匹配LaTeX数学公式中的起始和结束行内数学模式符号 pattern = r&amp;#39;\\\((.*?)\\\)&amp;#39; # 定义一个字符串，包含要处理的LaTeX字符串 latex_string = r&amp;#39;For the equation$\sum_{i=1}^n i^2$&amp;#39; # 使用sub()函数替换匹配到的文本 processed_string = re.sub(pattern, r&amp;#39;$\1$&amp;#39;, latex_string) # 输出处理后的字符串 print(processed_string) a=re.sub(r&amp;#39;`\\\((.*?)\\\)`&amp;#39;,r&amp;#39;$\1$&amp;#39;,$a=sum_i^2$jjjh$a=sum_i^2$&amp;#34;) 图片大小调整 因为![from data to viz website](images/data2viz.png){width=60%}这种语法是stack主题不支持的， 但是
 1 2 3 &amp;#39;&amp;lt;p style=&amp;#34;text-align: center;&amp;#34;&amp;gt; &amp;lt;img src=&amp;#34;images/data2viz.png&amp;#34; width=&amp;#34;60%&amp;#34; title=&amp;#34;from data to viz website&amp;#34;/&amp;gt; &amp;lt;/p&amp;gt;&amp;#39; 这种语法是支持的，所以想写一个小脚本转换一下'>
 <title>ChatGPT帮我调整stack主题</title>
 
@@ -18,9 +18,9 @@
 我很快发现了问题是Rmd产生的md文件可能跟stack主题不太匹配，一开始想看看yaml文件能不能修改解决，但找了不少地方都没找到😭。
 因为问题还比较确定，可以试试自己写脚本转换Rmd产生的md文件。
 公式问题 rblogdown 渲染Rmd成md会把我写的公式语法改变：
-例如： $a=sum_i^2$变成了\(a=sum_i^2\)
+例如： $a=sum_i^2$变成$a=sum_i^2$
 但是stack主题识别不了后面那种语法，这个比较简单：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 import re # 定义一个正则表达式，匹配LaTeX数学公式中的起始和结束行内数学模式符号 pattern = r&amp;#39;\\\((.*?)\\\)&amp;#39; # 定义一个字符串，包含要处理的LaTeX字符串 latex_string = r&amp;#39;For the equation `\(\sum_{i=1}^n i^2\)`&amp;#39; # 使用sub()函数替换匹配到的文本 processed_string = re.sub(pattern, r&amp;#39;$\1$&amp;#39;, latex_string) # 输出处理后的字符串 print(processed_string) a=re.sub(r&amp;#39;`\\\((.*?)\\\)`&amp;#39;,r&amp;#39;$\1$&amp;#39;,&amp;#34;`\(a=sum_i^2\)`jjjhg`\(a=sum_i^2\)`&amp;#34;) 图片大小调整 因为![from data to viz website](images/data2viz.png){width=60%}这种语法是stack主题不支持的， 但是
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 import re # 定义一个正则表达式，匹配LaTeX数学公式中的起始和结束行内数学模式符号 pattern = r&amp;#39;\\\((.*?)\\\)&amp;#39; # 定义一个字符串，包含要处理的LaTeX字符串 latex_string = r&amp;#39;For the equation$\sum_{i=1}^n i^2$&amp;#39; # 使用sub()函数替换匹配到的文本 processed_string = re.sub(pattern, r&amp;#39;$\1$&amp;#39;, latex_string) # 输出处理后的字符串 print(processed_string) a=re.sub(r&amp;#39;`\\\((.*?)\\\)`&amp;#39;,r&amp;#39;$\1$&amp;#39;,$a=sum_i^2$jjjh$a=sum_i^2$&amp;#34;) 图片大小调整 因为![from data to viz website](images/data2viz.png){width=60%}这种语法是stack主题不支持的， 但是
 1 2 3 &amp;#39;&amp;lt;p style=&amp;#34;text-align: center;&amp;#34;&amp;gt; &amp;lt;img src=&amp;#34;images/data2viz.png&amp;#34; width=&amp;#34;60%&amp;#34; title=&amp;#34;from data to viz website&amp;#34;/&amp;gt; &amp;lt;/p&amp;gt;&amp;#39; 这种语法是支持的，所以想写一个小脚本转换一下'>
 <meta property='og:url' content='/p/chatgpt-stack/'>
 <meta property='og:site_name' content='Asa&#39;s blog'>
@@ -30,9 +30,9 @@
 我很快发现了问题是Rmd产生的md文件可能跟stack主题不太匹配，一开始想看看yaml文件能不能修改解决，但找了不少地方都没找到😭。
 因为问题还比较确定，可以试试自己写脚本转换Rmd产生的md文件。
 公式问题 rblogdown 渲染Rmd成md会把我写的公式语法改变：
-例如： $a=sum_i^2$变成了\(a=sum_i^2\)
+例如： $a=sum_i^2$变成$a=sum_i^2$
 但是stack主题识别不了后面那种语法，这个比较简单：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 import re # 定义一个正则表达式，匹配LaTeX数学公式中的起始和结束行内数学模式符号 pattern = r&amp;#39;\\\((.*?)\\\)&amp;#39; # 定义一个字符串，包含要处理的LaTeX字符串 latex_string = r&amp;#39;For the equation `\(\sum_{i=1}^n i^2\)`&amp;#39; # 使用sub()函数替换匹配到的文本 processed_string = re.sub(pattern, r&amp;#39;$\1$&amp;#39;, latex_string) # 输出处理后的字符串 print(processed_string) a=re.sub(r&amp;#39;`\\\((.*?)\\\)`&amp;#39;,r&amp;#39;$\1$&amp;#39;,&amp;#34;`\(a=sum_i^2\)`jjjhg`\(a=sum_i^2\)`&amp;#34;) 图片大小调整 因为![from data to viz website](images/data2viz.png){width=60%}这种语法是stack主题不支持的， 但是
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 import re # 定义一个正则表达式，匹配LaTeX数学公式中的起始和结束行内数学模式符号 pattern = r&amp;#39;\\\((.*?)\\\)&amp;#39; # 定义一个字符串，包含要处理的LaTeX字符串 latex_string = r&amp;#39;For the equation$\sum_{i=1}^n i^2$&amp;#39; # 使用sub()函数替换匹配到的文本 processed_string = re.sub(pattern, r&amp;#39;$\1$&amp;#39;, latex_string) # 输出处理后的字符串 print(processed_string) a=re.sub(r&amp;#39;`\\\((.*?)\\\)`&amp;#39;,r&amp;#39;$\1$&amp;#39;,$a=sum_i^2$jjjh$a=sum_i^2$&amp;#34;) 图片大小调整 因为![from data to viz website](images/data2viz.png){width=60%}这种语法是stack主题不支持的， 但是
 1 2 3 &amp;#39;&amp;lt;p style=&amp;#34;text-align: center;&amp;#34;&amp;gt; &amp;lt;img src=&amp;#34;images/data2viz.png&amp;#34; width=&amp;#34;60%&amp;#34; title=&amp;#34;from data to viz website&amp;#34;/&amp;gt; &amp;lt;/p&amp;gt;&amp;#39; 这种语法是支持的，所以想写一个小脚本转换一下"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='/p/chatgpt-stack/ChatGPT.jpg' />
     </head>
@@ -409,7 +409,7 @@
 <p>因为问题还比较确定，可以试试自己写脚本转换Rmd产生的md文件。</p>
 <h2 id="公式问题">公式问题</h2>
 <p>rblogdown 渲染Rmd成md会把我写的公式语法改变：</p>
-<p>例如： <code>$a=sum_i^2$</code>变成了<code>\(a=sum_i^2\)</code></p>
+<p>例如： <code>$a=sum_i^2$</code>变成$a=sum_i^2$</p>
 <p>但是stack主题识别不了后面那种语法，这个比较简单：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -436,7 +436,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">\((.*?)</span><span class="se">\\</span><span class="s1">\)&#39;</span>  
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 定义一个字符串，包含要处理的LaTeX字符串</span>
-</span></span><span class="line"><span class="cl"><span class="n">latex_string</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;For the equation `\(\sum_{i=1}^n i^2\)`&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">latex_string</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;For the equation$\sum_{i=1}^n i^2$&#39;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 使用sub()函数替换匹配到的文本</span>
 </span></span><span class="line"><span class="cl"><span class="n">processed_string</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\1$&#39;</span><span class="p">,</span> <span class="n">latex_string</span><span class="p">)</span>
@@ -444,7 +444,7 @@
 </span></span><span class="line"><span class="cl"><span class="c1"># 输出处理后的字符串</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">processed_string</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;`</span><span class="se">\\</span><span class="s1">\((.*?)</span><span class="se">\\</span><span class="s1">\)`&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$\1$&#39;</span><span class="p">,</span><span class="s2">&#34;`\(a=sum_i^2\)`jjjhg`\(a=sum_i^2\)`&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;`</span><span class="se">\\</span><span class="s1">\((.*?)</span><span class="se">\\</span><span class="s1">\)`&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$\1$&#39;</span><span class="p">,</span><span class="err">$</span><span class="n">a</span><span class="o">=</span><span class="n">sum_i</span><span class="o">^</span><span class="mi">2</span><span class="err">$</span><span class="n">jjjh</span><span class="err">$</span><span class="n">a</span><span class="o">=</span><span class="n">sum_i</span><span class="o">^</span><span class="mi">2</span><span class="err">$</span><span class="s2">&#34;)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="图片大小调整">图片大小调整</h2>
@@ -757,7 +757,7 @@
 </div><p>这个思路真不错，哈哈</p>
 <h2 id="解决方法">解决方法</h2>
 <p>调教了一下ChatGPT后，就得到了整个更新问题的方法了：
-首先整理一个<a class="link" href="https://github.com/Asa12138/pc_blog/refresh_md_to_fit_stack.py"  target="_blank" rel="noopener"
+首先整理一个<a class="link" href="https://github.com/Asa12138/pc_blog/R/refresh_md_to_fit_stack.py"  target="_blank" rel="noopener"
     >refresh_md_to_fit_stack.py</a>放在网站根目录下，
 然后在R文件夹的（如果你是用Rblogdown生成的网站，那就会有这个文件夹）的build2.R中加入一行：</p>
 <p><code>system(&quot;python refresh_md_to_fit_stack.py&quot;)</code></p>
@@ -834,9 +834,20 @@
         <div class="flex article-list--tile">
             
                 
-<article class="">
+<article class="has-image">
     <a href="/p/%E7%B4%AB%E9%87%91%E6%98%A5%E6%97%A5/">
         
+        
+            <div class="article-image">
+                <img src="/p/%E7%B4%AB%E9%87%91%E6%98%A5%E6%97%A5/images/%E8%A5%BF%E5%BA%9C.faa6993b75a9e6c50a8c71de7b6743eb_hu9cec70a3d2a230bf39151bcb5362fd23_124766_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 紫金春日"
+                        
+                        data-hash="md5-&#43;qaZO3Wp5sUKjHHee2dD6w==">
+                
+            </div>
         
 
         <div class="article-details">

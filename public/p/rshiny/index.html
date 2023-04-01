@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction Shiny 是一个 R 包，可轻松地直接从 R 构建交互式 Web 应用程序。还可以在网页上托管独立应用程序或将它们嵌入 R Markdown 文档或构建仪表板，还可以使用 CSS 主题、html 小部件和 JavaScript 操作扩展您的 Shiny 应用程序。
+1 2 3 4 5 6 7 8 #first app library(shiny) ui &amp;lt;- fluidPage( &amp;#34;Hello, world!&amp;#34; ) server &amp;lt;- function(input, output, session) { } shinyApp(ui, server) 整个app可分为两个部分，ui与sever，可以认为是前端与后端的关系，Rshiny提供了很多内置的小组件帮我们将前后端联系起来，非常方便好用。只需要有一点点的HTML/CSS/Javascript的知识就可以设计出更好看的界面和更多有趣的交互。
+这里是shiny的记忆手册,浓缩了大部分的操作。 Methods UI设计 Layout 最基础的布局就是sidebarLayout,可以分成sidebarPanel,mainPanel两个部分。
+1 2 3 4 5 6 7 8 ui &amp;lt;- fluidPage( titlePanel(&amp;#34;title panel&amp;#34;), sidebarLayout( sidebarPanel(&amp;#34;sidebar panel&amp;#34;), mainPanel(&amp;#34;main panel&amp;#34;) ) ) 可以通过将内容放在 *Panel 函数中来向Shiny 应用程序添加内容，shiny提供了R代码方便插入HTML (Table 1)，更多标签可以查看tag-glossary。'>
 <title>开发我的Rshiny应用</title>
 
 <link rel='canonical' href='/p/rshiny/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='开发我的Rshiny应用'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='Introduction Shiny 是一个 R 包，可轻松地直接从 R 构建交互式 Web 应用程序。还可以在网页上托管独立应用程序或将它们嵌入 R Markdown 文档或构建仪表板，还可以使用 CSS 主题、html 小部件和 JavaScript 操作扩展您的 Shiny 应用程序。
+1 2 3 4 5 6 7 8 #first app library(shiny) ui &amp;lt;- fluidPage( &amp;#34;Hello, world!&amp;#34; ) server &amp;lt;- function(input, output, session) { } shinyApp(ui, server) 整个app可分为两个部分，ui与sever，可以认为是前端与后端的关系，Rshiny提供了很多内置的小组件帮我们将前后端联系起来，非常方便好用。只需要有一点点的HTML/CSS/Javascript的知识就可以设计出更好看的界面和更多有趣的交互。
+这里是shiny的记忆手册,浓缩了大部分的操作。 Methods UI设计 Layout 最基础的布局就是sidebarLayout,可以分成sidebarPanel,mainPanel两个部分。
+1 2 3 4 5 6 7 8 ui &amp;lt;- fluidPage( titlePanel(&amp;#34;title panel&amp;#34;), sidebarLayout( sidebarPanel(&amp;#34;sidebar panel&amp;#34;), mainPanel(&amp;#34;main panel&amp;#34;) ) ) 可以通过将内容放在 *Panel 函数中来向Shiny 应用程序添加内容，shiny提供了R代码方便插入HTML (Table 1)，更多标签可以查看tag-glossary。'>
 <meta property='og:url' content='/p/rshiny/'>
 <meta property='og:site_name' content='Asa&#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='R' /><meta property='article:tag' content='编程' /><meta property='article:published_time' content='2023-03-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-27T00:00:00&#43;00:00'/><meta property='og:image' content='/' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='R' /><meta property='article:tag' content='编程' /><meta property='article:published_time' content='2023-03-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-27T00:00:00&#43;00:00'/><meta property='og:image' content='/p/rshiny/Rshiny.jpg' />
 <meta name="twitter:title" content="开发我的Rshiny应用">
-<meta name="twitter:description" content=""><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='/' />
+<meta name="twitter:description" content="Introduction Shiny 是一个 R 包，可轻松地直接从 R 构建交互式 Web 应用程序。还可以在网页上托管独立应用程序或将它们嵌入 R Markdown 文档或构建仪表板，还可以使用 CSS 主题、html 小部件和 JavaScript 操作扩展您的 Shiny 应用程序。
+1 2 3 4 5 6 7 8 #first app library(shiny) ui &amp;lt;- fluidPage( &amp;#34;Hello, world!&amp;#34; ) server &amp;lt;- function(input, output, session) { } shinyApp(ui, server) 整个app可分为两个部分，ui与sever，可以认为是前端与后端的关系，Rshiny提供了很多内置的小组件帮我们将前后端联系起来，非常方便好用。只需要有一点点的HTML/CSS/Javascript的知识就可以设计出更好看的界面和更多有趣的交互。
+这里是shiny的记忆手册,浓缩了大部分的操作。 Methods UI设计 Layout 最基础的布局就是sidebarLayout,可以分成sidebarPanel,mainPanel两个部分。
+1 2 3 4 5 6 7 8 ui &amp;lt;- fluidPage( titlePanel(&amp;#34;title panel&amp;#34;), sidebarLayout( sidebarPanel(&amp;#34;sidebar panel&amp;#34;), mainPanel(&amp;#34;main panel&amp;#34;) ) ) 可以通过将内容放在 *Panel 函数中来向Shiny 应用程序添加内容，shiny提供了R代码方便插入HTML (Table 1)，更多标签可以查看tag-glossary。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/rshiny/Rshiny.jpg' />
     </head>
     <body class="
     article-page
@@ -264,11 +273,78 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#methods">Methods</a>
+      <ol>
+        <li><a href="#ui设计">UI设计</a>
+          <ol>
+            <li><a href="#layout">Layout</a></li>
+            <li><a href="#control-widgets">Control widgets</a></li>
+          </ol>
+        </li>
+        <li><a href="#连接sever">连接sever</a>
+          <ol>
+            <li><a href="#general">general</a></li>
+            <li><a href="#reactive-expressions">reactive expressions</a></li>
+            <li><a href="#file-updownload">file up/download</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#share">Share</a>
+      <ol>
+        <li><a href="#文件形式">文件形式</a></li>
+        <li><a href="#网页形式">网页形式</a></li>
+      </ol>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/rshiny/">
+                <img src="/p/rshiny/Rshiny_hu0864f99837a84b3a0d6c26cdeddf969b_6899_800x0_resize_q75_box.jpg"
+                        srcset="/p/rshiny/Rshiny_hu0864f99837a84b3a0d6c26cdeddf969b_6899_800x0_resize_q75_box.jpg 800w, /p/rshiny/Rshiny_hu0864f99837a84b3a0d6c26cdeddf969b_6899_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="466" 
+                        loading="lazy"
+                        alt="Featured image of post 开发我的Rshiny应用" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -320,7 +396,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    7 minute read
                 </time>
             </div>
         
@@ -335,7 +411,803 @@
     <section class="article-content">
     
     
-    
+    <h2 id="introduction">Introduction</h2>
+<p>Shiny 是一个 R 包，可轻松地直接从 R 构建交互式 Web 应用程序。还可以在网页上托管独立应用程序或将它们嵌入 R Markdown 文档或构建仪表板，还可以使用 CSS 主题、html 小部件和 JavaScript 操作扩展您的 Shiny 应用程序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#first app</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">shiny</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Hello, world!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nf">shinyApp</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">server</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>整个app可分为两个部分，ui与sever，可以认为是前端与后端的关系，Rshiny提供了很多内置的小组件帮我们将前后端联系起来，非常方便好用。只需要有一点点的HTML/CSS/Javascript的知识就可以设计出更好看的界面和更多有趣的交互。</p>
+<p>这里是shiny的<a class="link" href="https://posit.co/wp-content/uploads/2022/10/shiny-1.pdf"  target="_blank" rel="noopener"
+    >记忆手册</a>,浓缩了大部分的操作。
+<img src="shiny-1.png">
+<img src="shiny-2.png"></p>
+<h2 id="methods">Methods</h2>
+<h3 id="ui设计">UI设计</h3>
+<h4 id="layout">Layout</h4>
+<p>最基础的布局就是<code>sidebarLayout</code>,可以分成<code>sidebarPanel</code>,<code>mainPanel</code>两个部分。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">titlePanel</span><span class="p">(</span><span class="s">&#34;title panel&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">sidebarLayout</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">sidebarPanel</span><span class="p">(</span><span class="s">&#34;sidebar panel&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mainPanel</span><span class="p">(</span><span class="s">&#34;main panel&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以通过将内容放在 *Panel 函数中来向Shiny 应用程序添加内容，shiny提供了R代码方便插入HTML (Table <a href="#tab:html">1</a>)，更多标签可以查看<a class="link" href="https://shiny.rstudio.com/articles/tag-glossary.html"  target="_blank" rel="noopener"
+    >tag-glossary</a>。</p>
+<div class="table-wrapper"><table>
+<caption>Table 1: shiny function	HTML5 equivalent	creates</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> shiny function </th>
+   <th style="text-align:left;"> HTML5 equivalent </th>
+   <th style="text-align:left;"> creates </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> p </td>
+   <td style="text-align:left;"> &lt;p&gt; </td>
+   <td style="text-align:left;"> A paragraph of text </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> h1 </td>
+   <td style="text-align:left;"> &lt;h1&gt; </td>
+   <td style="text-align:left;"> A first level header </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> h2 </td>
+   <td style="text-align:left;"> &lt;h2&gt; </td>
+   <td style="text-align:left;"> A second level header </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> h3 </td>
+   <td style="text-align:left;"> &lt;h3&gt; </td>
+   <td style="text-align:left;"> A third level header </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> h4 </td>
+   <td style="text-align:left;"> &lt;h4&gt; </td>
+   <td style="text-align:left;"> A fourth level header </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> h5 </td>
+   <td style="text-align:left;"> &lt;h5&gt; </td>
+   <td style="text-align:left;"> A fifth level header </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> h6 </td>
+   <td style="text-align:left;"> &lt;h6&gt; </td>
+   <td style="text-align:left;"> A sixth level header </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> a </td>
+   <td style="text-align:left;"> &lt;a&gt; </td>
+   <td style="text-align:left;"> A hyper link </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> br </td>
+   <td style="text-align:left;"> &lt;br&gt; </td>
+   <td style="text-align:left;"> A line break (e.g. a blank line) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> div </td>
+   <td style="text-align:left;"> &lt;div&gt; </td>
+   <td style="text-align:left;"> A division of text with a uniform style </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> span </td>
+   <td style="text-align:left;"> &lt;span&gt; </td>
+   <td style="text-align:left;"> An in-line division of text with a uniform style </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> pre </td>
+   <td style="text-align:left;"> &lt;pre&gt; </td>
+   <td style="text-align:left;"> Text ‘as is’ in a fixed width font </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> code </td>
+   <td style="text-align:left;"> &lt;code&gt; </td>
+   <td style="text-align:left;"> A formatted block of code </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> img </td>
+   <td style="text-align:left;"> &lt;img&gt; </td>
+   <td style="text-align:left;"> An image </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> strong </td>
+   <td style="text-align:left;"> &lt;strong&gt; </td>
+   <td style="text-align:left;"> Bold text </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> em </td>
+   <td style="text-align:left;"> &lt;em&gt; </td>
+   <td style="text-align:left;"> Italicized text </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> HTML </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Directly passes a character string as HTML code </td>
+  </tr>
+</tbody>
+</table></div>
+<h4 id="control-widgets">Control widgets</h4>
+<p>这些是常用shiny内置的小控件，提供一种向 Shiny serve发送消息的方式。
+<img src="/p/rshiny/basic-widgets.png"
+	width="1920"
+	height="1200"
+	srcset="/p/rshiny/basic-widgets_hu6411dfcbe8605158740ed2e5a3920fdc_238440_480x0_resize_box_3.png 480w, /p/rshiny/basic-widgets_hu6411dfcbe8605158740ed2e5a3920fdc_238440_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="384px"
+	
+></p>
+<div class="table-wrapper"><table>
+<caption>Table 2: standard Shiny widgets</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> function </th>
+   <th style="text-align:left;"> widget </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> actionButton </td>
+   <td style="text-align:left;"> Action Button </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> checkboxGroupInput </td>
+   <td style="text-align:left;"> A group of check boxes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> checkboxInput </td>
+   <td style="text-align:left;"> A single check box </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dateInput </td>
+   <td style="text-align:left;"> A calendar to aid date selection </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dateRangeInput </td>
+   <td style="text-align:left;"> A pair of calendars for selecting a date range </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fileInput </td>
+   <td style="text-align:left;"> A file upload control wizard </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> helpText </td>
+   <td style="text-align:left;"> Help text that can be added to an input form </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> numericInput </td>
+   <td style="text-align:left;"> A field to enter numbers </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> radioButtons </td>
+   <td style="text-align:left;"> A set of radio buttons </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> selectInput </td>
+   <td style="text-align:left;"> A box with choices to select from </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sliderInput </td>
+   <td style="text-align:left;"> A slider bar </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> submitButton </td>
+   <td style="text-align:left;"> A submit button </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> textInput </td>
+   <td style="text-align:left;"> A field to enter text </td>
+  </tr>
+</tbody>
+</table></div>
+<p>可以想想怎么获取更多控件，比如一个color panel等等。</p>
+<p>更多：</p>
+<p>使用 textInput() 收集少量文本，使用 passwordInput()3 收集密码，使用 textAreaInput() 收集文本段落。</p>
+<p>要收集数值，请使用 numericInput() 创建一个受约束的文本框或使用 sliderInput() 创建一个滑块。如果您为 sliderInput() 的默认值提供一个长度为 2 的数值向量，您将得到一个具有两端的“范围”滑块。</p>
+<p>使用 dateInput() 收集一天或使用 dateRangeInput() 收集两天的范围。这些提供了一个方便的日历选择器，并且诸如 datesdisabled 和 daysofweekdisabled 之类的附加参数允许您限制有效输入的集合。</p>
+<p>有两种不同的方法允许用户从一组预先指定的选项中进行选择：selectInput()(还可以设置 multiple = TRUE 以允许用户选择多个元素)和 radioButtons(); 可以使用checkboxGroupInput()形成多选。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">textInput</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">,</span> <span class="s">&#34;What&#39;s your name?&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">passwordInput</span><span class="p">(</span><span class="s">&#34;password&#34;</span><span class="p">,</span> <span class="s">&#34;What&#39;s your password?&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">textAreaInput</span><span class="p">(</span><span class="s">&#34;story&#34;</span><span class="p">,</span> <span class="s">&#34;Tell me about yourself&#34;</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">numericInput</span><span class="p">(</span><span class="s">&#34;num&#34;</span><span class="p">,</span> <span class="s">&#34;Number one&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span> <span class="m">100</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">sliderInput</span><span class="p">(</span><span class="s">&#34;num2&#34;</span><span class="p">,</span> <span class="s">&#34;Number two&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span> <span class="m">100</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">sliderInput</span><span class="p">(</span><span class="s">&#34;rng&#34;</span><span class="p">,</span> <span class="s">&#34;Range&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span> <span class="n">min</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span> <span class="m">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">dateInput</span><span class="p">(</span><span class="s">&#34;dob&#34;</span><span class="p">,</span> <span class="s">&#34;When were you born?&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">dateRangeInput</span><span class="p">(</span><span class="s">&#34;holiday&#34;</span><span class="p">,</span> <span class="s">&#34;When do you want to go on vacation next?&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">animals</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;dog&#34;</span><span class="p">,</span> <span class="s">&#34;cat&#34;</span><span class="p">,</span> <span class="s">&#34;mouse&#34;</span><span class="p">,</span> <span class="s">&#34;bird&#34;</span><span class="p">,</span> <span class="s">&#34;other&#34;</span><span class="p">,</span> <span class="s">&#34;I hate animals&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">selectInput</span><span class="p">(</span><span class="s">&#34;state&#34;</span><span class="p">,</span> <span class="s">&#34;What&#39;s your favourite state?&#34;</span><span class="p">,</span> <span class="n">state.name</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">radioButtons</span><span class="p">(</span><span class="s">&#34;animal&#34;</span><span class="p">,</span> <span class="s">&#34;What&#39;s your favourite animal?&#34;</span><span class="p">,</span> <span class="n">animals</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">checkboxGroupInput</span><span class="p">(</span><span class="s">&#34;animal&#34;</span><span class="p">,</span> <span class="s">&#34;What animals do you like?&#34;</span><span class="p">,</span> <span class="n">animals</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>让用户使用 actionButton() 或 actionLink() 执行操作，可以使用“btn-primary”、“btn-success”、“btn-info”、“btn-warning”或“btn-danger”之一使用类参数自定义外观，使用“btn-lg”、“btn-sm”、“btn-xs”更改大小，可以使用“btn-block”使按钮跨越它们嵌入的元素的整个宽度。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">fluidRow</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">actionButton</span><span class="p">(</span><span class="s">&#34;click&#34;</span><span class="p">,</span> <span class="s">&#34;Click me!&#34;</span><span class="p">,</span> <span class="n">class</span> <span class="o">=</span> <span class="s">&#34;btn-danger&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">actionButton</span><span class="p">(</span><span class="s">&#34;drink&#34;</span><span class="p">,</span> <span class="s">&#34;Drink me!&#34;</span><span class="p">,</span> <span class="n">class</span> <span class="o">=</span> <span class="s">&#34;btn-lg btn-success&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">fluidRow</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">actionButton</span><span class="p">(</span><span class="s">&#34;eat&#34;</span><span class="p">,</span> <span class="s">&#34;Eat me!&#34;</span><span class="p">,</span> <span class="n">class</span> <span class="o">=</span> <span class="s">&#34;btn-block&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="连接sever">连接sever</h3>
+<h4 id="general">general</h4>
+<ol>
+<li>添加输出对象在ui中</li>
+</ol>
+<p>Shiny 提供了一系列函数，可以将 R 对象转换为用户界面的输出。每个函数创建特定类型的输出。</p>
+<div class="table-wrapper"><table>
+<caption>Table 3: output R objects family</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Output function </th>
+   <th style="text-align:left;"> Creates </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> dataTableOutput </td>
+   <td style="text-align:left;"> DataTable </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> htmlOutput </td>
+   <td style="text-align:left;"> raw HTML </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> imageOutput </td>
+   <td style="text-align:left;"> image </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> plotOutput </td>
+   <td style="text-align:left;"> plot </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> tableOutput </td>
+   <td style="text-align:left;"> table </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> textOutput </td>
+   <td style="text-align:left;"> text </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> uiOutput </td>
+   <td style="text-align:left;"> raw HTML </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> verbatimTextOutput </td>
+   <td style="text-align:left;"> text </td>
+  </tr>
+</tbody>
+</table></div>
+<ol start="2">
+<li>编写构建R对象的代码在serve中</li>
+</ol>
+<div class="table-wrapper"><table>
+<caption>Table 4: render R objects family</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> render function </th>
+   <th style="text-align:left;"> creates </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> renderDataTable </td>
+   <td style="text-align:left;"> DataTable </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> renderImage </td>
+   <td style="text-align:left;"> images (saved as a link to a source file) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> renderPlot </td>
+   <td style="text-align:left;"> plots </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> renderPrint </td>
+   <td style="text-align:left;"> any printed output </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> renderTable </td>
+   <td style="text-align:left;"> data frame, matrix, other table like structures </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> renderText </td>
+   <td style="text-align:left;"> character strings </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> renderUI </td>
+   <td style="text-align:left;"> a Shiny tag object or HTML </td>
+  </tr>
+</tbody>
+</table></div>
+<ol start="3">
+<li>使用input，output连接</li>
+</ol>
+<p>以下代码就可以将selectInput选择的值<code>var</code>通过<code>input$var</code>的形式传递到<code>renderText()</code>，再render成<code>output$selected_var</code>的形式，最后通过<code>textOutput()</code>输出到ui界面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">shiny</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">titlePanel</span><span class="p">(</span><span class="s">&#34;censusVis&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nf">sidebarLayout</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">sidebarPanel</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="nf">selectInput</span><span class="p">(</span><span class="s">&#34;var&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                  <span class="n">label</span> <span class="o">=</span> <span class="s">&#34;Choose a variable to display&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">choices</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Percent White&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                              <span class="s">&#34;Percent Black&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                              <span class="s">&#34;Percent Hispanic&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                              <span class="s">&#34;Percent Asian&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">selected</span> <span class="o">=</span> <span class="s">&#34;Percent White&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nf">mainPanel</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">textOutput</span><span class="p">(</span><span class="s">&#34;selected_var&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">output</span><span class="o">$</span><span class="n">selected_var</span> <span class="o">&lt;-</span> <span class="nf">renderText</span><span class="p">({</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">paste</span><span class="p">(</span><span class="s">&#34;You have selected&#34;</span><span class="p">,</span> <span class="n">input</span><span class="o">$</span><span class="n">var</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">shinyApp</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">server</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>更多：</p>
+<p>使用 textOutput() 输出常规文本，使用 verbatimTextOutput() 输出固定代码和控制台输出。
+renderText() 将结果组合成一个字符串，通常与 textOutput() 配对
+renderPrint() 打印结果，就像您在 R 控制台中一样，并且通常与 verbatimTextOutput() 配对。</p>
+<p>tableOutput() 和 renderTable() 呈现静态数据表，同时显示所有数据。
+dataTableOutput() 和 renderDataTable() 呈现一个动态表，显示固定数量的行以及用于更改哪些行可见的控件。
+tableOutput() 对于小型、固定的摘要（例如模型系数）最有用；如果您想向用户公开完整的数据框，则 dataTableOutput() 是最合适的。</p>
+<p>默认情况下，plotOutput() 将占据其容器的整个宽度（稍后会详细介绍），并且高度为 400 像素。您可以使用高度和宽度参数覆盖这些默认值。我们建议始终设置 res = 96，因为这将使您的 Shiny 图与您在 RStudio 中看到的尽可能接近。</p>
+<h4 id="reactive-expressions">reactive expressions</h4>
+<blockquote>
+<p>This difference between commands and recipes is one of the key differences between two important styles of programming:</p>
+<p>In <strong>imperative programming</strong>, you issue a specific command and it’s carried out immediately. This is the style of programming you’re used to in your analysis scripts: you command R to load your data, transform it, visualise it, and save the results to disk.</p>
+<p>In <strong>declarative programming</strong>, you express higher-level goals or describe important constraints, and rely on someone else to decide how and/or when to translate that into action. This is the style of programming you use in Shiny.</p>
+</blockquote>
+<p>Shiny 中声明式编程的优势之一是它允许应用程序非常懒惰。 Shiny 应用程序只会执行更新您当前可以看到的输出控件所需的最少工作量，优点是快速，缺点是如果你不运行所有代码，可能不会发现错误。</p>
+<p>反应式表达式比常规 R 函数更聪明。它们缓存值并知道它们的值何时会变。第一次运行反应式表达式时，表达式会将其结果保存在计算机的内存中。下次调用反应式表达式时，它可以返回保存的结果而不进行任何计算（这将使您的应用程序更快）。</p>
+<p>如果反应式表达式知道结果是最新的，它只会返回保存的结果。如果反应式表达式得知结果已过时（因为小部件已更改），则表达式将重新计算结果。然后它返回新结果并保存一个新副本。反应式表达式将使用这个新副本，直到它也变得过时为止。
+让我们总结一下这种行为：</p>
+<ol>
+<li>
+<p>反应式表达式会在您第一次运行时保存其结果。</p>
+</li>
+<li>
+<p>下次调用反应式表达式时，它会检查保存的值是否已过时（即，它所依赖的小部件是否已更改）。</p>
+</li>
+<li>
+<p>如果该值已过期，反应对象将重新计算它（然后保存新结果）。</p>
+</li>
+<li>
+<p>如果该值是最新的，反应式表达式将返回保存的值而不进行任何计算。</p>
+</li>
+</ol>
+<p>建议把文件导入等不需要每次更新的代码放在reactive里。</p>
+<p>在 Shiny 中，应该考虑一个规则：每当复制和粘贴一次东西时，就应该考虑将重复的代码提取到一个反应表达式中，因为反应式表达式不仅让人类更容易理解代码，它们还提高了 Shiny 高效重新运行代码的能力。</p>
+<p>考虑以下代码，<code>reactive()</code>确保只有在改变n或lambda时才会重新计算：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">freqpoly</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-3</span><span class="p">,</span> <span class="m">3</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">g</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="s">&#34;x1&#34;</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="n">x1</span><span class="p">)),</span> <span class="nf">rep</span><span class="p">(</span><span class="s">&#34;x2&#34;</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="n">x2</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">g</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">geom_freqpoly</span><span class="p">(</span><span class="n">binwidth</span> <span class="o">=</span> <span class="n">binwidth</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">coord_cartesian</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="n">xlim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fluidRow</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">column</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">               <span class="nf">numericInput</span><span class="p">(</span><span class="s">&#34;lambda1&#34;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#34;lambda1&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">3</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">               <span class="nf">numericInput</span><span class="p">(</span><span class="s">&#34;lambda2&#34;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#34;lambda2&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">               <span class="nf">numericInput</span><span class="p">(</span><span class="s">&#34;n&#34;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#34;n&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">1e4</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">column</span><span class="p">(</span><span class="m">9</span><span class="p">,</span> <span class="nf">plotOutput</span><span class="p">(</span><span class="s">&#34;hist&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x1</span> <span class="o">&lt;-</span> <span class="nf">reactive</span><span class="p">(</span><span class="nf">rpois</span><span class="p">(</span><span class="n">input</span><span class="o">$</span><span class="n">n</span><span class="p">,</span> <span class="n">input</span><span class="o">$</span><span class="n">lambda1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x2</span> <span class="o">&lt;-</span> <span class="nf">reactive</span><span class="p">(</span><span class="nf">rpois</span><span class="p">(</span><span class="n">input</span><span class="o">$</span><span class="n">n</span><span class="p">,</span> <span class="n">input</span><span class="o">$</span><span class="n">lambda2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output</span><span class="o">$</span><span class="n">hist</span> <span class="o">&lt;-</span> <span class="nf">renderPlot</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">freqpoly</span><span class="p">(</span><span class="nf">x1</span><span class="p">(),</span> <span class="nf">x2</span><span class="p">(),</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">40</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span> <span class="n">res</span> <span class="o">=</span> <span class="m">96</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">shinyApp</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span><span class="n">server</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>控制reactive行为：</p>
+<ol>
+<li>计时器
+<code>reactiveTimer()</code> 是一个响应式表达式，它依赖于隐藏的输入：当前时间。
+将server里的reactive修改成下列形式可以让图形每500ms刷新一次。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">server</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">timer</span> <span class="o">&lt;-</span> <span class="nf">reactiveTimer</span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">x1</span> <span class="o">&lt;-</span> <span class="nf">reactive</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">timer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">rpois</span><span class="p">(</span><span class="n">input</span><span class="o">$</span><span class="n">n</span><span class="p">,</span> <span class="n">input</span><span class="o">$</span><span class="n">lambda1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x2</span> <span class="o">&lt;-</span> <span class="nf">reactive</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">timer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">rpois</span><span class="p">(</span><span class="n">input</span><span class="o">$</span><span class="n">n</span><span class="p">,</span> <span class="n">input</span><span class="o">$</span><span class="n">lambda2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">output</span><span class="o">$</span><span class="n">hist</span> <span class="o">&lt;-</span> <span class="nf">renderPlot</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">freqpoly</span><span class="p">(</span><span class="nf">x1</span><span class="p">(),</span> <span class="nf">x2</span><span class="p">(),</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">40</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="n">res</span> <span class="o">=</span> <span class="m">96</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>点击刷新
+当你的serve运行一次需要庞大计算和时间时，可能希望要求用户通过单击按钮来选择执行昂贵的计算。这是 actionButton() 的一个很好的用例：</li>
+</ol>
+<p>并且我们需要 <code>eventReactive()</code>，它有两个参数：第一个参数指定依赖什么，第二个参数指定计算什么。</p>
+<p>修改ui和serve，添加了按键，用户点击按键即可出现新的模拟结果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">fluidRow</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">column</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="nf">numericInput</span><span class="p">(</span><span class="s">&#34;lambda1&#34;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#34;lambda1&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">3</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">numericInput</span><span class="p">(</span><span class="s">&#34;lambda2&#34;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#34;lambda2&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">numericInput</span><span class="p">(</span><span class="s">&#34;n&#34;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#34;n&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">1e4</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span> <span class="m">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">actionButton</span><span class="p">(</span><span class="s">&#34;simulate&#34;</span><span class="p">,</span> <span class="s">&#34;Simulate!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">column</span><span class="p">(</span><span class="m">9</span><span class="p">,</span> <span class="nf">plotOutput</span><span class="p">(</span><span class="s">&#34;hist&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x1</span> <span class="o">&lt;-</span> <span class="nf">eventReactive</span><span class="p">(</span><span class="n">input</span><span class="o">$</span><span class="n">simulate</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">rpois</span><span class="p">(</span><span class="n">input</span><span class="o">$</span><span class="n">n</span><span class="p">,</span> <span class="n">input</span><span class="o">$</span><span class="n">lambda1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x2</span> <span class="o">&lt;-</span> <span class="nf">eventReactive</span><span class="p">(</span><span class="n">input</span><span class="o">$</span><span class="n">simulate</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">rpois</span><span class="p">(</span><span class="n">input</span><span class="o">$</span><span class="n">n</span><span class="p">,</span> <span class="n">input</span><span class="o">$</span><span class="n">lambda2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">output</span><span class="o">$</span><span class="n">hist</span> <span class="o">&lt;-</span> <span class="nf">renderPlot</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">freqpoly</span><span class="p">(</span><span class="nf">x1</span><span class="p">(),</span> <span class="nf">x2</span><span class="p">(),</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">40</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="n">res</span> <span class="o">=</span> <span class="m">96</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>observeEvent() 与 eventReactive() 非常相似。它有两个重要的参数：eventExpr 和 handlerExpr。第一个参数是要依赖的输入或表达式；第二个参数是将要运行的代码。例如，对 server() 的以下修改意味着每次更新该名称时，都会向控制台发送一条消息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">textInput</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">,</span> <span class="s">&#34;What&#39;s your name?&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">textOutput</span><span class="p">(</span><span class="s">&#34;greeting&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">string</span> <span class="o">&lt;-</span> <span class="nf">reactive</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;Hello &#34;</span><span class="p">,</span> <span class="n">input</span><span class="o">$</span><span class="n">name</span><span class="p">,</span> <span class="s">&#34;!&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">output</span><span class="o">$</span><span class="n">greeting</span> <span class="o">&lt;-</span> <span class="nf">renderText</span><span class="p">(</span><span class="nf">string</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">observeEvent</span><span class="p">(</span><span class="n">input</span><span class="o">$</span><span class="n">name</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">message</span><span class="p">(</span><span class="s">&#34;Greeting performed&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="file-updownload">file up/download</h4>
+<p>使用<code>fileInput</code>在ui中上传文件后，得到的input是一个列表，其中的datapath是文件上传后的路径，需要使用read.csv等函数读取file$datapath。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">sidebarLayout</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">sidebarPanel</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">fileInput</span><span class="p">(</span><span class="s">&#34;file1&#34;</span><span class="p">,</span> <span class="s">&#34;Choose CSV File&#34;</span><span class="p">,</span> <span class="n">accept</span> <span class="o">=</span> <span class="s">&#34;.csv&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">checkboxInput</span><span class="p">(</span><span class="s">&#34;header&#34;</span><span class="p">,</span> <span class="s">&#34;Header&#34;</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">mainPanel</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">tableOutput</span><span class="p">(</span><span class="s">&#34;contents&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output</span><span class="o">$</span><span class="n">contents</span> <span class="o">&lt;-</span> <span class="nf">renderTable</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span> <span class="o">&lt;-</span> <span class="n">input</span><span class="o">$</span><span class="n">file1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ext</span> <span class="o">&lt;-</span> <span class="n">tools</span><span class="o">::</span><span class="nf">file_ext</span><span class="p">(</span><span class="n">file</span><span class="o">$</span><span class="n">datapath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="nf">req</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">validate</span><span class="p">(</span><span class="nf">need</span><span class="p">(</span><span class="n">ext</span> <span class="o">==</span> <span class="s">&#34;csv&#34;</span><span class="p">,</span> <span class="s">&#34;Please upload a csv file&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span><span class="o">$</span><span class="n">datapath</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="n">input</span><span class="o">$</span><span class="n">header</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">shinyApp</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">server</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>您可以让用户使用 downloadButton() 或 downloadLink() 下载文件。这些都需要服务器功能中的新技术，因此我们将在第 9 章中回过头来讨论。</p>
+<h2 id="share">Share</h2>
+<h3 id="文件形式">文件形式</h3>
+<p>任何拥有 R 的人都可以运行Shiny 应用程序，分享你的app.R 文件副本，以及您的应用程序中使用的任何补充材料（例如，www 文件夹或 helpers.R 文件）即可，最好写上代码运行的依赖包安装代码。</p>
+<ul>
+<li><code>runUrl()</code> will download and launch a Shiny app straight from a weblink.</li>
+<li><code>runGitHub( &quot;&lt;your repository name&gt;&quot;, &quot;&lt;your user name&gt;&quot;)</code></li>
+</ul>
+<h3 id="网页形式">网页形式</h3>
+<p>上述方法要求用户在他们的计算机上安装 R 和 Shiny。但如果我们自己搭建好了服务器，也可以直接用浏览器使用我们的APP。</p>
+<ol>
+<li>Shinyapps.io</li>
+</ol>
+<p>将 Shiny 应用程序转换为网页的最简单方法是使用 shinyapps.io，这是 RStudio 为 Shiny 应用程序提供的托管服务。
+2. Shiny Server</p>
+<ol start="3">
+<li>RStudio Connect</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<p>官方教程：<a class="link" href="https://shiny.rstudio.com/tutorial/"  target="_blank" rel="noopener"
+    >Shiny Learning Resources</a></p>
+<p>参考书：<a class="link" href="https://mastering-shiny.org/"  target="_blank" rel="noopener"
+    >Mastering Shiny</a></p>
+
 </section>
 
 
@@ -403,16 +1275,16 @@
             
                 
 <article class="has-image">
-    <a href="/p/r/">
+    <a href="/p/r-learning/">
         
         
             <div class="article-image">
-                <img src="/p/r/images/data2viz.651ec7891090db14ef0203dcbb62af54_hu2949f787b14e5432e8dbe93255a87ee8_671473_250x150_fill_box_smart1_3.png" 
+                <img src="/p/r-learning/images/data2viz.651ec7891090db14ef0203dcbb62af54_hu2949f787b14e5432e8dbe93255a87ee8_671473_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
                         alt="Featured image of post R语言学习"
-                        data-key="r" 
+                        data-key="r-learning" 
                         data-hash="md5-ZR7HiRCQ2xTvAgPcu2KvVA==">
                 
             </div>
@@ -426,9 +1298,20 @@
 
             
                 
-<article class="">
+<article class="has-image">
     <a href="/p/r-statistics/">
         
+        
+            <div class="article-image">
+                <img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-4-1.fc1c8a43a1ec6e3a86b910fa1344a6aa_hu6a7295393dc4d80def3bf7388e19d776_109022_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post R-statistics"
+                        data-key="r-statistics" 
+                        data-hash="md5-/ByKQ6HsbjqGuRD6E0Smqg==">
+                
+            </div>
         
 
         <div class="article-details">

@@ -12,7 +12,7 @@
         <pubDate>Fri, 24 Mar 2023 00:00:00 +0000</pubDate>
         
         <guid>/p/r-statistics/</guid>
-        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+        <description>&lt;img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-4-1.png" alt="Featured image of post R-statistics" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;统计分析在生物信息学中具有非常重要的意义，因为生物信息学研究的数据量庞大、复杂性高，而统计分析可以帮助我们更好地理解和解释这些数据。下面是统计分析对生物信息学的几个重要意义：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;数据清洗和预处理：生物信息学研究中经常需要处理大规模的数据，而这些数据可能存在噪声、错误和缺失值等问题。统计分析可以帮助我们对数据进行清洗和预处理，以确保数据的质量和可靠性。&lt;/li&gt;
@@ -563,7 +563,7 @@ $$&lt;/p&gt;
 &lt;p&gt;$$
 \hat{a}=\overline{y}-\hat{b}\overline{x}
 $$
-回归有效性可以用$R^2$和$p-valuie$来度量，
+回归有效性可以用$R^2$和$p-value$来度量，
 $R^2=1-\frac{SSE}{SST}$&lt;/p&gt;
 &lt;p&gt;统计量$F=\frac{SSR}{SSE/(n-2)}$,$p-value$为$P(F(1,n-2)&amp;gt;c)$,c为F的值。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

@@ -6,13 +6,1070 @@
         <description>Recent content on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 27 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 01 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>物种多样性研究的理论和方法</title>
+        <link>/p/biodiversity/</link>
+        <pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/p/biodiversity/</guid>
+        <description>&lt;img src="/p/biodiversity/images/diversity.png" alt="Featured image of post 物种多样性研究的理论和方法" /&gt;&lt;script src=&#34;/p/biodiversity/index_files/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/p/biodiversity/index_files/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;p&gt;Theories and Methods of Species Diversity Research&lt;/p&gt;
+&lt;p&gt;这是我在一门研究生课程上的课程任务，查阅了一些文献总结整理了物种多样性研究理论与方法，比较基础，没有对一些理论和模型深入讲解，仅做分享。&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Biological diversity largely describes the change of life from genes
+to ecosystems, comprising their existences, genetic variations, their
+environment, populations and the ecosystem in which they are existing
+and other evolutionary developments that keep the system functioning,
+changing and adapting.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;生物多样性是度量生命的变异和变异能力的指标，又分成遗传多样性，物种多样性，生态系统多样性三个层次，我这里主要介绍物种多样性。
+他又有三个尺度和三个维度，分别是α，β，γ分类多样性，谱系多样性，功能多样性，这里的每个交集都是可以研究的。&lt;/p&gt;
+&lt;table class=&#34; lightable-classic&#34; style=&#34;font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Scale\Dimension &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Taxa &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Phylogenetic &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Functional &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Remark &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; α &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Taxa-α &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Phylogenetic-α &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Functional-α &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Species diversity in a community or habitat &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; β &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Taxa-β &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Phylogenetic-β &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Functional-β &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; The rate and extent of change in species diversity on a gradient from one habitat to another &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; γ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Taxa-γ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Phylogenetic-γ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Functional-γ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Species diversity in a range of habitats within a geographic region(vector) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Remark &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Taxonomy &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Molecular systematics &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Functional Characteristics &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; β = γ/α &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;data-collection-methods&#34;&gt;Data collection methods&lt;/h2&gt;
+&lt;p&gt;我们应该如何进行物种多样性研究呢？&lt;/p&gt;
+&lt;p&gt;首先当然是&lt;strong&gt;制定研究方案&lt;/strong&gt;，进行取样，
+对于自己的研究对象，可以进行随机取样，系统取样，或者其他的一些方法，
+也可能是一块有代表性的永久样地，可以研究它的动态变化。&lt;/p&gt;
+&lt;p&gt;然后是开始&lt;strong&gt;调查获取数据&lt;/strong&gt;，传统的方法里，植物群落一般会进行实地调查或者使用遥感图像收集数据，动物会用到自动音视频记录，昆虫的话还会有灯光诱捕法等。&lt;/p&gt;
+&lt;p&gt;还有对微生物进行调查的，用直接培养方法或者测序手段。&lt;/p&gt;
+&lt;p&gt;当然这些方法不是一定专用的，一些新的方法也可以交叉使用，比如eDNA方法：
+eDNA是指在环境样品中所有被发现的不同生物的基因组DNA的混合，环境可以包括土壤、沉积物、排泄物、空气、水体，甚至生物个体本身。
+动物在某个环境中生活，身上的各种痕迹会携带着自身DNA掉落到四周，所以用这个方法有调查各种物种的潜力，有篇文章就用空气的eDNA调查了附近的动物。&lt;/p&gt;
+&lt;p&gt;此外还有整合的方法，比如这篇文章就提出，将遥感，田间调查和测序结合在一起，来获得完整的物种风度表。&lt;/p&gt;
+&lt;img src=&#34;images/4.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;p&gt;有了这些方法后，我们还要&lt;strong&gt;明确自己要获取的有哪些数据&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;我认为主要有三个方面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一个就是&lt;strong&gt;群落的特征&lt;/strong&gt;，包括各个物种的丰度，密度，频度，群落的生物量；如果是植物的话，还要收集盖度、树冠直径、树高、位置等等。&lt;/li&gt;
+&lt;li&gt;第二个重要的方面是我们每个样方的&lt;strong&gt;环境因子数据&lt;/strong&gt;：
+包括气候数据，如降水，相对湿度，温度等等，地形数据，如海拔，坡度等等，土壤数据，如土壤的粒径保水量和各种化学元素等等，有条件的话可以做微生物和人类因素的数据收集。&lt;/li&gt;
+&lt;li&gt;第三个方面是&lt;strong&gt;物种的特征&lt;/strong&gt;：比如植物的生活型，生长型，功能类型等，这个对后面功能多样性的研究很关键
+还有就是各个物种的系统发育位置，可以去找各种植物志，动物志或者NCBI的数据库来获得，这个对谱系多样性研究很重要。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/5.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;h2 id=&#34;measure-methods&#34;&gt;Measure methods&lt;/h2&gt;
+&lt;p&gt;获取了以上这些数据后，接下来就是使用一些指标对多样性进行度量。&lt;/p&gt;
+&lt;h3 id=&#34;taxa-α-diversity&#34;&gt;Taxa α diversity&lt;/h3&gt;
+&lt;p&gt;首先是分类的a多样性指数，主要有以下几个类别：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用物种数指示&lt;/li&gt;
+&lt;li&gt;物种数和物种总个体数&lt;/li&gt;
+&lt;li&gt;物种数和物种总个体数和每个物种的个体数（还有一些专门用在测序数据表征多样性的，因为测序手段我们能获得的丰度表是不传统的。这种树我看到了几棵，那个动物有几只等等，而是用测序测到了多少条DNA来表征的，所以会有很多测不到的，或者只能测到几条序列的，就有Chao1和ACE指数来考虑这些非常低的物种）&lt;/li&gt;
+&lt;li&gt;用信息公示表示（常用的shannon-wiener指数就在这里）&lt;/li&gt;
+&lt;li&gt;均一性表示&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/6.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;img src=&#34;images/7.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;img src=&#34;images/8.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;img src=&#34;images/9.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;h3 id=&#34;taxa-β-diversity&#34;&gt;Taxa β diversity&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;beta多样性的三个常用的简单指标：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/10.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;基于相异系数进行计算：
+这里收集了目前会用到的各种距离的算法，比如我们常用的欧式距离，还有这个bray距离等，这样算出来就是一个距离矩阵，我们可以知道哪些样方之间差异大或者差异小&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/11.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;h3 id=&#34;taxa-γ-diversity&#34;&gt;Taxa γ diversity&lt;/h3&gt;
+&lt;p&gt;gamma多样性，沿着长江取样来举个例子，图中每个取样点本身的微生物多样性是α-多样性（单个群落水平）；将1～9这九个样点归为一组，则这一组内各样点之间的差异，可以理解为β-多样性（局部或者区域水平）；当我们把所有取样点放在一起，站在一个更高、更广阔的尺度上时，这时候的多样性就是所谓的γ-多样性。这个指标就是α-多样性在尺度上的一个推广。&lt;/p&gt;
+&lt;img src=&#34;images/12.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;一个例子总结三个尺度上的物种多样性：&lt;/p&gt;
+&lt;img src=&#34;images/13.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;三个生态区九座山峰的生物多样性指数。每个符号代表不同的物种；有些物种只在一个峰上有种群，而另一些则在两个或更多峰上。每个峰上物种丰富度的变化导致每个生态区的不同
+alpha、gamma 和 beta 多样性值。&lt;/p&gt;
+&lt;p&gt;这种变化对我们如何分配有限的资源以最大限度地保护资源有影响。如果只能保护一个生态区，生态区
+3可能是一个不错的选择，因为它具有高伽马（总）多样性。但是，如果只能保护一个山峰，是否应该保护生态区
+1（有许多分布广泛的物种）或生态区3（有几个独特的、范围受限的物种）中的山峰？&lt;/p&gt;
+&lt;h3 id=&#34;phylogenetic-α-diversity&#34;&gt;Phylogenetic α diversity&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;群落系统发育多样性PD：谱系树的总枝长度&lt;/li&gt;
+&lt;li&gt;净相关指数NRI：
+计算所有物种对的平均谱系距离MPD，保持物种数量和个体数不变&lt;/li&gt;
+&lt;li&gt;最近邻体指数NTI：
+计算所有物种对的平均谱系距离MNPD，保持物种数量和个体数不变&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;images/14.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;可以看上图右边的例子，3个样方发现的四种物种丰度表，我们确定了他们的系统发育关系就可以进行计算。&lt;/p&gt;
+&lt;h3 id=&#34;phylogenetic-β-diversity&#34;&gt;Phylogenetic β diversity&lt;/h3&gt;
+&lt;p&gt;Beta的计算会稍微复杂一点，公式没有一个个列出，但是有相关的R包进行计算（vegan）。&lt;/p&gt;
+&lt;img src=&#34;images/15.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;h3 id=&#34;functional-diversity&#34;&gt;Functional diversity&lt;/h3&gt;
+&lt;p&gt;最后就是&lt;strong&gt;功能多样性指数&lt;/strong&gt;，他是影响种群生存、群落和生态系统稳定的重要因素，
+能更好地反映生态系统生产、养分平衡等功能。&lt;/p&gt;
+&lt;img src=&#34;images/16.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;img src=&#34;images/17.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;这个怎么计算呢，要收集好物种的功能类型，比如对于植物来说，有光和途径等等，也同样整理为功能表，功能表和物种丰度表mapping合并一下可以得到功能丰度表，然后就可以计算各种指数了。&lt;/p&gt;
+&lt;h2 id=&#34;analytical-methods&#34;&gt;Analytical methods&lt;/h2&gt;
+&lt;p&gt;我们应该怎么做数据分析呢？（具体的流程和代码下次分享，这里先简单描述一下）&lt;/p&gt;
+&lt;img src=&#34;images/18.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;首先拿到丰度表，可以对整个表进行重采样，每次采样计算一次a多样性指数，就可以做出这个稀释曲线，他可以说明我们在这个样方里的调查或者说测序手段是否是充足的。&lt;/p&gt;
+&lt;p&gt;然后是计算每个样方的a多样性指数，
+通过结合环境因子数据，我们可以做组间多重比较，比如说
+对于一些数值数据，我们可以计算相关性，或者做回归分析。
+这个回归又分为很多方式，比如线性回归，广义线性回归等等，这个可以帮我们发现那些因素会以怎样的方式影响a多样性，比如这里，可能海拔越高多样性越低。&lt;/p&gt;
+&lt;img src=&#34;images/19.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;对于beta多样性，我们首先计算相异矩阵，这里就是样本与样本间的距离
+我们可以做热图展示各样本间的距离，
+或者做一个相似系数-地理距离的回归分析，一般来说，地理距离越远，可能beta多样性越高。&lt;/p&gt;
+&lt;p&gt;或者具体看看组间差异，这里可以看到KO_OE组beta多样性最大，
+还能做聚类分析，看看到底哪些样本更加类似。&lt;/p&gt;
+&lt;img src=&#34;images/20.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;Beta多样性的另一种展示方法是排序方法，也叫降维分析，我们常用的方法有PCA，PcoA等等，
+另外可以加上环境因子数据，做约束排序，比如RDA，CCA等方法，不仅能看到样本间的差异，还可以看到这种差异主要是由那种环境因子影响的，比如这里，在轴一上的差异主要是由env1这个变量引起的。&lt;/p&gt;
+&lt;h2 id=&#34;theories&#34;&gt;Theories&lt;/h2&gt;
+&lt;img src=&#34;images/21.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+&lt;img src=&#34;images/22.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt;
+&lt;p&gt;物种多样性的&lt;strong&gt;中性理论&lt;/strong&gt;做出了一个具有挑战性的假设，即所有个体在生态上都是相同的，并且不需要生态位差异来解释生物多样性模式。
+根据中性理论，等同物种的高度多样化群落的出现是因为偶然的灭绝被物种形成所平衡。具体来说，适应性等价假设与随机或随机过程相结合，包括死亡、来自区域物种库的移民和物种形成，可以导致物种丰富的种群。（有关生态位和中性作用对多样性影响，专门有研究这种&lt;strong&gt;群落构建&lt;/strong&gt;的）&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;img src=&#34;images/23.jpeg&#34; title=&#34;&#34; width=&#34;100%&#34;/&gt; 
+</description>
+        </item>
+        <item>
+        <title>CRISPR 相关学习</title>
+        <link>/p/crispr/</link>
+        <pubDate>Tue, 28 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/p/crispr/</guid>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;CRISPR规律成簇间隔短回文重复：clustered regularly interspaced short
+palindromic repeats&lt;/p&gt;
+&lt;p&gt;CRISPR是存在于细菌基因组中的一种元件，其中含有曾经攻击过该细菌的病毒的基因片段。细菌透过这些基因片段来侦测并抵抗相同病毒的攻击，并摧毁其DNA，这类基因组是细菌（和古菌）免疫系统的关键组成部分。&lt;/p&gt;
+&lt;h3 id=&#34;work-mechanism&#34;&gt;Work mechanism&lt;/h3&gt;
+&lt;p&gt;CRISPR整体工作流程基本如下 (&lt;a class=&#34;link&#34; href=&#34;#ref-carterSnapShotCRISPRRNAGuidedAdaptive2015&#34; &gt;&lt;em&gt;1&lt;/em&gt;&lt;/a&gt;)：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/crispr/images/crispr_overall.png&#34;
+	width=&#34;2352&#34;
+	height=&#34;1514&#34;
+	srcset=&#34;/p/crispr/images/crispr_overall_hu2b99bc15595c9e40832f00a0c0da6f02_905654_480x0_resize_box_3.png 480w, /p/crispr/images/crispr_overall_hu2b99bc15595c9e40832f00a0c0da6f02_905654_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;372px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;阶段1. 外源DNA采集&lt;/p&gt;
+&lt;p&gt;外来核酸被Cas蛋白识别，入侵DNA的短片段（30-50个碱基对）（称为原型间隔子）被插入宿主的CRISPR基因座作为间隔序列，由重复序列分隔。在I型和II型系统中，原型间隔子选自侧翼有2-5称为PAM（protospacer
+adjacent
+motif）的核苷酸(nt)基序。原型间隔子通常结合在CRISPR基因座的一端，称为领导者，通过涉及Cas1、Cas2和原型间隔子上的游离3’羟基的机制。Protospacer整合伴随着重复前导末端重复序列，可能涉及宿主聚合酶和DNA修复机制。&lt;/p&gt;
+&lt;p&gt;阶段2. crRNA生物合成&lt;/p&gt;
+&lt;p&gt;CRISPR
+RNA生物合成始于转录，然后将初级转录本（pre-crRNA）核解加工成短的CRISPR衍生RNA文库(crRNAs)，每个都包含与先前遇到的外来DNA互补的序列。crRNA指导序列的两侧是相邻重复区域。在I型和III型系统中，初级CRISPR转录物由在重复序列内切割的CRISPR特异性内切核糖核酸酶（Cas6或Cas5d）处理。在许多I型系统中，重复序列是回文序列，并且Cas6与crRNA3’端的茎环稳定相关。在III型系统中，Cas6与CRISPR
+RNA瞬时结合，crRNA的3’端被未知核酸酶进一步修剪。CRISPR
+RNA加工类型II系统依赖于反式作用crRNA(tracrRNA)，它包含与重复序列互补的序列。这些双链区域在Cas9存在的情况下由RNase
+III处理。在II型系统中，tracrRNA和crRNA都是目标干扰所需的。该系统的两个RNA已融合成一个单向导RNA(sgRNA)，Cas9已成为一个强大的工具用于在多种细胞类型和多细胞生物中进行靶向基因组工程。&lt;/p&gt;
+&lt;p&gt;阶段3. 目标干扰&lt;/p&gt;
+&lt;p&gt;成熟的crRNA将Cas蛋白引导至互补目标。目标序列被专用Cas核酸酶降解，但目标降解的机制多种多样。I型和II型系统均以包含PAM和互补原型间隔子的dsDNA底物为目标顺序。II型系统中的目标切割由单个蛋白质(Cas9)和两个RNA执行，而I型系统依赖于多亚基监视复合物结合dsDNA底物然后募集Cas3，这是一种反式作用核酸酶，通常与ATP依赖性解旋酶融合。像I型系统，III型系统还依赖多亚基复合物进行目标检测，但与I型系统不同，这些复合物表现出内源性核酸酶活性，以转录依赖性方式降解互补RNA和靶DNA。III型系统不依赖PAM进行目标识别；相反，碱基配对延伸超出指导序列并进入crRNA信号”自身”的5’句柄（CRISPR基因座包含与指导和5’互补的序列handle)并防止目标切割。&lt;/p&gt;
+&lt;h3 id=&#34;pam&#34;&gt;PAM&lt;/h3&gt;
+&lt;p&gt;使用CRISPR/Cas9系统进行基因编辑时需要考虑PAM，PAM的含义和重要性：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Protospacer adjacent motif（PAM）原间隔序列邻近模块序列。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CRISPR/Cas9 (或 gRNA)所靶向的 DNA 序列称为 protospacer，PAM
+是与之紧邻的一小段 DNA 序列(常用的 SpCas9 识别的 PAM 为 NGG)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cas9/sgRNA 不能结合、切割没有 PAM 的靶向序列。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PAM 是细菌区分自身 DNA 与外源 DNA 的重要标志。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;改变 PAM 或与其相邻的 protospacer/target DNA
+序列会严重影响核酸酶(Cas9, Cpf1 等) 对 DNA 的切割效率。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;某些基因编辑操作(如敲入点突变)可能需要人为将 PAM 或与其相邻的 DNA
+序列进行突变，以避免核酸酶对该位点的反复切割，从而提高编辑效率。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;class-type-subtype&#34;&gt;Class, Type, Subtype&lt;/h3&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;center&gt;
+&lt;img src=&#34;images/class1.png&#34;&gt; 1类
+&lt;/center&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;center&gt;
+&lt;img src=&#34;images/class2.png&#34;&gt; 2类
+&lt;/center&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;原核生物的CRISPR-Cas适应性免疫系统根据效应子模块组织分为两个不同的类别。
+1类CRISPR-Cas系统利用&lt;strong&gt;多蛋白效应复合物&lt;/strong&gt; (&lt;a class=&#34;link&#34; href=&#34;#ref-makarovaSnapShotClassCRISPRCas2017&#34; &gt;&lt;em&gt;2&lt;/em&gt;&lt;/a&gt;)，而2类CRISPR-Cas系统利用&lt;strong&gt;单一蛋白效应器&lt;/strong&gt; (&lt;a class=&#34;link&#34; href=&#34;#ref-makarovaSnapShotClassCRISPRCas2017a&#34; &gt;&lt;em&gt;3&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
+&lt;p&gt;基于不同的效应蛋白家族，1类系统分为3种类型和12种亚型。1类系统代表CRISPR-Cas基因座的约90％，并且存在于不同的细菌和古菌门中;嗜热菌富含III型系统。除效应子基因之外，大部分1类基因座编码适应模块蛋白质Cas1和Cas2，以及多种辅助蛋白质，例如Cas4，逆转录酶，CARF（CRISPR相关的Rossmann折叠）结构域蛋白质等。
+III型和IV型系统在其各自的基因座中经常缺少适应性模块基因和/或CRISPR阵列。所有I型系统也编码DNA解旋酶Cas3，其通常与HD家族核酸酶结构域融合。在I型系统中，PAM在不同亚型之间变化，位于（原型）间隔区的5’或3’，对于适应和干扰都是必需的。&lt;/p&gt;
+&lt;p&gt;基于不同的效应蛋白家族，第2类系统可分为3种类型和9个亚型。第十亚型（V-U）包括许多假定的系统，其免疫（或可能是调节）功能仍有待证明。 2类系统占CRISPR-Cas基因座的约10％，在不同的细菌被发现，但在古细菌中几乎不存在。除了效应器蛋白质，大部分2类基因组编码适应性模块蛋白质，Cas1和Cas2以及辅助蛋白质，例如Cas4。 II型和V-B型基因座还包括tracrRNA（反式激活CRISPR RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然而，某些2类系统，特别是类型6的系统仅由CRISPR阵列和效应蛋白组成。&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
+&lt;div id=&#34;ref-carterSnapShotCRISPRRNAGuidedAdaptive2015&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;1. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;J. Carter, B. Wiedenheft, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.cell.2015.09.011&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SnapShot: CRISPR-RNA-Guided Adaptive Immune Systems&lt;/a&gt;. &lt;em&gt;Cell&lt;/em&gt;. &lt;strong&gt;163&lt;/strong&gt;, 260–260.e1 (2015).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-makarovaSnapShotClassCRISPRCas2017&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;2. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;K. S. Makarova, F. Zhang, E. V. Koonin, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.cell.2017.02.018&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SnapShot: Class 1 CRISPR-Cas Systems&lt;/a&gt;. &lt;em&gt;Cell&lt;/em&gt;. &lt;strong&gt;168&lt;/strong&gt;, 946–946.e1 (2017).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-makarovaSnapShotClassCRISPRCas2017a&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;span class=&#34;csl-left-margin&#34;&gt;3. &lt;/span&gt;&lt;span class=&#34;csl-right-inline&#34;&gt;K. S. Makarova, F. Zhang, E. V. Koonin, &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.cell.2016.12.038&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SnapShot: Class 2 CRISPR-Cas Systems&lt;/a&gt;. &lt;em&gt;Cell&lt;/em&gt;. &lt;strong&gt;168&lt;/strong&gt;, 328–328.e1 (2017).&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
         <title>开发我的Rshiny应用</title>
         <link>/p/rshiny/</link>
         <pubDate>Mon, 27 Mar 2023 00:00:00 +0000</pubDate>
         
         <guid>/p/rshiny/</guid>
-        <description></description>
+        <description>&lt;img src="/p/rshiny/Rshiny.jpg" alt="Featured image of post 开发我的Rshiny应用" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Shiny 是一个 R 包，可轻松地直接从 R 构建交互式 Web 应用程序。还可以在网页上托管独立应用程序或将它们嵌入 R Markdown 文档或构建仪表板，还可以使用 CSS 主题、html 小部件和 JavaScript 操作扩展您的 Shiny 应用程序。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#first app&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shiny&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34;Hello, world!&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;session&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;shinyApp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;整个app可分为两个部分，ui与sever，可以认为是前端与后端的关系，Rshiny提供了很多内置的小组件帮我们将前后端联系起来，非常方便好用。只需要有一点点的HTML/CSS/Javascript的知识就可以设计出更好看的界面和更多有趣的交互。&lt;/p&gt;
+&lt;p&gt;这里是shiny的&lt;a class=&#34;link&#34; href=&#34;https://posit.co/wp-content/uploads/2022/10/shiny-1.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;记忆手册&lt;/a&gt;,浓缩了大部分的操作。
+&lt;img src=&#34;shiny-1.png&#34;&gt;
+&lt;img src=&#34;shiny-2.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;methods&#34;&gt;Methods&lt;/h2&gt;
+&lt;h3 id=&#34;ui设计&#34;&gt;UI设计&lt;/h3&gt;
+&lt;h4 id=&#34;layout&#34;&gt;Layout&lt;/h4&gt;
+&lt;p&gt;最基础的布局就是&lt;code&gt;sidebarLayout&lt;/code&gt;,可以分成&lt;code&gt;sidebarPanel&lt;/code&gt;,&lt;code&gt;mainPanel&lt;/code&gt;两个部分。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;titlePanel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;title panel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;sidebarLayout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;sidebarPanel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sidebar panel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;mainPanel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;main panel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;可以通过将内容放在 *Panel 函数中来向Shiny 应用程序添加内容，shiny提供了R代码方便插入HTML (Table &lt;a href=&#34;#tab:html&#34;&gt;1&lt;/a&gt;)，更多标签可以查看&lt;a class=&#34;link&#34; href=&#34;https://shiny.rstudio.com/articles/tag-glossary.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;tag-glossary&lt;/a&gt;。&lt;/p&gt;
+&lt;table&gt;
+&lt;caption&gt;Table 1: shiny function	HTML5 equivalent	creates&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; shiny function &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; HTML5 equivalent &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; creates &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; p &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;p&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A paragraph of text &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; h1 &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;h1&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A first level header &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; h2 &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;h2&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A second level header &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; h3 &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;h3&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A third level header &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; h4 &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;h4&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A fourth level header &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; h5 &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;h5&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A fifth level header &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; h6 &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;h6&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A sixth level header &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; a &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;a&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A hyper link &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; br &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;br&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A line break (e.g. a blank line) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; div &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;div&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A division of text with a uniform style &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; span &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;span&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; An in-line division of text with a uniform style &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; pre &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;pre&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Text ‘as is’ in a fixed width font &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; code &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;code&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A formatted block of code &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; img &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;img&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; An image &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; strong &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;strong&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Bold text &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; em &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; &amp;lt;em&amp;gt; &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Italicized text &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; HTML &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; NA &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Directly passes a character string as HTML code &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;control-widgets&#34;&gt;Control widgets&lt;/h4&gt;
+&lt;p&gt;这些是常用shiny内置的小控件，提供一种向 Shiny serve发送消息的方式。
+&lt;img src=&#34;/p/rshiny/basic-widgets.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1200&#34;
+	srcset=&#34;/p/rshiny/basic-widgets_hu6411dfcbe8605158740ed2e5a3920fdc_238440_480x0_resize_box_3.png 480w, /p/rshiny/basic-widgets_hu6411dfcbe8605158740ed2e5a3920fdc_238440_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;caption&gt;Table 2: standard Shiny widgets&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; function &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; widget &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; actionButton &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Action Button &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; checkboxGroupInput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A group of check boxes &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; checkboxInput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A single check box &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; dateInput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A calendar to aid date selection &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; dateRangeInput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A pair of calendars for selecting a date range &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; fileInput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A file upload control wizard &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; helpText &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Help text that can be added to an input form &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; numericInput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A field to enter numbers &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; radioButtons &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A set of radio buttons &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; selectInput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A box with choices to select from &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; sliderInput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A slider bar &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; submitButton &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A submit button &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; textInput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; A field to enter text &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;可以想想怎么获取更多控件，比如一个color panel等等。&lt;/p&gt;
+&lt;p&gt;更多：&lt;/p&gt;
+&lt;p&gt;使用 textInput() 收集少量文本，使用 passwordInput()3 收集密码，使用 textAreaInput() 收集文本段落。&lt;/p&gt;
+&lt;p&gt;要收集数值，请使用 numericInput() 创建一个受约束的文本框或使用 sliderInput() 创建一个滑块。如果您为 sliderInput() 的默认值提供一个长度为 2 的数值向量，您将得到一个具有两端的“范围”滑块。&lt;/p&gt;
+&lt;p&gt;使用 dateInput() 收集一天或使用 dateRangeInput() 收集两天的范围。这些提供了一个方便的日历选择器，并且诸如 datesdisabled 和 daysofweekdisabled 之类的附加参数允许您限制有效输入的集合。&lt;/p&gt;
+&lt;p&gt;有两种不同的方法允许用户从一组预先指定的选项中进行选择：selectInput()(还可以设置 multiple = TRUE 以允许用户选择多个元素)和 radioButtons(); 可以使用checkboxGroupInput()形成多选。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;textInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;What&amp;#39;s your name?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;passwordInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;What&amp;#39;s your password?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;textAreaInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;story&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Tell me about yourself&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rows&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;numericInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;num&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Number one&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;min&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;sliderInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;num2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Number two&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;min&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;sliderInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;rng&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Range&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;min&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;dateInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;dob&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;When were you born?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;dateRangeInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;holiday&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;When do you want to go on vacation next?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;animals&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;dog&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;cat&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;mouse&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;bird&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;other&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;I hate animals&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;selectInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;state&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;What&amp;#39;s your favourite state?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;state.name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;radioButtons&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;animal&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;What&amp;#39;s your favourite animal?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;animals&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;checkboxGroupInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;animal&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;What animals do you like?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;animals&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;让用户使用 actionButton() 或 actionLink() 执行操作，可以使用“btn-primary”、“btn-success”、“btn-info”、“btn-warning”或“btn-danger”之一使用类参数自定义外观，使用“btn-lg”、“btn-sm”、“btn-xs”更改大小，可以使用“btn-block”使按钮跨越它们嵌入的元素的整个宽度。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;fluidRow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;actionButton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;click&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Click me!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;btn-danger&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;actionButton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;drink&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Drink me!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;btn-lg btn-success&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;fluidRow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;actionButton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;eat&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Eat me!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;btn-block&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;连接sever&#34;&gt;连接sever&lt;/h3&gt;
+&lt;h4 id=&#34;general&#34;&gt;general&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;添加输出对象在ui中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Shiny 提供了一系列函数，可以将 R 对象转换为用户界面的输出。每个函数创建特定类型的输出。&lt;/p&gt;
+&lt;table&gt;
+&lt;caption&gt;Table 3: output R objects family&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Output function &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; Creates &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; dataTableOutput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; DataTable &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; htmlOutput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; raw HTML &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; imageOutput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; image &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; plotOutput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; plot &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; tableOutput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; table &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; textOutput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; text &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; uiOutput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; raw HTML &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; verbatimTextOutput &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; text &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写构建R对象的代码在serve中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;caption&gt;Table 4: render R objects family&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; render function &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; creates &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; renderDataTable &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; DataTable &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; renderImage &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; images (saved as a link to a source file) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; renderPlot &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; plots &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; renderPrint &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; any printed output &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; renderTable &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; data frame, matrix, other table like structures &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; renderText &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; character strings &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; renderUI &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; a Shiny tag object or HTML &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;使用input，output连接&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以下代码就可以将selectInput选择的值&lt;code&gt;var&lt;/code&gt;通过&lt;code&gt;input$var&lt;/code&gt;的形式传递到&lt;code&gt;renderText()&lt;/code&gt;，再render成&lt;code&gt;output$selected_var&lt;/code&gt;的形式，最后通过&lt;code&gt;textOutput()&lt;/code&gt;输出到ui界面。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shiny&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;titlePanel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;censusVis&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;sidebarLayout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;sidebarPanel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nf&#34;&gt;selectInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;var&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;label&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Choose a variable to display&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Percent White&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              &lt;span class=&#34;s&#34;&gt;&amp;#34;Percent Black&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              &lt;span class=&#34;s&#34;&gt;&amp;#34;Percent Hispanic&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              &lt;span class=&#34;s&#34;&gt;&amp;#34;Percent Asian&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;selected&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Percent White&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;mainPanel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nf&#34;&gt;textOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;selected_var&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;selected_var&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;renderText&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;paste&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;You have selected&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;var&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;shinyApp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;更多：&lt;/p&gt;
+&lt;p&gt;使用 textOutput() 输出常规文本，使用 verbatimTextOutput() 输出固定代码和控制台输出。
+renderText() 将结果组合成一个字符串，通常与 textOutput() 配对
+renderPrint() 打印结果，就像您在 R 控制台中一样，并且通常与 verbatimTextOutput() 配对。&lt;/p&gt;
+&lt;p&gt;tableOutput() 和 renderTable() 呈现静态数据表，同时显示所有数据。
+dataTableOutput() 和 renderDataTable() 呈现一个动态表，显示固定数量的行以及用于更改哪些行可见的控件。
+tableOutput() 对于小型、固定的摘要（例如模型系数）最有用；如果您想向用户公开完整的数据框，则 dataTableOutput() 是最合适的。&lt;/p&gt;
+&lt;p&gt;默认情况下，plotOutput() 将占据其容器的整个宽度（稍后会详细介绍），并且高度为 400 像素。您可以使用高度和宽度参数覆盖这些默认值。我们建议始终设置 res = 96，因为这将使您的 Shiny 图与您在 RStudio 中看到的尽可能接近。&lt;/p&gt;
+&lt;h4 id=&#34;reactive-expressions&#34;&gt;reactive expressions&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This difference between commands and recipes is one of the key differences between two important styles of programming:&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;imperative programming&lt;/strong&gt;, you issue a specific command and it’s carried out immediately. This is the style of programming you’re used to in your analysis scripts: you command R to load your data, transform it, visualise it, and save the results to disk.&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;declarative programming&lt;/strong&gt;, you express higher-level goals or describe important constraints, and rely on someone else to decide how and/or when to translate that into action. This is the style of programming you use in Shiny.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Shiny 中声明式编程的优势之一是它允许应用程序非常懒惰。 Shiny 应用程序只会执行更新您当前可以看到的输出控件所需的最少工作量，优点是快速，缺点是如果你不运行所有代码，可能不会发现错误。&lt;/p&gt;
+&lt;p&gt;反应式表达式比常规 R 函数更聪明。它们缓存值并知道它们的值何时会变。第一次运行反应式表达式时，表达式会将其结果保存在计算机的内存中。下次调用反应式表达式时，它可以返回保存的结果而不进行任何计算（这将使您的应用程序更快）。&lt;/p&gt;
+&lt;p&gt;如果反应式表达式知道结果是最新的，它只会返回保存的结果。如果反应式表达式得知结果已过时（因为小部件已更改），则表达式将重新计算结果。然后它返回新结果并保存一个新副本。反应式表达式将使用这个新副本，直到它也变得过时为止。
+让我们总结一下这种行为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;反应式表达式会在您第一次运行时保存其结果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下次调用反应式表达式时，它会检查保存的值是否已过时（即，它所依赖的小部件是否已更改）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果该值已过期，反应对象将重新计算它（然后保存新结果）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果该值是最新的，反应式表达式将返回保存的值而不进行任何计算。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;建议把文件导入等不需要每次更新的代码放在reactive里。&lt;/p&gt;
+&lt;p&gt;在 Shiny 中，应该考虑一个规则：每当复制和粘贴一次东西时，就应该考虑将重复的代码提取到一个反应表达式中，因为反应式表达式不仅让人类更容易理解代码，它们还提高了 Shiny 高效重新运行代码的能力。&lt;/p&gt;
+&lt;p&gt;考虑以下代码，&lt;code&gt;reactive()&lt;/code&gt;确保只有在改变n或lambda时才会重新计算：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ggplot2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;freqpoly&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binwidth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xlim&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;-3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;data.frame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;g&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;rep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;x1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;rep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;x2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;colour&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;geom_freqpoly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;binwidth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binwidth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;coord_cartesian&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xlim&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xlim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;fluidRow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;column&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;nf&#34;&gt;numericInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;lambda1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;label&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lambda1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;nf&#34;&gt;numericInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;lambda2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;label&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lambda2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;nf&#34;&gt;numericInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;n&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;label&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;n&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1e4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;min&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;column&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;plotOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hist&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;session&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;rpois&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lambda1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;rpois&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lambda2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hist&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;renderPlot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;freqpoly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;x2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binwidth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xlim&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;96&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;shinyApp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;控制reactive行为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;计时器
+&lt;code&gt;reactiveTimer()&lt;/code&gt; 是一个响应式表达式，它依赖于隐藏的输入：当前时间。
+将server里的reactive修改成下列形式可以让图形每500ms刷新一次。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;session&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;timer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reactiveTimer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;timer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;rpois&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lambda1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;timer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;rpois&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lambda2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hist&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;renderPlot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;freqpoly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;x2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binwidth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xlim&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;96&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;点击刷新
+当你的serve运行一次需要庞大计算和时间时，可能希望要求用户通过单击按钮来选择执行昂贵的计算。这是 actionButton() 的一个很好的用例：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;并且我们需要 &lt;code&gt;eventReactive()&lt;/code&gt;，它有两个参数：第一个参数指定依赖什么，第二个参数指定计算什么。&lt;/p&gt;
+&lt;p&gt;修改ui和serve，添加了按键，用户点击按键即可出现新的模拟结果。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;fluidRow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;column&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nf&#34;&gt;numericInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;lambda1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;label&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lambda1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nf&#34;&gt;numericInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;lambda2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;label&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lambda2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nf&#34;&gt;numericInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;n&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;label&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;n&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1e4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;min&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nf&#34;&gt;actionButton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;simulate&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Simulate!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;column&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;plotOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hist&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;session&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;eventReactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;simulate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;rpois&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lambda1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;eventReactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;simulate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;rpois&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lambda2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hist&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;renderPlot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;freqpoly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;x2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binwidth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xlim&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;96&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;observeEvent() 与 eventReactive() 非常相似。它有两个重要的参数：eventExpr 和 handlerExpr。第一个参数是要依赖的输入或表达式；第二个参数是将要运行的代码。例如，对 server() 的以下修改意味着每次更新该名称时，都会向控制台发送一条消息：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;textInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;What&amp;#39;s your name?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;textOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;greeting&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;session&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;paste0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Hello &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;greeting&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;renderText&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;observeEvent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Greeting performed&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;file-updownload&#34;&gt;file up/download&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;fileInput&lt;/code&gt;在ui中上传文件后，得到的input是一个列表，其中的datapath是文件上传后的路径，需要使用read.csv等函数读取file$datapath。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fluidPage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;sidebarLayout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;sidebarPanel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nf&#34;&gt;fileInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;file1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Choose CSV File&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;accept&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;.csv&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nf&#34;&gt;checkboxInput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;header&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Header&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;mainPanel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nf&#34;&gt;tableOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;contents&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;contents&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;renderTable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tools&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;file_ext&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;datapath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;validate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;need&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;csv&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Please upload a csv file&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;read.csv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;datapath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;header&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;header&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;shinyApp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;您可以让用户使用 downloadButton() 或 downloadLink() 下载文件。这些都需要服务器功能中的新技术，因此我们将在第 9 章中回过头来讨论。&lt;/p&gt;
+&lt;h2 id=&#34;share&#34;&gt;Share&lt;/h2&gt;
+&lt;h3 id=&#34;文件形式&#34;&gt;文件形式&lt;/h3&gt;
+&lt;p&gt;任何拥有 R 的人都可以运行Shiny 应用程序，分享你的app.R 文件副本，以及您的应用程序中使用的任何补充材料（例如，www 文件夹或 helpers.R 文件）即可，最好写上代码运行的依赖包安装代码。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;runUrl()&lt;/code&gt; will download and launch a Shiny app straight from a weblink.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;runGitHub( &amp;quot;&amp;lt;your repository name&amp;gt;&amp;quot;, &amp;quot;&amp;lt;your user name&amp;gt;&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;网页形式&#34;&gt;网页形式&lt;/h3&gt;
+&lt;p&gt;上述方法要求用户在他们的计算机上安装 R 和 Shiny。但如果我们自己搭建好了服务器，也可以直接用浏览器使用我们的APP。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Shinyapps.io&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;将 Shiny 应用程序转换为网页的最简单方法是使用 shinyapps.io，这是 RStudio 为 Shiny 应用程序提供的托管服务。
+2. Shiny Server&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;RStudio Connect&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;官方教程：&lt;a class=&#34;link&#34; href=&#34;https://shiny.rstudio.com/tutorial/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Shiny Learning Resources&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考书：&lt;a class=&#34;link&#34; href=&#34;https://mastering-shiny.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Mastering Shiny&lt;/a&gt;&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>Metagenomic workflow</title>
@@ -1200,13 +2257,89 @@ Figure 1: Basic workflow
         <pubDate>Sat, 25 Mar 2023 00:00:00 +0000</pubDate>
         
         <guid>/p/%E7%B4%AB%E9%87%91%E6%98%A5%E6%97%A5/</guid>
-        <description>&lt;p&gt;春分刚过，许多花儿都争相绽放。天气还是有点冷，但还是想跟群青同学一起逛逛紫金港，赏赏花，观观鸟。&lt;/p&gt;
-&lt;p&gt;这个时候校园里最多的便是蔷薇科的花了，虽然我向来是”桃李杏梅樱，傻傻分不清”的😂，这次在群青同学的帮助下收集到了九宫格：菊花桃，碧桃，垂丝海棠，西府海棠，湖北海棠，大岛樱，日本晚樱，日本樱花，蓬蘽&lt;/p&gt;
-&lt;p&gt;湖心岛出发，二月兰，刚冒芽的水杉，偷偷绽放的水仙和蝴蝶花。&lt;/p&gt;
-&lt;p&gt;鸟儿大多还是老朋友，一只歌声婉转的乌鸫，快步走的白鹡鸰，悠闲的黑水鸡和斑嘴鸭，大喜鹊和红嘴蓝鹊。本来这次最想看到的就是罕见旅客黑翅长脚鹬的，但是这儿果然只是它们歇歇脚的地方，没能见到😭，偷浙大官微的美图，哈哈。南花园还是夜鹭与白鹭们的领地。&lt;/p&gt;
-&lt;p&gt;生物实验中心之前每年这个时候都是大片油菜花，打卡圣地，但今年的试验田搬到了银泉，这里居然种满了麦子。绿油油的麦田非常治愈。这个我叫做单双子叶的碰撞。惊喜出现在麦田的拐角处，几只可爱的啾啾正在偷麦子吃，原来是白腰文鸟，上次见它也是在偷吃生科院的实验水稻。站在紫荆丛中的文鸟超有气质。&lt;/p&gt;
-&lt;p&gt;其他一些，医学院的一排樱花，LY同学最赞的一株樱花，已经吃了四年还要再吃四年的麦香…&lt;/p&gt;
-&lt;p&gt;感谢群青同学的摄影，越来越强了&lt;/p&gt;
+        <description>&lt;img src="/p/%E7%B4%AB%E9%87%91%E6%98%A5%E6%97%A5/images/%E8%A5%BF%E5%BA%9C.jpg" alt="Featured image of post 紫金春日" /&gt;&lt;p&gt;春分刚过，校园许多花儿都争相绽放。天气还是有点冷，但还是想跟群青同学一起逛逛紫金港，赏赏花，观观鸟。&lt;/p&gt;
+&lt;p&gt;这个时候校园里最多的便是蔷薇科的花了，虽然我向来是”桃李杏梅樱，傻傻分不清”的😂，这次在群青同学的帮助下收集到了九宫格：菊花桃，碧桃，垂丝海棠，西府海棠，湖北海棠，大岛樱，日本晚樱，日本樱花，蓬蘽(疑似)&lt;/p&gt;
+&lt;table &gt;
+    &lt;tr&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/早樱.jpg&#34;&gt; 日本樱花 &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/大岛樱.jpg&#34;&gt; 大岛樱 &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/晚樱.jpg&#34;&gt; 日本晚樱 &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/西府.jpg&#34;&gt; 西府海棠 &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/湖北.jpg&#34;&gt; 湖北海棠 &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/垂丝.jpg&#34;&gt; 垂丝海棠 &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/菊花桃.jpg&#34;&gt; 菊花桃 &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/碧桃.jpg&#34;&gt; 碧桃 &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/蓬蘽.jpg&#34;&gt; 蓬蘽(疑似) &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;湖心岛出发，大片的二月兰，刚冒芽的水杉，偷偷绽放的水仙和蝴蝶花。&lt;/p&gt;
+&lt;table &gt;
+    &lt;tr&gt;
+        &lt;td rowspan=2 width=&#34;23%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/二月兰.jpg&#34;&gt; 二月兰 &lt;/center&gt;&lt;/td&gt;
+        &lt;td rowspan=2 width=&#34;23%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/水仙.jpg&#34;&gt; 水仙 &lt;/center&gt;&lt;/td&gt;
+        &lt;td rowspan=2 width=&#34;23%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/蝴蝶花.jpg&#34;&gt; 蝴蝶花 &lt;/center&gt;&lt;/td&gt;
+        &lt;td width=&#34;30%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/水杉.jpg&#34;&gt; 水杉 &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td width=&#34;30%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/39.jpg&#34;&gt; 早樱 &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;鸟儿大多还是老朋友，快步走的白鹡鸰，悠闲的黑水鸡和斑嘴鸭，大喜鹊和红嘴蓝鹊，一只歌声婉转的乌鸫。本来这次最想看到的就是罕见旅客黑翅长脚鹬的，但是这儿果然只是它们歇歇脚的地方，没能见到😭，偷浙大官微的美图，哈哈。南花园还是夜鹭与白鹭们的领地。&lt;/p&gt;
+&lt;table &gt;
+    &lt;tr&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/白鹡鸰.jpg&#34;&gt; 白鹡鸰 &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/黑水鸡.jpg&#34;&gt; 黑水鸡 &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/斑嘴鸭.jpg&#34;&gt; 斑嘴鸭 &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table &gt;
+    &lt;tr&gt;
+        &lt;td rowspan=2&gt;&lt;center&gt;&lt;img src=&#34;images/喜鹊.jpg&#34;&gt; 喜鹊 &lt;/center&gt;&lt;/td&gt;
+        &lt;td rowspan=2&gt;&lt;center&gt;&lt;img src=&#34;images/夜鹭.jpg&#34;&gt; 夜鹭 &lt;/center&gt;&lt;/td&gt;
+        &lt;td rowspan=2&gt;&lt;center&gt;&lt;img src=&#34;images/乌鸫.jpg&#34;&gt; 乌鸫 &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/黑翅长脚鹬.jpg&#34;&gt; 黑翅长脚鹬 &lt;font size=&#34;1px&#34;&gt;（浙江大学B站号）&lt;/font&gt; &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/红嘴蓝鹊.jpg&#34;&gt; 红嘴蓝鹊 &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;生物实验中心之前每年这个时候都是大片油菜花，打卡圣地，但今年的试验田搬到了银泉，这里居然种满了麦子，绿油油的麦田非常治愈。去年的油菜花应该还留下了一些种子，这个我叫做单双子叶的碰撞。&lt;/p&gt;
+&lt;table &gt;
+    &lt;tr&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/麦.jpg&#34;&gt; &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/麦2.jpg&#34;&gt; &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/麦田.jpg&#34;&gt; &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/单双子叶碰撞2.jpg&#34;&gt;单双子叶的碰撞 &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;惊喜出现在麦田的拐角处，几只可爱的啾啾正在偷麦子吃，原来是白腰文鸟，上次见它也是在偷吃生科院的实验水稻。站在紫荆丛中的文鸟超有气质。&lt;/p&gt;
+&lt;table &gt;
+    &lt;tr&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/白腰文鸟.jpg&#34;&gt; &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/白腰文鸟6.jpg&#34;&gt; &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/白腰文鸟2.jpg&#34;&gt; &lt;/center&gt;&lt;/td&gt;
+        &lt;td &gt;&lt;center&gt;&lt;img src=&#34;images/白腰文鸟4.jpg&#34;&gt; &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;其他一些瞬间，医学院的一排樱花，LY同学最赞的一株樱花，已经吃了四年还要再吃四年的麦香，晶莹的水珠…&lt;/p&gt;
+&lt;table &gt;
+    &lt;tr&gt;
+        &lt;td rowspan=2 width=&#34;23%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/医学院.jpg&#34;&gt; 医学院 &lt;/center&gt;&lt;/td&gt;
+        &lt;td rowspan=2 width=&#34;23%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/药学院.jpg&#34;&gt; 药学院 &lt;/center&gt;&lt;/td&gt;
+        &lt;td rowspan=2 width=&#34;23%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/医图.jpg&#34;&gt; 医图 &lt;/center&gt;&lt;/td&gt;
+        &lt;td width=&#34;30%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/麦香.jpg&#34;&gt; 麦香 &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td width=&#34;30%&#34;&gt;&lt;center&gt;&lt;img src=&#34;images/露珠.jpg&#34;&gt;  &lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;感谢群青同学的摄影，越来越强了👍。下一个季节再来看看。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1215,7 +2348,7 @@ Figure 1: Basic workflow
         <pubDate>Fri, 24 Mar 2023 00:00:00 +0000</pubDate>
         
         <guid>/p/r-statistics/</guid>
-        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+        <description>&lt;img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-4-1.png" alt="Featured image of post R-statistics" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;统计分析在生物信息学中具有非常重要的意义，因为生物信息学研究的数据量庞大、复杂性高，而统计分析可以帮助我们更好地理解和解释这些数据。下面是统计分析对生物信息学的几个重要意义：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;数据清洗和预处理：生物信息学研究中经常需要处理大规模的数据，而这些数据可能存在噪声、错误和缺失值等问题。统计分析可以帮助我们对数据进行清洗和预处理，以确保数据的质量和可靠性。&lt;/li&gt;
@@ -1766,7 +2899,7 @@ $$&lt;/p&gt;
 &lt;p&gt;$$
 \hat{a}=\overline{y}-\hat{b}\overline{x}
 $$
-回归有效性可以用$R^2$和$p-valuie$来度量，
+回归有效性可以用$R^2$和$p-value$来度量，
 $R^2=1-\frac{SSE}{SST}$&lt;/p&gt;
 &lt;p&gt;统计量$F=\frac{SSR}{SSE/(n-2)}$,$p-value$为$P(F(1,n-2)&amp;gt;c)$,c为F的值。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2208,7 +3341,7 @@ $R^2=1-\frac{SSE}{SST}$&lt;/p&gt;
 &lt;p&gt;因为问题还比较确定，可以试试自己写脚本转换Rmd产生的md文件。&lt;/p&gt;
 &lt;h2 id=&#34;公式问题&#34;&gt;公式问题&lt;/h2&gt;
 &lt;p&gt;rblogdown 渲染Rmd成md会把我写的公式语法改变：&lt;/p&gt;
-&lt;p&gt;例如： &lt;code&gt;$a=sum_i^2$&lt;/code&gt;变成了&lt;code&gt;\(a=sum_i^2\)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;例如： &lt;code&gt;$a=sum_i^2$&lt;/code&gt;变成$a=sum_i^2$&lt;/p&gt;
 &lt;p&gt;但是stack主题识别不了后面那种语法，这个比较简单：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2235,7 +3368,7 @@ $R^2=1-\frac{SSE}{SST}$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pattern&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;\((.*?)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;\)&amp;#39;&lt;/span&gt;  
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 定义一个字符串，包含要处理的LaTeX字符串&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;latex_string&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;For the equation `\(\sum_{i=1}^n i^2\)`&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;latex_string&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;For the equation$\sum_{i=1}^n i^2$&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 使用sub()函数替换匹配到的文本&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;processed_string&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sub&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pattern&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$\1$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;latex_string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -2243,7 +3376,7 @@ $R^2=1-\frac{SSE}{SST}$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 输出处理后的字符串&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;processed_string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sub&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;`&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;\((.*?)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;\)`&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$\1$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;`\(a=sum_i^2\)`jjjhg`\(a=sum_i^2\)`&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sub&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;`&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;\((.*?)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;\)`&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$\1$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;^&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;jjjh&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;^&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;图片大小调整&#34;&gt;图片大小调整&lt;/h2&gt;
@@ -2556,7 +3689,7 @@ $R^2=1-\frac{SSE}{SST}$&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;这个思路真不错，哈哈&lt;/p&gt;
 &lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
 &lt;p&gt;调教了一下ChatGPT后，就得到了整个更新问题的方法了：
-首先整理一个&lt;a class=&#34;link&#34; href=&#34;https://github.com/Asa12138/pc_blog/refresh_md_to_fit_stack.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+首先整理一个&lt;a class=&#34;link&#34; href=&#34;https://github.com/Asa12138/pc_blog/R/refresh_md_to_fit_stack.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;refresh_md_to_fit_stack.py&lt;/a&gt;放在网站根目录下，
 然后在R文件夹的（如果你是用Rblogdown生成的网站，那就会有这个文件夹）的build2.R中加入一行：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;system(&amp;quot;python refresh_md_to_fit_stack.py&amp;quot;)&lt;/code&gt;&lt;/p&gt;
@@ -2731,9 +3864,9 @@ MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 
 &lt;h3 id=&#34;3solan-ncm&#34;&gt;3.Solan NCM&lt;/h3&gt;
 &lt;p&gt;只有当物种死亡或离开这个系统时，群落结构才会发生改变。此时，离开个体的生态位就会空余出来，其它个体会通过&lt;strong&gt;来自群落外的迁移&lt;/strong&gt;或&lt;strong&gt;群落内部的繁殖&lt;/strong&gt;来填补空出的生态位。因此可以把群落的动态描述为&lt;strong&gt;死亡——繁殖/扩散——死亡&lt;/strong&gt;这样的循环 (&lt;a class=&#34;link&#34; href=&#34;#ref-sloanQuantifyingRolesImmigration2006&#34; &gt;&lt;em&gt;6&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;计算公式：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;-$Pr(\frac{N_i+1}{N_i})=(\frac{N_T-N_i}{N_T})[mp_i+(1+\alpha_i)(1-m)(\frac{N_i}{N_T-1})$
--$Pr(\frac{N_i}{N_i})=\frac{N_i}{N_T}[mp_i+{(1+\alpha_i)}(1-m)(\frac{N_i-1}{N_T-1})]+(\frac{N_T-N_i}{N_T})[m(1-p_i)+{red}{(1-\alpha_i)}(1-m)(\frac{N_T-N_i-1}{N_T-1})]$
--$Pr(\frac{N_i-1}{N_i})=\frac{N_i}{N_T}[m(1-p_i)+(1-\alpha_i)(1-m)(\frac{N_T-N_i}{N_T-1})]$&lt;/p&gt;
+&lt;p&gt;-$Pr(\frac{N_i+1}{N_i})=(\frac{N_T-N_i}{N_T})[mp_i+(1+\alpha_i)(1-m)(\frac{N_i}{N_T-1})$&lt;/p&gt;
+&lt;p&gt;-$Pr(\frac{N_i}{N_i})=\frac{N_i}{N_T}[mp_i+{(1+\alpha_i)}(1-m)(\frac{N_i-1}{N_T-1})]+(\frac{N_T-N_i}{N_T})[m(1-p_i)+{red}{(1-\alpha_i)}(1-m)(\frac{N_T-N_i-1}{N_T-1})]$&lt;/p&gt;
+&lt;p&gt;-$Pr(\frac{N_i-1}{N_i})=\frac{N_i}{N_T}[m(1-p_i)+(1-\alpha_i)(1-m)(\frac{N_T-N_i}{N_T-1})]$&lt;/p&gt;
 &lt;p&gt;物种 i 占居的频率（occurrence frequency: row sums of binary OTU table/number of sites）为其概率密度函数的积分。 此时该分布是一个beta分布，我们就可以在R语言中利用beta分布对其进行[拟合]，获得参数m的评估值。&lt;/p&gt;
 &lt;h4 id=&#34;code-2&#34;&gt;code&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2812,8 +3945,8 @@ MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 
 &lt;h4 id=&#34;dnci&#34;&gt;DNCI&lt;/h4&gt;
 &lt;p&gt;在PER-SIMPER方法的基础上，提出了一个新的度量指标: dispersal–niche continuum index (&lt;strong&gt;DNCI&lt;/strong&gt;)，该指数可估计是扩散过程还是生态位过程主导群落的构建，并便于不同数据集之间的比较。&lt;/p&gt;
 &lt;p&gt;PER-SIMPER利用物种在不同站点之间的矩阵，在排列过程中生成三种不同的零模型： 通过&lt;strong&gt;约束行(生态位构建)、约束列(扩散构建)或两者都约束&lt;/strong&gt;。 PER-SIMPER利用SIMPER方法对原始群落矩阵组成相似度模式进行建模，并与三个零模型比较。 PER-SIMPER通过识别哪个零模型与经验分析最匹配来进行定性评估。然而，大多数群落都是由生态位和扩散过程共同构成的，这限制了构建机制定性方法的敏感性。此外简单决策过程的定性特性使不同群落之间的构建过程难以进行精确比较。&lt;/p&gt;
-&lt;p&gt;PER-SIMPER分析返回三个E-metric分布,这与SIMPER经验值与三个PER-SIMPER零模型之间的偏差相关。本文提出的新的DNCI是由这些计算的E值推导而来的。 定量结果是基于标准效应量En(即来自”生态位”模型的E-metric分布)减去标准效应量Ed (即来自”扩散”模型的E-metric分布)。 DNCI提供了一种方法来量化和比较跨数据集构建过程的强度。&lt;strong&gt;DNCI值正或负表明生态位或分散过程分别是群组构建的主要过程。指数的绝对值越高，代表占主导地位的构建过程的潜力越大。&lt;/strong&gt;
-$DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)-\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{n(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)$&lt;/p&gt;
+&lt;p&gt;PER-SIMPER分析返回三个E-metric分布,这与SIMPER经验值与三个PER-SIMPER零模型之间的偏差相关。本文提出的新的DNCI是由这些计算的E值推导而来的。 定量结果是基于标准效应量En(即来自”生态位”模型的E-metric分布)减去标准效应量Ed (即来自”扩散”模型的E-metric分布)。 DNCI提供了一种方法来量化和比较跨数据集构建过程的强度。&lt;strong&gt;DNCI值正或负表明生态位或分散过程分别是群组构建的主要过程。指数的绝对值越高，代表占主导地位的构建过程的潜力越大。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)-\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{n(i)}-\overline {E_{dn}}}{\sigma E_{dn}}\right)$&lt;/p&gt;
 &lt;p&gt;如果DNCI与0差异不显著，则可以认为扩散过程和生态位过程对群落构建的影响是相等的。 当DNCI显著低于0时，扩散过程是群落构建的主导驱动因素; 如果DNCI显著高于0，生态位过程是群落构建的主要决定因素。 注意，表明扩散过程优势的负DNCI值并不能提供实际扩散速率的信息。&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
@@ -2850,11 +3983,11 @@ $DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}
         </item>
         <item>
         <title>R语言学习</title>
-        <link>/p/r/</link>
+        <link>/p/r-learning/</link>
         <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
         
-        <guid>/p/r/</guid>
-        <description>&lt;img src="/p/r/images/data2viz.png" alt="Featured image of post R语言学习" /&gt;&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+        <guid>/p/r-learning/</guid>
+        <description>&lt;img src="/p/r-learning/images/data2viz.png" alt="Featured image of post R语言学习" /&gt;&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;linux&lt;/strong&gt;, &lt;strong&gt;python&lt;/strong&gt;和&lt;strong&gt;R语言&lt;/strong&gt;应该是生信学习中最重要的几个部分。&lt;/p&gt;
 &lt;p&gt;linux是一种操作系统，由于许多生物信息学软件仅提供支持linux平台的命令行版本，而不是图形化界面，所以掌握该操作系统的基础文件管理，安装使用软件，输入输出逻辑，简单shell脚本编写等十分重要。&lt;/p&gt;
 &lt;p&gt;python与R都是免费开源多平台的编程语言，并且都是较为容易学习上手的模仿自然语言语法的编程语言，且支持面向对象编程，两者在数据科学上都有着非常重要的应用。Python的生态系统非常丰富，拥有大量的数据科学库和框架，例如：NumPy、Pandas、Matplotlib、Seaborn、Scikit-learn、PyTorch、TensorFlow等，这些库可以帮助数据科学家快速处理和分析数据，构建模型。&lt;/p&gt;
@@ -2964,11 +4097,13 @@ $DNCI=SES_d-SES_n=\frac{1}{n}\sum_{i=1}^n\left(\frac{E_{d(i)}-\overline {E_{dn}}
 &lt;p&gt;R Markdown文件(.Rmd)支持生成网页格式的幻灯片(&lt;code&gt;slidy_presentation&lt;/code&gt;)， 以及LaTeX beamer格式的PDF幻灯片(&lt;code&gt;beamer_presentation&lt;/code&gt;)， 和Microsoft Office的PowerPoint幻灯片(&lt;code&gt;powerpoint_presentation&lt;/code&gt;)格式。&lt;/p&gt;
 &lt;p&gt;目前稍微尝试了一些Yihui大佬的&amp;quot;写轮眼&amp;quot;包，但没有试着做自己的slides，以后有机会一定试试。&lt;/p&gt;
 &lt;h3 id=&#34;写r包&#34;&gt;写R包&lt;/h3&gt;
-&lt;p&gt;积极尝试&lt;/p&gt;
+&lt;p&gt;包是可重现 R 代码的基本单元，包括可重用的 R 函数、描述如何使用它们的文档和示例数据。一个包将代码、数据、文档和测试捆绑在一起，并且很容易与他人共享。&lt;/p&gt;
+&lt;p&gt;积极尝试（以后讲讲）&lt;/p&gt;
 &lt;p&gt;参考书：&lt;a class=&#34;link&#34; href=&#34;https://r-pkgs.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;R Packages (2e) (r-pkgs.org)&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;制作shiny应用&#34;&gt;制作shiny应用&lt;/h3&gt;
-&lt;p&gt;积极尝试&lt;/p&gt;
+&lt;p&gt;Shiny 是一个 R 包，可轻松地直接从 R 构建交互式 Web 应用程序。还可以在网页上托管独立应用程序或将它们嵌入 R Markdown 文档或构建仪表板，还可以使用 CSS 主题、html 小部件和 JavaScript 操作扩展您的 Shiny 应用程序。&lt;/p&gt;
+&lt;p&gt;积极尝试（以后讲讲）&lt;/p&gt;
 &lt;p&gt;官方教程：&lt;a class=&#34;link&#34; href=&#34;https://shiny.rstudio.com/tutorial/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shiny Learning Resources&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;参考书：&lt;a class=&#34;link&#34; href=&#34;https://mastering-shiny.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

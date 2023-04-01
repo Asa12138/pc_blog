@@ -2,7 +2,7 @@
 title: R语言学习
 author: Peng Chen
 date: '2023-03-16'
-slug: r
+slug: r-learning
 categories:
   - R
 tags:
@@ -122,7 +122,7 @@ Yihui Xie大佬的官方文档介绍：[R Markdown: The Definitive Guide (bookdo
 
 以及参考书：[R Markdown Cookbook (bookdown.org)](https://bookdown.org/yihui/rmarkdown-cookbook/)
 
-#### Rbookdown
+#### Rbookdown 
 
 R的bookdown扩展包(<https://github.com/rstudio/bookdown>) 是继knitr和rmarkdown扩展包之后， 另一个增强markdown格式的扩展， 使得Rmd格式可以支持公式、定理、图表自动编号和引用、链接， 文献引用和链接等适用于编写书籍的功能。相当方便，我也稍微尝试写了一下：[MetaNet Tutorial (asa12138.github.io)](https://asa12138.github.io/MetaNet_tutorial/)。
 
@@ -146,13 +146,17 @@ R Markdown文件(.Rmd)支持生成网页格式的幻灯片(`slidy_presentation`)
 
 ### 写R包
 
-积极尝试
+包是可重现 R 代码的基本单元，包括可重用的 R 函数、描述如何使用它们的文档和示例数据。一个包将代码、数据、文档和测试捆绑在一起，并且很容易与他人共享。
+
+积极尝试（以后讲讲）
 
 参考书：[R Packages (2e) (r-pkgs.org)](https://r-pkgs.org/)
 
 ### 制作shiny应用
 
-积极尝试
+Shiny 是一个 R 包，可轻松地直接从 R 构建交互式 Web 应用程序。还可以在网页上托管独立应用程序或将它们嵌入 R Markdown 文档或构建仪表板，还可以使用 CSS 主题、html 小部件和 JavaScript 操作扩展您的 Shiny 应用程序。
+
+积极尝试（以后讲讲）
 
 官方教程：[Shiny Learning Resources](https://shiny.rstudio.com/tutorial/)
 
