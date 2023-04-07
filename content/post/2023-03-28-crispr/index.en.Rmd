@@ -1,7 +1,7 @@
 ---
 title: CRISPR 相关学习
 author: Peng Chen
-date: '2023-04-20'
+date: '2023-10-20'
 slug: crispr
 categories:
   - microbial-ecology
@@ -96,6 +96,35 @@ III型和IV型系统在其各自的基因座中经常缺少适应性模块基因
 II型和V-B型基因座还包括tracrRNA（反式激活CRISPR
 RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然而，某些2类系统，特别是类型6的系统仅由CRISPR阵列和效应蛋白组成。
 
+### beyond adaptive immunity
+
+一篇比较新的综述总结讨论了 CRISPR-Cas 系统的一些众所周知的和一些最近建立的非规范功能及其在其他生物过程中的快速扩展应用 @deviCRISPRCasSystemsRole2022。它们在基因调控、细菌病理生理学、毒力和进化中的替代作用已经开始揭示。
+
+#### Pathogenicity and virulence
+
+#### Bacterial physiology
+
+#### Response to stress
+有人提出，在大肠杆菌中，诱导的 Cas 水平和 CRISPR 阵列中 ssTorA 靶向间隔子（部分匹配）的出现的联合作用导致膜蛋白水平降低，从而影响跨细胞的运输通道。
+
+![](images/stress.png){}
+
+#### Endogenous gene regulation
+
+#### Bacterial genome remodeling
+为了避免由于自我靶向间隔子导致的细胞死亡，生物体被证明可以通过移除原型间隔子或删除整个目标区域来重塑目标区域。
+
+#### Association with DNA repair system
+
+### application
+#### Inhibition of horizontal gene transfer
+最近，CRISPR-Cas 还被用作抑制抗生素抗性基因从一种生物体转移到另一种生物体的工具。
+#### Typing tool
+CRISPR-Cas 系统用于分型细菌物种的多样性（
+#### Genome editing
+
+
+
 ## Pangenomes
 
 大部分的CRISPR array中的spacer尚未与它们识别的病毒相关联，被命名为
@@ -124,7 +153,9 @@ CRISPR-Cas 系统不会出现在具有固定辅助基因集合的基因组中
 系统的基因组是否以比没有这些系统的基因组更高的频率呈现特定基因？（进一步看这个）
 
 3. CRISPR-Cas 相关基因富集膜蛋白
-4. 具有 CRISPR-Cas I 型系统和特定膜蛋白的基因组显示出独特的spacer和噬菌体
+
+4. 具有 CRISPR-Cas I 型系统和特定膜蛋白的基因组显示出独特的spacer和噬菌体基因
+
 
 
 ## Reference

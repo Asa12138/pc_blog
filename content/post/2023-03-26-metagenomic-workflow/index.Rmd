@@ -89,8 +89,7 @@ echo handling: $sample
 ####################
 fastp -w 8 -i ~/work/asthma/data/$sample/$sample'_f1.fastq' -o ${i}_1 \
 -I ~/work/asthma/data/$sample/$sample'_r2.fastq' -O ${i}_2 -j ~/work/asthma/fastp/${i}.json
-#delete outputfile
-rm -rf ${i}_1 ${i}_2
+
 ####################
 echo end: `date +'%Y-%m-%d %T'`
 end=`date +%s`
@@ -405,6 +404,7 @@ prodigal -i ~/work/asthma/megahit/contigs/$sample.fa \
     -d ~/work/asthma/prodigal/$sample.gene.fa \
     -o ~/work/asthma/prodigal/$sample.gene.gff \
     -p meta -f gff 
+    
 grep 'partial=00' ~/work/asthma/prodigal/$sample.gene.fa | cut -f1 -d ' '| sed 's/>//' > ~/work/asthma/prodigal/$sample.fullid
 seqkit grep -f ~/work/asthma/prodigal/$sample.fullid ~/work/asthma/prodigal/$sample.gene.fa > ~/work/asthma/prodigal/fullgene/$sample.gene.fa
 
@@ -424,7 +424,7 @@ seqkit grep -f temp/prodigal/full_length.id temp/prodigal/gene.fa > temp/prodiga
 seqkit stat temp/prodigal/full_length.fa
 ```
 
-### 去冗余： Cd-hit
+### 去冗余
 
 上面产生了n个样本的基因预测结果文件，gene.fa文件要想办法整合为一个文件再去去冗余。
 
@@ -441,6 +441,7 @@ cat *.gene.fa>all.fullgene.fa
 echo 'done'
 ```
 
+#### Cd-hit
 ```{bash}
 #!/bin/bash
 #SBATCH --job-name=cdhit
@@ -461,6 +462,7 @@ cd-hit-est -i prodigal/fullgene/all.fullgene.fa \
     -o NR/nucleotide.fa \
     -aS 0.9 -c 0.9 -G 0 -g 0 -T 0 -M 0
 ## 统计非冗余基因数量，单次拼接结果数量下降不大，多批拼接冗余度高
+
 echo 'after remove, the number of genes: '
 grep -c '>' NR/nucleotide.fa
 ## 翻译核酸为对应蛋白序列，emboss
@@ -476,6 +478,32 @@ echo end: `date +'%Y-%m-%d %T'`
 end=`date +%s`
 echo TIME:`expr $end - $start`s
 ```
+#### mmseq2
+
+这个要比cd-hit快非常多
+```{bash}
+#mmseqs2
+##min-seq-id:identity（相似度？），c覆盖度，rescore-mode3: global alignment
+#建库
+input_fa=../prodigal/C1.gene.fa
+DB=C1.geneDB
+DB_clu=mmseq_out
+mmseqs createdb $input_fa $DB
+#聚类
+mmseqs cluster $DB $DB_clu tmp \
+    --min-seq-id 0.9 -c 0.9 --cov-mode 1  --threads 8  --rescore-mode 3
+#输出转换
+#第一列是代表序列id，第二列是成员序列id
+#mmseqs createtsv $DB $DB mmseq_out mmseq_out.tsv
+
+#mmseqs createseqfiledb $DB $DB_clu ${DB_clu}_seq
+#mmseqs result2flat $DB $DB ${DB_clu}_seq ${DB_clu}_seq.fasta
+
+#获取represent sequence
+mmseqs createsubdb $DB_clu $DB ${DB_clu}_rep
+mmseqs convert2fasta ${DB_clu}_rep ${DB_clu}_rep.fasta   
+```
+
 
 ### 基因定量：salmon
 
