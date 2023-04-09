@@ -96,7 +96,7 @@ III型和IV型系统在其各自的基因座中经常缺少适应性模块基因
 II型和V-B型基因座还包括tracrRNA（反式激活CRISPR
 RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然而，某些2类系统，特别是类型6的系统仅由CRISPR阵列和效应蛋白组成。
 
-### beyond adaptive immunity
+## beyond adaptive immunity
 
 一篇比较新的综述总结讨论了 CRISPR-Cas 系统的一些众所周知的和一些最近建立的非规范功能及其在其他生物过程中的快速扩展应用 @deviCRISPRCasSystemsRole2022。它们在基因调控、细菌病理生理学、毒力和进化中的替代作用已经开始揭示。
 
@@ -155,7 +155,6 @@ CRISPR-Cas 系统不会出现在具有固定辅助基因集合的基因组中
 3. CRISPR-Cas 相关基因富集膜蛋白
 
 4. 具有 CRISPR-Cas I 型系统和特定膜蛋白的基因组显示出独特的spacer和噬菌体基因
-
 
 
 ## Reference

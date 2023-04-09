@@ -39,7 +39,7 @@ Theories and Methods of Species Diversity Research
 生物多样性是度量生命的变异和变异能力的指标，又分成遗传多样性，物种多样性，生态系统多样性三个层次，我这里主要介绍物种多样性。
 他又有三个尺度和三个维度，分别是α，β，γ分类多样性，谱系多样性，功能多样性，这里的每个交集都是可以研究的。
 
-```{r eval=TRUE,echo=FALSE,out.width="100%"}
+```{r eval=FALSE,echo=FALSE,out.width="100%"}
 tibble::tribble(
     ~`Scale\\Dimension`,      ~Taxa,           ~Phylogenetic,                  ~Functional,                                                                                        ~Remark,
                     "α",         "Taxa-α","Phylogenetic-α","Functional-α",                                                "Species diversity in a community or habitat",
@@ -48,6 +48,11 @@ tibble::tribble(
                "Remark", "Taxonomy", "Molecular systematics", "Functional Characteristics",                                                                                      "β = γ/α"
     )%>%pcutils::sanxian()
 ```
+
+```{r eval=TRUE,echo=FALSE}
+knitr::include_graphics("images/three_scale.png")
+```
+
 
 ## Data collection methods
 

@@ -1,7 +1,7 @@
 ---
 title: CRISPR 相关学习
 author: Peng Chen
-date: '2023-03-28'
+date: '2023-10-20'
 slug: crispr
 categories:
   - microbial-ecology
@@ -73,28 +73,84 @@ III处理。在II型系统中，tracrRNA和crRNA都是目标干扰所需的。�
 
 ### Class, Type, Subtype
 
-<table>
-<tr>
-<td>
-<center>
-<img src="images/class1.png"> 1类
-</center>
-</td>
-<td>
-<center>
-<img src="images/class2.png"> 2类
-</center>
-</td>
-</tr>
-</table>
+|                            |                            |
+|----------------------------|----------------------------|
+| ![](images/class1.png) 1类 | ![](images/class2.png) 2类 |
 
 原核生物的CRISPR-Cas适应性免疫系统根据效应子模块组织分为两个不同的类别。
-1类CRISPR-Cas系统利用**多蛋白效应复合物** ([*2*](#ref-makarovaSnapShotClassCRISPRCas2017))，而2类CRISPR-Cas系统利用**单一蛋白效应器** ([*3*](#ref-makarovaSnapShotClassCRISPRCas2017a))。
+1类CRISPR-Cas系统利用**多蛋白效应复合物**
+([*2*](#ref-makarovaSnapShotClassCRISPRCas2017))，而2类CRISPR-Cas系统利用**单一蛋白效应器**
+([*3*](#ref-makarovaSnapShotClassCRISPRCas2017a))。
 
 基于不同的效应蛋白家族，1类系统分为3种类型和12种亚型。1类系统代表CRISPR-Cas基因座的约90％，并且存在于不同的细菌和古菌门中;嗜热菌富含III型系统。除效应子基因之外，大部分1类基因座编码适应模块蛋白质Cas1和Cas2，以及多种辅助蛋白质，例如Cas4，逆转录酶，CARF（CRISPR相关的Rossmann折叠）结构域蛋白质等。
 III型和IV型系统在其各自的基因座中经常缺少适应性模块基因和/或CRISPR阵列。所有I型系统也编码DNA解旋酶Cas3，其通常与HD家族核酸酶结构域融合。在I型系统中，PAM在不同亚型之间变化，位于（原型）间隔区的5’或3’，对于适应和干扰都是必需的。
 
-基于不同的效应蛋白家族，第2类系统可分为3种类型和9个亚型。第十亚型（V-U）包括许多假定的系统，其免疫（或可能是调节）功能仍有待证明。 2类系统占CRISPR-Cas基因座的约10％，在不同的细菌被发现，但在古细菌中几乎不存在。除了效应器蛋白质，大部分2类基因组编码适应性模块蛋白质，Cas1和Cas2以及辅助蛋白质，例如Cas4。 II型和V-B型基因座还包括tracrRNA（反式激活CRISPR RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然而，某些2类系统，特别是类型6的系统仅由CRISPR阵列和效应蛋白组成。
+基于不同的效应蛋白家族，第2类系统可分为3种类型和9个亚型。第十亚型（V-U）包括许多假定的系统，其免疫（或可能是调节）功能仍有待证明。
+2类系统占CRISPR-Cas基因座的约10％，在不同的细菌被发现，但在古细菌中几乎不存在。除了效应器蛋白质，大部分2类基因组编码适应性模块蛋白质，Cas1和Cas2以及辅助蛋白质，例如Cas4。
+II型和V-B型基因座还包括tracrRNA（反式激活CRISPR
+RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然而，某些2类系统，特别是类型6的系统仅由CRISPR阵列和效应蛋白组成。
+
+## beyond adaptive immunity
+
+一篇比较新的综述总结讨论了 CRISPR-Cas 系统的一些众所周知的和一些最近建立的非规范功能及其在其他生物过程中的快速扩展应用 ([*4*](#ref-deviCRISPRCasSystemsRole2022))。它们在基因调控、细菌病理生理学、毒力和进化中的替代作用已经开始揭示。
+
+#### Pathogenicity and virulence
+
+#### Bacterial physiology
+
+#### Response to stress
+
+有人提出，在大肠杆菌中，诱导的 Cas 水平和 CRISPR 阵列中 ssTorA 靶向间隔子（部分匹配）的出现的联合作用导致膜蛋白水平降低，从而影响跨细胞的运输通道。
+
+![](images/stress.png)
+
+#### Endogenous gene regulation
+
+#### Bacterial genome remodeling
+
+为了避免由于自我靶向间隔子导致的细胞死亡，生物体被证明可以通过移除原型间隔子或删除整个目标区域来重塑目标区域。
+
+#### Association with DNA repair system
+
+### application
+
+#### Inhibition of horizontal gene transfer
+
+最近，CRISPR-Cas 还被用作抑制抗生素抗性基因从一种生物体转移到另一种生物体的工具。
+\#### Typing tool
+CRISPR-Cas 系统用于分型细菌物种的多样性（
+\#### Genome editing
+
+## Pangenomes
+
+大部分的CRISPR array中的spacer尚未与它们识别的病毒相关联，被命名为
+**CRISPR 暗物质**。
+
+### membranome and CRISPR-Cas systems
+
+最新的这篇文章分析了被称为 ESKAPE 的细菌组的数千个基因组,
+看有crispr系统的基因组比没有的基因组多的特殊功能@rubioAnalysisBacterialPangenomes2023
+
+1.  总体crispr概况
+
+cirspr type 分布，spacer到plasmid/phage的比例。。。
+
+在肠沙门氏菌中，已表明这些系统可以调节鞭毛基因的表达，最终与生物膜形成有关。
+
+平均而言，具有 CRISPR-Cas 系统的基因组呈现出较少数量的抗性和毒力基因。
+
+2.  crispr phylogeny
+
+CRISPR-Cas 系统似乎遍布整个系统发育树
+
+CRISPR-Cas 系统不会出现在具有固定辅助基因集合的基因组中
+
+具有 CRISPR-Cas
+系统的基因组是否以比没有这些系统的基因组更高的频率呈现特定基因？（进一步看这个）
+
+3.  CRISPR-Cas 相关基因富集膜蛋白
+
+4.  具有 CRISPR-Cas I 型系统和特定膜蛋白的基因组显示出独特的spacer和噬菌体基因
 
 ## Reference
 
@@ -115,6 +171,12 @@ III型和IV型系统在其各自的基因座中经常缺少适应性模块基因
 <div id="ref-makarovaSnapShotClassCRISPRCas2017a" class="csl-entry">
 
 <span class="csl-left-margin">3. </span><span class="csl-right-inline">K. S. Makarova, F. Zhang, E. V. Koonin, [SnapShot: Class 2 CRISPR-Cas Systems](https://doi.org/10.1016/j.cell.2016.12.038). *Cell*. **168**, 328–328.e1 (2017).</span>
+
+</div>
+
+<div id="ref-deviCRISPRCasSystemsRole2022" class="csl-entry">
+
+<span class="csl-left-margin">4. </span><span class="csl-right-inline">V. Devi, K. Harjai, S. Chhibber, [CRISPR-Cas systems: Role in cellular processes beyond adaptive immunity](https://doi.org/10.1007/s12223-022-00993-2). *Folia Microbiologica*. **67**, 837–850 (2022).</span>
 
 </div>
 

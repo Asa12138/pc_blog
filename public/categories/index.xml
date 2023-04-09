@@ -6,18 +6,10 @@
         <description>Recent content in Categories on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 01 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>microbial-ecology</title>
-        <link>/categories/microbial-ecology/</link>
-        <pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate>
-        
-        <guid>/categories/microbial-ecology/</guid>
-        <description>&lt;img src="/categories/microbial-ecology/comm.jpg" alt="Featured image of post microbial-ecology" /&gt;</description>
-        </item>
-        <item>
+        <lastBuildDate>Thu, 06 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>R</title>
         <link>/categories/r/</link>
-        <pubDate>Mon, 27 Mar 2023 00:00:00 +0000</pubDate>
+        <pubDate>Thu, 06 Apr 2023 00:00:00 +0000</pubDate>
         
         <guid>/categories/r/</guid>
         <description>&lt;img src="/categories/r/R.jpg" alt="Featured image of post R" /&gt;</description>
@@ -25,10 +17,18 @@
         <item>
         <title>metagenomic</title>
         <link>/categories/metagenomic/</link>
-        <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 03 Apr 2023 00:00:00 +0000</pubDate>
         
         <guid>/categories/metagenomic/</guid>
         <description>&lt;img src="/categories/metagenomic/metagenomic.jpg" alt="Featured image of post metagenomic" /&gt;</description>
+        </item>
+        <item>
+        <title>microbial-ecology</title>
+        <link>/categories/microbial-ecology/</link>
+        <pubDate>Mon, 03 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/categories/microbial-ecology/</guid>
+        <description>&lt;img src="/categories/microbial-ecology/comm.jpg" alt="Featured image of post microbial-ecology" /&gt;</description>
         </item>
         <item>
         <title>随笔</title>

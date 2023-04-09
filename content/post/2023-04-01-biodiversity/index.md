@@ -17,8 +17,7 @@ editor_options:
   markdown: 
     wrap: 72
 ---
-<script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
-<link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
+
 
 
 Theories and Methods of Species Diversity Research
@@ -36,47 +35,10 @@ Theories and Methods of Species Diversity Research
 生物多样性是度量生命的变异和变异能力的指标，又分成遗传多样性，物种多样性，生态系统多样性三个层次，我这里主要介绍物种多样性。
 他又有三个尺度和三个维度，分别是α，β，γ分类多样性，谱系多样性，功能多样性，这里的每个交集都是可以研究的。
 
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Scale\Dimension </th>
-   <th style="text-align:left;"> Taxa </th>
-   <th style="text-align:left;"> Phylogenetic </th>
-   <th style="text-align:left;"> Functional </th>
-   <th style="text-align:left;"> Remark </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> α </td>
-   <td style="text-align:left;"> Taxa-α </td>
-   <td style="text-align:left;"> Phylogenetic-α </td>
-   <td style="text-align:left;"> Functional-α </td>
-   <td style="text-align:left;"> Species diversity in a community or habitat </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> β </td>
-   <td style="text-align:left;"> Taxa-β </td>
-   <td style="text-align:left;"> Phylogenetic-β </td>
-   <td style="text-align:left;"> Functional-β </td>
-   <td style="text-align:left;"> The rate and extent of change in species diversity on a gradient from one habitat to another </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> γ </td>
-   <td style="text-align:left;"> Taxa-γ </td>
-   <td style="text-align:left;"> Phylogenetic-γ </td>
-   <td style="text-align:left;"> Functional-γ </td>
-   <td style="text-align:left;"> Species diversity in a range of habitats within a geographic region(vector) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Remark </td>
-   <td style="text-align:left;"> Taxonomy </td>
-   <td style="text-align:left;"> Molecular systematics </td>
-   <td style="text-align:left;"> Functional Characteristics </td>
-   <td style="text-align:left;"> β = γ/α </td>
-  </tr>
-</tbody>
-</table>
+
+
+<img src="images/three_scale.png" width="725" />
+
 
 ## Data collection methods
 
@@ -94,7 +56,7 @@ Theories and Methods of Species Diversity Research
 eDNA是指在环境样品中所有被发现的不同生物的基因组DNA的混合，环境可以包括土壤、沉积物、排泄物、空气、水体，甚至生物个体本身。
 动物在某个环境中生活，身上的各种痕迹会携带着自身DNA掉落到四周，所以用这个方法有调查各种物种的潜力，有篇文章就用空气的eDNA调查了附近的动物。
 
-此外还有整合的方法，比如这篇文章就提出，将遥感，田间调查和测序结合在一起，来获得完整的物种丰度表。
+此外还有整合的方法，比如这篇文章就提出，将遥感，田间调查和测序结合在一起，来获得完整的物种风度表。
 
 <img src="images/4.jpeg" title="" width="100%"/> 
 
