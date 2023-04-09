@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2023-04-01T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2023-04-01T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -28,14 +28,20 @@
                 href="/categories/"
                 />
   </url><url>
-    <loc>/categories/microbial-ecology/</loc>
-    <lastmod>2023-04-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/post/</loc>
-    <lastmod>2023-04-01T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/r/</loc>
+    <lastmod>2023-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/r/</loc>
+    <lastmod>2023-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/r-map/</loc>
+    <lastmod>2023-04-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2023-04-01T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -46,6 +52,36 @@
                 hreflang="en"
                 href="/tags/"
                 />
+  </url><url>
+    <loc>/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
+    <lastmod>2023-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%9C%B0%E5%9B%BE/</loc>
+    <lastmod>2023-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/alignment/</loc>
+    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/antibiotics/</loc>
+    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/antibiotics-resistance/</loc>
+    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/args/</loc>
+    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/metagenomic/</loc>
+    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/microbial-ecology/</loc>
+    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/mmseqs2/</loc>
+    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/software/</loc>
+    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E7%89%A9%E7%A7%8D%E5%A4%9A%E6%A0%B7%E6%80%A7/</loc>
     <lastmod>2023-04-01T00:00:00+00:00</lastmod>
@@ -59,20 +95,11 @@
     <loc>/p/crispr/</loc>
     <lastmod>2023-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/r/</loc>
-    <lastmod>2023-03-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/r/</loc>
-    <lastmod>2023-03-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/p/rshiny/</loc>
     <lastmod>2023-03-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2023-03-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/metagenomic/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/p/metagenomic-workflow/</loc>
     <lastmod>2023-03-26T00:00:00+00:00</lastmod>

@@ -3,5 +3,5 @@
 .RData
 .Ruserdata
 *.Rproj
-content
+content/
 .DS_Store

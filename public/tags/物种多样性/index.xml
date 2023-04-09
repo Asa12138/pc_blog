@@ -12,9 +12,7 @@
         <pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate>
         
         <guid>/p/biodiversity/</guid>
-        <description>&lt;img src="/p/biodiversity/images/diversity.png" alt="Featured image of post 物种多样性研究的理论和方法" /&gt;&lt;script src=&#34;/p/biodiversity/index_files/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/p/biodiversity/index_files/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;p&gt;Theories and Methods of Species Diversity Research&lt;/p&gt;
+        <description>&lt;img src="/p/biodiversity/images/diversity.png" alt="Featured image of post 物种多样性研究的理论和方法" /&gt;&lt;p&gt;Theories and Methods of Species Diversity Research&lt;/p&gt;
 &lt;p&gt;这是我在一门研究生课程上的课程任务，查阅了一些文献总结整理了物种多样性研究理论与方法，比较基础，没有对一些理论和模型深入讲解，仅做分享。&lt;/p&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -26,47 +24,7 @@ changing and adapting.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;生物多样性是度量生命的变异和变异能力的指标，又分成遗传多样性，物种多样性，生态系统多样性三个层次，我这里主要介绍物种多样性。
 他又有三个尺度和三个维度，分别是α，β，γ分类多样性，谱系多样性，功能多样性，这里的每个交集都是可以研究的。&lt;/p&gt;
-&lt;table class=&#34; lightable-classic&#34; style=&#34;font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; Scale\Dimension &lt;/th&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; Taxa &lt;/th&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; Phylogenetic &lt;/th&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; Functional &lt;/th&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; Remark &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; α &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Taxa-α &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Phylogenetic-α &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Functional-α &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Species diversity in a community or habitat &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; β &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Taxa-β &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Phylogenetic-β &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Functional-β &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; The rate and extent of change in species diversity on a gradient from one habitat to another &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; γ &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Taxa-γ &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Phylogenetic-γ &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Functional-γ &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Species diversity in a range of habitats within a geographic region(vector) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Remark &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Taxonomy &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Molecular systematics &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Functional Characteristics &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; β = γ/α &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;img src=&#34;images/three_scale.png&#34; width=&#34;725&#34; /&gt;
 &lt;h2 id=&#34;data-collection-methods&#34;&gt;Data collection methods&lt;/h2&gt;
 &lt;p&gt;我们应该如何进行物种多样性研究呢？&lt;/p&gt;
 &lt;p&gt;首先当然是&lt;strong&gt;制定研究方案&lt;/strong&gt;，进行取样，

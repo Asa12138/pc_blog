@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Motivation cd-hit在数据量很大的情况下会非常慢，我问chatGPT有没有更快的：
+https://www.nature.com/articles/s41467-018-04964-5 是的，有一些其他的基因序列聚类软件也比较流行，其中一些也是非常快速的，例如：
+UCLUST：这是一种基于贪心算法的聚类工具，可用于聚类DNA和蛋白质序列。它是CD-HIT的一种变体，也是速度非常快的软件之一。
+VSEARCH：这是一种类似于UCLUST的工具，也是基于贪心算法，可以用于聚类DNA和蛋白质序列。它的速度比CD-HIT更快，而且还支持多线程和一些其他高级功能。
+MMSEQS2：这是一种使用图像剖析技术的聚类工具，可以用于聚类非常大的序列数据集。它比CD-HIT和UCLUST都要快，而且还支持多线程和GPU加速。
+Swarm：这是一种基于聚类半径的工具，可以用于聚类16S rRNA序列等微生物群落数据。它比CD-HIT等工具要快，而且可以处理高度冗余的序列。
+尝试使用一下mmseqs2 要使用MMseqs2聚类大量核酸序列，可以按照以下步骤操作：
+准备数据：收集所有要聚类的核酸序列，并将它们存储在一个文件中，例如FASTA格式。
+安装MMseqs2：访问MMseqs2的官方网站（https://github.com/soedinglab/MMseqs2）并下载和安装软件包。
+创建数据库：使用MMseqs2将所有核酸序列导入一个数据库中。例如，可以使用以下命令将FASTA格式的序列导入到MMseqs2数据库中： mmseqs createdb input.fasta db_name
+其中，&amp;ldquo;input.fasta&amp;quot;是你的输入文件名，&amp;ldquo;db_name&amp;quot;是你想要为数据库取的名称。
+运行聚类：使用MMseqs2运行聚类分析。例如，可以使用以下命令运行聚类分析： mmseqs easy-cluster db_name cluster_name tmp --threads 4
+其中，&amp;ldquo;db_name&amp;quot;是你的数据库名称，&amp;ldquo;cluster_name&amp;quot;是你想要为聚类结果取的名称，&amp;ldquo;tmp&amp;quot;是你想要为临时文件夹取的名称，&amp;rdquo;&amp;ndash;threads 4&amp;quot;表示你想要使用4个线程运行分析。
+解析结果：等待聚类分析完成后，可以使用MMseqs2的其他工具（如&amp;quot;mmseqs createtsv&amp;rdquo;）来解析聚类结果，并将结果导出到所需的格式中（如TSV格式）。 需要注意的是，MMseqs2支持多种聚类算法和参数设置，因此在运行分析之前，应该根据具体的应用需求进行设置和优化。例如，你可以选择使用其他的聚类算法，或调整聚类的相似性阈值等参数，以获得最佳的聚类结果。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 #测试比较一下 cd ~/work/st/temp/cluster_test $ ll .'>
+<title>Mmseqs2的基础使用</title>
+
+<link rel='canonical' href='/p/mmseqs2/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Mmseqs2的基础使用'>
+<meta property='og:description' content='Motivation cd-hit在数据量很大的情况下会非常慢，我问chatGPT有没有更快的：
+https://www.nature.com/articles/s41467-018-04964-5 是的，有一些其他的基因序列聚类软件也比较流行，其中一些也是非常快速的，例如：
+UCLUST：这是一种基于贪心算法的聚类工具，可用于聚类DNA和蛋白质序列。它是CD-HIT的一种变体，也是速度非常快的软件之一。
+VSEARCH：这是一种类似于UCLUST的工具，也是基于贪心算法，可以用于聚类DNA和蛋白质序列。它的速度比CD-HIT更快，而且还支持多线程和一些其他高级功能。
+MMSEQS2：这是一种使用图像剖析技术的聚类工具，可以用于聚类非常大的序列数据集。它比CD-HIT和UCLUST都要快，而且还支持多线程和GPU加速。
+Swarm：这是一种基于聚类半径的工具，可以用于聚类16S rRNA序列等微生物群落数据。它比CD-HIT等工具要快，而且可以处理高度冗余的序列。
+尝试使用一下mmseqs2 要使用MMseqs2聚类大量核酸序列，可以按照以下步骤操作：
+准备数据：收集所有要聚类的核酸序列，并将它们存储在一个文件中，例如FASTA格式。
+安装MMseqs2：访问MMseqs2的官方网站（https://github.com/soedinglab/MMseqs2）并下载和安装软件包。
+创建数据库：使用MMseqs2将所有核酸序列导入一个数据库中。例如，可以使用以下命令将FASTA格式的序列导入到MMseqs2数据库中： mmseqs createdb input.fasta db_name
+其中，&amp;ldquo;input.fasta&amp;quot;是你的输入文件名，&amp;ldquo;db_name&amp;quot;是你想要为数据库取的名称。
+运行聚类：使用MMseqs2运行聚类分析。例如，可以使用以下命令运行聚类分析： mmseqs easy-cluster db_name cluster_name tmp --threads 4
+其中，&amp;ldquo;db_name&amp;quot;是你的数据库名称，&amp;ldquo;cluster_name&amp;quot;是你想要为聚类结果取的名称，&amp;ldquo;tmp&amp;quot;是你想要为临时文件夹取的名称，&amp;rdquo;&amp;ndash;threads 4&amp;quot;表示你想要使用4个线程运行分析。
+解析结果：等待聚类分析完成后，可以使用MMseqs2的其他工具（如&amp;quot;mmseqs createtsv&amp;rdquo;）来解析聚类结果，并将结果导出到所需的格式中（如TSV格式）。 需要注意的是，MMseqs2支持多种聚类算法和参数设置，因此在运行分析之前，应该根据具体的应用需求进行设置和优化。例如，你可以选择使用其他的聚类算法，或调整聚类的相似性阈值等参数，以获得最佳的聚类结果。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 #测试比较一下 cd ~/work/st/temp/cluster_test $ ll .'>
+<meta property='og:url' content='/p/mmseqs2/'>
+<meta property='og:site_name' content='Asa&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='software' /><meta property='article:tag' content='alignment' /><meta property='article:published_time' content='2023-04-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-03T00:00:00&#43;00:00'/><meta property='og:image' content='/' />
+<meta name="twitter:title" content="Mmseqs2的基础使用">
+<meta name="twitter:description" content="Motivation cd-hit在数据量很大的情况下会非常慢，我问chatGPT有没有更快的：
+https://www.nature.com/articles/s41467-018-04964-5 是的，有一些其他的基因序列聚类软件也比较流行，其中一些也是非常快速的，例如：
+UCLUST：这是一种基于贪心算法的聚类工具，可用于聚类DNA和蛋白质序列。它是CD-HIT的一种变体，也是速度非常快的软件之一。
+VSEARCH：这是一种类似于UCLUST的工具，也是基于贪心算法，可以用于聚类DNA和蛋白质序列。它的速度比CD-HIT更快，而且还支持多线程和一些其他高级功能。
+MMSEQS2：这是一种使用图像剖析技术的聚类工具，可以用于聚类非常大的序列数据集。它比CD-HIT和UCLUST都要快，而且还支持多线程和GPU加速。
+Swarm：这是一种基于聚类半径的工具，可以用于聚类16S rRNA序列等微生物群落数据。它比CD-HIT等工具要快，而且可以处理高度冗余的序列。
+尝试使用一下mmseqs2 要使用MMseqs2聚类大量核酸序列，可以按照以下步骤操作：
+准备数据：收集所有要聚类的核酸序列，并将它们存储在一个文件中，例如FASTA格式。
+安装MMseqs2：访问MMseqs2的官方网站（https://github.com/soedinglab/MMseqs2）并下载和安装软件包。
+创建数据库：使用MMseqs2将所有核酸序列导入一个数据库中。例如，可以使用以下命令将FASTA格式的序列导入到MMseqs2数据库中： mmseqs createdb input.fasta db_name
+其中，&amp;ldquo;input.fasta&amp;quot;是你的输入文件名，&amp;ldquo;db_name&amp;quot;是你想要为数据库取的名称。
+运行聚类：使用MMseqs2运行聚类分析。例如，可以使用以下命令运行聚类分析： mmseqs easy-cluster db_name cluster_name tmp --threads 4
+其中，&amp;ldquo;db_name&amp;quot;是你的数据库名称，&amp;ldquo;cluster_name&amp;quot;是你想要为聚类结果取的名称，&amp;ldquo;tmp&amp;quot;是你想要为临时文件夹取的名称，&amp;rdquo;&amp;ndash;threads 4&amp;quot;表示你想要使用4个线程运行分析。
+解析结果：等待聚类分析完成后，可以使用MMseqs2的其他工具（如&amp;quot;mmseqs createtsv&amp;rdquo;）来解析聚类结果，并将结果导出到所需的格式中（如TSV格式）。 需要注意的是，MMseqs2支持多种聚类算法和参数设置，因此在运行分析之前，应该根据具体的应用需求进行设置和优化。例如，你可以选择使用其他的聚类算法，或调整聚类的相似性阈值等参数，以获得最佳的聚类结果。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 #测试比较一下 cd ~/work/st/temp/cluster_test $ ll ."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/guodong1_hu19ef19e107d2cae4138b147ef6582252_202975_300x0_resize_q75_box.jpg" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐛🐶</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Asa&#39;s blog</a></h1>
+            <h2 class="site-description">work hard, live happily.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Asa12138'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="/" selected>English</option>
+                        
+                            <option value="/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/metagenomic/" style="background-color: #8dd3c7; color: #fff;">
+                metagenomic
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/mmseqs2/">Mmseqs2的基础使用</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 03, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="motivation">Motivation</h2>
+<p>cd-hit在数据量很大的情况下会非常慢，我问chatGPT有没有更快的：</p>
+<p><a class="link" href="https://www.nature.com/articles/s41467-018-04964-5"  target="_blank" rel="noopener"
+    >https://www.nature.com/articles/s41467-018-04964-5</a>
+是的，有一些其他的基因序列聚类软件也比较流行，其中一些也是非常快速的，例如：</p>
+<p>UCLUST：这是一种基于贪心算法的聚类工具，可用于聚类DNA和蛋白质序列。它是CD-HIT的一种变体，也是速度非常快的软件之一。</p>
+<p>VSEARCH：这是一种类似于UCLUST的工具，也是基于贪心算法，可以用于聚类DNA和蛋白质序列。它的速度比CD-HIT更快，而且还支持多线程和一些其他高级功能。</p>
+<p>MMSEQS2：这是一种使用图像剖析技术的聚类工具，可以用于聚类非常大的序列数据集。它比CD-HIT和UCLUST都要快，而且还支持多线程和GPU加速。</p>
+<p>Swarm：这是一种基于聚类半径的工具，可以用于聚类16S rRNA序列等微生物群落数据。它比CD-HIT等工具要快，而且可以处理高度冗余的序列。</p>
+<p>尝试使用一下<a class="link" href="https://github.com/soedinglab/MMseqs2"  target="_blank" rel="noopener"
+    >mmseqs2</a>
+要使用MMseqs2聚类大量核酸序列，可以按照以下步骤操作：</p>
+<p>准备数据：收集所有要聚类的核酸序列，并将它们存储在一个文件中，例如FASTA格式。</p>
+<p>安装MMseqs2：访问MMseqs2的官方网站（https://github.com/soedinglab/MMseqs2）并下载和安装软件包。</p>
+<p>创建数据库：使用MMseqs2将所有核酸序列导入一个数据库中。例如，可以使用以下命令将FASTA格式的序列导入到MMseqs2数据库中：
+<code>mmseqs createdb input.fasta db_name</code></p>
+<p>其中，&ldquo;input.fasta&quot;是你的输入文件名，&ldquo;db_name&quot;是你想要为数据库取的名称。</p>
+<p>运行聚类：使用MMseqs2运行聚类分析。例如，可以使用以下命令运行聚类分析：
+<code>mmseqs easy-cluster db_name cluster_name tmp --threads 4</code></p>
+<p>其中，&ldquo;db_name&quot;是你的数据库名称，&ldquo;cluster_name&quot;是你想要为聚类结果取的名称，&ldquo;tmp&quot;是你想要为临时文件夹取的名称，&rdquo;&ndash;threads 4&quot;表示你想要使用4个线程运行分析。</p>
+<p>解析结果：等待聚类分析完成后，可以使用MMseqs2的其他工具（如&quot;mmseqs createtsv&rdquo;）来解析聚类结果，并将结果导出到所需的格式中（如TSV格式）。
+需要注意的是，MMseqs2支持多种聚类算法和参数设置，因此在运行分析之前，应该根据具体的应用需求进行设置和优化。例如，你可以选择使用其他的聚类算法，或调整聚类的相似性阈值等参数，以获得最佳的聚类结果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#测试比较一下</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~/work/st/temp/cluster_test
+</span></span><span class="line"><span class="cl">$ ll ../prodigal/C1.gene.fa
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> pengchen jianglab 338M Apr  <span class="m">7</span>  <span class="m">2022</span> ../prodigal/C1.gene.fa
+</span></span><span class="line"><span class="cl">800000条序列
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#cd-hit============</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## aS覆盖度，c:identity相似度，G0局部比对？，g最优解，T多线程，M内存0不限制</span>
+</span></span><span class="line"><span class="cl">cd-hit-est -i ../prodigal/C1.gene.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o cd_hit.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -aS 0.9 -c 0.9 -g <span class="m">0</span> -T <span class="m">0</span> -M <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#两小时过去了，还在处理第20000条    </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#mmseqs2=========</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##min-seq-id:identity（相似度？），c覆盖度，rescore-mode3: global alignment</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#建库</span>
+</span></span><span class="line"><span class="cl"><span class="nv">input_fa</span><span class="o">=</span>../prodigal/C1.gene.fa
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">DB</span><span class="o">=</span>C1.geneDB
+</span></span><span class="line"><span class="cl"><span class="nv">DB_clu</span><span class="o">=</span>mmseq_out
+</span></span><span class="line"><span class="cl">mmseqs createdb <span class="nv">$input_fa</span> <span class="nv">$DB</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#聚类</span>
+</span></span><span class="line"><span class="cl">mmseqs cluster <span class="nv">$DB</span> <span class="nv">$DB_clu</span> tmp <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --min-seq-id 0.9 -c 0.9 --cov-mode <span class="m">1</span>  --threads <span class="m">8</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#输出转换</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#第一列是代表序列id，第二列是成员序列id</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#mmseqs createtsv $DB $DB mmseq_out mmseq_out.tsv</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#mmseqs createseqfiledb $DB $DB_clu ${DB_clu}_seq</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#mmseqs result2flat $DB $DB ${DB_clu}_seq ${DB_clu}_seq.fasta</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#获取represent sequence</span>
+</span></span><span class="line"><span class="cl">mmseqs createsubdb <span class="nv">$DB_clu</span> <span class="nv">$DB</span> <span class="si">${</span><span class="nv">DB_clu</span><span class="si">}</span>_rep
+</span></span><span class="line"><span class="cl">mmseqs convert2fasta <span class="si">${</span><span class="nv">DB_clu</span><span class="si">}</span>_rep <span class="si">${</span><span class="nv">DB_clu</span><span class="si">}</span>_rep.fasta   
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#上述步骤可以直接用easycluster替代。</span>
+</span></span><span class="line"><span class="cl"><span class="nv">input_fa</span><span class="o">=</span>../prodigal/C1.gene.fa
+</span></span><span class="line"><span class="cl">mmseqs easy-cluster <span class="nv">$input_fa</span> cluster_res tmp <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --min-seq-id 0.9 -c 0.9 --cov-mode <span class="m">1</span>  --threads <span class="m">8</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#再测试一下easylinclust</span>
+</span></span><span class="line"><span class="cl"><span class="nv">input_fa</span><span class="o">=</span>../prodigal/C1.gene.fa
+</span></span><span class="line"><span class="cl">mmseqs easy-linclust <span class="nv">$input_fa</span> lin_res tmp <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --min-seq-id 0.9 -c 0.9 --cov-mode <span class="m">1</span>  --threads <span class="m">8</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#结果mmseq_out_rep.fasta：315M</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#这是单样本assembly结果的聚类结果，合理。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#250s,快得一批,使用10GB左右的内存。</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#cluster模块可能需要大量内存。包含 N 个序列和每个序列平均 r 个比对结果的数据库的内存消耗可以估计为</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#M = (6 * N * r) 字节</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Cores per node: <span class="m">8</span>
+</span></span><span class="line"><span class="cl">CPU Utilized: 00:12:22
+</span></span><span class="line"><span class="cl">CPU Efficiency: 41.97% of 00:29:28 core-walltime
+</span></span><span class="line"><span class="cl">Job Wall-clock time: 00:03:41
+</span></span><span class="line"><span class="cl">Memory Utilized: 9.40 GB
+</span></span><span class="line"><span class="cl">Memory Efficiency: 60.14% of 15.62 GB
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>多个待聚类文件的使用方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#cd-hit两个文件</span>
+</span></span><span class="line"><span class="cl">cd-hit-est -i ../prodigal/C1.gene.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o A.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -aS 0.9 -c 0.9 -g <span class="m">0</span> -T <span class="m">0</span> -M <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># A和B基因集待聚类</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 计算B中特有的基因</span>
+</span></span><span class="line"><span class="cl">cd-hit-est-2d -i A.fa -i2 B.fa -o B.uni.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -aS 0.9 -c 0.9 -g <span class="m">0</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -T <span class="m">96</span> -M <span class="m">0</span> -d <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 合并为非冗余基因集</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">cat A.fa B.uni.fa &gt; NR.fa
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#有更多文件时</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#可以准备一个namelist</span>
+</span></span><span class="line"><span class="cl"><span class="nv">first</span><span class="o">=</span><span class="sb">`</span>head -n1 namelist<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> handing <span class="nv">$first</span>
+</span></span><span class="line"><span class="cl">cd-hit-est -i <span class="nv">$first</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o NR.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -aS 0.9 -c 0.9 -g <span class="m">0</span> -T <span class="m">0</span> -M <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="sb">`</span>tail -n+2 namelist<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> handing <span class="nv">$i</span>
+</span></span><span class="line"><span class="cl">cd-hit-est-2d -i NR.fa -i2 <span class="nv">$i</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span>.uni.fa <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -aS 0.9 -c 0.9 -g <span class="m">0</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -T <span class="m">96</span> -M <span class="m">0</span> -d <span class="m">0</span>
+</span></span><span class="line"><span class="cl">cat <span class="si">${</span><span class="nv">i</span><span class="si">}</span>.uni.fa &gt;&gt; NR.fa
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#mmseqs2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#看看直接上两个文件的聚类结果</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#合并文件：使用cat命令将所有核酸序列文件合并成一个大的FASTA格式文件</span>
+</span></span><span class="line"><span class="cl">sed -i <span class="s2">&#34;/&gt;/s/&gt;/&gt;C2_/&#34;</span> ../prodigal/C2.gene.fa
+</span></span><span class="line"><span class="cl">cat ../prodigal/C1.gene.fa ../prodigal/C2.gene.fa &gt; all.fasta
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#建库</span>
+</span></span><span class="line"><span class="cl">mmseqs createdb all.fasta all
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">DB</span><span class="o">=</span>all
+</span></span><span class="line"><span class="cl"><span class="nv">DB_clu</span><span class="o">=</span>all_clu
+</span></span><span class="line"><span class="cl"><span class="c1">#聚类</span>
+</span></span><span class="line"><span class="cl">mmseqs cluster <span class="nv">$DB</span> <span class="nv">$DB_clu</span> tmp <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --min-seq-id 0.9 -c 0.9 --cov-mode <span class="m">1</span>  --threads <span class="m">8</span>  --rescore-mode <span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#输出转换</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#获取represent sequence</span>
+</span></span><span class="line"><span class="cl">mmseqs createsubdb <span class="nv">$DB_clu</span> <span class="nv">$DB</span> <span class="si">${</span><span class="nv">DB_clu</span><span class="si">}</span>_rep
+</span></span><span class="line"><span class="cl">mmseqs convert2fasta <span class="si">${</span><span class="nv">DB_clu</span><span class="si">}</span>_rep <span class="si">${</span><span class="nv">DB_clu</span><span class="si">}</span>_rep.fasta  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#mmseqs2</span>
+</span></span><span class="line"><span class="cl"><span class="nv">oldDB</span><span class="o">=</span>C1.geneDB
+</span></span><span class="line"><span class="cl"><span class="nv">cluDB_old</span><span class="o">=</span>mmseq_out
+</span></span><span class="line"><span class="cl"><span class="nv">newDB</span><span class="o">=</span>all
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mmseqs clusterupdate <span class="nv">$oldDB</span> <span class="nv">$newDB</span> <span class="nv">$cluDB_old</span> <span class="si">${</span><span class="nv">newDB</span><span class="si">}</span>_updated <span class="si">${</span><span class="nv">cluDB</span><span class="si">}</span>_updated tmp <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --min-seq-id 0.9 -c 0.9 --cov-mode <span class="m">1</span>  --threads <span class="m">8</span>  --rescore-mode <span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/software/">software</a>
+        
+            <a href="/tags/alignment/">alignment</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/metagenomic-workflow/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Metagenomic workflow</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="Asa12138/pc_blog"
+        issue-term="pathname"
+        
+        label="none"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Asa&#39;s blog
+    </section>
+    
+    <section class="powerby">
+        
+            Email: pengchen2001@zju.edu.cn <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
