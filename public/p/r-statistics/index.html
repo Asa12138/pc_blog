@@ -331,6 +331,11 @@ Statistics 基础用法 单样本均值检验 1 2 3 4 5 6 7 ?t.test() #install.p
             <li><a href="#一元回归">一元回归</a></li>
             <li><a href="#多元回归">多元回归</a></li>
             <li><a href="#非参数回归">非参数回归</a></li>
+          </ol>
+        </li>
+        <li><a href="#方差分析">方差分析</a></li>
+        <li><a href="#广义线性模型">广义线性模型</a>
+          <ol>
             <li><a href="#泊松回归">泊松回归</a></li>
             <li><a href="#逻辑斯谛回归">逻辑斯谛回归</a></li>
           </ol>
@@ -979,7 +984,7 @@ $$</p>
 <p>$$
 \hat{a}=\overline{y}-\hat{b}\overline{x}
 $$
-回归有效性可以用$R^2$和$p-value$来度量，
+回归有效性可以用$R^2$和$p-valuie$来度量，
 $R^2=1-\frac{SSE}{SST}$</p>
 <p>统计量$F=\frac{SSR}{SSE/(n-2)}$,$p-value$为$P(F(1,n-2)&gt;c)$,c为F的值。</p>
 <div class="highlight"><div class="chroma">
@@ -1254,7 +1259,7 @@ $R^2=1-\frac{SSE}{SST}$</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-17-2.png" width="576" /><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-17-3.png" width="576" /><img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-17-4.png" width="576" /></p>
-<p>##方差分析</p>
+<h3 id="方差分析">方差分析</h3>
 <p>单因素方差分析可以看成基础统计中两样本t检验的一个推广， 要比较试验观测值的某个因变量（称为“指标”）按照一个分组变量（称为“因素”）分组后， 各组的因变量均值有无显著差异。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1344,7 +1349,7 @@ $R^2=1-\frac{SSE}{SST}$</p>
 ## 6 0.00066581478 1.0000000000 0.00101304469
 ## 8 0.00002774715 0.0010130447 1.00000000000
 </code></pre>
-<p>##广义线性模型</p>
+<h3 id="广义线性模型">广义线性模型</h3>
 <h4 id="泊松回归">泊松回归</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
