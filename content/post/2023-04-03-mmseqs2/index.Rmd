@@ -1,0 +1,191 @@
+---
+title: Mmseqs2的基础使用
+author: Peng Chen
+date: '2023-04-03'
+slug: mmseqs2
+categories:
+  - metagenomic
+tags:
+  - software
+  - alignment
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+```{r include=FALSE}
+Packages <- c("dplyr","kableExtra","ggplot2")
+pcutils::lib_ps(Packages)
+knitr::opts_chunk$set(message = FALSE,warning = FALSE,eval = FALSE)
+```
+
+## Motivation
+cd-hit在数据量很大的情况下会非常慢，我问chatGPT有没有更快的：
+
+https://www.nature.com/articles/s41467-018-04964-5
+是的，有一些其他的基因序列聚类软件也比较流行，其中一些也是非常快速的，例如：
+
+UCLUST：这是一种基于贪心算法的聚类工具，可用于聚类DNA和蛋白质序列。它是CD-HIT的一种变体，也是速度非常快的软件之一。
+
+VSEARCH：这是一种类似于UCLUST的工具，也是基于贪心算法，可以用于聚类DNA和蛋白质序列。它的速度比CD-HIT更快，而且还支持多线程和一些其他高级功能。
+
+MMSEQS2：这是一种使用图像剖析技术的聚类工具，可以用于聚类非常大的序列数据集。它比CD-HIT和UCLUST都要快，而且还支持多线程和GPU加速。
+
+Swarm：这是一种基于聚类半径的工具，可以用于聚类16S rRNA序列等微生物群落数据。它比CD-HIT等工具要快，而且可以处理高度冗余的序列。
+
+尝试使用一下[mmseqs2](https://github.com/soedinglab/MMseqs2)
+要使用MMseqs2聚类大量核酸序列，可以按照以下步骤操作：
+
+准备数据：收集所有要聚类的核酸序列，并将它们存储在一个文件中，例如FASTA格式。
+
+安装MMseqs2：访问MMseqs2的官方网站（https://github.com/soedinglab/MMseqs2）并下载和安装软件包。
+
+创建数据库：使用MMseqs2将所有核酸序列导入一个数据库中。例如，可以使用以下命令将FASTA格式的序列导入到MMseqs2数据库中：
+`mmseqs createdb input.fasta db_name`
+
+其中，"input.fasta"是你的输入文件名，"db_name"是你想要为数据库取的名称。
+
+运行聚类：使用MMseqs2运行聚类分析。例如，可以使用以下命令运行聚类分析：
+`mmseqs easy-cluster db_name cluster_name tmp --threads 4`
+
+其中，"db_name"是你的数据库名称，"cluster_name"是你想要为聚类结果取的名称，"tmp"是你想要为临时文件夹取的名称，"--threads 4"表示你想要使用4个线程运行分析。
+
+解析结果：等待聚类分析完成后，可以使用MMseqs2的其他工具（如"mmseqs createtsv"）来解析聚类结果，并将结果导出到所需的格式中（如TSV格式）。
+需要注意的是，MMseqs2支持多种聚类算法和参数设置，因此在运行分析之前，应该根据具体的应用需求进行设置和优化。例如，你可以选择使用其他的聚类算法，或调整聚类的相似性阈值等参数，以获得最佳的聚类结果。
+
+```{bash}
+#测试比较一下
+cd ~/work/st/temp/cluster_test
+$ ll ../prodigal/C1.gene.fa
+-rw-r--r-- 1 pengchen jianglab 338M Apr  7  2022 ../prodigal/C1.gene.fa
+800000条序列
+
+#cd-hit============
+## aS覆盖度，c:identity相似度，G0局部比对？，g最优解，T多线程，M内存0不限制
+cd-hit-est -i ../prodigal/C1.gene.fa \
+    -o cd_hit.fa \
+    -aS 0.9 -c 0.9 -g 0 -T 0 -M 0
+
+#两小时过去了，还在处理第20000条    
+
+
+#mmseqs2=========
+##min-seq-id:identity（相似度？），c覆盖度，rescore-mode3: global alignment
+#建库
+input_fa=../prodigal/C1.gene.fa
+
+DB=C1.geneDB
+DB_clu=mmseq_out
+mmseqs createdb $input_fa $DB
+#聚类
+mmseqs cluster $DB $DB_clu tmp \
+    --min-seq-id 0.9 -c 0.9 --cov-mode 1  --threads 8
+#输出转换
+#第一列是代表序列id，第二列是成员序列id
+#mmseqs createtsv $DB $DB mmseq_out mmseq_out.tsv
+
+#mmseqs createseqfiledb $DB $DB_clu ${DB_clu}_seq
+#mmseqs result2flat $DB $DB ${DB_clu}_seq ${DB_clu}_seq.fasta
+
+#获取represent sequence
+mmseqs createsubdb $DB_clu $DB ${DB_clu}_rep
+mmseqs convert2fasta ${DB_clu}_rep ${DB_clu}_rep.fasta   
+
+#上述步骤可以直接用easycluster替代。
+input_fa=../prodigal/C1.gene.fa
+mmseqs easy-cluster $input_fa cluster_res tmp \
+    --min-seq-id 0.9 -c 0.9 --cov-mode 1  --threads 8
+#再测试一下easylinclust
+input_fa=../prodigal/C1.gene.fa
+mmseqs easy-linclust $input_fa lin_res tmp \
+    --min-seq-id 0.9 -c 0.9 --cov-mode 1  --threads 8
+
+#结果mmseq_out_rep.fasta：315M
+#这是单样本assembly结果的聚类结果，合理。
+
+#250s,快得一批,使用10GB左右的内存。
+#cluster模块可能需要大量内存。包含 N 个序列和每个序列平均 r 个比对结果的数据库的内存消耗可以估计为
+#M = (6 * N * r) 字节
+
+Cores per node: 8
+CPU Utilized: 00:12:22
+CPU Efficiency: 41.97% of 00:29:28 core-walltime
+Job Wall-clock time: 00:03:41
+Memory Utilized: 9.40 GB
+Memory Efficiency: 60.14% of 15.62 GB
+
+```
+
+多个待聚类文件的使用方法
+```{bash}
+#cd-hit两个文件
+cd-hit-est -i ../prodigal/C1.gene.fa \
+    -o A.fa \
+    -aS 0.9 -c 0.9 -g 0 -T 0 -M 0
+# A和B基因集待聚类
+
+# 计算B中特有的基因
+cd-hit-est-2d -i A.fa -i2 B.fa -o B.uni.fa \
+    -aS 0.9 -c 0.9 -g 0 \
+    -T 96 -M 0 -d 0
+
+# 合并为非冗余基因集
+
+cat A.fa B.uni.fa > NR.fa
+
+#有更多文件时
+#可以准备一个namelist
+first=`head -n1 namelist`
+echo handing $first
+cd-hit-est -i $first \
+    -o NR.fa \
+    -aS 0.9 -c 0.9 -g 0 -T 0 -M 0
+    
+for i in `tail -n+2 namelist`
+do
+echo handing $i
+cd-hit-est-2d -i NR.fa -i2 $i -o ${i}.uni.fa \
+    -aS 0.9 -c 0.9 -g 0 \
+    -T 96 -M 0 -d 0
+cat ${i}.uni.fa >> NR.fa
+done
+
+
+#mmseqs2
+#看看直接上两个文件的聚类结果
+#合并文件：使用cat命令将所有核酸序列文件合并成一个大的FASTA格式文件
+sed -i "/>/s/>/>C2_/" ../prodigal/C2.gene.fa
+cat ../prodigal/C1.gene.fa ../prodigal/C2.gene.fa > all.fasta
+
+#建库
+mmseqs createdb all.fasta all
+
+DB=all
+DB_clu=all_clu
+#聚类
+mmseqs cluster $DB $DB_clu tmp \
+    --min-seq-id 0.9 -c 0.9 --cov-mode 1  --threads 8  --rescore-mode 3
+#输出转换
+
+#获取represent sequence
+mmseqs createsubdb $DB_clu $DB ${DB_clu}_rep
+mmseqs convert2fasta ${DB_clu}_rep ${DB_clu}_rep.fasta  
+
+#mmseqs2
+oldDB=C1.geneDB
+cluDB_old=mmseq_out
+newDB=all
+
+mmseqs clusterupdate $oldDB $newDB $cluDB_old ${newDB}_updated ${cluDB}_updated tmp \
+    --min-seq-id 0.9 -c 0.9 --cov-mode 1  --threads 8  --rescore-mode 3
+
+```
+
+
+```{r}
+
+
+```
+
