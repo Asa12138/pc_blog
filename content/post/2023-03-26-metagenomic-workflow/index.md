@@ -87,8 +87,9 @@ sample=$(head -n $SLURM_ARRAY_TASK_ID ~/work/asthma/data/namelist | tail -1)
 #sample=$(head -n 1 namelist | tail -1)
 echo handling: $sample
 ####################
-fastp -w 8 -i ~/work/asthma/data/$sample/$sample'_f1.fastq' -o ${i}_1 \
--I ~/work/asthma/data/$sample/$sample'_r2.fastq' -O ${i}_2 -j ~/work/asthma/fastp/${i}.json
+
+fastp -w 8 -i ~/work/asthma/data/$sample/$sample'_f1.fastq' -o ${sample}_1 \
+-I ~/work/asthma/data/$sample/$sample'_r2.fastq' -O ${sample}_2 -j ~/work/asthma/fastp/${i}.json
 
 ####################
 echo end: `date +'%Y-%m-%d %T'`
@@ -485,7 +486,17 @@ echo TIME:`expr $end - $start`s
 
 ``` bash
 #mmseqs2
-##min-seq-id:identity（相似度？），c覆盖度，rescore-mode3: global alignment
+##min-seq-id:identity，c覆盖度，rescore-mode3: global alignment
+
+#聚类
+input_fa=tmp_com.gene
+mmseqs easy-linclust $input_fa lin_res tmp \
+    --min-seq-id 0.9 -c 0.9 --cov-mode 1  --threads 8
+#或者
+mmseqs easy-cluster $input_fa lin_res tmp \
+    --min-seq-id 0.9 -c 0.9 --cov-mode 1  --threads 8
+
+##以下是为了理解步骤做的，使用上面👆的easy模式即可
 #建库
 input_fa=../prodigal/C1.gene.fa
 DB=C1.geneDB
