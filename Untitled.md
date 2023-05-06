@@ -1,24 +1,3 @@
----
-title: R绘制优美的进化树（进阶）
-author: Peng Chen
-date: '2023-05-05'
-slug: r
-categories:
-  - R
-tags:
-  - R
-  - phylogenetic tree
-  - 可视化
-description: ~
-image: images/example3.png
-math: ~
-license: ~
-hidden: no
-comments: yes
-bibliography: [../../bib/My Library.bib]
-link-citations: yes
-csl: ../../bib/science.csl
----
 
 上次已经介绍过了使用R绘制系统发育树的基本用法，也埋下一个小坑：复现文章里好看的树，现在过来填坑了，哈哈哈。
 
@@ -498,8 +477,6 @@ p4+theme(legend.position = "bottom")
 呼～，暂时先做这几个图吧，再次强调，这是生成随机的树和一些随机的无科学意义的注释（仅供画图参考！！！）。
 
 如果你有好看的图需要复现或者有什么绘图上的问题，欢迎联系。
-
-## Reference
 
 <div id="refs" class="references csl-bib-body">
 

@@ -16,6 +16,22 @@ def convert_markdown_to_html(markdown_text):
         markdown_text = markdown_text.replace(f"![{title}]({src}){{{match[2]}}}", html_tag)
     return markdown_text
 
+def convert_markdown_to_html2(markdown_text):
+    # 将插入图片的Markdown语法转换为HTML语法
+    pattern = r"[^`\"]!\[(.*?)\]\((.*?)\)"
+    matches = re.findall(pattern, markdown_text)
+    for match in matches:
+        title = match[0]
+        src = match[1]
+        #attributes = match[2].split(",")
+        #attr_dict = dict([tuple(attribute.split("=")) for attribute in attributes])
+        html_tag = f'<img src="{src}" title="{title}"'
+        # for key, value in attr_dict.items():
+        #     html_tag += f' {key}="{value}"'
+        html_tag += "/>"
+        markdown_text = markdown_text.replace(f"![{title}]({src})", html_tag)
+    return markdown_text
+
 def convert_latex_to_md(latex_text):
     markdown_text=re.sub(r'[^`]`\\\((.*?)\\\)`',r'$\1$',latex_text)
     return markdown_text
@@ -27,6 +43,7 @@ def convert_markdown_file_to_html(file_path):
 
     # 将Markdown语法转换为HTML语法
     html_text = convert_markdown_to_html(markdown_text)
+    html_text = convert_markdown_to_html2(html_text)
     html_text = convert_latex_to_md(html_text)
     # 将HTML文本写入文件
     with open(file_path, "w", encoding="utf-8") as f:

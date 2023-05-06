@@ -10,7 +10,7 @@ tags:
   - phylogenetic tree
   - 可视化
 description: ~
-image: ~
+image: images/example3.png
 math: ~
 license: ~
 hidden: no
@@ -418,3 +418,5 @@ p4+theme(legend.position = "bottom")
 呼～，暂时先做这几个图吧，再次强调，这是生成随机的树和一些随机的无科学意义的注释（仅供画图参考！！！）。
 
 如果你有好看的图需要复现或者有什么绘图上的问题，欢迎联系。
+
+## Reference

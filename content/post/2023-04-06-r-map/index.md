@@ -346,7 +346,7 @@ class(inter_p)
 inter_p
 ```
 
-![当然这里无法交互使用](leaflet.png)
+<img src="leaflet.png" title="当然这里无法交互使用"/> 
 
 ### add in PPT
 
