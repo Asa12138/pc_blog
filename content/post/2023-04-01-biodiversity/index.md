@@ -7,7 +7,7 @@ categories:
   - microbial-ecology
 tags:
   - 物种多样性
-description: null
+description: 这是我在一门研究生课程上的课程任务，查阅了一些文献总结整理了物种多样性研究理论与方法，比较基础，没有对一些理论和模型深入讲解，仅做分享
 image: images/diversity.png
 math: ~
 license: ~

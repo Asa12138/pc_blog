@@ -9,7 +9,7 @@ tags:
   - R
   - phylogenetic tree
   - 可视化
-description: ~
+description: 上次已经介绍过了使用R绘制系统发育树的基本用法，这次来复现文章里好看的树！
 image: images/example3.png
 math: ~
 license: ~

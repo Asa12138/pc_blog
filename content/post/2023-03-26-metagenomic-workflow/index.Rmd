@@ -8,7 +8,7 @@ categories:
 tags:
   - shell
   - 编程
-description: ~
+description: 宏基因组（Metagenome）是指对一个生态系统中的所有微生物进行DNA分析的过程，可以帮助研究人员了解微生物的多样性、功能和互作关系。这里介绍常用分析流程。
 image: ~
 math: ~
 license: ~

@@ -12,7 +12,7 @@ option_list <- list(
 # 解析命令行参数
 opt <- parse_args(OptionParser(option_list = option_list))
 
-#opt=list(input="content/post/2023-04-13-r-tree/index.cn.md",output="jianshu")
+#opt=list(input="content/post/2023-04-06-r-map/index.md",output="jianshu")
 
 # 读取Markdown文件
 md_file <- opt$input
@@ -39,9 +39,10 @@ md_text1 <- gsub('\\!\\[(.*?)\\]\\((.*?)\\)',paste0('![\\1](',"https://asa-blog.
 md_text1 <- gsub('width=".*?"', 'width="90%"', md_text1)
 
 if(opt$output=="jianshu"){
+    print("jianshu")
     #转换html为markdown（适应简书）
-    md_text1=gsub('<img src="(.*?)" title="(.*?)" .*? />', '![\\2](\\1)', md_text1)
-    md_text1=gsub('<img src="(.*?)" .*? />', '![](\\1)', md_text1)
+    md_text1=gsub('<img src="([^>]*?)" title="(.*?)"[^>]*>', '![\\2](\\1)', md_text1)
+    md_text1=gsub('<img src="([^>]*?)"[^>]*>', '![](\\1)', md_text1)
     # 删除HTML标签
     md_text1 <- gsub("<div .*?>", "", md_text1)
     md_text1 <- gsub("</div>", "", md_text1)
@@ -50,8 +51,7 @@ if(opt$output=="jianshu"){
 }
 
 #添加微信公粽号图片
-md_text1=paste0(md_text1," ![关注公众号，获取最新推送](https://img-blog.csdnimg.cn/54341424479e4a07970692b5b0eb986c.png#pic_center)")
-
+if(opt$output!="jianshu"){md_text1=paste0(md_text1,"\n\n ![关注公众号，获取最新推送](https://asa-blog.netlify.app/about/images/bio-qrcode_hucaa9cefbc9f201030f5dc065c6a5b184_308415_1024x0_resize_box_3.png) \n\n 关注 'biollbug',获取最新推送，或阅读原文。")}
 
 clipr::write_clip(md_text1,allow_non_interactive = T)
 print(paste0("copy done, paste to ",opt$output))

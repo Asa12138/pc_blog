@@ -16,4 +16,4 @@ title: About
 ---
 
 This is my Wechat Official Accounts:
-![](images/bio-qrcode.png)
+<img src="images/bio-qrcode.png" title=""/>

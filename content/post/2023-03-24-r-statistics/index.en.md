@@ -8,7 +8,7 @@ categories:
 tags:
   - statistics
   - R
-description: ~
+description: R语言是一个专门用于数据分析和统计建模的编程语言，是做为做统计分析的理想选择。
 image: index.en_files/figure-html/unnamed-chunk-4-1.png
 math: ~
 license: ~

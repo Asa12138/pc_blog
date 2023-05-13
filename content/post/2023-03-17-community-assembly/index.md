@@ -7,7 +7,7 @@ categories:
   - microbial-ecology
 tags:
   - community assembly
-description: ~
+description: 了解控制群落多样性、功能、演替和生物地理学的机制是生态学，尤其是微生物生态学中的一个核心，这里介绍了几种群落构建方法。
 image: comm.jpg
 math: ~
 license: ~
@@ -39,11 +39,11 @@ Although, recently, it has been generally accepted that both deterministic and s
 
 原始的文章 ([*2*](#ref-stegenQuantifyingCommunityAssembly2013)), ([*3*](#ref-stegenStochasticDeterministicAssembly2012))
 
-![](images/beta-nti.png)
+<img src="images/beta-nti.png" title=""/>
 
 > 在确定性与随机性二分法的背景下塑造微生物群落多样性的生态过程。该方案显示了在文中讨论的假设下，基于系统发育和分类多样性划分各种生态过程的不同步骤。 NTI（最近分类单元指数）基于系统发育多样性指数 MNTD（平均最近分类单元距离）的空模型检验，RCBray（修正的 Raup-Crick 指数）基于 Bray-Curtis 的空模型检验分类多样性指数。这两个框分别表示确定性选择和未支配部分的主要组成部分。除了影响较小的选择外，未支配部分的弱选择也可能是由于抵消了有影响的选择因素和/或不同分类群的对比选择。该图主要是根据 Stegen 等人先前报告的数据制作的。
 
-**beta-NTI（nearest taxon index）：** ![](images/betanti.png)
+**beta-NTI（nearest taxon index）：** <img src="images/betanti.png" title=""/>
 
 使用 NTI/NRI 指示单个群落内共存的分类单元相比偶然预期的关系更为紧密还是分散，使用 βNTI/βNRI 指示两两群落间的变化受确定性或随机性因素影响的大小。
 MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 NTI/NRI、βNTI/βNRI 的结果解释时其显著性的判断依据是其**临界值是否大于\|2\|**，实际上这是依据标准正态分布的 95%置信区间得到的，一般认为 NRI 或者 NTI 大于 1.96 或者小于-1.96 的结果，在 95%的水平是显著的。
@@ -86,7 +86,7 @@ ggplot(com_p,aes(x=variable,y=n))+geom_bar(stat = "identity",aes(fill=type),posi
 
 周老师的文章，开发出新的方法对生态过程中的随机性进行了定量。提出了一个新的指数，normalized stochasticity ratio (**NST**)，作为确定性主导（deterministic, \<50%）和随机性主导（stochastic, \>50%）的边界点 ([*5*](#ref-ningGeneralFrameworkQuantitatively2019))。
 
-![](images/nst.jpeg)
+<img src="images/nst.jpeg" title=""/>
 
 #### code
 
@@ -176,7 +176,7 @@ R2代表了中性群落模型的整体拟合优度，**R2越高表明越接近�
 
 **随机过程，例如散布、出生、死亡、灭绝和移民，在呼气细菌和真菌群落的组装中发挥作用。**真菌微生物群的 SNM 拟合性能（图 2）优于细菌（细菌 R2 = 0.353，真菌 R2 = 0.683）。这种差异表明随机过程对于 EBC 真菌群落的组装可能相对更重要，而对 EBC 细菌群落的组装则不太重要。这种现象可能与细菌和真菌之间的大小差异有关，较小的细菌受扩散限制的影响较小，而受确定性过程的影响更大 ([*7*](#ref-zhangInsightsProfileHuman2022))。
 
-![](images/ncm.gif)
+<img src="images/ncm.gif" title=""/>
 
 > Stochastic processes played a role in assembling expiratory bacterial (A) and fungal (B) communities based on Sloan neutral model fitting. The black solid line represents the best fit, and the dotted lines represent the 95% CI (confidence interval) around the model fit. The blue dots refer to taxa that occur more frequently than predicted, and the red dots refer to taxa that occur less frequently than predicted. The green dots refer to taxa that occur in a manner consistent with predicted values.
 

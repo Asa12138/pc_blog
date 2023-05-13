@@ -9,7 +9,7 @@ tags:
   - 地图
   - R
   - 可视化
-description: ~
+description: 在 R 语言中，有多个软件包可以用来绘制地图，在此介绍绘制地图的全面方法。
 image: index_files/figure-html/unnamed-chunk-22-1.png
 math: ~
 license: ~

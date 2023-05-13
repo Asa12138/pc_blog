@@ -7,7 +7,7 @@ categories:
   - microbial-ecology
 tags:
   - community assembly
-description: ~
+description: 了解控制群落多样性、功能、演替和生物地理学的机制是生态学，尤其是微生物生态学中的一个核心，这里介绍了几种群落构建方法。
 image: comm.jpg
 math: ~
 license: ~
