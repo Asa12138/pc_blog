@@ -8,9 +8,9 @@ categories:
 tags:
   - function
   - KEGG
-description: ~
-image: ~
-math: ~
+description: Reporter score是一种改良的微生物富集分析的新方法，这里分享其原理和一个实现的R包。
+image: images/misuse.png
+math: yes
 license: ~
 hidden: no
 comments: yes
