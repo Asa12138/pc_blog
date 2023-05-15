@@ -1,94 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='简介 linux, python和R语言应该是生信学习中最重要的几个部分。
-linux是一种操作系统，由于许多生物信息学软件仅提供支持linux平台的命令行版本，而不是图形化界面，所以掌握该操作系统的基础文件管理，安装使用软件，输入输出逻辑，简单shell脚本编写等十分重要。
-python与R都是免费开源多平台的编程语言，并且都是较为容易学习上手的模仿自然语言语法的编程语言，且支持面向对象编程，两者在数据科学上都有着非常重要的应用。Python的生态系统非常丰富，拥有大量的数据科学库和框架，例如：NumPy、Pandas、Matplotlib、Seaborn、Scikit-learn、PyTorch、TensorFlow等，这些库可以帮助数据科学家快速处理和分析数据，构建模型。
-R是一种专门用于统计分析和数据可视化的语言，其生态系统也非常丰富，拥有大量的统计分析库和可视化工具，例如：ggplot2、dplyr、tidyr、shiny等。 R拥有非常强大的数据分析和可视化能力，它提供了很多专业的统计分析函数和图形，这些函数和图形可以直接用于数据分析和可视化，使分析和可视化变得更加轻松和高效。
-在此，我想先记录一下我使用的最多的R语言。
-常用功能 全面教程 小白上手首推北大李老师的课程讲义《R语言教程》，中文讲义，简单易读，甚至整本书就是用Rbookdown编写的，电子书也比较好复制代码进行学习。
-《R语言实战》,也有中文版，介绍地更加全面且有不少进阶知识，值得一看！
-然后是著名的英文书和参考手册：
-《An Introduction to R》 《R Cookbook》 更多关于R的书可以在Home | Bookdown这里找到。
-数据处理 我目前用的最多的是dplyr包进行数据处理，最开始是冲着类似linux下的|管道符去的，%&amp;gt;%符号真的挺好用的，可以让我们无需产生许多中间结果 (准确来说%&amp;gt;%来自magrittr包，并且R4.1&#43;也支持了原生管道符|&amp;gt;，但用起来还是%&amp;gt;%顺手，还有%&amp;lt;&amp;gt;%等变体)：
-1 2 library(dplyr) head(iris)%&amp;gt;%select(Species)%&amp;gt;%unique() 随后便发现了tidyverse全家桶，其中包含ggplot2，tibble，dplyr，readr，stringr等常用的全面的数据处理包，能够很好的满足我们下有数据处理需求：
-读取数据
-清洗数据
-转换数据
-合并数据
-筛选数据
-可视化
-这里给出官方教程：《R for Data Science》，非常建议熟读并使用。
-可视化 可视化一直是R的突出优点，basic graphic和ggplot是我最常用的绘图系统（偶尔会用plotly画一些交互图形，但大多数是只需要presentation和文章里要用的静态图形），两者的绘图逻辑有所差异，推荐在学会R的基础使用和数据处理后就体验ggplot。
-ggplot是由Hadley Wickham创建的，并被包含在R语言的ggplot2包中。主要思想是将数据可视化看作是图层的堆叠，其中每个图层代表了一个数据属性的可视化。ggplot提供了一系列的函数和参数，让用户能够轻松地组合这些图层，以及调整颜色、标签、轴等其他属性。
-ggplot支持的图形类型包括散点图、折线图、直方图、密度图、箱线图等等，可以满足大多数数据可视化的需求。优点在于其语法简洁、易于理解和使用，并且生成的图表质量高、美观、易于理解。它也被广泛地应用于学术研究、数据分析、商业报告等领域。
-同样给出官方教程：《ggplot2: Elegant Graphics for Data Analysis》，优雅，太优雅了。这本书也是可以找到大佬们翻译的中文版的，可以当作作图工具书使用，许多无法直接Google到的细节问题可能能在书中找到。
-此外要提一下ggpubr包，其名为Publication Ready Plots，提供一些方便的做出出版级figure的函数。ggpubr: Publication Ready Plots - Articles - STHDA 这个网站提供了不少好看图的绘制流程。
-当掌握了基本的ggplot绘制逻辑后，还可以尝试各种基于同样逻辑的扩展包，如ggcor，ggtree等等。
-gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自创的gg拓展（当然暂时有点难😮‍💨）
-最后，强烈推荐一个为可视化而建的网站From data to Viz | Find the graphic you need (data-to-viz.'>
-<title>R语言学习</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='上次已经介绍过了使用R绘制系统发育树的基本用法，这次来复现文章里好看的树！'>
+<title>R绘制优美的进化树（进阶）</title>
 
 <link rel='canonical' href='/p/r/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='R语言学习'>
-<meta property='og:description' content='简介 linux, python和R语言应该是生信学习中最重要的几个部分。
-linux是一种操作系统，由于许多生物信息学软件仅提供支持linux平台的命令行版本，而不是图形化界面，所以掌握该操作系统的基础文件管理，安装使用软件，输入输出逻辑，简单shell脚本编写等十分重要。
-python与R都是免费开源多平台的编程语言，并且都是较为容易学习上手的模仿自然语言语法的编程语言，且支持面向对象编程，两者在数据科学上都有着非常重要的应用。Python的生态系统非常丰富，拥有大量的数据科学库和框架，例如：NumPy、Pandas、Matplotlib、Seaborn、Scikit-learn、PyTorch、TensorFlow等，这些库可以帮助数据科学家快速处理和分析数据，构建模型。
-R是一种专门用于统计分析和数据可视化的语言，其生态系统也非常丰富，拥有大量的统计分析库和可视化工具，例如：ggplot2、dplyr、tidyr、shiny等。 R拥有非常强大的数据分析和可视化能力，它提供了很多专业的统计分析函数和图形，这些函数和图形可以直接用于数据分析和可视化，使分析和可视化变得更加轻松和高效。
-在此，我想先记录一下我使用的最多的R语言。
-常用功能 全面教程 小白上手首推北大李老师的课程讲义《R语言教程》，中文讲义，简单易读，甚至整本书就是用Rbookdown编写的，电子书也比较好复制代码进行学习。
-《R语言实战》,也有中文版，介绍地更加全面且有不少进阶知识，值得一看！
-然后是著名的英文书和参考手册：
-《An Introduction to R》 《R Cookbook》 更多关于R的书可以在Home | Bookdown这里找到。
-数据处理 我目前用的最多的是dplyr包进行数据处理，最开始是冲着类似linux下的|管道符去的，%&amp;gt;%符号真的挺好用的，可以让我们无需产生许多中间结果 (准确来说%&amp;gt;%来自magrittr包，并且R4.1&#43;也支持了原生管道符|&amp;gt;，但用起来还是%&amp;gt;%顺手，还有%&amp;lt;&amp;gt;%等变体)：
-1 2 library(dplyr) head(iris)%&amp;gt;%select(Species)%&amp;gt;%unique() 随后便发现了tidyverse全家桶，其中包含ggplot2，tibble，dplyr，readr，stringr等常用的全面的数据处理包，能够很好的满足我们下有数据处理需求：
-读取数据
-清洗数据
-转换数据
-合并数据
-筛选数据
-可视化
-这里给出官方教程：《R for Data Science》，非常建议熟读并使用。
-可视化 可视化一直是R的突出优点，basic graphic和ggplot是我最常用的绘图系统（偶尔会用plotly画一些交互图形，但大多数是只需要presentation和文章里要用的静态图形），两者的绘图逻辑有所差异，推荐在学会R的基础使用和数据处理后就体验ggplot。
-ggplot是由Hadley Wickham创建的，并被包含在R语言的ggplot2包中。主要思想是将数据可视化看作是图层的堆叠，其中每个图层代表了一个数据属性的可视化。ggplot提供了一系列的函数和参数，让用户能够轻松地组合这些图层，以及调整颜色、标签、轴等其他属性。
-ggplot支持的图形类型包括散点图、折线图、直方图、密度图、箱线图等等，可以满足大多数数据可视化的需求。优点在于其语法简洁、易于理解和使用，并且生成的图表质量高、美观、易于理解。它也被广泛地应用于学术研究、数据分析、商业报告等领域。
-同样给出官方教程：《ggplot2: Elegant Graphics for Data Analysis》，优雅，太优雅了。这本书也是可以找到大佬们翻译的中文版的，可以当作作图工具书使用，许多无法直接Google到的细节问题可能能在书中找到。
-此外要提一下ggpubr包，其名为Publication Ready Plots，提供一些方便的做出出版级figure的函数。ggpubr: Publication Ready Plots - Articles - STHDA 这个网站提供了不少好看图的绘制流程。
-当掌握了基本的ggplot绘制逻辑后，还可以尝试各种基于同样逻辑的扩展包，如ggcor，ggtree等等。
-gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自创的gg拓展（当然暂时有点难😮‍💨）
-最后，强烈推荐一个为可视化而建的网站From data to Viz | Find the graphic you need (data-to-viz.'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='R绘制优美的进化树（进阶）'>
+<meta property='og:description' content='上次已经介绍过了使用R绘制系统发育树的基本用法，这次来复现文章里好看的树！'>
 <meta property='og:url' content='/p/r/'>
 <meta property='og:site_name' content='Asa&#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='R' /><meta property='article:tag' content='编程' /><meta property='article:published_time' content='2023-03-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-16T00:00:00&#43;00:00'/><meta property='og:image' content='/p/r/images/data2viz.png' />
-<meta name="twitter:title" content="R语言学习">
-<meta name="twitter:description" content="简介 linux, python和R语言应该是生信学习中最重要的几个部分。
-linux是一种操作系统，由于许多生物信息学软件仅提供支持linux平台的命令行版本，而不是图形化界面，所以掌握该操作系统的基础文件管理，安装使用软件，输入输出逻辑，简单shell脚本编写等十分重要。
-python与R都是免费开源多平台的编程语言，并且都是较为容易学习上手的模仿自然语言语法的编程语言，且支持面向对象编程，两者在数据科学上都有着非常重要的应用。Python的生态系统非常丰富，拥有大量的数据科学库和框架，例如：NumPy、Pandas、Matplotlib、Seaborn、Scikit-learn、PyTorch、TensorFlow等，这些库可以帮助数据科学家快速处理和分析数据，构建模型。
-R是一种专门用于统计分析和数据可视化的语言，其生态系统也非常丰富，拥有大量的统计分析库和可视化工具，例如：ggplot2、dplyr、tidyr、shiny等。 R拥有非常强大的数据分析和可视化能力，它提供了很多专业的统计分析函数和图形，这些函数和图形可以直接用于数据分析和可视化，使分析和可视化变得更加轻松和高效。
-在此，我想先记录一下我使用的最多的R语言。
-常用功能 全面教程 小白上手首推北大李老师的课程讲义《R语言教程》，中文讲义，简单易读，甚至整本书就是用Rbookdown编写的，电子书也比较好复制代码进行学习。
-《R语言实战》,也有中文版，介绍地更加全面且有不少进阶知识，值得一看！
-然后是著名的英文书和参考手册：
-《An Introduction to R》 《R Cookbook》 更多关于R的书可以在Home | Bookdown这里找到。
-数据处理 我目前用的最多的是dplyr包进行数据处理，最开始是冲着类似linux下的|管道符去的，%&amp;gt;%符号真的挺好用的，可以让我们无需产生许多中间结果 (准确来说%&amp;gt;%来自magrittr包，并且R4.1&#43;也支持了原生管道符|&amp;gt;，但用起来还是%&amp;gt;%顺手，还有%&amp;lt;&amp;gt;%等变体)：
-1 2 library(dplyr) head(iris)%&amp;gt;%select(Species)%&amp;gt;%unique() 随后便发现了tidyverse全家桶，其中包含ggplot2，tibble，dplyr，readr，stringr等常用的全面的数据处理包，能够很好的满足我们下有数据处理需求：
-读取数据
-清洗数据
-转换数据
-合并数据
-筛选数据
-可视化
-这里给出官方教程：《R for Data Science》，非常建议熟读并使用。
-可视化 可视化一直是R的突出优点，basic graphic和ggplot是我最常用的绘图系统（偶尔会用plotly画一些交互图形，但大多数是只需要presentation和文章里要用的静态图形），两者的绘图逻辑有所差异，推荐在学会R的基础使用和数据处理后就体验ggplot。
-ggplot是由Hadley Wickham创建的，并被包含在R语言的ggplot2包中。主要思想是将数据可视化看作是图层的堆叠，其中每个图层代表了一个数据属性的可视化。ggplot提供了一系列的函数和参数，让用户能够轻松地组合这些图层，以及调整颜色、标签、轴等其他属性。
-ggplot支持的图形类型包括散点图、折线图、直方图、密度图、箱线图等等，可以满足大多数数据可视化的需求。优点在于其语法简洁、易于理解和使用，并且生成的图表质量高、美观、易于理解。它也被广泛地应用于学术研究、数据分析、商业报告等领域。
-同样给出官方教程：《ggplot2: Elegant Graphics for Data Analysis》，优雅，太优雅了。这本书也是可以找到大佬们翻译的中文版的，可以当作作图工具书使用，许多无法直接Google到的细节问题可能能在书中找到。
-此外要提一下ggpubr包，其名为Publication Ready Plots，提供一些方便的做出出版级figure的函数。ggpubr: Publication Ready Plots - Articles - STHDA 这个网站提供了不少好看图的绘制流程。
-当掌握了基本的ggplot绘制逻辑后，还可以尝试各种基于同样逻辑的扩展包，如ggcor，ggtree等等。
-gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自创的gg拓展（当然暂时有点难😮‍💨）
-最后，强烈推荐一个为可视化而建的网站From data to Viz | Find the graphic you need (data-to-viz."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='/p/r/images/data2viz.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='R' /><meta property='article:tag' content='phylogenetic tree' /><meta property='article:tag' content='可视化' /><meta property='article:published_time' content='2023-05-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-05-05T00:00:00&#43;00:00'/><meta property='og:image' content='/p/r/images/example3.png' />
+<meta name="twitter:title" content="R绘制优美的进化树（进阶）">
+<meta name="twitter:description" content="上次已经介绍过了使用R绘制系统发育树的基本用法，这次来复现文章里好看的树！"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/r/images/example3.png' /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" href="/favicon-32x32.png" />
     </head>
     <body class="
     article-page
@@ -361,24 +290,12 @@ gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#简介">简介</a></li>
-    <li><a href="#常用功能">常用功能</a>
-      <ol>
-        <li><a href="#全面教程">全面教程</a></li>
-        <li><a href="#数据处理">数据处理</a></li>
-        <li><a href="#可视化">可视化</a></li>
-        <li><a href="#r编程">R编程</a></li>
-        <li><a href="#rmarkdown">Rmarkdown</a>
-          <ol>
-            <li><a href="#rbookdown">Rbookdown</a></li>
-            <li><a href="#rblogdown">Rblogdown</a></li>
-            <li><a href="#r-presentation">R Presentation</a></li>
-          </ol>
-        </li>
-        <li><a href="#写r包">写R包</a></li>
-        <li><a href="#制作shiny应用">制作shiny应用</a></li>
-      </ol>
-    </li>
+    <li><a href="#preparation">Preparation</a></li>
+    <li><a href="#example1">Example1</a></li>
+    <li><a href="#example2">Example2</a></li>
+    <li><a href="#example3">Example3</a></li>
+    <li><a href="#example4">Example4</a></li>
+    <li><a href="#reference">Reference</a></li>
   </ol>
 </nav>
         </div>
@@ -394,12 +311,12 @@ gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自
     <header class="article-header">
         <div class="article-image">
             <a href="/p/r/">
-                <img src="/p/r/images/data2viz_hu2949f787b14e5432e8dbe93255a87ee8_671473_800x0_resize_box_3.png"
-                        srcset="/p/r/images/data2viz_hu2949f787b14e5432e8dbe93255a87ee8_671473_800x0_resize_box_3.png 800w, /p/r/images/data2viz_hu2949f787b14e5432e8dbe93255a87ee8_671473_1600x0_resize_box_3.png 1600w"
+                <img src="/p/r/images/example3_hudb155f8e92790c1df7e82ecec90ce7ca_1845460_800x0_resize_box_3.png"
+                        srcset="/p/r/images/example3_hudb155f8e92790c1df7e82ecec90ce7ca_1845460_800x0_resize_box_3.png 800w, /p/r/images/example3_hudb155f8e92790c1df7e82ecec90ce7ca_1845460_1600x0_resize_box_3.png 1600w"
                         width="800" 
-                        height="843" 
+                        height="535" 
                         loading="lazy"
-                        alt="Featured image of post R语言学习" />
+                        alt="Featured image of post R绘制优美的进化树（进阶）" />
                 
             </a>
         </div>
@@ -418,9 +335,13 @@ gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/r/">R语言学习</a>
+            <a href="/p/r/">R绘制优美的进化树（进阶）</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            上次已经介绍过了使用R绘制系统发育树的基本用法，这次来复现文章里好看的树！
+        </h3>
         
     </div>
 
@@ -440,7 +361,7 @@ gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Mar 16, 2023</time>
+                <time class="article-time--published">May 05, 2023</time>
             </div>
         
 
@@ -455,7 +376,7 @@ gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    7 minute read
                 </time>
             </div>
         
@@ -470,125 +391,804 @@ gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自
     <section class="article-content">
     
     
-    <h2 id="简介">简介</h2>
-<p><strong>linux</strong>, <strong>python</strong>和<strong>R语言</strong>应该是生信学习中最重要的几个部分。</p>
-<p>linux是一种操作系统，由于许多生物信息学软件仅提供支持linux平台的命令行版本，而不是图形化界面，所以掌握该操作系统的基础文件管理，安装使用软件，输入输出逻辑，简单shell脚本编写等十分重要。</p>
-<p>python与R都是免费开源多平台的编程语言，并且都是较为容易学习上手的模仿自然语言语法的编程语言，且支持面向对象编程，两者在数据科学上都有着非常重要的应用。Python的生态系统非常丰富，拥有大量的数据科学库和框架，例如：NumPy、Pandas、Matplotlib、Seaborn、Scikit-learn、PyTorch、TensorFlow等，这些库可以帮助数据科学家快速处理和分析数据，构建模型。</p>
-<p>R是一种专门用于统计分析和数据可视化的语言，其生态系统也非常丰富，拥有大量的统计分析库和可视化工具，例如：ggplot2、dplyr、tidyr、shiny等。 R拥有非常强大的数据分析和可视化能力，它提供了很多专业的统计分析函数和图形，这些函数和图形可以直接用于数据分析和可视化，使分析和可视化变得更加轻松和高效。</p>
-<p>在此，我想先记录一下我使用的最多的R语言。</p>
-<h2 id="常用功能">常用功能</h2>
-<h3 id="全面教程">全面教程</h3>
-<p>小白上手首推北大李老师的课程讲义<a class="link" href="https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html"  target="_blank" rel="noopener"
-    >《R语言教程》</a>，中文讲义，简单易读，甚至整本书就是用Rbookdown编写的，电子书也比较好复制代码进行学习。</p>
-<p><a class="link" href="https://www.zhihu.com/search?q=R%E8%AF%AD%E8%A8%80%E5%AE%9E%E6%88%98&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A217799209%7D"  target="_blank" rel="noopener"
-    >《R语言实战》</a>,也有中文版，介绍地更加全面且有不少进阶知识，值得一看！</p>
-<p>然后是著名的英文书和参考手册：</p>
-<ul>
-<li><a class="link" href="cran.r-project.org/doc/manuals/R-intro.pdf" >《An Introduction to R》</a></li>
-<li><a class="link" href="https://rc2e.com/"  target="_blank" rel="noopener"
-    >《R Cookbook》</a></li>
-</ul>
-<p>更多关于R的书可以在<a class="link" href="https://bookdown.org/"  target="_blank" rel="noopener"
-    >Home | Bookdown</a>这里找到。</p>
-<h3 id="数据处理">数据处理</h3>
-<p>我目前用的最多的是dplyr包进行数据处理，最开始是冲着类似linux下的<code>|</code>管道符去的，<code>%&gt;%</code>符号真的挺好用的，可以让我们无需产生许多中间结果 (准确来说<code>%&gt;%</code>来自magrittr包，并且R4.1+也支持了原生管道符<code>|&gt;</code>，但用起来还是<code>%&gt;%</code>顺手，还有<code>%&lt;&gt;%</code>等变体)：</p>
+    <p>上次已经介绍过了使用R绘制系统发育树的基本用法，也埋下一个小坑：复现文章里好看的树，现在过来填坑了，哈哈哈。</p>
+<p>我准备了一些文章里自己觉得很不错的树（当然尽可能风格不同），然后自己生成随机的树和一些随机的无科学意义的注释（仅供画图参考！！！），主要是用ggtree和ggtreeExtra进行代码复现，争取把树的主体都用代码完成，当然一些小细节就还是不得不使用AI等pdf编辑软件进行添加了。</p>
+<h2 id="preparation">Preparation</h2>
+<p>首先还是要把我们要用的一些包都安装好并导入进来。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#tree</span>
+</span></span><span class="line"><span class="cl"><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">requireNamespace</span><span class="p">(</span><span class="s">&#34;BiocManager&#34;</span><span class="p">,</span> <span class="n">quietly</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;BiocManager&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">BiocManager</span><span class="o">::</span><span class="nf">install</span><span class="p">(</span><span class="s">&#34;YuLab-SMU/treedataverse&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">BiocManager</span><span class="o">::</span><span class="nf">install</span><span class="p">(</span><span class="s">&#34;ggtree&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">BiocManager</span><span class="o">::</span><span class="nf">install</span><span class="p">(</span><span class="s">&#34;ggtreeExtra&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">treedataverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggtree</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggtreeExtra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">treeio</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#plot</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggnewscale</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">reshape2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggrepel</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后需要准备一些函数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span><span class="o">%&gt;%</span><span class="nf">select</span><span class="p">(</span><span class="n">Species</span><span class="p">)</span><span class="o">%&gt;%</span><span class="nf">unique</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#写个函数类似child获取子节点，但是可以指定层数</span>
+</span></span><span class="line"><span class="cl"><span class="n">child2</span><span class="o">=</span><span class="nf">function</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">node</span><span class="p">,</span><span class="n">depth</span><span class="o">=</span><span class="m">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">if</span><span class="p">(</span><span class="n">depth</span><span class="o">==</span><span class="m">1</span><span class="p">){</span><span class="nf">return</span><span class="p">(</span><span class="nf">child</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">node</span><span class="p">))}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">return</span><span class="p">(</span><span class="nf">child2</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="nf">child</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">node</span><span class="p">)</span><span class="o">%&gt;%</span><span class="nf">unlist</span><span class="p">()</span><span class="o">%&gt;%</span><span class="nf">unname</span><span class="p">(),</span><span class="n">depth</span><span class="m">-1</span><span class="p">)</span><span class="o">%&gt;%</span><span class="nf">unlist</span><span class="p">()</span><span class="o">%&gt;%</span><span class="nf">unname</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>随后便发现了tidyverse全家桶，其中包含ggplot2，tibble，dplyr，readr，stringr等常用的全面的数据处理包，能够很好的满足我们下有数据处理需求：</p>
-<ul>
-<li>
-<p>读取数据</p>
-</li>
-<li>
-<p>清洗数据</p>
-</li>
-<li>
-<p>转换数据</p>
-</li>
-<li>
-<p>合并数据</p>
-</li>
-<li>
-<p>筛选数据</p>
-</li>
-<li>
-<p>可视化</p>
-</li>
-</ul>
-<p>这里给出官方教程：<a class="link" href="https://bookdown.org/roy_schumacher/r4ds/"  target="_blank" rel="noopener"
-    >《R for Data Science》</a>，非常建议熟读并使用。</p>
-<h3 id="可视化">可视化</h3>
-<p>可视化一直是R的突出优点，basic graphic和ggplot是我最常用的绘图系统（偶尔会用plotly画一些交互图形，但大多数是只需要presentation和文章里要用的静态图形），两者的绘图逻辑有所差异，推荐在学会R的基础使用和数据处理后就体验ggplot。</p>
-<p>ggplot是由Hadley Wickham创建的，并被包含在R语言的ggplot2包中。主要思想是将数据可视化看作是图层的堆叠，其中每个图层代表了一个数据属性的可视化。ggplot提供了一系列的函数和参数，让用户能够轻松地组合这些图层，以及调整颜色、标签、轴等其他属性。</p>
-<p>ggplot支持的图形类型包括散点图、折线图、直方图、密度图、箱线图等等，可以满足大多数数据可视化的需求。优点在于其语法简洁、易于理解和使用，并且生成的图表质量高、美观、易于理解。它也被广泛地应用于学术研究、数据分析、商业报告等领域。</p>
-<p>同样给出官方教程：<a class="link" href="https://ggplot2-book.org/"  target="_blank" rel="noopener"
-    >《ggplot2: Elegant Graphics for Data Analysis》</a>，优雅，太优雅了。这本书也是可以找到大佬们翻译的中文版的，可以当作作图工具书使用，许多无法直接Google到的细节问题可能能在书中找到。</p>
-<p>此外要提一下ggpubr包，其名为Publication Ready Plots，提供一些方便的做出出版级figure的函数。<a class="link" href="http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/"  target="_blank" rel="noopener"
-    >ggpubr: Publication Ready Plots - Articles - STHDA</a> 这个网站提供了不少好看图的绘制流程。</p>
-<p>当掌握了基本的ggplot绘制逻辑后，还可以尝试各种基于同样逻辑的扩展包，如ggcor，ggtree等等。</p>
-<p><a class="link" href="https://exts.ggplot2.tidyverse.org/gallery/"  target="_blank" rel="noopener"
-    >gg_extensions</a> 这个网站收集了很多此类拓展包并支持制作上传自创的gg拓展（当然暂时有点难😮‍💨）</p>
-<p>最后，强烈推荐一个为可视化而建的网站<a class="link" href="https://www.data-to-viz.com/#density2d"  target="_blank" rel="noopener"
-    ><strong>From data to Viz | Find the graphic you need (data-to-viz.com)</strong></a>，就像网站名一样，丰富多彩的可视化形式帮我们找到适合自己数据的样式，并提供画某一类图的python，R甚至D3.js代码，真的非常方便地copy代码，替换我们的数据，少量的修改就能有很不错的效果😄。</p>
-<img src="images/data2viz.png" title="from data to viz website" width="65%"/>
-<h3 id="r编程">R编程</h3>
-<p>R是一个宝库，几乎总能在上面找到合适的包实现我们想要的功能，但他也是一种编程语言，熟悉其编程语法对进阶使用十分重要。</p>
-<p>基本的数据读取与输出，if else、switch、for循环与简单函数编写需要掌握。</p>
-<p>同时因为R是一个比较&quot;慢&quot;的语言，尽量使用向量式编程、apply替代for循环、RCpp编写函数等方法提高其效率（后面可能会专门讲讲）。</p>
-<p>这里推荐大佬的<a class="link" href="https://adv-r.hadley.nz/"  target="_blank" rel="noopener"
-    >《Advanced R》</a>，对R高级编程技术进行讲解。</p>
-<h3 id="rmarkdown">Rmarkdown</h3>
-<p>R Markdown是一种文本格式和工具，用于创建具有代码、文本、图形和输出结果的可重复性报告。它是在R语言环境中开发的，但也可以与其他编程语言（如Python）结合使用。</p>
-<p>使用R Markdown，您可以将代码、文本和图形组合到一个文件中，并使用R Markdown语法将它们组织成结构化的文档。然后，您可以使用R Markdown编译器将文档转换为HTML、PDF、Word或其他格式的报告。</p>
-<p>R Markdown具有以下优点：</p>
-<ul>
-<li>
-<p>可重复性：报告中的所有代码和结果都是可重复的，这有助于确保研究结果的可靠性和透明度。</p>
-</li>
-<li>
-<p>效率：使用R Markdown，您可以在单个文件中组织和记录所有内容，从而节省时间和精力。</p>
-</li>
-<li>
-<p>灵活性：R Markdown支持多种格式和输出选项，因此您可以根据需要自定义报告的样式和布局。</p>
-</li>
-</ul>
-<p>Yihui Xie大佬的官方文档介绍：<a class="link" href="https://bookdown.org/yihui/rmarkdown/"  target="_blank" rel="noopener"
-    >R Markdown: The Definitive Guide (bookdown.org)</a></p>
-<p>以及参考书：<a class="link" href="https://bookdown.org/yihui/rmarkdown-cookbook/"  target="_blank" rel="noopener"
-    >R Markdown Cookbook (bookdown.org)</a></p>
-<h4 id="rbookdown">Rbookdown</h4>
-<p>R的bookdown扩展包(<a class="link" href="https://github.com/rstudio/bookdown"  target="_blank" rel="noopener"
-    >https://github.com/rstudio/bookdown</a>) 是继knitr和rmarkdown扩展包之后， 另一个增强markdown格式的扩展， 使得Rmd格式可以支持公式、定理、图表自动编号和引用、链接， 文献引用和链接等适用于编写书籍的功能。相当方便，我也稍微尝试写了一下：<a class="link" href="https://asa12138.github.io/MetaNet_tutorial/"  target="_blank" rel="noopener"
-    >MetaNet Tutorial (asa12138.github.io)</a>。</p>
-<p>参考书：<a class="link" href="https://bookdown.org/yihui/bookdown/"  target="_blank" rel="noopener"
-    >bookdown: Authoring Books and Technical Documents with R Markdown</a></p>
-<h4 id="rblogdown">Rblogdown</h4>
-<p>R扩展包blogdown可以与Hugo软件配合制作简单的静态网站。 网站的所有文件都存在于一个目录中， 只要上传到任意的网站服务器就可以发布， 没有任何限制。这篇博客就是基于Rblogdown写的，还是非常友好易上手的。</p>
-<p>参考书：<a class="link" href="https://bookdown.org/yihui/blogdown/"  target="_blank" rel="noopener"
-    >blogdown: Creating Websites with R Markdown (bookdown.org)</a></p>
-<p>3.21更新：</p>
-<p>大多数网站的修改要在themes中实现，比如我现在使用的主题不支持latex渲染，想要加上这个功能，我先找到了yihui大佬的主题实现这个功能的Javascript代码，即hugo-lithium/layouts/partials/footer_mathjax.html，然后把它复制到目前用的主题的footer目录下（可能没有这个目录，而是footer.html同目录下），记得在include.html或者其他layout文件中加入<code>{{ partial &quot;footer/footer_mathjax.html&quot; . }}</code>，这样就能顺利调用mathjax了。</p>
-<h4 id="r-presentation">R Presentation</h4>
-<p>R Markdown文件(.Rmd)支持生成网页格式的幻灯片(<code>slidy_presentation</code>)， 以及LaTeX beamer格式的PDF幻灯片(<code>beamer_presentation</code>)， 和Microsoft Office的PowerPoint幻灯片(<code>powerpoint_presentation</code>)格式。</p>
-<p>目前稍微尝试了一些Yihui大佬的&quot;写轮眼&quot;包，但没有试着做自己的slides，以后有机会一定试试。</p>
-<h3 id="写r包">写R包</h3>
-<p>积极尝试</p>
-<p>参考书：<a class="link" href="https://r-pkgs.org/"  target="_blank" rel="noopener"
-    >R Packages (2e) (r-pkgs.org)</a></p>
-<h3 id="制作shiny应用">制作shiny应用</h3>
-<p>积极尝试</p>
-<p>官方教程：<a class="link" href="https://shiny.rstudio.com/tutorial/"  target="_blank" rel="noopener"
-    >Shiny Learning Resources</a></p>
-<p>参考书：<a class="link" href="https://mastering-shiny.org/"  target="_blank" rel="noopener"
-    >Mastering Shiny</a></p>
+</div><h2 id="example1">Example1</h2>
+<p>第一个例子来自Nature Communication的一篇文章 (<a class="link" href="#ref-bourquinMicrobiomeCryosphericEcosystems2022" ><em>1</em></a>)，这是一个相对简单的树。</p>
+<img src="images/example1.png" style="width:100.0%" />
+<p>按照ggplot搭积木的逻辑，我们看看有哪些需要画的：</p>
+<ol>
+<li>树的主体，圆形布局，并打开一个小角度，方便展示注释信息的x轴label</li>
+<li>外圈注释1，热图形式（tile），颜色代表每一个tip的Phylum，透明度代表相对丰度</li>
+<li>外圈注释2，柱形图形式（col或bar），颜色代表每一个tip的Phylum，高度代表SVM系数</li>
+</ol>
+<p>相应的我们生成数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#生成一个2000tip的树</span>
+</span></span><span class="line"><span class="cl"><span class="n">ntips</span><span class="o">=</span><span class="m">2000</span>
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">tree</span><span class="o">=</span><span class="nf">rtree</span><span class="p">(</span><span class="n">ntips</span><span class="p">,</span><span class="n">rooted</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#变成tbl_tree对象，方便操作</span>
+</span></span><span class="line"><span class="cl"><span class="n">ggtree</span><span class="o">::</span><span class="nf">fortify</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">tree_df</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#生成一些假的taxonomy信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">phylums</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Arthropoda&#34;</span><span class="p">,</span><span class="s">&#34;Streptophyta&#34;</span><span class="p">,</span><span class="s">&#34;Cyanobacteria&#34;</span><span class="p">,</span><span class="s">&#34;Acidobacteriota&#34;</span><span class="p">,</span><span class="s">&#34;Bacteroidetes&#34;</span><span class="p">,</span><span class="s">&#34;Firmicutes&#34;</span><span class="p">,</span><span class="s">&#34;Actinobacteria&#34;</span><span class="p">,</span><span class="s">&#34;Proteobacteria&#34;</span><span class="p">,</span><span class="s">&#34;Others&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">phy_nodes</span><span class="o">=</span><span class="nf">child2</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">ntips</span><span class="m">+1</span><span class="p">,</span><span class="n">depth</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">phy_nodes</span><span class="o">=</span><span class="nf">setNames</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">,</span><span class="nf">sample</span><span class="p">(</span><span class="n">phylums</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">),</span><span class="n">replace</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">tree_df</span><span class="o">=</span><span class="nf">groupClade</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">phy_nodes</span><span class="p">,</span><span class="n">group_name</span> <span class="o">=</span> <span class="s">&#34;Phylum&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">=</span><span class="nf">filter</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">isTip</span><span class="o">==</span><span class="s">&#34;TRUE&#34;</span><span class="p">)</span><span class="o">%&gt;%</span><span class="nf">select</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="n">Phylum</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#生成随机数作为丰度和SVM</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">=</span><span class="nf">cbind</span><span class="p">(</span><span class="n">anno</span><span class="p">,</span><span class="nf">sapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="nf">\</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="nf">rexp</span><span class="p">(</span><span class="n">ntips</span><span class="p">,</span><span class="m">3</span><span class="p">))</span><span class="o">%&gt;%</span><span class="n">vegan</span><span class="o">::</span><span class="nf">decostand</span><span class="p">(</span><span class="n">.,</span><span class="s">&#34;total&#34;</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">=</span><span class="nf">cbind</span><span class="p">(</span><span class="n">anno</span><span class="p">,</span><span class="nf">rexp</span><span class="p">(</span><span class="n">ntips</span><span class="p">)</span><span class="o">/</span><span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">anno</span><span class="p">)</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;node&#34;</span><span class="p">,</span><span class="s">&#34;Phylum&#34;</span><span class="p">,</span><span class="s">&#34;Ice/Snow&#34;</span><span class="p">,</span><span class="s">&#34;Terrestrial&#34;</span><span class="p">,</span><span class="s">&#34;Marine&#34;</span><span class="p">,</span><span class="s">&#34;Freshwater&#34;</span><span class="p">,</span><span class="s">&#34;SVM&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">anno</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>##    node        Phylum     Ice/Snow    Terrestrial        Marine    Freshwater
+## 1  t339 Cyanobacteria 0.0007693819 0.000448952905 0.00003100616 0.00034017986
+## 2 t1180 Cyanobacteria 0.0002356377 0.000483643521 0.00124672220 0.00009722752
+## 3 t1807 Cyanobacteria 0.0002908480 0.000035084895 0.00074445757 0.00011096549
+## 4  t572 Cyanobacteria 0.0019889166 0.000108407239 0.00098076293 0.00014436096
+## 5 t1739 Cyanobacteria 0.0004149838 0.000004413762 0.00006021236 0.00006270886
+## 6 t1245 Cyanobacteria 0.0004753852 0.000004451763 0.00015540813 0.00011400371
+##            SVM
+## 1 0.0001332960
+## 2 0.0474528998
+## 3 0.0222924708
+## 4 0.0001208082
+## 5 0.0169753369
+## 6 0.0277805382
+</code></pre>
+<p>有了树和注释数据，我们开始绘图：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 1. 树的主体,树枝太多把size调小，圆形布局，并打开一个小角度</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">=</span><span class="nf">ggtree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">0.1</span><span class="p">,</span><span class="n">layout</span> <span class="o">=</span> <span class="s">&#34;fan&#34;</span><span class="p">,</span><span class="n">open.angle</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#(p=ggtree(tree_df,aes(color=Phylum),size=0.1,layout = &#34;fan&#34;,open.angle = 20))</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-5-1.png" width="960" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 2. 外圈注释1，热图形式（tile），颜色代表每一个tip的Phylum，透明度代表相对丰度</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno1</span><span class="o">=</span><span class="nf">melt</span><span class="p">(</span><span class="n">anno[</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="n">]</span><span class="p">,</span><span class="n">id.vars</span> <span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span><span class="n">variable.name</span> <span class="o">=</span> <span class="s">&#34;Env&#34;</span><span class="p">,</span><span class="n">value.name</span> <span class="o">=</span> <span class="s">&#34;Abundance&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">anno1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>##    node        Phylum      Env    Abundance
+## 1  t339 Cyanobacteria Ice/Snow 0.0007693819
+## 2 t1180 Cyanobacteria Ice/Snow 0.0002356377
+## 3 t1807 Cyanobacteria Ice/Snow 0.0002908480
+## 4  t572 Cyanobacteria Ice/Snow 0.0019889166
+## 5 t1739 Cyanobacteria Ice/Snow 0.0004149838
+## 6 t1245 Cyanobacteria Ice/Snow 0.0004753852
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">p1</span><span class="o">=</span><span class="n">p</span><span class="o">+</span><span class="nf">geom_fruit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span><span class="o">=</span><span class="n">anno1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_tile</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">Env</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">Phylum</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="n">Abundance</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pwidth</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axis.params</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">&#34;x&#34;</span><span class="p">,</span><span class="n">text.size</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span><span class="n">text.angle</span><span class="o">=</span><span class="m">270</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">+</span><span class="nf">scale_alpha</span><span class="p">(</span><span class="n">range</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">guide</span><span class="o">=</span><span class="nf">guide_none</span><span class="p">())</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ggsci</span><span class="o">::</span><span class="nf">scale_fill_npg</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-5-2.png" width="960" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 3. 外圈注释2，柱形图形式（col或bar），颜色代表每一个tip的Phylum，高度代表SVM系数</span>
+</span></span><span class="line"><span class="cl"><span class="n">p2</span><span class="o">=</span><span class="n">p1</span><span class="o">+</span><span class="nf">geom_fruit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span><span class="o">=</span><span class="n">anno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_col</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">SVM</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">Phylum</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pwidth</span> <span class="o">=</span> <span class="m">0.3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axis.params</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">&#34;x&#34;</span><span class="p">,</span><span class="n">text.size</span> <span class="o">=</span> <span class="m">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid.params</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">+</span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">p2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-5-3.png" width="960" />
+<h2 id="example2">Example2</h2>
+<p>第二个例子来自Nature Microbiology的一篇文章 (<a class="link" href="#ref-royo-llonchCompendium530Metagenomeassembled2021" ><em>2</em></a>)。</p>
+<img src="images/example2.png" style="width:80.0%" />
+<p>我们看看有哪些需要画的：</p>
+<ol>
+<li>树的主体，比较特别的布局（equal_angle），并且树枝要加上一些Form的分类颜色信息,再加上一个scale标尺</li>
+<li>外圈注释1，标签，在每类分支附近，背景颜色是Form的分类</li>
+<li>外圈注释2，点和文字，应该是手动挑选的一些节点，在树枝顶端加上了灰点以及黑色文字</li>
+</ol>
+<p>相应的我们生成数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#生成一个400tip的树</span>
+</span></span><span class="line"><span class="cl"><span class="n">ntips</span><span class="o">=</span><span class="m">400</span>
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">tree</span><span class="o">=</span><span class="nf">rtree</span><span class="p">(</span><span class="n">ntips</span><span class="p">,</span><span class="n">rooted</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#变成tbl_tree对象，方便操作</span>
+</span></span><span class="line"><span class="cl"><span class="n">ggtree</span><span class="o">::</span><span class="nf">fortify</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">layout</span> <span class="o">=</span><span class="s">&#34;equal_angle&#34;</span> <span class="p">)</span><span class="o">-&gt;</span><span class="n">tree_df</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#生成一些假的Form信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">forms</span><span class="o">=</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;Form &#34;</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;I&#34;</span><span class="p">,</span><span class="s">&#34;II&#34;</span><span class="p">,</span><span class="s">&#34;II/III&#34;</span><span class="p">,</span><span class="s">&#34;III-a&#34;</span><span class="p">,</span><span class="s">&#34;III-b&#34;</span><span class="p">,</span><span class="s">&#34;III-c&#34;</span><span class="p">,</span><span class="s">&#34;III-like&#34;</span><span class="p">,</span><span class="s">&#34;IV&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">phy_nodes</span><span class="o">=</span><span class="nf">child2</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">ntips</span><span class="m">+1</span><span class="p">,</span><span class="n">depth</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">phy_nodes</span><span class="o">=</span><span class="nf">setNames</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">,</span><span class="nf">sample</span><span class="p">(</span><span class="n">forms</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">),</span><span class="n">replace</span> <span class="o">=</span> <span class="bp">F</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">tree_df</span><span class="o">=</span><span class="nf">groupClade</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">phy_nodes</span><span class="p">,</span><span class="n">group_name</span> <span class="o">=</span> <span class="s">&#34;Form&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#指定颜色</span>
+</span></span><span class="line"><span class="cl"><span class="n">colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;#1F77B4FF&#34;</span><span class="p">,</span><span class="s">&#34;#FF7F0EFF&#34;</span><span class="p">,</span><span class="s">&#34;#2CA02CFF&#34;</span><span class="p">,</span><span class="s">&#34;#D62728FF&#34;</span><span class="p">,</span><span class="s">&#34;#9467BDFF&#34;</span><span class="p">,</span><span class="s">&#34;#8C564BFF&#34;</span><span class="p">,</span><span class="s">&#34;#E377C2FF&#34;</span><span class="p">,</span><span class="s">&#34;#BCBD22FF&#34;</span><span class="p">,</span><span class="s">&#34;#17BECFFF&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#挑选一些nodes</span>
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">label_node</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="nf">seq_len</span><span class="p">(</span><span class="n">ntips</span><span class="p">),</span><span class="m">20</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有了树和注释数据，我们开始绘图：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 1. 树的主体，比较特别的布局（equal_angle），并且树枝要加上一些Form的分类颜色信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">=</span><span class="nf">ggtree</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">Form</span><span class="p">),</span><span class="n">layout</span> <span class="o">=</span> <span class="s">&#34;equal_angle&#34;</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_treescale</span><span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">linesize</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;black&#34;</span><span class="p">,</span><span class="n">colors</span><span class="p">))</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">coord_flip</span><span class="p">()</span><span class="o">+</span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s">&#34;none&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-7-1.png" width="960" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 2. 外圈注释1，标签，在每类分支附近，背景颜色是Form的分类</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span><span class="o">=</span><span class="n">p</span><span class="o">+</span><span class="nf">geom_label_repel</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nf">subset</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">node</span><span class="o">%in%</span><span class="n">phy_nodes</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">               <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">Form</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">Form</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">&#34;black&#34;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="m">0.7</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="n">colors</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-7-2.png" width="960" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 3. 外圈注释2，点和文字，应该是手动挑选的一些节点，在树枝顶端加上了灰点以及黑色文字</span>
+</span></span><span class="line"><span class="cl"><span class="n">p2</span><span class="o">=</span><span class="n">p1</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nf">subset</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">node</span><span class="o">%in%</span><span class="n">label_node</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">               <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">*</span><span class="m">1.03</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">*</span><span class="m">1.03</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">&#34;grey50&#34;</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_text_repel</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nf">subset</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">node</span><span class="o">%in%</span><span class="n">label_node</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">               <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">*</span><span class="m">1.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">*</span><span class="m">1.05</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">&#34;black&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-7-3.png" width="960" />
+<p>当然文字和标签的位置有点不太好，需要导出pdf再稍微调整一下。</p>
+<h2 id="example3">Example3</h2>
+<p>第三个例子来自Nature Biotechnology的一篇文章 (<a class="link" href="#ref-liuGenomeGeneCatalog2022" ><em>3</em></a>) 。</p>
+<img src="images/example3.png" style="width:80.0%" />
+<p>我们看看有哪些需要画的：</p>
+<ol>
+<li>树的主体，层级树的感觉（把branch.length忽略了，所有的tip在一个位置），打开角度为180，灰色树枝</li>
+<li>内圈注释，给部分clade加上不同Phylum的背景颜色</li>
+<li>外圈注释1，3圈热图，用的是有无数据</li>
+<li>外圈注释2，2圈柱形图，Size和GC含量</li>
+</ol>
+<p>相应的我们生成数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#生成一个1000tip的树</span>
+</span></span><span class="line"><span class="cl"><span class="n">ntips</span><span class="o">=</span><span class="m">1000</span>
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">tree</span><span class="o">=</span><span class="nf">rtree</span><span class="p">(</span><span class="n">ntips</span><span class="p">,</span><span class="n">rooted</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#变成tbl_tree对象，方便操作</span>
+</span></span><span class="line"><span class="cl"><span class="n">ggtree</span><span class="o">::</span><span class="nf">fortify</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">tree_df</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#生成一些假的taxonomy信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">phylums</span><span class="o">=</span><span class="nf">rev</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Arthropoda&#34;</span><span class="p">,</span><span class="s">&#34;Streptophyta&#34;</span><span class="p">,</span><span class="s">&#34;Cyanobacteria&#34;</span><span class="p">,</span><span class="s">&#34;Acidobacteriota&#34;</span><span class="p">,</span><span class="s">&#34;Bacteroidetes&#34;</span><span class="p">,</span><span class="s">&#34;Firmicutes&#34;</span><span class="p">,</span><span class="s">&#34;Actinobacteria&#34;</span><span class="p">,</span><span class="s">&#34;Proteobacteria&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#把8个phylum赋给最多tip的几个clade，其他的是others</span>
+</span></span><span class="line"><span class="cl"><span class="n">phy_nodes</span><span class="o">=</span><span class="nf">child2</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">ntips</span><span class="m">+1</span><span class="p">,</span><span class="n">depth</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">phy_nodes_tips</span><span class="o">=</span><span class="nf">sapply</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">,</span> <span class="nf">\</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="nf">nrow</span><span class="p">(</span><span class="nf">offspring</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">i</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">)</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="s">&#34;Others&#34;</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">)</span><span class="nf">[which</span><span class="p">(</span><span class="n">phy_nodes_tips</span><span class="o">%in%</span><span class="nf">tail</span><span class="p">(</span><span class="nf">sort</span><span class="p">(</span><span class="n">phy_nodes_tips</span><span class="p">),</span><span class="m">8</span><span class="p">))</span><span class="n">]</span><span class="o">=</span><span class="n">phylums</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">tree_df</span><span class="o">=</span><span class="nf">groupClade</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">phy_nodes</span><span class="p">,</span><span class="n">group_name</span> <span class="o">=</span> <span class="s">&#34;Phylum1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">=</span><span class="nf">filter</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">isTip</span><span class="o">==</span><span class="s">&#34;TRUE&#34;</span><span class="p">)</span><span class="o">%&gt;%</span><span class="nf">select</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="n">Phylum1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#添加每个phylum的个数和百分比</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">%&gt;%</span><span class="nf">count</span><span class="p">(</span><span class="n">Phylum1</span><span class="p">)</span><span class="o">%&gt;%</span><span class="nf">mutate</span><span class="p">(</span><span class="n">per</span><span class="o">=</span><span class="m">100</span><span class="o">*</span><span class="n">n</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mutate</span><span class="p">(</span><span class="n">Phylum</span><span class="o">=</span><span class="nf">paste0</span><span class="p">(</span><span class="n">Phylum1</span><span class="p">,</span><span class="s">&#34; (&#34;</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="s">&#34;, &#34;</span><span class="p">,</span><span class="n">per</span><span class="p">,</span><span class="s">&#34;%)&#34;</span><span class="p">))</span><span class="o">%&gt;%</span><span class="nf">select</span><span class="p">(</span><span class="n">Phylum1</span><span class="p">,</span><span class="n">Phylum</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">in_anno</span>
+</span></span><span class="line"><span class="cl"><span class="n">in_anno</span><span class="o">=</span><span class="nf">right_join</span><span class="p">(</span><span class="n">in_anno</span><span class="p">,</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">phy_nodes</span><span class="p">,</span><span class="n">Phylum1</span><span class="o">=</span><span class="nf">names</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#生成随机变量作为Source,16S rRNA presence,Newly identified</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">$</span><span class="n">Source</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Cultivated&#34;</span><span class="p">,</span><span class="s">&#34;MAG&#34;</span><span class="p">),</span><span class="n">ntips</span><span class="p">,</span><span class="bp">T</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">$</span><span class="n">`16S rRNA presence`</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Yes&#34;</span><span class="p">,</span><span class="s">&#34;No&#34;</span><span class="p">),</span><span class="n">ntips</span><span class="p">,</span><span class="bp">T</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="m">0.7</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">$</span><span class="n">`Newly identified`</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Yes&#34;</span><span class="p">,</span><span class="s">&#34;No&#34;</span><span class="p">),</span><span class="n">ntips</span><span class="p">,</span><span class="bp">T</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="m">0.9</span><span class="p">,</span><span class="m">0.1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#生成随机数作为Size和GC含量</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">$</span><span class="nf">`Size </span><span class="p">(</span><span class="n">Mb</span><span class="p">)</span><span class="n">`=10-rpois(ntips,2)
+</span></span></span><span class="line"><span class="cl"><span class="n">anno$`</span><span class="nf">GC </span><span class="p">(</span>%<span class="p">)</span><span class="n">`</span><span class="o">=</span><span class="nf">runif</span><span class="p">(</span><span class="n">ntips</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">anno</span><span class="p">)</span><span class="n">[1]</span><span class="o">=</span><span class="s">&#34;node&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">anno</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## # A tibble: 6 × 7
+##   node  Phylum1 Source     `16S rRNA presence` Newly identifie…¹ Size …² GC (%…³
+##   &lt;chr&gt; &lt;fct&gt;   &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;               &lt;dbl&gt;   &lt;dbl&gt;
+## 1 t876  Others  MAG        No                  Yes                     9    45.2
+## 2 t896  Others  MAG        No                  Yes                     6    71.6
+## 3 t437  Others  MAG        No                  Yes                     9    59.7
+## 4 t750  Others  MAG        Yes                 Yes                     8    70.4
+## 5 t270  Others  Cultivated Yes                 Yes                     9    44.7
+## 6 t412  Others  MAG        No                  Yes                     8    37.1
+## # … with abbreviated variable names ¹​`Newly identified`, ²​`Size (Mb)`,
+## #   ³​`GC (%)`
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 1. 树的主体，层级树的感觉（把branch.length忽略了，所有的tip在一个位置），打开角度为180，灰色树枝</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">=</span><span class="nf">ggtree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">layout</span> <span class="o">=</span> <span class="s">&#34;fan&#34;</span><span class="p">,</span><span class="n">open.angle</span> <span class="o">=</span> <span class="m">180</span><span class="p">,</span><span class="n">branch.length</span> <span class="o">=</span> <span class="s">&#34;none&#34;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">0.2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#34;grey&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-9-1.png" width="1152" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 2. 内圈注释，给部分clade加上不同Phylum的背景颜色</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span><span class="o">=</span><span class="n">p</span><span class="o">+</span><span class="nf">geom_highlight</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">in_anno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">Phylum</span><span class="p">),</span><span class="n">to.bottom</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ggsci</span><span class="o">::</span><span class="nf">scale_fill_rickandmorty</span><span class="p">(</span><span class="n">guide</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span><span class="n">title.position</span> <span class="o">=</span> <span class="s">&#34;top&#34;</span><span class="p">,</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Clade: Phylum&#34;</span><span class="p">,</span><span class="n">order</span> <span class="o">=</span> <span class="m">4</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-9-2.png" width="1152" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 3. 外圈注释1，3圈热图，用的是有无数据</span>
+</span></span><span class="line"><span class="cl"><span class="n">p2</span><span class="o">=</span><span class="n">p1</span><span class="o">+</span><span class="n">ggnewscale</span><span class="o">::</span><span class="nf">new_scale_fill</span><span class="p">()</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_fruit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span><span class="o">=</span><span class="n">anno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_tile</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">`Newly identified`</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pwidth</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span><span class="n">offset</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="kc">NA</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span><span class="o">+</span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;white&#34;</span><span class="p">,</span><span class="s">&#34;red&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">guide</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span><span class="n">title.position</span> <span class="o">=</span> <span class="s">&#34;top&#34;</span><span class="p">,</span><span class="n">override.aes</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#34;red&#34;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="m">3</span><span class="p">))</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ggnewscale</span><span class="o">::</span><span class="nf">new_scale_fill</span><span class="p">()</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">geom_fruit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span><span class="o">=</span><span class="n">anno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_tile</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">`16S rRNA presence`</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pwidth</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span><span class="n">offset</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="kc">NA</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span><span class="o">+</span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;white&#34;</span><span class="p">,</span><span class="s">&#34;blue4&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">guide</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span><span class="n">title.position</span> <span class="o">=</span> <span class="s">&#34;top&#34;</span><span class="p">,</span><span class="n">override.aes</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#34;blue4&#34;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="m">2</span><span class="p">))</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ggnewscale</span><span class="o">::</span><span class="nf">new_scale_fill</span><span class="p">()</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">geom_fruit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span><span class="o">=</span><span class="n">anno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_tile</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">Source</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pwidth</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span><span class="n">offset</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="kc">NA</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span><span class="o">+</span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;green4&#34;</span><span class="p">,</span><span class="s">&#34;white&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">guide</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span><span class="n">title.position</span> <span class="o">=</span> <span class="s">&#34;top&#34;</span><span class="p">,</span><span class="n">override.aes</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#34;green4&#34;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">p2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-9-3.png" width="1152" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 4. 外圈注释2，2圈柱形图，Size和GC含量</span>
+</span></span><span class="line"><span class="cl"><span class="n">p3</span><span class="o">=</span><span class="n">p2</span><span class="o">+</span><span class="nf">geom_fruit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span><span class="o">=</span><span class="n">anno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_col</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="nf">`Size </span><span class="p">(</span><span class="n">Mb</span><span class="p">)</span><span class="n">`),fill=&#34;purple3&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="n">    pwidth = 0.15,offset = 0.1,
+</span></span></span><span class="line"><span class="cl"><span class="n">    axis.params=list(axis=&#34;x&#34;,text.size = 2,text.angle=90,hjust=1,nbreak=3,line.color=&#34;black&#34;),
+</span></span></span><span class="line"><span class="cl"><span class="n">    grid.params = NULL
+</span></span></span><span class="line"><span class="cl"><span class="n">)+geom_fruit(
+</span></span></span><span class="line"><span class="cl"><span class="n">    data=anno,
+</span></span></span><span class="line"><span class="cl"><span class="n">    geom = geom_col,
+</span></span></span><span class="line"><span class="cl"><span class="n">    mapping = aes(y=node,x=`</span><span class="nf">GC </span><span class="p">(</span><span class="o">%)`),fill=&#34;#F7C194&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="o">    pwidth = 0.2,offset = 0.05,
+</span></span></span><span class="line"><span class="cl"><span class="o">    axis.params=list(axis=&#34;x&#34;,text.size = 2,text.angle=90,hjust=1,nbreak=2,line.color=&#34;black&#34;),
+</span></span></span><span class="line"><span class="cl"><span class="o">    grid.params = NULL
+</span></span></span><span class="line"><span class="cl"><span class="o">)+theme(legend.position = c(0.5,0.3),legend.box = &#34;horizontal&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="o">        legend.text = element_text(size=8))
+</span></span></span><span class="line"><span class="cl"><span class="o">
+</span></span></span><span class="line"><span class="cl"><span class="o">#最后再加上几个标签
+</span></span></span><span class="line"><span class="cl"><span class="o">p3+geom_text(data = data.frame(x=c(20,22,24,27,31),y=c(10),
+</span></span></span><span class="line"><span class="cl"><span class="o">                               label=c(&#34;Source  &#34;,&#34;16S rRNA presence  &#34;,&#34;Newly identified  &#34;,&#34;Size (Mb)     &#34;,&#34;GC (%</span><span class="p">)</span>     <span class="s">&#34;</span><span class="err">)),</span>
+</span></span><span class="line"><span class="cl">             <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span><span class="n">angle</span><span class="o">=</span><span class="m">90</span><span class="p">,</span><span class="n">hjust</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-9-4.png" width="1152" />
+<h2 id="example4">Example4</h2>
+<p>第四个例子来自Nature的一篇文章 (<a class="link" href="#ref-leavittVirusesInhibitTIR2022a" ><em>4</em></a>)。这个图是用iTOL做的，因为iTOL支持直接画tip到圆等半径的空间颜色填充。但是我觉得用R还是一样能画。</p>
+<img src="images/exapmle4.png" style="width:90.0%" />
+<p>我们看看有哪些需要画的：</p>
+<ol>
+<li>树的主体，很正常，打开小角度，开口在左上角</li>
+<li>内圈注释，给部分clade加上不同Phylum的颜色，但是这个色块是加在tip到圆等半径的空间（这个很有意思，还没有看到过别人用R实现过）</li>
+<li>外圈注释1，方块代表phage，颜色代表family</li>
+<li>外圈注释2，灰色五角星代表Genome contains Thoeris</li>
+<li>外圈注释3，绿色菱形加上文字</li>
+</ol>
+<p>相应的我们生成数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#生成一个200tip的树</span>
+</span></span><span class="line"><span class="cl"><span class="n">ntips</span><span class="o">=</span><span class="m">200</span>
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">tree</span><span class="o">=</span><span class="nf">rtree</span><span class="p">(</span><span class="n">ntips</span><span class="p">,</span><span class="n">rooted</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#变成tbl_tree对象，方便操作</span>
+</span></span><span class="line"><span class="cl"><span class="n">ggtree</span><span class="o">::</span><span class="nf">fortify</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">tree_df</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#生成一些假的taxonomy信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">phylums</span><span class="o">=</span><span class="nf">rev</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Arthropoda&#34;</span><span class="p">,</span><span class="s">&#34;Streptophyta&#34;</span><span class="p">,</span><span class="s">&#34;Cyanobacteria&#34;</span><span class="p">,</span><span class="s">&#34;Acidobacteriota&#34;</span><span class="p">,</span><span class="s">&#34;Bacteroidetes&#34;</span><span class="p">,</span><span class="s">&#34;Firmicutes&#34;</span><span class="p">,</span><span class="s">&#34;Actinobacteria&#34;</span><span class="p">,</span><span class="s">&#34;Proteobacteria&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#把8个phylum赋给最多tip的几个clade，其他的是others</span>
+</span></span><span class="line"><span class="cl"><span class="n">phy_nodes</span><span class="o">=</span><span class="nf">child2</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">ntips</span><span class="m">+1</span><span class="p">,</span><span class="n">depth</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">phy_nodes_tips</span><span class="o">=</span><span class="nf">sapply</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">,</span> <span class="nf">\</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="nf">nrow</span><span class="p">(</span><span class="nf">offspring</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">i</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">)</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="s">&#34;Unknown&#34;</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">phy_nodes</span><span class="p">)</span><span class="nf">[which</span><span class="p">(</span><span class="n">phy_nodes_tips</span><span class="o">%in%</span><span class="nf">tail</span><span class="p">(</span><span class="nf">sort</span><span class="p">(</span><span class="n">phy_nodes_tips</span><span class="p">),</span><span class="m">8</span><span class="p">))</span><span class="n">]</span><span class="o">=</span><span class="n">phylums</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">tree_df</span><span class="o">=</span><span class="nf">groupClade</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">phy_nodes</span><span class="p">,</span><span class="n">group_name</span> <span class="o">=</span> <span class="s">&#34;Phylum&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">=</span><span class="nf">filter</span><span class="p">(</span><span class="n">tree_df</span><span class="p">,</span><span class="n">isTip</span><span class="o">==</span><span class="s">&#34;TRUE&#34;</span><span class="p">)</span><span class="o">%&gt;%</span><span class="nf">select</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="n">Phylum</span><span class="p">)</span><span class="o">%&gt;%</span><span class="nf">rename</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="s">&#34;label&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Firmicutes&#34;</span><span class="o">=</span><span class="s">&#34;#d3edeb&#34;</span><span class="p">,</span><span class="s">&#34;Actinobacteria&#34;</span><span class="o">=</span><span class="s">&#34;#019a99&#34;</span><span class="p">,</span><span class="s">&#34;Bacteroidetes&#34;</span><span class="o">=</span><span class="s">&#34;#0077b0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="s">&#34;Proteobacteria&#34;</span><span class="o">=</span><span class="s">&#34;#ffba4d&#34;</span><span class="p">,</span><span class="s">&#34;Acidobacteriota&#34;</span><span class="o">=</span><span class="s">&#34;#282152&#34;</span><span class="p">,</span><span class="s">&#34;Cyanobacteria&#34;</span><span class="o">=</span><span class="s">&#34;#caa59a&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="s">&#34;Streptophyta&#34;</span><span class="o">=</span><span class="s">&#34;#ff7880&#34;</span><span class="p">,</span><span class="s">&#34;Arthropoda&#34;</span><span class="o">=</span><span class="s">&#34;#aac8eb&#34;</span><span class="p">,</span><span class="n">Unknown</span><span class="o">=</span><span class="s">&#34;white&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#生成随机变量作为Source,16S rRNA presence,Newly identified</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">$</span><span class="n">`Phage family`</span><span class="o">=</span><span class="n">anno</span><span class="o">$</span><span class="n">`Thoeris`</span><span class="o">=</span><span class="n">anno</span><span class="o">$</span><span class="n">`bac`</span><span class="o">=</span><span class="kc">NA</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">$</span><span class="n">`Phage family`</span><span class="nf">[sample</span><span class="p">(</span><span class="nf">seq_len</span><span class="p">(</span><span class="n">ntips</span><span class="p">),</span><span class="m">30</span><span class="p">)</span><span class="n">]</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Myoviridae&#34;</span><span class="p">,</span><span class="s">&#34;Podoviridae&#34;</span><span class="p">,</span><span class="s">&#34;Siphoviridae&#34;</span><span class="p">),</span><span class="m">30</span><span class="p">,</span><span class="n">replace</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span><span class="n">prob</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.2</span><span class="p">,</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.7</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">$</span><span class="n">`Thoeris`</span><span class="nf">[sample</span><span class="p">(</span><span class="nf">seq_len</span><span class="p">(</span><span class="n">ntips</span><span class="p">),</span><span class="m">5</span><span class="p">)</span><span class="n">]</span><span class="o">=</span><span class="s">&#34;Genome contains Thoeris&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">anno</span><span class="o">$</span><span class="n">bac</span><span class="nf">[sample</span><span class="p">(</span><span class="nf">seq_len</span><span class="p">(</span><span class="n">ntips</span><span class="p">),</span><span class="m">10</span><span class="p">)</span><span class="n">]</span><span class="o">=</span><span class="s">&#34;Bac&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 1. 树的主体，很正常，打开小角度，开口在左上角</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">=</span><span class="nf">ggtree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">layout</span> <span class="o">=</span> <span class="s">&#34;fan&#34;</span><span class="p">,</span><span class="n">open.angle</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 内圈注释，给部分clade加上不同Phylum的颜色，但是这个色块是加在tip到圆等半径的空间（这个很有意思，还没有看到过别人用R实现过）</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span><span class="o">=</span><span class="n">p</span><span class="o">+</span><span class="nf">geom_tiplab</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tree_df</span><span class="p">,</span><span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">Phylum</span><span class="p">),</span><span class="n">align</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span><span class="n">linetype</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span><span class="n">linesize</span> <span class="o">=</span> <span class="m">3.5</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="n">colors</span><span class="p">,</span><span class="n">guide</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Host phylum&#34;</span><span class="p">,</span><span class="n">nrow</span> <span class="o">=</span> <span class="m">3</span><span class="p">))</span><span class="o">+</span><span class="nf">geom_tree</span><span class="p">(</span><span class="n">layout</span> <span class="o">=</span> <span class="s">&#34;fan&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-11-1.png" width="960" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 3. 外圈注释1，方块代表phage，颜色代表family</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggstar</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p2</span><span class="o">=</span><span class="n">p1</span><span class="o">+</span><span class="nf">geom_fruit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_star</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">anno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">`Phage family`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">starshape</span><span class="o">=</span><span class="m">13</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">starstroke</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">+</span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;#de255c&#34;</span><span class="p">,</span><span class="s">&#34;#496db6&#34;</span><span class="p">,</span><span class="s">&#34;#c4c64f&#34;</span><span class="p">),</span><span class="n">na.translate</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="n">guide</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">ncol</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">p2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-11-2.png" width="960" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 4. 外圈注释2，灰色五角星代表Genome contains Thoeris</span>
+</span></span><span class="line"><span class="cl"><span class="n">p3</span><span class="o">=</span><span class="n">p2</span><span class="o">+</span><span class="nf">new_scale_fill</span><span class="p">()</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_fruit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_star</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">anno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">`Thoeris`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">starshape</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">offset</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">starstroke</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">5</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">+</span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">,</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;grey&#34;</span><span class="p">),</span><span class="n">na.translate</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 5. 外圈注释3，绿色菱形加上文字</span>
+</span></span><span class="line"><span class="cl"><span class="n">p4</span><span class="o">=</span><span class="n">p3</span><span class="o">+</span><span class="nf">new_scale_fill</span><span class="p">()</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_fruit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_star</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">anno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">node</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">`bac`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">starshape</span><span class="o">=</span><span class="m">12</span><span class="p">,</span><span class="n">offset</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">starstroke</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">+</span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;#74cfd2&#34;</span><span class="p">),</span><span class="n">na.translate</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="n">guide</span><span class="o">=</span><span class="nf">guide_none</span><span class="p">())</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_tiplab</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">tree_df</span><span class="o">%&gt;%</span><span class="nf">filter</span><span class="p">(</span><span class="n">label</span><span class="o">%in%</span><span class="p">(</span><span class="n">anno</span><span class="o">$</span><span class="n">node</span><span class="nf">[which</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">anno</span><span class="o">$</span><span class="n">bac</span><span class="p">))</span><span class="n">]</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span><span class="n">angle</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">align</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span><span class="n">linetype</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span><span class="n">offset</span> <span class="o">=</span> <span class="m">2.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p4</span><span class="o">+</span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s">&#34;bottom&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="/p/r/index_files/figure-html/unnamed-chunk-11-3.png" width="960" />
+<p>呼～，暂时先做这几个图吧，再次强调，这是生成随机的树和一些随机的无科学意义的注释（仅供画图参考！！！）。</p>
+<p>如果你有好看的图需要复现或者有什么绘图上的问题，欢迎联系。</p>
+<h2 id="reference">Reference</h2>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-bourquinMicrobiomeCryosphericEcosystems2022" class="csl-entry">
+<p><span class="csl-left-margin">1. </span><span class="csl-right-inline">M. Bourquin, S. B. Busi, S. Fodelianakis, H. Peter, A. Washburne, T. J. Kohler, L. Ezzat, G. Michoud, P. Wilmes, T. J. Battin, <a class="link" href="https://doi.org/10.1038/s41467-022-30816-4"  target="_blank" rel="noopener"
+    >The microbiome of cryospheric ecosystems</a>. <em>Nature Communications</em>. <strong>13</strong>, 3087 (2022).</span></p>
+</div>
+<div id="ref-royo-llonchCompendium530Metagenomeassembled2021" class="csl-entry">
+<p><span class="csl-left-margin">2. </span><span class="csl-right-inline">M. Royo-Llonch, P. Sánchez, C. Ruiz-González, G. Salazar, C. Pedrós-Alió, M. Sebastián, K. Labadie, L. Paoli, F. M. Ibarbalz, L. Zinger, B. Churcheward, S. Chaffron, D. Eveillard, E. Karsenti, S. Sunagawa, P. Wincker, L. Karp-Boss, C. Bowler, S. G. Acinas, <a class="link" href="https://doi.org/10.1038/s41564-021-00979-9"  target="_blank" rel="noopener"
+    >Compendium of 530 metagenome-assembled bacterial and archaeal genomes from the polar Arctic Ocean</a>. <em>Nature Microbiology</em>. <strong>6</strong>, 1561–1574 (2021).</span></p>
+</div>
+<div id="ref-liuGenomeGeneCatalog2022" class="csl-entry">
+<p><span class="csl-left-margin">3. </span><span class="csl-right-inline">Y. Liu, M. Ji, T. Yu, J. Zaugg, A. M. Anesio, Z. Zhang, S. Hu, P. Hugenholtz, K. Liu, P. Liu, Y. Chen, Y. Luo, T. Yao, <a class="link" href="https://doi.org/10.1038/s41587-022-01367-2"  target="_blank" rel="noopener"
+    >A genome and gene catalog of glacier microbiomes</a>. <em>Nature Biotechnology</em>. <strong>40</strong>, 1341–1348 (2022).</span></p>
+</div>
+<div id="ref-leavittVirusesInhibitTIR2022a" class="csl-entry">
+<p><span class="csl-left-margin">4. </span><span class="csl-right-inline">A. Leavitt, E. Yirmiya, G. Amitai, A. Lu, J. Garb, E. Herbst, B. R. Morehouse, S. J. Hobbs, S. P. Antine, Z.-Y. J. Sun, P. J. Kranzusch, R. Sorek, <a class="link" href="https://doi.org/10.1038/s41586-022-05375-9"  target="_blank" rel="noopener"
+    >Viruses inhibit <span class="nocase">TIR gcADPR</span> signalling to overcome bacterial defence</a>. <em>Nature</em>. <strong>611</strong>, 326–331 (2022).</span></p>
+</div>
+</div>
 
 </section>
 
@@ -599,7 +1199,9 @@ gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自
         
             <a href="/tags/r/">R</a>
         
-            <a href="/tags/%E7%BC%96%E7%A8%8B/">编程</a>
+            <a href="/tags/phylogenetic-tree/">phylogenetic tree</a>
+        
+            <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
         
     </section>
 
@@ -656,9 +1258,68 @@ gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自
         <div class="flex article-list--tile">
             
                 
-<article class="">
+<article class="has-image">
+    <a href="/p/r-tree/">
+        
+        
+            <div class="article-image">
+                <img src="/p/r-tree/index.cn_files/figure-html/unnamed-chunk-15-1.c56e1df235361756dcc6b5f49766ec5c_hu64a041d9665808fa476c64c6e2c5c164_245537_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post R绘制优美的进化树（基础）"
+                        data-key="r-tree" 
+                        data-hash="md5-xW4d8jU2F1bcxrX0l2bsXA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">R绘制优美的进化树（基础）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/r-map/">
+        
+        
+            <div class="article-image">
+                <img src="/p/r-map/index_files/figure-html/unnamed-chunk-22-1.48aafdda6599f6036211c2df1343a161_hu25d347af0f26b4f0f63f78f0a939c84a_495129_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post R绘制优美的地图"
+                        data-key="r-map" 
+                        data-hash="md5-SKr92mWZ9gNiEcLfE0OhYQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">R绘制优美的地图</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/rshiny/">
         
+        
+            <div class="article-image">
+                <img src="/p/rshiny/Rshiny.234e7f76ed8359b45b8025e13f656ba5_hu0864f99837a84b3a0d6c26cdeddf969b_6899_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 开发我的Rshiny应用"
+                        data-key="rshiny" 
+                        data-hash="md5-I05/du2DWbRbgCXhP2VrpQ==">
+                
+            </div>
         
 
         <div class="article-details">
@@ -669,13 +1330,48 @@ gg_extensions 这个网站收集了很多此类拓展包并支持制作上传自
 
             
                 
-<article class="">
+<article class="has-image">
     <a href="/p/r-statistics/">
         
+        
+            <div class="article-image">
+                <img src="/p/r-statistics/index.en_files/figure-html/unnamed-chunk-4-1.fc1c8a43a1ec6e3a86b910fa1344a6aa_hu6a7295393dc4d80def3bf7388e19d776_109022_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post R-statistics"
+                        data-key="r-statistics" 
+                        data-hash="md5-/ByKQ6HsbjqGuRD6E0Smqg==">
+                
+            </div>
         
 
         <div class="article-details">
             <h2 class="article-title">R-statistics</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/r-learning/">
+        
+        
+            <div class="article-image">
+                <img src="/p/r-learning/images/data2viz.651ec7891090db14ef0203dcbb62af54_hu2949f787b14e5432e8dbe93255a87ee8_671473_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post R语言学习"
+                        data-key="r-learning" 
+                        data-hash="md5-ZR7HiRCQ2xTvAgPcu2KvVA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">R语言学习</h2>
         </div>
     </a>
 </article>

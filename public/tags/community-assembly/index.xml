@@ -23,33 +23,11 @@ This review is very comprehensive (&lt;a class=&#34;link&#34; href=&#34;#ref-zho
 &lt;p&gt;目前在文章中普遍出现的计算群落构建的方法主要有三套：&lt;/p&gt;
 &lt;h3 id=&#34;1stegen-βnti--rcbray-based&#34;&gt;1.Stegen （βNTI &amp;amp; RCbray-based）&lt;/h3&gt;
 &lt;p&gt;原始的文章 (&lt;a class=&#34;link&#34; href=&#34;#ref-stegenQuantifyingCommunityAssembly2013&#34; &gt;&lt;em&gt;2&lt;/em&gt;&lt;/a&gt;), (&lt;a class=&#34;link&#34; href=&#34;#ref-stegenStochasticDeterministicAssembly2012&#34; &gt;&lt;em&gt;3&lt;/em&gt;&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/community-assembly/images/beta-nti.png&#34;
-	width=&#34;1500&#34;
-	height=&#34;664&#34;
-	srcset=&#34;/p/community-assembly/images/beta-nti_hu0e5d537b7b1bd11a6273cdedf9809624_358635_480x0_resize_box_3.png 480w, /p/community-assembly/images/beta-nti_hu0e5d537b7b1bd11a6273cdedf9809624_358635_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;225&#34;
-		data-flex-basis=&#34;542px&#34;
-	
-&gt;&lt;/p&gt;
+&lt;img src=&#34;images/beta-nti.png&#34; title=&#34;&#34;/&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在确定性与随机性二分法的背景下塑造微生物群落多样性的生态过程。该方案显示了在文中讨论的假设下，基于系统发育和分类多样性划分各种生态过程的不同步骤。 NTI（最近分类单元指数）基于系统发育多样性指数 MNTD（平均最近分类单元距离）的空模型检验，RCBray（修正的 Raup-Crick 指数）基于 Bray-Curtis 的空模型检验分类多样性指数。这两个框分别表示确定性选择和未支配部分的主要组成部分。除了影响较小的选择外，未支配部分的弱选择也可能是由于抵消了有影响的选择因素和/或不同分类群的对比选择。该图主要是根据 Stegen 等人先前报告的数据制作的。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;beta-NTI（nearest taxon index）：&lt;/strong&gt; &lt;img src=&#34;/p/community-assembly/images/betanti.png&#34;
-	width=&#34;874&#34;
-	height=&#34;636&#34;
-	srcset=&#34;/p/community-assembly/images/betanti_hud3cf74c020a016e2a70e9d2074ce87a7_237181_480x0_resize_box_3.png 480w, /p/community-assembly/images/betanti_hud3cf74c020a016e2a70e9d2074ce87a7_237181_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;137&#34;
-		data-flex-basis=&#34;329px&#34;
-	
-&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;beta-NTI（nearest taxon index）：&lt;/strong&gt; &lt;img src=&#34;images/betanti.png&#34; title=&#34;&#34;/&gt;&lt;/p&gt;
 &lt;p&gt;使用 NTI/NRI 指示单个群落内共存的分类单元相比偶然预期的关系更为紧密还是分散，使用 βNTI/βNRI 指示两两群落间的变化受确定性或随机性因素影响的大小。
 MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 NTI/NRI、βNTI/βNRI 的结果解释时其显著性的判断依据是其&lt;strong&gt;临界值是否大于|2|&lt;/strong&gt;，实际上这是依据标准正态分布的 95%置信区间得到的，一般认为 NRI 或者 NTI 大于 1.96 或者小于-1.96 的结果，在 95%的水平是显著的。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;RCbray&lt;/strong&gt;: 相异指数的一种。&lt;/p&gt;
@@ -98,18 +76,7 @@ MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s?__biz=MzI1OTk3NjEwMA==&amp;amp;mid=2247484988&amp;amp;idx=1&amp;amp;sn=5dfc3c289c24ad81fe327a8f3aa9d4cc&amp;amp;chksm=ea71f8f7dd0671e1ad683e1ea9616d5e2157d401d2d396e29cc6d8fb50961e72a59ff5be1e2b&amp;amp;scene=21#wechat_redirect&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;PNAS：NST方法定量生态过程中的随机性&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;周老师的文章，开发出新的方法对生态过程中的随机性进行了定量。提出了一个新的指数，normalized stochasticity ratio (&lt;strong&gt;NST&lt;/strong&gt;)，作为确定性主导（deterministic, &amp;lt;50%）和随机性主导（stochastic, &amp;gt;50%）的边界点 (&lt;a class=&#34;link&#34; href=&#34;#ref-ningGeneralFrameworkQuantitatively2019&#34; &gt;&lt;em&gt;5&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/community-assembly/images/nst.jpeg&#34;
-	width=&#34;635&#34;
-	height=&#34;284&#34;
-	srcset=&#34;/p/community-assembly/images/nst_hu816993041960fc65ecb763bda9f3f62d_36430_480x0_resize_q75_box.jpeg 480w, /p/community-assembly/images/nst_hu816993041960fc65ecb763bda9f3f62d_36430_1024x0_resize_q75_box.jpeg 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;223&#34;
-		data-flex-basis=&#34;536px&#34;
-	
-&gt;&lt;/p&gt;
+&lt;img src=&#34;images/nst.jpeg&#34; title=&#34;&#34;/&gt;
 &lt;h4 id=&#34;code-1&#34;&gt;code&lt;/h4&gt;
 &lt;p&gt;已经有相应的包了,NST&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -223,18 +190,7 @@ MNTD 即mean-nearest-taxon-distance (最近种间平均进化距离) ， 关于 
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;example-1&#34;&gt;example&lt;/h4&gt;
 &lt;p&gt;**随机过程，例如散布、出生、死亡、灭绝和移民，在呼气细菌和真菌群落的组装中发挥作用。**真菌微生物群的 SNM 拟合性能（图 2）优于细菌（细菌 R2 = 0.353，真菌 R2 = 0.683）。这种差异表明随机过程对于 EBC 真菌群落的组装可能相对更重要，而对 EBC 细菌群落的组装则不太重要。这种现象可能与细菌和真菌之间的大小差异有关，较小的细菌受扩散限制的影响较小，而受确定性过程的影响更大 (&lt;a class=&#34;link&#34; href=&#34;#ref-zhangInsightsProfileHuman2022&#34; &gt;&lt;em&gt;7&lt;/em&gt;&lt;/a&gt;)。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/community-assembly/images/ncm.gif&#34;
-	width=&#34;500&#34;
-	height=&#34;154&#34;
-	srcset=&#34;/p/community-assembly/images/ncm_hu10b4486a6c818c663931f8673bad16ba_25925_480x0_resize_box_1.gif 480w, /p/community-assembly/images/ncm_hu10b4486a6c818c663931f8673bad16ba_25925_1024x0_resize_box_1.gif 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;324&#34;
-		data-flex-basis=&#34;779px&#34;
-	
-&gt;&lt;/p&gt;
+&lt;img src=&#34;images/ncm.gif&#34; title=&#34;&#34;/&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Stochastic processes played a role in assembling expiratory bacterial (A) and fungal (B) communities based on Sloan neutral model fitting. The black solid line represents the best fit, and the dotted lines represent the 95% CI (confidence interval) around the model fit. The blue dots refer to taxa that occur more frequently than predicted, and the red dots refer to taxa that occur less frequently than predicted. The green dots refer to taxa that occur in a manner consistent with predicted values.&lt;/p&gt;
 &lt;/blockquote&gt;

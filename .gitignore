@@ -5,6 +5,7 @@
 *.Rproj
 .DS_Store
 .DS_Store?
+public/
 
 # History files
 .Rhistory

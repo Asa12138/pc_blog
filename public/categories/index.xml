@@ -6,21 +6,37 @@
         <description>Recent content in Categories on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 06 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 10 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>metagenomic</title>
+        <link>/categories/metagenomic/</link>
+        <pubDate>Wed, 10 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/categories/metagenomic/</guid>
+        <description>&lt;img src="/categories/metagenomic/metagenomic.jpg" alt="Featured image of post metagenomic" /&gt;</description>
+        </item>
+        <item>
         <title>R</title>
         <link>/categories/r/</link>
-        <pubDate>Thu, 06 Apr 2023 00:00:00 +0000</pubDate>
+        <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
         
         <guid>/categories/r/</guid>
         <description>&lt;img src="/categories/r/R.jpg" alt="Featured image of post R" /&gt;</description>
         </item>
         <item>
-        <title>metagenomic</title>
-        <link>/categories/metagenomic/</link>
-        <pubDate>Mon, 03 Apr 2023 00:00:00 +0000</pubDate>
+        <title>models</title>
+        <link>/categories/models/</link>
+        <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>/categories/metagenomic/</guid>
-        <description>&lt;img src="/categories/metagenomic/metagenomic.jpg" alt="Featured image of post metagenomic" /&gt;</description>
+        <guid>/categories/models/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>随笔</title>
+        <link>/categories/%E9%9A%8F%E7%AC%94/</link>
+        <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/categories/%E9%9A%8F%E7%AC%94/</guid>
+        <description>&lt;img src="/categories/%E9%9A%8F%E7%AC%94/sakura.jpg" alt="Featured image of post 随笔" /&gt;</description>
         </item>
         <item>
         <title>microbial-ecology</title>
@@ -29,14 +45,6 @@
         
         <guid>/categories/microbial-ecology/</guid>
         <description>&lt;img src="/categories/microbial-ecology/comm.jpg" alt="Featured image of post microbial-ecology" /&gt;</description>
-        </item>
-        <item>
-        <title>随笔</title>
-        <link>/categories/%E9%9A%8F%E7%AC%94/</link>
-        <pubDate>Sat, 25 Mar 2023 00:00:00 +0000</pubDate>
-        
-        <guid>/categories/%E9%9A%8F%E7%AC%94/</guid>
-        <description>&lt;img src="/categories/%E9%9A%8F%E7%AC%94/sakura.jpg" alt="Featured image of post 随笔" /&gt;</description>
         </item>
         
     </channel>

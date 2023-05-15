@@ -502,20 +502,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;inter_p&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/r-map/leaflet.png&#34;
-	width=&#34;1786&#34;
-	height=&#34;1092&#34;
-	srcset=&#34;/p/r-map/leaflet_hu51253369c299481392f96d3fdc403f7d_1265896_480x0_resize_box_3.png 480w, /p/r-map/leaflet_hu51253369c299481392f96d3fdc403f7d_1265896_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;当然这里无法交互使用&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;163&#34;
-		data-flex-basis=&#34;392px&#34;
-	
-&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;img src=&#34;leaflet.png&#34; title=&#34;当然这里无法交互使用&#34;/&gt; 
 &lt;h3 id=&#34;add-in-ppt&#34;&gt;add in PPT&lt;/h3&gt;
 &lt;p&gt;leaflet最后生成的是一个htmlwidget衍生对象，所以可以用htmlwidgets包保存为html文件并直接用浏览器打开。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

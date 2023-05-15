@@ -6,10 +6,34 @@
         <description>Recent content in Tags on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 06 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 10 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>function</title>
+        <link>/tags/function/</link>
+        <pubDate>Wed, 10 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/function/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>KEGG</title>
+        <link>/tags/kegg/</link>
+        <pubDate>Wed, 10 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/kegg/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>phylogenetic tree</title>
+        <link>/tags/phylogenetic-tree/</link>
+        <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/phylogenetic-tree/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>R</title>
         <link>/tags/r/</link>
-        <pubDate>Thu, 06 Apr 2023 00:00:00 +0000</pubDate>
+        <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
         
         <guid>/tags/r/</guid>
         <description></description>
@@ -17,9 +41,41 @@
         <item>
         <title>可视化</title>
         <link>/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</link>
-        <pubDate>Thu, 06 Apr 2023 00:00:00 +0000</pubDate>
+        <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
         
         <guid>/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>batch effect</title>
+        <link>/tags/batch-effect/</link>
+        <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/batch-effect/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>统计模型</title>
+        <link>/tags/%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B/</link>
+        <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>进化树</title>
+        <link>/tags/%E8%BF%9B%E5%8C%96%E6%A0%91/</link>
+        <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/%E8%BF%9B%E5%8C%96%E6%A0%91/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>招聘</title>
+        <link>/tags/%E6%8B%9B%E8%81%98/</link>
+        <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/%E6%8B%9B%E8%81%98/</guid>
         <description></description>
         </item>
         <item>

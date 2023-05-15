@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction 在 R 语言中，有多个软件包可以用来绘制地图，其中最流行的是 ggplot2、sp、maptools 和 leaflet。
-simple examples 以下是一些简单的示例：
-使用 ggplot2 包绘制世界地图： 1 2 3 4 5 6 7 library(ggplot2) library(maps) world_map &amp;lt;- map_data(&amp;#34;world&amp;#34;) ggplot(world_map, aes(x = long, y = lat, group = group)) &#43; geom_polygon(fill = &amp;#34;lightblue&amp;#34;, color = &amp;#34;white&amp;#34;) 使用 sp 包和 maptools 包绘制美国州界地图： 1 2 3 4 5 6 7 8 library(sp) library(maptools) #sids.shp是一个内置的数据，后面会讲到 us_states &amp;lt;- readShapePoly(system.file(&amp;#34;shapes/sids.shp&amp;#34;, package=&amp;#34;maptools&amp;#34;)[1], proj4string=CRS(&amp;#34;&#43;proj=longlat &#43;datum=WGS84&amp;#34;)) plot(us_states) 使用 leaflet 包绘制交互式地图： 1 2 3 4 5 library(leaflet) leaflet() %&amp;gt;% addTiles() %&amp;gt;% addMarkers(lng=-74.'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='在 R 语言中，有多个软件包可以用来绘制地图，在此介绍绘制地图的全面方法。'>
 <title>R绘制优美的地图</title>
 
 <link rel='canonical' href='/p/r-map/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='R绘制优美的地图'>
-<meta property='og:description' content='Introduction 在 R 语言中，有多个软件包可以用来绘制地图，其中最流行的是 ggplot2、sp、maptools 和 leaflet。
-simple examples 以下是一些简单的示例：
-使用 ggplot2 包绘制世界地图： 1 2 3 4 5 6 7 library(ggplot2) library(maps) world_map &amp;lt;- map_data(&amp;#34;world&amp;#34;) ggplot(world_map, aes(x = long, y = lat, group = group)) &#43; geom_polygon(fill = &amp;#34;lightblue&amp;#34;, color = &amp;#34;white&amp;#34;) 使用 sp 包和 maptools 包绘制美国州界地图： 1 2 3 4 5 6 7 8 library(sp) library(maptools) #sids.shp是一个内置的数据，后面会讲到 us_states &amp;lt;- readShapePoly(system.file(&amp;#34;shapes/sids.shp&amp;#34;, package=&amp;#34;maptools&amp;#34;)[1], proj4string=CRS(&amp;#34;&#43;proj=longlat &#43;datum=WGS84&amp;#34;)) plot(us_states) 使用 leaflet 包绘制交互式地图： 1 2 3 4 5 library(leaflet) leaflet() %&amp;gt;% addTiles() %&amp;gt;% addMarkers(lng=-74.'>
+<meta property='og:description' content='在 R 语言中，有多个软件包可以用来绘制地图，在此介绍绘制地图的全面方法。'>
 <meta property='og:url' content='/p/r-map/'>
 <meta property='og:site_name' content='Asa&#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='地图' /><meta property='article:tag' content='R' /><meta property='article:tag' content='可视化' /><meta property='article:published_time' content='2023-04-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-06T00:00:00&#43;00:00'/><meta property='og:image' content='/p/r-map/index_files/figure-html/unnamed-chunk-22-1.png' />
 <meta name="twitter:title" content="R绘制优美的地图">
-<meta name="twitter:description" content="Introduction 在 R 语言中，有多个软件包可以用来绘制地图，其中最流行的是 ggplot2、sp、maptools 和 leaflet。
-simple examples 以下是一些简单的示例：
-使用 ggplot2 包绘制世界地图： 1 2 3 4 5 6 7 library(ggplot2) library(maps) world_map &amp;lt;- map_data(&amp;#34;world&amp;#34;) ggplot(world_map, aes(x = long, y = lat, group = group)) &#43; geom_polygon(fill = &amp;#34;lightblue&amp;#34;, color = &amp;#34;white&amp;#34;) 使用 sp 包和 maptools 包绘制美国州界地图： 1 2 3 4 5 6 7 8 library(sp) library(maptools) #sids.shp是一个内置的数据，后面会讲到 us_states &amp;lt;- readShapePoly(system.file(&amp;#34;shapes/sids.shp&amp;#34;, package=&amp;#34;maptools&amp;#34;)[1], proj4string=CRS(&amp;#34;&#43;proj=longlat &#43;datum=WGS84&amp;#34;)) plot(us_states) 使用 leaflet 包绘制交互式地图： 1 2 3 4 5 library(leaflet) leaflet() %&amp;gt;% addTiles() %&amp;gt;% addMarkers(lng=-74."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='/p/r-map/index_files/figure-html/unnamed-chunk-22-1.png' />
+<meta name="twitter:description" content="在 R 语言中，有多个软件包可以用来绘制地图，在此介绍绘制地图的全面方法。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/r-map/index_files/figure-html/unnamed-chunk-22-1.png' /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" href="/favicon-32x32.png" />
     </head>
     <body class="
     article-page
@@ -359,6 +357,10 @@ simple examples 以下是一些简单的示例：
             <a href="/p/r-map/">R绘制优美的地图</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            在 R 语言中，有多个软件包可以用来绘制地图，在此介绍绘制地图的全面方法。
+        </h3>
         
     </div>
 
@@ -898,20 +900,7 @@ simple examples 以下是一些简单的示例：
 </span></span><span class="line"><span class="cl"><span class="n">inter_p</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/p/r-map/leaflet.png"
-	width="1786"
-	height="1092"
-	srcset="/p/r-map/leaflet_hu51253369c299481392f96d3fdc403f7d_1265896_480x0_resize_box_3.png 480w, /p/r-map/leaflet_hu51253369c299481392f96d3fdc403f7d_1265896_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="当然这里无法交互使用"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="163"
-		data-flex-basis="392px"
-	
-></p>
+</div><img src="leaflet.png" title="当然这里无法交互使用"/> 
 <h3 id="add-in-ppt">add in PPT</h3>
 <p>leaflet最后生成的是一个htmlwidget衍生对象，所以可以用htmlwidgets包保存为html文件并直接用浏览器打开。</p>
 <div class="highlight"><div class="chroma">
@@ -1253,6 +1242,54 @@ simple examples 以下是一些简单的示例：
     <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/r/">
+        
+        
+            <div class="article-image">
+                <img src="/p/r/images/example3.2d1a5ae3bdd0028f7084e9e4be97252d_hudb155f8e92790c1df7e82ecec90ce7ca_1845460_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post R绘制优美的进化树（进阶）"
+                        data-key="r" 
+                        data-hash="md5-LRpa473QAo9whOnkvpclLQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">R绘制优美的进化树（进阶）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/r-tree/">
+        
+        
+            <div class="article-image">
+                <img src="/p/r-tree/index.cn_files/figure-html/unnamed-chunk-15-1.c56e1df235361756dcc6b5f49766ec5c_hu64a041d9665808fa476c64c6e2c5c164_245537_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post R绘制优美的进化树（基础）"
+                        data-key="r-tree" 
+                        data-hash="md5-xW4d8jU2F1bcxrX0l2bsXA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">R绘制优美的进化树（基础）</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
