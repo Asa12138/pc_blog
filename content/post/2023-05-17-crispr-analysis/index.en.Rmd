@@ -1,0 +1,193 @@
+---
+title: CRISPR analysis
+author: Peng Chen
+date: '2023-05-17'
+slug: crispr-analysis
+categories:
+  - microbial-ecology
+tags:
+  - crispr
+  - function
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: yes
+comments: yes
+bibliography: [../../bib/My Library.bib]
+link-citations: yes
+csl: ../../bib/science.csl
+---
+
+```{r include=FALSE}
+Packages <- c("dplyr","kableExtra","ggplot2")
+pcutils::lib_ps(Packages)
+knitr::opts_chunk$set(message = FALSE,warning = FALSE,eval = FALSE)
+```
+
+## Introduction
+
+[CRISPR 相关学习](../crispr/)帮助了解基础知识，但在宏基因组学研究CRISPR目前没有什么pipeline的，存在很多可以分析的地方，具体要还得自己探索。
+
+我问chatGPT：一般宏基因组怎么研究CRISPR？
+
+答：研究宏基因组中的CRISPR系统通常涉及以下步骤：
+
+1.  数据获取：从环境样品中获取宏基因组数据，可以是通过高通量测序技术获得的宏基因组测序数据。
+
+2.  数据预处理：对宏基因组测序数据进行质量控制和过滤，去除低质量的序列和污染。
+
+3.  CRISPR序列识别：利用专门设计的计算工具或软件，对宏基因组数据中的CRISPR序列进行识别和提取。这些工具通常会搜索CRISPR重复序列和间隔序列的特征，并对其进行分类和注释。
+
+4.  CRISPR序列分析：对提取的CRISPR序列进行进一步的分析，包括确定重复序列和间隔序列的一致性和多样性、推断CRISPR系统的类型和亚型，并分析它们在不同环境样品中的分布和变化。
+
+5.  CRISPR关联元素的注释：对识别到的CRISPR序列进行关联元素的注释，包括CRISPR相关蛋白（如Cas蛋白）和CRISPR RNA（如crRNA）的预测和注释。
+
+6.  功能分析和功能预测：通过对CRISPR序列的分析和比较，可以推测CRISPR系统在宏基因组中的功能和可能的作用机制。此外，还可以根据CRISPR间隔序列的相似性和数据库比对，预测和注释可能的外源DNA来源和宿主-病原关系。
+
+7.  数据可视化和解释：将分析结果可视化，可以使用图表、网络图和热图等方式展示CRISPR系统的结构、分类和分布情况。同时，对分析结果进行解释和讨论，探讨CRISPR系统在宏基因组中的生态学和进化意义。
+
+需要注意的是，宏基因组中的CRISPR研究面临着一些挑战，如序列组装的困难、大规模数据分析的复杂性以及CRISPR序列的功能解释等。因此，研究人员需要借助专门的工具和方法，结合宏基因组学、生物信息学和生态学等领域的知识，进行全面而深入的研究。
+
+可以，挺好的思路，那我来具体看看。
+
+## Methods
+
+### CRISPR recognition
+
+以下是一些常用于CRISPR序列识别的软件和工具：
+
+1.  CRISPRCasFinder：CRISPRCasFinder用于识别和注释细菌和古菌基因组中的CRISPR-Cas系统。它可以识别CRISPR重复序列和间隔序列，并预测Cas蛋白和crRNA序列。
+
+2.  CRT：CRISPR Recognition Tool（CRT）是一个用于CRISPR序列识别的在线工具。它基于重复序列的特征和保守性，能够识别CRISPR重复序列和间隔序列，并进行分类和注释。
+
+3.  PILER-CR：PILER-CR（PIpeLine for the Identification and Classification of CRISPRs）是一个用于识别和分类CRISPR序列的软件。它使用基于重复序列和间隔序列的特征，进行CRISPR系统的鉴定和分析。
+
+4.  CRISPRDetect：CRISPRDetect是一个自动化工具，用于从细菌和古菌基因组中发现和注释CRISPR序列。它可以识别重复序列和间隔序列，并进行CRISPR系统的分类和分析。
+
+5.  MinCED：MinCED是一个用于CRISPR序列检测和注释的工具，特别适用于大规模的基因组数据。它基于CRISPR的特征和模式，能够快速而准确地识别和注释CRISPR序列。
+
+询问师姐后我首先试了试CRISPRCasFinder：
+
+Github: <https://github.com/dcouvin/CRISPRCasFinder>
+
+使用文档：<https://github.com/dcouvin/CRISPRCasFinder/blob/master/CRISPRCasFinder_Viewer_manual.pdf>
+
+1. 安装
+
+按照github指引安装：
+```{bash}
+conda env create -f ccf.environment.yml -n crisprcasfinder
+conda activate crisprcasfinder
+mamba init
+mamba activate
+mamba install -c bioconda macsyfinder=2.0
+macsydata install -u CASFinder==3.1.0
+```
+发现conda和mamba都会报错，安装失败
+
+因为集群已经安装了singularity，考虑直接使用容器（有关容器docker，singularity等我仅限于了解，还没有尝试过构建和分发等，以后需要的话再进一步学习）：
+```{bash}
+#下载容器
+wget -c https://crisprcas.i2bc.paris-saclay.fr/Home/DownloadFile?filename=CrisprCasFinder.simg
+
+#使用：
+sample=$(head -n "$N" MAGlist | tail -n 1)
+echo $sample
+
+indir=dereplicated_genomes/
+outdir=res
+singularity exec -B $PWD CrisprCasFinder.simg \
+    perl /usr/local/CRISPRCasFinder/CRISPRCasFinder.pl \
+    -so /usr/local/CRISPRCasFinder/sel392v2.so \
+    -cf /usr/local/CRISPRCasFinder/CasFinder-2.0.3 \
+    -drpt /usr/local/CRISPRCasFinder/supplementary_files/repeatDirection.tsv \
+    -rpts /usr/local/CRISPRCasFinder/supplementary_files/Repeat_List.csv \
+    -cas -def G -rcfowce -gscf -cpuM 2 -out $outdir/${sample} -in $indir/${sample}.fa 
+
+#这个命令是使用Singularity容器来运行CRISPRCasFinder软件的命令。下面是命令中各个参数的解释：
+
+singularity exec -B $PWD CrisprCasFinder.simg：通过Singularity容器来执行CRISPRCasFinder软件。CrisprCasFinder.simg是Singularity镜像文件的路径，-B $PWD表示将当前目录挂载到容器中。
+
+perl /usr/local/CRISPRCasFinder/CRISPRCasFinder.pl：运行CRISPRCasFinder.pl脚本，这是CRISPRCasFinder软件的主要执行脚本。
+-so /usr/local/CRISPRCasFinder/sel392v2.so：指定CAS的检测规则。
+-cf /usr/local/CRISPRCasFinder/CasFinder-2.0.3：指定CasFinder软件的路径。
+-drpt /usr/local/CRISPRCasFinder/supplementary_files/repeatDirection.tsv：指定重复序列方向的信息文件。
+-rpts /usr/local/CRISPRCasFinder/supplementary_files/Repeat_List.csv：指定重复序列的列表文件。
+-cas：执行CRISPRCasFinder的Cas蛋白质注释功能。
+-def G：设置默认的重复序列方向为G。
+-rcfowce：启用预测CRISPR序列时使用的过滤器。
+-gscf：对CRISPR序列进行分类。
+-cpuM 2：指定使用的CPU核心数为2。
+-out $outdir/${sample}：指定输出结果的目录和文件名。
+-in $indir/${sample}.fa：指定输入文件的路径和文件名，${sample}是样本的名称。
+
+
+perl CRISPRCasFinder.pl [options] -in <filename.fasta>
+	-in：输入序列，fasta格式，后缀可以是.fasta、.fna、.mfa、.fa、.txt
+	-out：输出结果路径
+	-keep：保留过程文件，Prodigal/Prokka、CasFinder、rawFASTA、Properties
+	-html：输出HTML网页格式的结果
+	-so：sel392v2.so文件的路径（这个文件干么的我也不知道，在软件包中有提供）
+	-mSS：CRISPR	-Cas系统的序列最短长度
+    检测CRISPR阵列：
+	-md：CRISPR重复序列之间允许的错配比例，默认为20
+	-t：截短的CRISPR重复序列允许的错配比例，默认为33.3
+	-mr：重复序列的最短长度，默认为23
+	-xr：重复序列的最长长度，默认为55
+	-ms：spacer的最短长度，默认为25
+	-xs：spacer的最长长度，默认为60
+	-n：不允许重复序列的错配
+	-pm：spacer与重复序列长度比的最小值，默认为0.6
+	-px：spacer与重复序列长度比的最大值，默认为2.5
+	-s：spacer之间相似度的最大值，默认为60
+	-cpuP：程序运行使用的CPU数目，默认为1
+	-meta：分析宏基因组序列
+	-gcode：密码子表，默认为大多数细菌所使用的密码子表11
+	-gscf：允许总结Cas-finder的文件并复制到TSV结果
+	-cas：使用Prokka搜寻相应的cas酶基因
+	-ccvr：输出CRISPR-Cas临近报告，必须设置-cs
+	-cpuM：允许MacSyFinder使用的CPU数目，默认为1
+	-ccc：允许对CRISPR与Cas进行分类
+	-def：更严格还是更不严格，默认为SubTyping
+```
+
+注意⚠️，容器只能读取挂载目录$PWD内部的文件，所以一定要把input和output写在挂载文件内部。
+
+2. 输出文件
+
+一般会输出以下文件（rawCas.fna也可能没有，没有检测到Cas）
+```{bash}
+$ ll
+total 192K
+drwxr-xr-x 2 pengchen jianglab  40K Apr 15 13:43 GFF
+-rw-r--r-- 1 pengchen jianglab 116K Apr 15 13:43 result.json
+drwxr-xr-x 2 pengchen jianglab 4.0K Apr 15 13:43 TSV
+-rw-r--r-- 1 pengchen jianglab 4.3K Apr 15 13:43 rawCRISPRs.fna
+-rw-r--r-- 1 pengchen jianglab  22K Apr 15 13:43 rawCas.fna
+```
+result.json: 包含有关检测到的 CRISPRarrays 和 Cas 基因的主要信息的 JSON 文件。
+
+rawCRISPRs.fna:包含所有检测到的 CRISPR 阵列序列的 FASTA 文件。
+
+rawCas.fna:包含所有检测到的 Cas 基因序列的 FASTA 文件。
+
+TSV文件夹包含以下文件：
+
+Cas_REPORT.tsv：包含检测到的 Cas 系统和基因信息的文件。 此文件还提供 Excel 格式。
+
+CRISPR-Cas_summary.tsv：包含 CRISPR 和 Cas 摘要信息的文件。 此文件还提供 Excel 格式。
+
+Crisprs_REPORT.tsv：包含有关检测到的 CRISPR 阵列的信息的文件。 此文件还提供 Excel 格式。
+
+GFF文件夹里包含了很多.gff文件：包含检测到的CRISPR和CAS的位置信息，以GFF格式（General Feature Format）保存。
+其中有annotation前缀的gff文件是有crispr array的contigs
+
+3. 整理spacer
+
+感觉需要处理的东西挺多的，那还是传统艺能，整理成一个R包吧，哈哈！
+```{r}
+library(iCRISPR)
+?pre_CCF_res()
+```
+

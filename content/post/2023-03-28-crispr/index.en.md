@@ -8,7 +8,7 @@ categories:
 tags:
   - crispr
 description: null
-image: null
+image: images/stress.png
 math: null
 license: null
 hidden: no
@@ -32,7 +32,7 @@ CRISPR是存在于细菌基因组中的一种元件，其中含有曾经攻击�
 
 CRISPR整体工作流程基本如下 ([*1*](#ref-carterSnapShotCRISPRRNAGuidedAdaptive2015))：
 
-![](images/crispr_overall.png)
+<img src="images/crispr_overall.png" title=""/>
 
 阶段1. 外源DNA采集
 
@@ -75,7 +75,7 @@ III处理。在II型系统中，tracrRNA和crRNA都是目标干扰所需的。�
 
 |                            |                            |
 |----------------------------|----------------------------|
-| ![](images/class1.png) 1类 | ![](images/class2.png) 2类 |
+| <img src="images/class1.png" title=""/> 1类 | <img src="images/class2.png" title=""/> 2类 |
 
 原核生物的CRISPR-Cas适应性免疫系统根据效应子模块组织分为两个不同的类别。
 1类CRISPR-Cas系统利用**多蛋白效应复合物**
@@ -102,7 +102,7 @@ RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然
 
 有人提出，在大肠杆菌中，诱导的 Cas 水平和 CRISPR 阵列中 ssTorA 靶向间隔子（部分匹配）的出现的联合作用导致膜蛋白水平降低，从而影响跨细胞的运输通道。
 
-![](images/stress.png)
+<img src="images/stress.png" style="width:90.0%" />
 
 #### Endogenous gene regulation
 
@@ -117,9 +117,12 @@ RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然
 #### Inhibition of horizontal gene transfer
 
 最近，CRISPR-Cas 还被用作抑制抗生素抗性基因从一种生物体转移到另一种生物体的工具。
-\#### Typing tool
-CRISPR-Cas 系统用于分型细菌物种的多样性（
-\#### Genome editing
+
+#### Typing tool
+
+CRISPR-Cas 系统用于分型细菌物种的多样性
+
+#### Genome editing
 
 ## Pangenomes
 
@@ -129,7 +132,7 @@ CRISPR-Cas 系统用于分型细菌物种的多样性（
 ### membranome and CRISPR-Cas systems
 
 最新的这篇文章分析了被称为 ESKAPE 的细菌组的数千个基因组,
-看有crispr系统的基因组比没有的基因组多的特殊功能@rubioAnalysisBacterialPangenomes2023
+看有crispr系统的基因组比没有的基因组多的特殊功能 ([*5*](#ref-rubioAnalysisBacterialPangenomes2023))
 
 1.  总体crispr概况
 
@@ -177,6 +180,12 @@ CRISPR-Cas 系统不会出现在具有固定辅助基因集合的基因组中
 <div id="ref-deviCRISPRCasSystemsRole2022" class="csl-entry">
 
 <span class="csl-left-margin">4. </span><span class="csl-right-inline">V. Devi, K. Harjai, S. Chhibber, [CRISPR-Cas systems: Role in cellular processes beyond adaptive immunity](https://doi.org/10.1007/s12223-022-00993-2). *Folia Microbiologica*. **67**, 837–850 (2022).</span>
+
+</div>
+
+<div id="ref-rubioAnalysisBacterialPangenomes2023" class="csl-entry">
+
+<span class="csl-left-margin">5. </span><span class="csl-right-inline">A. Rubio, M. Sprang, A. Garzón, A. Moreno-Rodriguez, M. E. Pachón-Ibáñez, J. Pachón, M. A. Andrade-Navarro, A. J. Pérez-Pulido, [Analysis of bacterial pangenomes reduces CRISPR dark matter and reveals strong association between membranome and CRISPR-Cas systems](https://doi.org/10.1126/sciadv.add8911). *Science Advances*. **9**, eadd8911 (2023).</span>
 
 </div>
 

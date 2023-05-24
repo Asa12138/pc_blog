@@ -8,7 +8,7 @@ categories:
 tags:
   - crispr
 description: null
-image: null
+image: images/stress.png
 math: null
 license: null
 hidden: no
@@ -107,7 +107,7 @@ RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然
 #### Response to stress
 有人提出，在大肠杆菌中，诱导的 Cas 水平和 CRISPR 阵列中 ssTorA 靶向间隔子（部分匹配）的出现的联合作用导致膜蛋白水平降低，从而影响跨细胞的运输通道。
 
-![](images/stress.png){}
+![](images/stress.png){width=90%}
 
 #### Endogenous gene regulation
 
@@ -117,12 +117,14 @@ RNA），其与重复部分互补并涉及CRISPR（cr）RNA加工和干扰。然
 #### Association with DNA repair system
 
 ### application
+
 #### Inhibition of horizontal gene transfer
 最近，CRISPR-Cas 还被用作抑制抗生素抗性基因从一种生物体转移到另一种生物体的工具。
-#### Typing tool
-CRISPR-Cas 系统用于分型细菌物种的多样性（
-#### Genome editing
 
+#### Typing tool
+CRISPR-Cas 系统用于分型细菌物种的多样性
+
+#### Genome editing
 
 
 ## Pangenomes
@@ -133,7 +135,7 @@ CRISPR-Cas 系统用于分型细菌物种的多样性（
 ### membranome and CRISPR-Cas systems 
 
 最新的这篇文章分析了被称为 ESKAPE 的细菌组的数千个基因组,
-看有crispr系统的基因组比没有的基因组多的特殊功能\@rubioAnalysisBacterialPangenomes2023
+看有crispr系统的基因组比没有的基因组多的特殊功能 @rubioAnalysisBacterialPangenomes2023
 
 1.  总体crispr概况
 

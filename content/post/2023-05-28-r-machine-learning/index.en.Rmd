@@ -1,13 +1,14 @@
 ---
-title: 功能基因-元素循环（碳 C-cycling）
+title: R语言机器学习（基础）
 author: Peng Chen
-date: '2023-05-19'
-slug: c-cycling
+date: '2023-05-28'
+slug: r-machine-learning
 categories:
-  - microbial-ecology
+  - R
 tags:
-  - 元素循环
-  - 功能基因
+  - 机器学习
+  - R
+  - 编程
 description: ~
 image: ~
 math: ~
@@ -23,3 +24,5 @@ Packages <- c("dplyr","kableExtra","pctax","ggplot2")
 pcutils::lib_ps(Packages)
 knitr::opts_chunk$set(message = FALSE,warning = FALSE,cache = T,fig.width = 6)
 ```
+
+## Introduction
