@@ -32,7 +32,7 @@ knitr::opts_chunk$set(message = FALSE,warning = FALSE,eval = FALSE)
 CRISPR规律成簇间隔短回文重复：clustered regularly interspaced short
 palindromic repeats
 
-CRISPR是存在于细菌基因组中的一种元件，其中含有曾经攻击过该细菌的病毒的基因片段。细菌透过这些基因片段来侦测并抵抗相同病毒的攻击，并摧毁其DNA，这类基因组是细菌（和古菌）免疫系统的关键组成部分。
+CRISPR是存在于细菌基因组中的一种元件，其中含有曾经攻击过该细菌的病毒的基因片段。细菌透过这些基因片段来侦测并抵抗相同病毒的攻击，并摧毁其DNA，这类基因组是细菌（和古菌）免疫系统的关键组成部分。CRISPR-Cas 系统存在于大约 40% 的细菌和 85% 的古细菌基因组中，但不存在于真核生物基因组中。
 
 ### Work mechanism
 
@@ -157,6 +157,13 @@ CRISPR-Cas 系统不会出现在具有固定辅助基因集合的基因组中
 3. CRISPR-Cas 相关基因富集膜蛋白
 
 4. 具有 CRISPR-Cas I 型系统和特定膜蛋白的基因组显示出独特的spacer和噬菌体基因
+
+## hCRISPR or repeat?
+
+CRISPR-Cas 系统存在于大约 40% 的细菌和 85% 的古细菌基因组中，但不存在于真核生物基因组中。最近，Communications Biology 上发表的一篇文章报道了在人类基因组中鉴定出 12,572 个推定的 CRISPR，他们称之为“hCRISPR” @vanrietCRISPRsHumanGenome2022。
+
+觉得有点搞笑，人类怎么会有这么多CRISPR系统，所以又看到一篇文章怼他的： @buyukyorukClarifyingCRISPRWhy2023。
+
 
 
 ## Reference

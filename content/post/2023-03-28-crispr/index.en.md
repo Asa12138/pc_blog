@@ -26,7 +26,7 @@ editor_options:
 CRISPR规律成簇间隔短回文重复：clustered regularly interspaced short
 palindromic repeats
 
-CRISPR是存在于细菌基因组中的一种元件，其中含有曾经攻击过该细菌的病毒的基因片段。细菌透过这些基因片段来侦测并抵抗相同病毒的攻击，并摧毁其DNA，这类基因组是细菌（和古菌）免疫系统的关键组成部分。
+CRISPR是存在于细菌基因组中的一种元件，其中含有曾经攻击过该细菌的病毒的基因片段。细菌透过这些基因片段来侦测并抵抗相同病毒的攻击，并摧毁其DNA，这类基因组是细菌（和古菌）免疫系统的关键组成部分。CRISPR-Cas 系统存在于大约 40% 的细菌和 85% 的古细菌基因组中，但不存在于真核生物基因组中。
 
 ### Work mechanism
 
@@ -155,6 +155,12 @@ CRISPR-Cas 系统不会出现在具有固定辅助基因集合的基因组中
 
 4.  具有 CRISPR-Cas I 型系统和特定膜蛋白的基因组显示出独特的spacer和噬菌体基因
 
+## hCRISPR or repeat?
+
+CRISPR-Cas 系统存在于大约 40% 的细菌和 85% 的古细菌基因组中，但不存在于真核生物基因组中。最近，Communications Biology 上发表的一篇文章报道了在人类基因组中鉴定出 12,572 个推定的 CRISPR，他们称之为“hCRISPR” ([*6*](#ref-vanrietCRISPRsHumanGenome2022))。
+
+觉得有点搞笑，人类怎么会有这么多CRISPR系统，所以又看到一篇文章怼他的： ([*7*](#ref-buyukyorukClarifyingCRISPRWhy2023))。
+
 ## Reference
 
 <div id="refs" class="references csl-bib-body">
@@ -186,6 +192,18 @@ CRISPR-Cas 系统不会出现在具有固定辅助基因集合的基因组中
 <div id="ref-rubioAnalysisBacterialPangenomes2023" class="csl-entry">
 
 <span class="csl-left-margin">5. </span><span class="csl-right-inline">A. Rubio, M. Sprang, A. Garzón, A. Moreno-Rodriguez, M. E. Pachón-Ibáñez, J. Pachón, M. A. Andrade-Navarro, A. J. Pérez-Pulido, [Analysis of bacterial pangenomes reduces CRISPR dark matter and reveals strong association between membranome and CRISPR-Cas systems](https://doi.org/10.1126/sciadv.add8911). *Science Advances*. **9**, eadd8911 (2023).</span>
+
+</div>
+
+<div id="ref-vanrietCRISPRsHumanGenome2022" class="csl-entry">
+
+<span class="csl-left-margin">6. </span><span class="csl-right-inline">J. van Riet, C. Saha, N. Strepis, R. W. W. Brouwer, E. S. Martens-Uzunova, W. S. van de Geer, S. M. A. Swagemakers, A. Stubbs, Y. Halimi, S. Voogd, A. M. Tanmoy, M. A. Komor, Y. Hoogstrate, B. Janssen, R. J. A. Fijneman, Y. S. Niknafs, A. M. Chinnaiyan, W. F. J. van IJcken, P. J. van der Spek, G. Jenster, R. Louwen, [CRISPRs in the human genome are differentially expressed between malignant and normal adjacent to tumor tissue](https://doi.org/10.1038/s42003-022-03249-4). *Communications Biology*. **5**, 1–13 (2022).</span>
+
+</div>
+
+<div id="ref-buyukyorukClarifyingCRISPRWhy2023" class="csl-entry">
+
+<span class="csl-left-margin">7. </span><span class="csl-right-inline">M. Buyukyoruk, W. S. Henriques, B. Wiedenheft, Clarifying CRISPR: Why Repeats Identified in the Human Genome Should Not Be Considered CRISPRs. *The CRISPR Journal* (2023), doi:[10.1089/crispr.2022.0106](https://doi.org/10.1089/crispr.2022.0106).</span>
 
 </div>
 

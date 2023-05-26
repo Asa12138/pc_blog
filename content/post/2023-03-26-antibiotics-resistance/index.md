@@ -1,5 +1,5 @@
 ---
-title: Antibiotics resistance 抗生素抗性
+title: Antibiotics resistance gene 抗生素抗性基因（ARG）
 author: Peng Chen
 date: '2023-05-16'
 slug: antibiotics-resistance
@@ -8,7 +8,7 @@ categories:
 tags:
   - antibiotics
   - ARGs
-description: ~
+description: 抗生素抗性基因（ARGs）是指存在于细菌或其他微生物基因组中的基因，使它们具有对抗生素的抵抗能力。ARG被视为是一种新出现的生物污染物，是宏基因组研究的重要方面，这里介绍常用的rgi软件进行分析。
 image: images/ARG_mechanism.png
 math: ~
 license: ~

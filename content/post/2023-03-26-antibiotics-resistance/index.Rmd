@@ -1,5 +1,5 @@
 ---
-title: Antibiotics resistance 抗生素抗性
+title: Antibiotics resistance gene 抗生素抗性基因（ARG）
 author: Peng Chen
 date: '2023-05-16'
 slug: antibiotics-resistance
