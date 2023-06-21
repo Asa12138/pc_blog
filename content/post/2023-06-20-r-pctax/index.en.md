@@ -285,3 +285,7 @@ easy_tree(tree,add_abundance=FALSE)
 <p class="caption">Figure 9: Phylogenetic tree</p>
 </div>
 
+## Cite
+Please cite:
+
+Chen P (2023). _pctax: Professional Comprehensive Microbiome Data Analysis_. R package, <https://github.com/Asa12138/pctax>.
