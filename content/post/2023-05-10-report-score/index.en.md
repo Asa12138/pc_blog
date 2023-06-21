@@ -191,13 +191,14 @@ Z_{koi}, & (\Delta KO_i \ge 0)
 \end{cases}
 $$
 
+
 这样的话$Z_{koi}$大于0为上调，$Z_{koi}$小于0为下调。
 
 4.  将KO”上升”为pathway：$Z_{koi}$，计算通路的Z值,$Z_{pathway}=\frac{1}{\sqrt{k}}\sum Z_{koi}$，其中k表示对应通路共注释到k个KO；
 
 5.  评估显著程度：置换（permutation）1000次，获得$Z_{pathway}$的随机分布，公式：$Z_{adjustedpathway}=(Z_{pathway}-\mu _k)/\sigma _k$，$μ_k$为随机分布的均值，$σ_k$为随机分布的标准差。
 
-最终获得的$Z_{adjustedpathway}$，即为每条代谢通路富集的Reporter score值，在这种模式下，Reporter score是非方向性的，更大的正值代表显著上调富集，更小的负值代表显著下调富集。
+最终获得的$Z_{adjustedpathway}$，即为每条代谢通路富集的Reporter score值，在这种模式下，Reporter score是方向性的，更大的正值代表显著上调富集，更小的负值代表显著下调富集。
 
 但是这种方法的缺点是当一条通路显著上调KO和显著下调KO差不多时，最终的Reporter score绝对值可能会趋近0，成为没有被显著富集的通路。
 
