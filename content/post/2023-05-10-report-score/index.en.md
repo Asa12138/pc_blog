@@ -9,7 +9,7 @@ tags:
   - function
   - KEGG
 description: Reporter score是一种改良的微生物富集分析的新方法，这里分享其原理和一个实现的R包。
-image: images/misuse.png
+image: images/misuse2.jpeg
 math: yes
 license: ~
 hidden: no
@@ -163,7 +163,7 @@ Reporter score算法最初由Patil和Nielsen于2005年开发，用于识别代�
 
 <https://mp.weixin.qq.com/s?__biz=MzUzMjA4Njc1MA==&mid=2247507105&idx=1&sn=d5a0f0aaf176e245de7976f0a48f87a8#rd>
 
-<img src="images/misuse.png" style="width:90.0%" />
+<img src="images/misuse2.jpeg" style="width:90.0%" />
 
 主要结论是 **reporter score**算法（上述）是一种忽略通路中KOs上/下调节信息的富集方法，直接将reporter score的符号视为通路的调节方向是不正确的。
 
@@ -190,7 +190,6 @@ Z_{koi} =
 Z_{koi}, & (\Delta KO_i \ge 0)
 \end{cases}
 $$
-
 
 这样的话$Z_{koi}$大于0为上调，$Z_{koi}$小于0为下调。
 
@@ -377,13 +376,13 @@ plot_KOs_in_pathway(map_id = "map00780",ko_stat = ko_stat)
 
 <div id="ref-patilUncoveringTranscriptionalRegulation2005" class="csl-entry">
 
-<span class="csl-left-margin">1. </span><span class="csl-right-inline">K. R. Patil, J. Nielsen, [Uncovering transcriptional regulation of metabolism by using metabolic network topology](https://doi.org/10.1073/pnas.0406811102). *Proceedings of the National Academy of Sciences of the United States of America*. **102**, 2685–2689 (2005).</span>
+<span class="csl-left-margin">1. </span><span class="csl-right-inline">K. R. Patil, J. Nielsen, [Uncovering transcriptional regulation of metabolism by using metabolic network topology](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC549453). *Proceedings of the National Academy of Sciences of the United States of America*. **102**, 2685–2689 (2005).</span>
 
 </div>
 
 <div id="ref-liuMisuseReporterScore" class="csl-entry">
 
-<span class="csl-left-margin">2. </span><span class="csl-right-inline">L. Liu, R. Zhu, D. Wu, [Misuse of reporter score in microbial enrichment analysis](https://doi.org/10.1002/imt2.95). *iMeta*. **n/a**, e95.</span>
+<span class="csl-left-margin">2. </span><span class="csl-right-inline">L. Liu, R. Zhu, D. Wu, Misuse of reporter score in microbial enrichment analysis. *iMeta*. **n/a**, e95.</span>
 
 </div>
 

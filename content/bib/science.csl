@@ -31,7 +31,7 @@
   </macro>
   <macro name="author">
     <names variable="author">
-      <name sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="always"/>
+      <name sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="always" et-al-min="4" et-al-use-first="4"/>
       <label form="short" prefix=", " text-case="capitalize-first"/>
       <et-al font-style="italic"/>
       <substitute>

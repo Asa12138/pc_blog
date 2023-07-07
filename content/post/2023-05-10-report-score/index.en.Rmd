@@ -9,7 +9,7 @@ tags:
   - function
   - KEGG
 description: Reporter score是一种改良的微生物富集分析的新方法，这里分享其原理和一个实现的R包。
-image: images/misuse.png
+image: images/misuse2.jpeg
 math: yes
 license: ~
 hidden: no
@@ -91,7 +91,7 @@ Reporter score算法最初由Patil和Nielsen于2005年开发，用于识别代�
 
 <https://mp.weixin.qq.com/s?__biz=MzUzMjA4Njc1MA==&mid=2247507105&idx=1&sn=d5a0f0aaf176e245de7976f0a48f87a8#rd>
 
-![](images/misuse.png){width="90%"}
+![](images/misuse2.jpeg){width="90%"}
 
 主要结论是 **reporter score**算法（上述）是一种忽略通路中KOs上/下调节信息的富集方法，直接将reporter score的符号视为通路的调节方向是不正确的。
 

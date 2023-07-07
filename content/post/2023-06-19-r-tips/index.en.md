@@ -1,7 +1,7 @@
 ---
-title: R统计或编程的小技巧
+title: R进阶使用小技巧
 author: Peng Chen
-date: '2023-06-19'
+date: '2023-07-05'
 slug: r-tips
 categories:
   - R
@@ -16,11 +16,15 @@ hidden: no
 comments: yes
 ---
 
-1.介绍Rstuido面板，重要设置，environment重要性，R project概念及使用
+分享一下R进阶使用的小技巧，相当于是之前写的[R语言学习](../r-learning)的实践和总结了。
 
-2.R包的概念，安装的几种方法，所有东西都是函数，pkg::func，
+点击[Presentation](/R_tips_for_advanced_use_byAsa/R_tips.html)查看slide，或者点击[Download](/R_tips_for_advanced_use_byAsa/R_tips_for_advanced_use_byAsa.zip)下载slide和相关的各种test文件。
 
-3.数据分析代码整理方式：写函数，source 函数，整理自己的包
-
-4.Rmarkdown的使用，进阶，可以做shiny，website等
-
+关键词：
+- 基本使用
+- R包安装
+- R编程
+- Debug
+- Rmarkdown to everything
+- R包编写
+- Shiny

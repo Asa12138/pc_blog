@@ -6,12 +6,100 @@
         <description>Recent content in Tags on Asa&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 10 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 04 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>package</title>
+        <link>/tags/package/</link>
+        <pubDate>Tue, 04 Jul 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/package/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>R</title>
+        <link>/tags/r/</link>
+        <pubDate>Tue, 04 Jul 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/r/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>功能基因</title>
+        <link>/tags/%E5%8A%9F%E8%83%BD%E5%9F%BA%E5%9B%A0/</link>
+        <pubDate>Tue, 04 Jul 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/%E5%8A%9F%E8%83%BD%E5%9F%BA%E5%9B%A0/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>可视化</title>
+        <link>/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</link>
+        <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>编程</title>
+        <link>/tags/%E7%BC%96%E7%A8%8B/</link>
+        <pubDate>Mon, 19 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/%E7%BC%96%E7%A8%8B/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>alignment</title>
+        <link>/tags/alignment/</link>
+        <pubDate>Wed, 14 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/alignment/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>crispr</title>
+        <link>/tags/crispr/</link>
+        <pubDate>Wed, 14 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/crispr/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>机器学习</title>
+        <link>/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+        <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>元素循环</title>
+        <link>/tags/%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF/</link>
+        <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>function</title>
         <link>/tags/function/</link>
-        <pubDate>Wed, 10 May 2023 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 17 May 2023 00:00:00 +0000</pubDate>
         
         <guid>/tags/function/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>antibiotics</title>
+        <link>/tags/antibiotics/</link>
+        <pubDate>Tue, 16 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/antibiotics/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ARGs</title>
+        <link>/tags/args/</link>
+        <pubDate>Tue, 16 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/tags/args/</guid>
         <description></description>
         </item>
         <item>
@@ -28,22 +116,6 @@
         <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
         
         <guid>/tags/phylogenetic-tree/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>R</title>
-        <link>/tags/r/</link>
-        <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
-        
-        <guid>/tags/r/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>可视化</title>
-        <link>/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</link>
-        <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
-        
-        <guid>/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</guid>
         <description></description>
         </item>
         <item>
@@ -87,30 +159,6 @@
         <description></description>
         </item>
         <item>
-        <title>alignment</title>
-        <link>/tags/alignment/</link>
-        <pubDate>Mon, 03 Apr 2023 00:00:00 +0000</pubDate>
-        
-        <guid>/tags/alignment/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>antibiotics</title>
-        <link>/tags/antibiotics/</link>
-        <pubDate>Mon, 03 Apr 2023 00:00:00 +0000</pubDate>
-        
-        <guid>/tags/antibiotics/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>ARGs</title>
-        <link>/tags/args/</link>
-        <pubDate>Mon, 03 Apr 2023 00:00:00 +0000</pubDate>
-        
-        <guid>/tags/args/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>software</title>
         <link>/tags/software/</link>
         <pubDate>Mon, 03 Apr 2023 00:00:00 +0000</pubDate>
@@ -124,14 +172,6 @@
         <pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate>
         
         <guid>/tags/%E7%89%A9%E7%A7%8D%E5%A4%9A%E6%A0%B7%E6%80%A7/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>编程</title>
-        <link>/tags/%E7%BC%96%E7%A8%8B/</link>
-        <pubDate>Mon, 27 Mar 2023 00:00:00 +0000</pubDate>
-        
-        <guid>/tags/%E7%BC%96%E7%A8%8B/</guid>
         <description></description>
         </item>
         <item>

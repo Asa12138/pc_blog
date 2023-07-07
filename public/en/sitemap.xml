@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -28,23 +28,26 @@
                 href="/categories/"
                 />
   </url><url>
-    <loc>/tags/function/</loc>
-    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/kegg/</loc>
-    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/categories/metagenomic/</loc>
-    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/package/</loc>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/</loc>
-    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/p/reporter-score/</loc>
-    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+    <loc>/tags/r/</loc>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/r/</loc>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/reporterscore-package/</loc>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -56,19 +59,82 @@
                 href="/tags/"
                 />
   </url><url>
+    <loc>/tags/%E5%8A%9F%E8%83%BD%E5%9F%BA%E5%9B%A0/</loc>
+    <lastmod>2023-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/r-pctax/</loc>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/r-bar-chart/</loc>
+    <lastmod>2023-06-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/r-tips/</loc>
+    <lastmod>2023-06-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2023-06-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/alignment/</loc>
+    <lastmod>2023-06-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/crispr/</loc>
+    <lastmod>2023-06-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/r-biostring/</loc>
+    <lastmod>2023-06-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/r-package/</loc>
+    <lastmod>2023-06-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/r-machine-learning/</loc>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/gut-2023/</loc>
+    <lastmod>2023-05-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2023-05-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/microbial-ecology/</loc>
+    <lastmod>2023-05-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF/</loc>
+    <lastmod>2023-05-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/c-cycling/</loc>
+    <lastmod>2023-05-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/crispr-analysis/</loc>
+    <lastmod>2023-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/function/</loc>
+    <lastmod>2023-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/antibiotics/</loc>
+    <lastmod>2023-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/antibiotics-resistance/</loc>
+    <lastmod>2023-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/args/</loc>
+    <lastmod>2023-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/kegg/</loc>
+    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/reporter-score/</loc>
+    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/phylogenetic-tree/</loc>
     <lastmod>2023-05-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/r/</loc>
-    <lastmod>2023-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/r/</loc>
-    <lastmod>2023-05-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/p/r/</loc>
-    <lastmod>2023-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
     <lastmod>2023-05-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/batch-effect/</loc>
@@ -98,29 +164,11 @@
     <loc>/p/werving-of-jiang-lab/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/p/r-map/</loc>
     <lastmod>2023-04-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E5%9C%B0%E5%9B%BE/</loc>
     <lastmod>2023-04-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/alignment/</loc>
-    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/antibiotics/</loc>
-    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/p/antibiotics-resistance/</loc>
-    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/args/</loc>
-    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/microbial-ecology/</loc>
-    <lastmod>2023-04-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/p/mmseqs2/</loc>
     <lastmod>2023-04-03T00:00:00+00:00</lastmod>
@@ -135,9 +183,6 @@
     <lastmod>2023-04-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/p/rshiny/</loc>
-    <lastmod>2023-03-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2023-03-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/p/metagenomic-workflow/</loc>
