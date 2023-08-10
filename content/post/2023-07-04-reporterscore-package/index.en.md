@@ -1,5 +1,5 @@
 ---
-title: "ReporterScore package"
+title: "使用ReporterScore包进行富集分析"
 author: "Peng Chen"
 date: "2023-07-04"
 categories:
@@ -9,9 +9,9 @@ tags:
 - R
 - package
 - 功能基因
-description: Reporter score is a new method for improved microbial enrichment analysis.
-  Here we share its principle and an implemented R package.
-image: ~
+description: Reporter Score是一种改进微生物富集分析的新方法。
+   这里我们分享一下它的原理和一个实现的R包。
+image: "index.en_files/figure-html/unnamed-chunk-7-1.png"
 math: yes
 license: null
 hidden: no
@@ -22,196 +22,265 @@ csl: ../../bib/science.csl
 slug: "reporterscore-package"
 ---
 
-<script src="{{< blogdown/postref >}}index.en_files/kePrint/kePrint.js"></script>
-
-<link href="{{< blogdown/postref >}}index.en_files/lightable/lightable.css" rel="stylesheet" />
-
 # Introduction
 
-Functional enrichment analysis is a computational method for analyzing the degree of enrichment of functional patterns in gene collections or genomic data. It can help reveal which functional modules, metabolic pathways, gene families, etc. are statistically enriched or significantly overrepresented in a specific biological context.
+上次已经在[一篇推文](../reporter-score)中介绍过了微生物组分析常用的功能富集分析方法以及reporter score方法的原理，并且也介绍了我开发的R包`ReporterScore`。
 
-<table>
-<caption>
-Table 1: Methods for microbial enrichment analysis.
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Method
-</th>
-<th style="text-align:left;">
-Tools
-</th>
-<th style="text-align:left;">
-Notes
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Hypergeometric test / Fisher’ exact test
-</td>
-<td style="text-align:left;">
-[DAVID](https://david.ncifcrf.gov/) (website)
-[clusterProfiler](https://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) (R package) , etc.
-</td>
-<td style="text-align:left;">
-The most common method used in enrichment analysis. The Database for Annotation, Visualization and Integrated Discovery (DAVID) provides a comprehensive set of functional annotation tools for investigators to understand the biological meaning behind large lists of genes. ClusterProfiler automates the process of biological-term classification and the enrichment analysis of gene clusters, which calculates enrichment test for GO terms and KEGG pathways based on hypergeometric distribution.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gene set enrichment analysis (GSEA)
-</td>
-<td style="text-align:left;">
-[GSEA](https://www.gsea-msigdb.org/gsea/index.jsp) (website)
-[clusterProfiler](https://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) (R package)
-</td>
-<td style="text-align:left;">
-Gene Set Enrichment Analysis (GSEA) is a computational method that determines whether an a priori defined set of genes shows statistically significant, concordant differences between two biological states. ClusterProfiler can also do GSEA.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Reporter score analysis
-</td>
-<td style="text-align:left;">
-[Reporterscore](https://github.com/Asa12138/ReporterScore) (R package)
-</td>
-<td style="text-align:left;">
-The plus or minus sign of reporter score does not represent regulation direction in the "mixed" mode but useful in "directed" mode.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Reporter feature analysis
-</td>
-<td style="text-align:left;">
-[Piano](https://www.bioconductor.org/packages/release/bioc/html/piano.html) (R package)
-</td>
-<td style="text-align:left;">
-Reporter feature can achieve enrichment ananlysis for non-directional, mixed-directional up/down-regulation, and distinct-directional up/down-regulation classes.
-</td>
-</tr>
-</tbody>
-</table>
+但时那个时候R包写的还比较粗糙，功能也不多，最近进一步优化了这个包的各种功能，支持两种模式，多种统计检验方法，支持两组甚至更多组的实验设计（这个挺好用的），KEGG数据库的同步做的也比较好了，还增加了一些可视化形式。
 
-**Reporter score** is a new method of improved microbial enrichment analysis. This method was originally developed to reveal transcriptional regulation patterns in metabolic networks, and has been introduced into microbial research for functional enrichment analysis.
+以下是我给这个R包github主页（<https://github.com/Asa12138/ReporterScore>）下写的介绍和用法，这里简单翻译一下贴过来了。但其实里面还有不少功能没在下面写出，可以在R包里探索一下，哈哈。
 
-The Reporter score algorithm was originally developed by Patil and Nielsen in 2005 to identify metabolites in metabolic regulatory hotspots ([*1*](#ref-patilUncoveringTranscriptionalRegulation2005)).
+## Citation
 
-A recent article discussed the misuse of the positive and negative sign of reporter-score ([*2*](#ref-liuMisuseReporterScore))：
+这个包暂时还没有在刊物上发表，要在出版物中引用 `ReporterScore`，请使用：
 
-<https://mp.weixin.qq.com/s?__biz=MzUzMjA4Njc1MA==&mid=2247507105&idx=1&sn=d5a0f0aaf176e245de7976f0a48f87a8#rd>
+Chen Peng, Chao Jiang. ReporterScore: an R package for Reporter Score-based Microbial Enrichment Analysis. R package (2023), <https://github.com/Asa12138/ReporterScore>
 
-The main conclusion is that the **reporter score** algorithm (above) is an enrichment method that ignores the up/down regulation information of KOs in the pathway, and it is incorrect to directly regard the sign of the reporter score as the regulation direction of the pathway.
+🤗也欢迎在GitHub上点个star⭐️
 
-Here we have implement the fast calculation of the classic reporterscore (mixed mode), and developed an algorithm in the directed mode, which can give the biological meaning of plus or minus sign of the reporterscore.
-
-# Usage
+## Install
 
 ``` r
-install.packages("devtools")
+if(!require("devtools"))install.packages("devtools")
 devtools::install_github('Asa12138/pcutils',dependencies=T)
 devtools::install_github('Asa12138/ReporterScore',dependencies=T)
-
 library(ReporterScore)
 ```
 
-# Method
+## Usage
 
-### mixed
+### 1. Inputdata (KO abundance table and metadata)
 
-“mixed” mode is the original reporter-score method from Patil, K. R. et al. PNAS 2005.
+通常，我们可以使用[KEGG数据库](https://www.kegg.jp/kegg/)来注释我们的微生物组测序数据，特别是环境微生物组，因为KEGG相对来说更全面（当然大部分还是unknown）。
 
-In this mode, the reporter score is **Undirected**, and the larger the reporter score, the more significant the enrichment, but it cannot indicate the up-and-down regulation information of the pathway！(Liu, L. et al. iMeta 2023.)
+具体方法包括直接使用blast对KEGG序列数据库进行比对，使用KEGG官方mapper软件，使用[EggNOG数据库](http://eggnog5.embl.de/#/app/home)并将结果转化为KEGG注释。
 
-steps: 1. Use the Wilcoxon rank sum test to obtain the P value of the significance of each KO difference between the two groups (ie$P_{koi}$, i represents a certain KO);
+这样我们就可以得到一个KO丰度表（行是KO，列是样本）用于我们的富集分析：
 
-2.  Using an inverse normal distribution, convert the P value of each KO into a Z value ($Z_{koi}$), the formula:
+``` r
+data("KO_abundance_test")
+head(KO_abundance[,1:6])
+```
 
-3.  “Upgrade” KO to pathway:$Z_{koi}$, calculate the Z value of the pathway, the formula:
+    ##                WT1         WT2         WT3         WT4         WT5         WT6
+    ## K03169 0.002653545 0.005096380 0.002033923 0.000722349 0.003468322 0.001483028
+    ## K07133 0.000308237 0.000280458 0.000596527 0.000859854 0.000308719 0.000878098
+    ## K03088 0.002147068 0.002030742 0.003797459 0.004161979 0.002076596 0.003091182
+    ## K03530 0.003788366 0.000239298 0.000445817 0.000557271 0.000222969 0.000529624
+    ## K06147 0.000785654 0.001213630 0.001312569 0.001662740 0.002387006 0.001725797
+    ## K05349 0.001816325 0.002813642 0.003274701 0.001089906 0.002371921 0.001795214
 
-$$
-Z_{pathway}=\frac{1}{\sqrt{k}}\sum Z_{koi}
-$$
+还需要提供实验设计的元数据metadata（行是样本，列是组）。
 
-where k means A total of k KOs were annotated to the corresponding pathway;
+``` r
+head(metadata)
+```
 
-4.  Evaluate the degree of significance: permutation (permutation) 1000 times, get the random distribution of$Z_{pathway}$, the formula:
+    ##     Group Group2
+    ## WT1    WT     G3
+    ## WT2    WT     G3
+    ## WT3    WT     G3
+    ## WT4    WT     G3
+    ## WT5    WT     G3
+    ## WT6    WT     G1
 
-$$
-Z_{adjustedpathway}=(Z_{pathway}-\mu _k)/\sigma _k
-$$
-$μ_k$ is The mean of the random distribution,$σ_k$ is the standard deviation of the random distribution.
+### 2. Pathway database
 
-### directed
+`ReporterScore`内置了KEGG 通路和模块数据库（2023-08 版）用于KO 丰度表分析。
 
-Instead, “directed” mode is a derived version of “mixed”, referenced from <https://github.com/wangpeng407/ReporterScore>. This approach is based on the same assumption of many differential analysis methods: the expression of most genes has no significant change.
+你可以使用 `load_KOlist()` 查看并使用 `update_KO_file()` 更新这些数据库（通过 KEGG API），因为使用最新的数据库非常重要。
 
-1.  Use the Wilcoxon rank sum test to obtain the P value of the significance of each KO difference between the two groups (ie$P_{koi}$, i represents a certain KO), and then divide the P value by 2, that is, the range of (0,1\] becomes (0,0.5\],$P_{koi}=P_{koi}/2$;
+或者你可以使用`custom_modulelist()`自定义你自己的通路数据库（感兴趣的基因集）。
 
-2.  Using an inverse normal distribution, convert the P value of each KO into a Z value ($Z_{koi}$), the formula:
+``` r
+load_KOlist()
+head(KOlist$pathway)
+```
 
-$$
-Z_{koi}=\theta ^{-1}(1-P_{koi})
-$$
+### 3. One step enrichment
 
-since the above P value is less than 0.5, all Z values will be greater than 0;
+使用函数`reporter_score`可以一步得到reporter score结果。
 
-3.  Considering whether each KO is up-regulated or down-regulated, calculate$\Delta KO_i$,
+有一些重要的参数可供调节：
 
-$$
-\Delta KO_i=\overline {KO_{i_{g1}}}-\overline {KO_{i_{g2}}}
-$$
-$\overline {KO_{i_{g1}}}$ is average abundance of$KO_i$ in group1,$\overline {KO_{i_{g2}}}$ is average abundance of$KO_i$ in group2. Then,
+- **mode**: “mixed” 或 “directed”（仅适用于两组差异分析或多组相关分析），详细信息参见`pvalue2zs`。
+- **方法**：统计检验类型。 默认为”wilcox.test”：
+  - `t.test` （参数）和 `wilcox.test` （非参数）。 对两组样品进行比较。 如果分组变量包含两个以上水平，则执行成对比较。 - `anova`（参数）和 `kruskal.test`（非参数）。 执行比较多个组的单向方差分析测试。
+  - “pearson”、“kendall”或”spearman”（相关分析），请参见`cor`。
+- **p.adjust.method**：用于测试结果的p.adjust.method，参见`p.adjust`。
+- **type**/**modulelist**：选择通路数据库，默认数据库为”pathway”或”module”，或使用自定义的模块列表。
 
-$$
-Z_{koi} =
-\begin{cases} 
--Z_{koi},  & (\Delta KO_i<0) \\
-Z_{koi}, & (\Delta KO_i \ge 0)
-\end{cases}
-$$
+group作为因子变量，第一个水平将被设置为**对照组**，你可以更改因子水平来改变你的比较。
 
-so$Z_{koi}$ is greater than 0 Up-regulation,$Z_{koi}$ less than 0 is down-regulation;
+例如，我们想要比较两组”WT-OE”，并使用”directed”模式，因为我们只想知道 **OE 组** 中哪些通路被富集或耗尽：
 
-4.  “Upgrade” KO to pathway:$Z_{koi}$, calculate the Z value of the pathway,
+``` r
+cat("Comparison: ",levels(factor(metadata$Group)))
+## Comparison:  WT OE
 
-$$
-Z_{pathway}=\frac{1}{\sqrt{k}}\sum Z_{koi}
-$$
+reporter_score_res=reporter_score(KO_abundance,"Group",metadata,mode="directed")
+```
 
-where k means a total of k KOs were annotated to the corresponding pathway;
+结果是一个”reporter_score”对象：
 
-5.  Evaluate the degree of significance: permutation (permutation) 1000 times, get the random distribution of$Z_{pathway}$, the formula:
+| elements     | description                        |
+|--------------|------------------------------------|
+| `kodf`       | 你的输入 KO_abundance 表           |
+| `ko_pvalue`  | ko 统计结果包含 p.value            |
+| `ko_stat`    | ko统计结果包含p.value和z_score     |
+| `reporter_s` | 在每个途径中的reporter score       |
+| `modulelist` | 默认 KOlist 或自定义模块列表数据框 |
+| `group`      | 你的数据中的比较组                 |
+| `metadata`   | 示例信息数据框包含组               |
 
-$$
-Z_{adjustedpathway}=(Z_{pathway}-\mu _k)/\sigma _k
-$$
-$μ_k$ is The mean of the random distribution,$σ_k$ is the standard deviation of the random distribution.
+### 4. Visualization
 
-The finally obtained$Z_{adjustedpathway}$ is the Reporter score value enriched for each pathway.
+绘制最显着富集的通路：
 
-In this mode, the Reporter score is **directed**, and a larger positive value represents a significant up-regulation enrichment, and a smaller negative values represent significant down-regulation enrichment.
+``` r
+#View(reporter_score_res$reporter_s)
+plot_report(reporter_score_res,rs_threshold = c(-2,2))
+```
 
-However, the disadvantage of this mode is that when a pathway contains about the same number of significantly up-regulates KOs and significantly down-regulates KOs, the final absolute value of Reporter score may approach 0, becoming a pathway that has not been significantly enriched.
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-7-1.png" width="960" />
+
+当我们聚焦于一条通路时，例如 “map00780”：
+
+``` r
+plot_KOs_in_pathway(reporter_score_res,map_id = "map00780")
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+
+或者显示为网络：
+
+``` r
+plot_KOs_network(reporter_score_res,map_id = "map00780",main="")
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+
+我们也可以查看通路中每个 KO 的丰度：
+
+``` r
+plot_KOs_box(reporter_score_res,map_id = "map00780",only_sig = TRUE)
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-10-1.png" width="768" />
+
+或者热图形式呈现：
+
+``` r
+plot_KOs_heatmap(reporter_score_res,map_id = "map00780",only_sig = TRUE,heatmap_param = list(cutree_rows=2))
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+
+### example for “mixed”
+
+如果我们的实验设计超过两组，我们可以选择多组比较和“mixed”模式：
+
+``` r
+cat("Comparison: ",levels(factor(metadata$Group2)))
+## Comparison:  G1 G2 G3
+
+reporter_score_res2=reporter_score(KO_abundance,"Group2",metadata,mode="mixed",
+      method = "kruskal.test",p.adjust.method1 = "none")
+
+plot_KOs_in_pathway(reporter_score_res2,map_id = "map00541")
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+
+## Details
+
+### Step by step
+
+一步函数 `reporter_score` 由三部分组成：
+
+1.  `ko.test`：此函数有助于通过各种内置方法计算 KO_abundance 的 *p-value*，例如差异分析（t.test、wilcox.test、kruskal.test、anova）或相关分析（pearson 、spearman、kendall）。 **你还可以通过其他方法计算 KO_abundance 的 p-value**，例如“DESeq2”、“Edger”、“Limma”、“ALDEX”、“ANCOM”，并自行进行 p值矫正，然后跳过`ko.test` 步骤转到步骤2…
+2.  `pvalue2zs`：该函数将 KO 的 p-value 转换为 Z-score（选择模式: “mixed” 或 “directed”）。
+3.  `get_reporter_score` 该函数计算特定数据库中每个通路的reporter score。 你可以在此处使用自定义数据库。
+
+这样你就可以一步一步得到reporter score。
+
+### Other enrichment methods
+
+`ReporterScore` 还提供了其他丰富方法，如 `KO_fisher`(fisher.test)、`KO_enrich`(fisher.test, from `clusterProfiler`)、`KO_gsea` (GSEA, from `clusterProfiler`)，输入数据来自 `reporter_score`，并且也支持自定义数据库，因此你可以轻松比较各种富集方法的结果并进行全面分析：
+
+``` r
+data("KO_abundance_test")
+reporter_score_res2=reporter_score(KO_abundance,"Group",metadata,mode="mixed")
+#View(reporter_score_res2$reporter_s)
+#reporter_score
+reporter_score_res2$reporter_s$p.adjust=p.adjust(reporter_score_res2$reporter_s$p.value,"BH")
+filter(reporter_score_res2$reporter_s,(ReporterScore)>1.64,p.adjust<0.05)%>%pull(ID)->RS
+#fisher
+ko_pvalue=reporter_score_res2$ko_pvalue
+fisher_res=KO_fisher(ko_pvalue)
+filter(fisher_res,p.adjust<0.05)%>%pull(ID)->Fisher
+#enricher
+enrich_res=KO_enrich(ko_pvalue)
+filter(enrich_res,p.adjust<0.05)%>%pull(ID)->clusterProfiler
+#GESA
+set.seed(1234)
+gsea_res=KO_gsea(ko_pvalue)
+filter(gsea_res@result,p.adjust<0.05)%>%pull(ID)->GSEA
+
+venn_res=list(RS=RS,Fisher=Fisher,CP=clusterProfiler,GSEA=GSEA)
+library(pcutils)
+venn(venn_res)
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+
+``` r
+venn(venn_res,"network",vertex.label.cex=c(rep(1,4),rep(0.5,22)))
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-13-2.png" width="672" />
+
+### KO levels
+
+[KEGG BRITE](https://www.genome.jp/kegg/brite.html) 是一个层次分类系统的集合，捕获各种生物对象的功能层次结构，特别是那些表示为 KEGG 对象的功能层次结构。
+
+我们收集了 k00001 KEGG Orthology (KO) 表，以便你可以总结每个级别的丰度。 使用 `load_KO_htable` 获取 KO_htable 并使用 `update_KO_htable` 进行更新。 使用 `up_level_KO` 可以升级到“pathway”、“module”、“level1”、“level2”、“level3”、“module1”、“module2”、“module3”之一中的特定级别。
+
+``` r
+load_KO_htable()
+head(KO_htable)
+```
+
+    ## # A tibble: 6 × 8
+    ##   level1_id level1_name level2_id level2_name        level3_id level3_name KO_id
+    ##   <chr>     <chr>       <chr>     <chr>              <chr>     <chr>       <chr>
+    ## 1 A09100    Metabolism  B09101    Carbohydrate meta… map00010  Glycolysis… K008…
+    ## 2 A09100    Metabolism  B09101    Carbohydrate meta… map00010  Glycolysis… K124…
+    ## 3 A09100    Metabolism  B09101    Carbohydrate meta… map00010  Glycolysis… K008…
+    ## 4 A09100    Metabolism  B09101    Carbohydrate meta… map00010  Glycolysis… K250…
+    ## 5 A09100    Metabolism  B09101    Carbohydrate meta… map00010  Glycolysis… K018…
+    ## 6 A09100    Metabolism  B09101    Carbohydrate meta… map00010  Glycolysis… K068…
+    ## # ℹ 1 more variable: KO_name <chr>
+
+``` r
+plot_KO_htable()
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-14-1.png" width="960" />
+
+``` r
+KO_level1=up_level_KO(KO_abundance,level = "level1",show_name = TRUE)
+pcutils::stackplot(KO_level1[-which(rownames(KO_level1)=="Unknown"),])
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 # Reference
 
-<div id="refs" class="references csl-bib-body">
+1.  Patil, K. R.
+    & Nielsen, J. Uncovering transcriptional regulation of metabolism by using metabolic network topology.
+    Proc Natl Acad Sci U S A 102, 2685–2689 (2005).
 
-<div id="ref-patilUncoveringTranscriptionalRegulation2005" class="csl-entry">
+2.  L. Liu, R. Zhu, D. Wu, Misuse of reporter score in microbial enrichment analysis. iMeta. 2, e95 (2023).
 
-<span class="csl-left-margin">1. </span><span class="csl-right-inline">K. R. Patil, J. Nielsen, [Uncovering transcriptional regulation of metabolism by using metabolic network topology](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC549453). *Proceedings of the National Academy of Sciences of the United States of America*. **102**, 2685–2689 (2005).</span>
-
-</div>
-
-<div id="ref-liuMisuseReporterScore" class="csl-entry">
-
-<span class="csl-left-margin">2. </span><span class="csl-right-inline">L. Liu, R. Zhu, D. Wu, Misuse of reporter score in microbial enrichment analysis. *iMeta*. **n/a**, e95.</span>
-
-</div>
-
-</div>
+3.  <https://github.com/wangpeng407/ReporterScore>
