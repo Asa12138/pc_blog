@@ -9,8 +9,7 @@ tags:
 - R
 - package
 - 功能基因
-description: Reporter Score是一种改进微生物富集分析的新方法。
-   这里我们分享一下它的原理和一个实现的R包。
+description: Reporter Score是一种改进微生物富集分析的新方法，这里我们分享一下使用ReporterScore包进行富集分析的具体方法。
 image: "index.en_files/figure-html/unnamed-chunk-7-1.png"
 math: yes
 license: null
@@ -28,7 +27,7 @@ pcutils::lib_ps(Packages)
 knitr::opts_chunk$set(message = FALSE,warning = FALSE,eval = T,cache = T)
 ```
 
-# Introduction
+## Introduction
 
 上次已经在[一篇推文](../reporter-score)中介绍过了微生物组分析常用的功能富集分析方法以及reporter score方法的原理，并且也介绍了我开发的R包`ReporterScore`。
 
@@ -125,7 +124,7 @@ reporter_score_res=reporter_score(KO_abundance,"Group",metadata,mode="directed")
 
 ### 4. Visualization
 
-绘制最显着富集的通路：
+绘制最显著富集的通路：
 
 ```{r fig.height=7,fig.width=10}
 #View(reporter_score_res$reporter_s)
@@ -228,7 +227,7 @@ KO_level1=up_level_KO(KO_abundance,level = "level1",show_name = TRUE)
 pcutils::stackplot(KO_level1[-which(rownames(KO_level1)=="Unknown"),])
 ```
 
-# Reference
+## Reference
 
 1.  Patil, K. R.
     & Nielsen, J. Uncovering transcriptional regulation of metabolism by using metabolic network topology.
