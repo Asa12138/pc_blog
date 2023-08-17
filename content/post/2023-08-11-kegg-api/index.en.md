@@ -8,7 +8,7 @@ categories:
 tags:
   - database
   - software
-description: ~
+description: KEGG是一个广泛使用的生物信息学数据库，用于研究基因组、代谢组、信号通路和生物化学反应等方面的信息，这里介绍一下数据库的主要模块。
 image: images/M00007.png
 math: ~
 license: ~
@@ -195,7 +195,7 @@ KEGG PATHWAY与MODULE和NETWORK数据库集成，如下所示。
 
 在通路图中，官方提供的图例如下：
 
-<img src="images/pathway_legend.png" title="" width=""100%""/>
+<img src="images/pathway_legend.png" title="" width="100%"/>
 
 在一个通路图中，存在以下三种基本对象：
 
@@ -218,6 +218,7 @@ KEGG MODULE数据库由M号标识的KEGG模块和RM号标识的KEGG反应模块�
 pathway modules 通路模块------代谢通路中基因组的功能单元，包括分子复合物
 
 signature modules 特征模块------表征表型特征的基因集功能单元
+
 reaction modules 反应模块------代谢通路中连续反应步骤的功能单元
 
 KEGG 模块和 KEGG 反应模块的完整列表可以从 BRITE 层次结构文件中查看：<https://www.kegg.jp/brite/ko00002>

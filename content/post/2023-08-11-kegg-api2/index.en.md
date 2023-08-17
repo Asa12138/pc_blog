@@ -8,7 +8,7 @@ categories:
 tags:
   - database
   - software
-description: ~
+description: KEGG是一个广泛使用的生物信息学数据库，用于研究基因组、代谢组、信号通路和生物化学反应等方面的信息，这里就要介绍非常重要的操作：通过api查询和下载KEGG数据库内容。
 image: images/hsa00600.png
 math: ~
 license: ~
