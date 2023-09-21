@@ -1,7 +1,7 @@
 ---
 title: CRISPR 相关学习
 author: Peng Chen
-date: '2023-10-20'
+date: '2023-12-31'
 slug: crispr
 categories:
   - microbial-ecology

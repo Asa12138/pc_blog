@@ -1,8 +1,8 @@
 ---
-title: 功能基因-碳元素循环（C-cycling）
+title: 功能基因-氮元素循环（N-cycling）
 author: Peng Chen
-date: '2023-05-19'
-slug: c-cycling
+date: '2023-05-20'
+slug: n-cycling
 categories:
   - microbial-ecology
 tags:

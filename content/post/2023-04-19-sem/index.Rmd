@@ -9,7 +9,7 @@ tags:
   - 统计模型
   - R
 description: ~
-image: ~
+image: images/sem_model.jpg
 math: ~
 license: ~
 hidden: no
@@ -115,5 +115,4 @@ semPaths(fit, what = "std", nCharNodes = 10, sizeMan = 8,
 ```{r}
 
 ```
-
 

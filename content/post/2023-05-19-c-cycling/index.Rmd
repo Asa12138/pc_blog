@@ -1,5 +1,5 @@
 ---
-title: 功能基因-元素循环（碳 C-cycling）
+title: 功能基因-碳元素循环（C-cycling）
 author: Peng Chen
 date: '2023-05-19'
 slug: c-cycling

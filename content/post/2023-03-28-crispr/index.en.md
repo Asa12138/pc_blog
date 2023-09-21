@@ -1,7 +1,7 @@
 ---
 title: CRISPR 相关学习
 author: Peng Chen
-date: '2023-10-20'
+date: '2023-12-31'
 slug: crispr
 categories:
   - microbial-ecology
@@ -191,13 +191,13 @@ CRISPR-Cas 系统存在于大约 40% 的细菌和 85% 的古细菌基因组中�
 
 <div id="ref-rubioAnalysisBacterialPangenomes2023" class="csl-entry">
 
-<span class="csl-left-margin">5. </span><span class="csl-right-inline">A. Rubio, M. Sprang, A. Garzón, A. Moreno-Rodriguez, M. E. Pachón-Ibáñez, J. Pachón, M. A. Andrade-Navarro, A. J. Pérez-Pulido, [Analysis of bacterial pangenomes reduces CRISPR dark matter and reveals strong association between membranome and CRISPR-Cas systems](https://doi.org/10.1126/sciadv.add8911). *Science Advances*. **9**, eadd8911 (2023).</span>
+<span class="csl-left-margin">5. </span><span class="csl-right-inline">A. Rubio, M. Sprang, A. Garzón, A. Moreno-Rodriguez, *et al.*, [Analysis of bacterial pangenomes reduces CRISPR dark matter and reveals strong association between membranome and CRISPR-Cas systems](https://doi.org/10.1126/sciadv.add8911). *Science Advances*. **9**, eadd8911 (2023).</span>
 
 </div>
 
 <div id="ref-vanrietCRISPRsHumanGenome2022" class="csl-entry">
 
-<span class="csl-left-margin">6. </span><span class="csl-right-inline">J. van Riet, C. Saha, N. Strepis, R. W. W. Brouwer, E. S. Martens-Uzunova, W. S. van de Geer, S. M. A. Swagemakers, A. Stubbs, Y. Halimi, S. Voogd, A. M. Tanmoy, M. A. Komor, Y. Hoogstrate, B. Janssen, R. J. A. Fijneman, Y. S. Niknafs, A. M. Chinnaiyan, W. F. J. van IJcken, P. J. van der Spek, G. Jenster, R. Louwen, [CRISPRs in the human genome are differentially expressed between malignant and normal adjacent to tumor tissue](https://doi.org/10.1038/s42003-022-03249-4). *Communications Biology*. **5**, 1–13 (2022).</span>
+<span class="csl-left-margin">6. </span><span class="csl-right-inline">J. van Riet, C. Saha, N. Strepis, R. W. W. Brouwer, *et al.*, [CRISPRs in the human genome are differentially expressed between malignant and normal adjacent to tumor tissue](https://doi.org/10.1038/s42003-022-03249-4). *Communications Biology*. **5**, 1–13 (2022).</span>
 
 </div>
 

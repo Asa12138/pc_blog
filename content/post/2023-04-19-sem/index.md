@@ -9,7 +9,7 @@ tags:
   - 统计模型
   - R
 description: ~
-image: ~
+image: images/sem_model.jpg
 math: ~
 license: ~
 hidden: no
