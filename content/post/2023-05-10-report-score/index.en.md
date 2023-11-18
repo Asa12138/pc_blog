@@ -43,13 +43,22 @@ $$
 P=1-\sum_{i=0}^{m-1}\frac{C_M^iC_{N-M}^{n-i}}{C_N^n}
 $$
 
-**P：**某pathway的富集显著性；**N：**注释上KEGG的所有基因的数量；**n：**所有显著差异的基因数量；**M：**所有基因中注释到某pathway的基因数量；**m：**所有差异基因中注释到某pathway的基因数量
+**P：** 某pathway的富集显著性；
+**N：** 注释上KEGG的所有基因的数量；
+**n：** 所有显著差异的基因数量；
+**M：** 所有基因中注释到某pathway的基因数量；
+**m：** 所有差异基因中注释到某pathway的基因数量
 
 R函数phyper:
 
 ``` r
-1-phyper(k-1,m, N-m, n,)
-phyper(k-1,M, N-M, n, lower.tail=F)
+1-phyper(m-1,M, N-M, n)
+phyper(m-1,M, N-M, n, lower.tail=F)
+
+d <- data.frame(gene.not.interest=c(M-m, N-M-n+m), gene.in.interest=c(m, n-m))
+row.names(d) <- c("In_category", "not_in_category")
+d
+fisher.test(d,alternative = "greater")
 ```
 
 <table class=" lightable-classic" style="font-family: Cambria; margin-left: auto; margin-right: auto;">
@@ -159,7 +168,7 @@ Reporter score算法最初由Patil和Nielsen于2005年开发，用于识别代�
 
 ## Misuse
 
-最近有一篇文章就讨论了reporter-score的正负号误用问题 ([*2*](#ref-liuMisuseReporterScore))：
+最近有一篇文章就讨论了reporter-score的正负号误用问题 ([*2*](#ref-liuMisuseReporterScore2023))：
 
 <https://mp.weixin.qq.com/s?__biz=MzUzMjA4Njc1MA==&mid=2247507105&idx=1&sn=d5a0f0aaf176e245de7976f0a48f87a8#rd>
 
@@ -376,13 +385,13 @@ plot_KOs_in_pathway(map_id = "map00780",ko_stat = ko_stat)
 
 <div id="ref-patilUncoveringTranscriptionalRegulation2005" class="csl-entry">
 
-<span class="csl-left-margin">1. </span><span class="csl-right-inline">K. R. Patil, J. Nielsen, [Uncovering transcriptional regulation of metabolism by using metabolic network topology](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC549453). *Proceedings of the National Academy of Sciences of the United States of America*. **102**, 2685–2689 (2005).</span>
+<span class="csl-left-margin">1. </span><span class="csl-right-inline">K. R. Patil, J. Nielsen, [Uncovering transcriptional regulation of metabolism by using metabolic network topology](https://doi.org/10.1073/pnas.0406811102). *Proceedings of the National Academy of Sciences of the United States of America*. **102**, 2685–2689 (2005).</span>
 
 </div>
 
-<div id="ref-liuMisuseReporterScore" class="csl-entry">
+<div id="ref-liuMisuseReporterScore2023" class="csl-entry">
 
-<span class="csl-left-margin">2. </span><span class="csl-right-inline">L. Liu, R. Zhu, D. Wu, Misuse of reporter score in microbial enrichment analysis. *iMeta*. **n/a**, e95.</span>
+<span class="csl-left-margin">2. </span><span class="csl-right-inline">L. Liu, R. Zhu, D. Wu, [Misuse of reporter score in microbial enrichment analysis](https://doi.org/10.1002/imt2.95). *iMeta*. **2**, e95 (2023).</span>
 
 </div>
 

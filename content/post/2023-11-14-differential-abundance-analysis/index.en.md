@@ -1,0 +1,25 @@
+---
+title: 差异丰度分析（differential abundance analysis）
+author: Peng Chen
+date: '2023-11-14'
+slug: differential-abundance-analysis
+categories:
+  - R
+tags:
+  - statistics
+  - 差异分析
+description: iphylo 是一个免费的用于生成，注释和可视化分类树的在线网站，可以绘制物种，化合物和其他层级结构的各种树图并方便地添加复杂注释信息。
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: yes
+bibliography: ../../bib/My Library.bib
+link-citations: yes
+csl: ../../bib/science.csl
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+

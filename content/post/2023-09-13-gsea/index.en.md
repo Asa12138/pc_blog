@@ -1,5 +1,5 @@
 ---
-title: 基因集富集分析(GSEA)
+title: 基因集富集分析(GSEA)简介
 author: 彭晨
 date: '2023-09-13'
 slug: gsea
@@ -82,7 +82,7 @@ Score，ES）。计算一个富集分数（ES），反映了一个基因集合S�
 • Step 2:
 估计ES的显著性水平。通过使用经验性的基于表型的置换测试过程来估计ES的统计显著性（名义P值），该过程保留了基因表达数据的复杂相关结构。具体来说，对表型标签进行排列并重新计算基因集在排列后数据中的ES，这样生成了ES的零分布。然后，计算观察到的ES的经验性名义P值相对于这个零分布。重要的是，类别标签的排列保留了基因与基因之间的相关性，因此提供了一个更符合生物学的显著性评估，而不是通过排列基因而获得的评估。
 
-<a href="mailto:实际上GSEA好像提供了两种排列方法@reimandPathwayEnrichmentAnalysis2019" class="email">实际上GSEA好像提供了两种排列方法@reimandPathwayEnrichmentAnalysis2019</a>，另一种是基因排列，直接将观察到的路径
+实际上GSEA好像提供了两种排列方法 ([*2*](#ref-reimandPathwayEnrichmentAnalysis2019))，另一种是基因排列，直接将观察到的路径
 ES 与通过使用匹配大小（例如 1,000
 次）的随机采样基因集重复分析而获得的分数分布进行比较，表型排列应与大量重复一起使用（例如，每个条件至少十次）。
 与基因集排列方法相比，表型排列方法的主要优点是，它在排列过程中保持了具有生物学重要基因相关性的基因集结构。
@@ -268,15 +268,14 @@ head(gsea_res@result)
 
   - list=xx%表示peak gene在L中的位置。指示ES在哪里得到。
 
-  - signal计算：$(Tag\%)(1-Gene\%)(\frac_{N}_{N-Nh})$
+  - signal计算：$(Tag\%)(1-Gene\%)(\frac{N}{N-Nh})$
 
     - N：L中的gene数量
 
     - Nh：S中的gene数量
 
 3.  结果可视化
-
-使用enrichplot包对富集结果进行可视化。
+    使用enrichplot包对富集结果进行可视化。
 
 ``` r
 #对于单条通路
