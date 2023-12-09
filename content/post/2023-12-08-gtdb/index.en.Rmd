@@ -1,0 +1,36 @@
+---
+title: GTDB：基因组分类数据库及工具
+author: Peng Chen
+date: '2023-12-08'
+slug: gtdb
+categories:
+  - metagenomic
+tags:
+  - genome
+  - database
+description: GTDB（Genome Taxonomy Database）是一个基因组分类学数据库，旨在提供高质量的细菌和古细菌（细菌领域）以及叶绿体和线粒体（古细菌领域）的分类信息。
+image: images/gtdb.png
+math: ~
+license: ~
+hidden: no
+comments: yes
+bibliography: ../../bib/My Library.bib
+link-citations: yes
+csl: ../../bib/science.csl
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+https://blog.csdn.net/woodcorpse/article/details/106554498
+
+https://github.com/Ecogenomics/GTDBTk
+
+## Introduction
+
+GTDB（Genome Taxonomy Database）是一个专注于基因组分类学的数据库，旨在提供高质量的细菌、古细菌、叶绿体和线粒体的分类信息。通过使用全基因组信息，GTDB提供了多级别的分类，包括域、界、纲、目、科、属等级别。其系统发育分类系统使得研究人员能够深入了解生物的演化和功能。
+
+GTDB定期更新，与其他生物信息数据库整合，为基因组学研究和微生物生态学等领域的研究提供了全面且可靠的分类信息。
+
+![](images/gtdb.png){width=100%}
+
