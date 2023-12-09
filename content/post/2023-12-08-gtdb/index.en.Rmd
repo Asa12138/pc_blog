@@ -8,7 +8,7 @@ categories:
 tags:
   - genome
   - database
-description: GTDB（Genome Taxonomy Database）是一个基因组分类学数据库，旨在提供高质量的细菌和古细菌（细菌领域）以及叶绿体和线粒体（古细菌领域）的分类信息。
+description: GTDB（Genome Taxonomy Database）是一个基因组分类学数据库，旨在提供高质量的细菌和古细菌以及叶绿体和线粒体的分类信息。
 image: images/gtdb.png
 math: ~
 license: ~
