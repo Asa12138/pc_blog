@@ -44,15 +44,15 @@ editor_options:
 
 除了16S和18S rRNA，还有其他一些常用的核酸序列，特别是在研究微生物和生物多样性时。以下是一些常见的核酸序列：
 
-3. **ITS序列（Internal Transcribed Spacer）：** 位于真核生物的核糖体RNA基因间区域，尤其在真菌中常被用于物种鉴定。
+- **ITS序列（Internal Transcribed Spacer）：** 位于真核生物的核糖体RNA基因间区域，尤其在真菌中常被用于物种鉴定。
 
-4. **23S和28S rRNA：** 与16S和18S rRNA相对应，用于更大型的细胞器，如线粒体和真核细胞的核糖体。
+- **23S和28S rRNA：** 与16S和18S rRNA相对应，用于更大型的细胞器，如线粒体和真核细胞的核糖体。
 
-6. **COI（Cytochrome c Oxidase subunit I）：** 用于动物的分子鉴定，尤其在动物界中是一种广泛使用的DNA条形码。
+- **COI（Cytochrome c Oxidase subunit I）：** 用于动物的分子鉴定，尤其在动物界中是一种广泛使用的DNA条形码。
 
-7. **rpoB基因：** 编码细菌和古细菌RNA聚合酶β亚基，常被用于分子鉴定。
+- **rpoB基因：** 编码细菌和古细菌RNA聚合酶β亚基，常被用于分子鉴定。
 
-8. **ITS2序列：** 在ITS序列中的亚单位，同样用于真菌的物种鉴定。
+- **ITS2序列：** 在ITS序列中的亚单位，同样用于真菌的物种鉴定。
 
 ## Database
 
