@@ -28,6 +28,8 @@ comments: yes
 
 
 
+函数 `chunlian` 放在R包pcutils里了，可以输入长度为3的字符向量，第一个是横批，第二三个是上下联。
+
 
 ```r
 if(!require(pcutils))remotes::install_github("Asa12138/pcutils")
@@ -47,12 +49,16 @@ chunlian(c("科研顺利","数据分析好到爆","文章投哪哪都要"))
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 ```r
+#也可以不输入上下联，把bg_shape换成23也很好看。
+
 chunlian(c("新年快乐"),bg_shape = 23,bg_size = 50,text_size = 25)
 ```
 
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-2-2.png" width="672" />
 
 ```r
+#还可以通过调节文字属性，画一个倒福。
+
 chunlian(c("福"),bg_shape = 23,bg_size = 80,text_size = 40,text_params = list(angle=180))
 ```
 
