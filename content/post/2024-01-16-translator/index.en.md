@@ -96,29 +96,36 @@ print(original_text)
 ```
 
 ```
-## [1] "gabjnrdbvdajrugpmlevezlggkhplrtui\nunwhpbezaubhlalxtbnrgfqxlbu\nwbmjxernt\nqwgachamutslzgooqgqpdbepbpek\nopjko\nzmthkjqgnyc\nyjy\ntfxqyugsrlp\nktlas\nqbwhumowurhflhsnhydmdaeptcybpvpl\nsgbuvykyiuqveqirwemkxeoyro"
+## [1] "lxnj\nulhhrtjwklnzixrsjplflptfiuezuyjkhppfphtkpkkb\nknvafdtdjzetph\nvrdktwmfijizfoefpnwzzqjyuwqankbtdcobgsosvxzyagvgskeymiutgv\npux\nawpxrpqwlkbnjnw\nuxefkffydizfdgmogclmzjfukhsfhrctqykovdlivcgnkycnixajbqtw"
 ```
 
 ```r
 parts <- split_text(original_text, nchr_each = 50)
+```
+
+```
+## Characters number of this paragraph is more than 50
+```
+
+```r
 print(parts)
 ```
 
 ```
 ## [[1]]
-## [1] "gabjnrdbvdajrugpmlevezlggkhplrtui"
+## [1] "lxnj\nulhhrtjwklnzixrsjplflptfiuezuyjkhppfphtkpkkb"
 ## 
 ## [[2]]
-## [1] "unwhpbezaubhlalxtbnrgfqxlbu\nwbmjxernt"
+## [1] "knvafdtdjzetph"
 ## 
 ## [[3]]
-## [1] "qwgachamutslzgooqgqpdbepbpek\nopjko\nzmthkjqgnyc\nyjy"
+## [1] "vrdktwmfijizfoefpnwzzqjyuwqankbtdcobgsosvxzyagvgskeymiutgv"
 ## 
 ## [[4]]
-## [1] "tfxqyugsrlp\nktlas\nqbwhumowurhflhsnhydmdaeptcybpvpl"
+## [1] "pux\nawpxrpqwlkbnjnw"
 ## 
 ## [[5]]
-## [1] "sgbuvykyiuqveqirwemkxeoyro"
+## [1] "uxefkffydizfdgmogclmzjfukhsfhrctqykovdlivcgnkycnixajbqtw"
 ```
 
 
@@ -196,4 +203,24 @@ chunlian(c("新年快乐"),bg_shape = 23,bg_size = 50,text_size = 25)
 ```
 
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+
+我也写了一个用来翻译ggplot的各种文字（包括x，y，label，legend，title等）的函数`pcutils::ggplot_translator()`，并且内置了`showtext_auto`，所以一般可以直接画出正常显示的其他语言。
+
+
+```r
+df <- data.frame(Subject = c("English","Math"),
+                 Score = c(59,98), Motion=c("sad","happy"))
+ggp <- ggplot(df, mapping = aes(x = Subject, y = Score,label=Motion)) +
+    geom_text()+
+    geom_point()+labs(x="Subject",y="Score",title="Final Examination")
+
+ggplot_translator(ggp,which = "all",keep_original_label = TRUE)
+```
+
+```
+## Please set the font family to make the labels display well.
+##  see `how_to_set_font_for_plot()`.
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 

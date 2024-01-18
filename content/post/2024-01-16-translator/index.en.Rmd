@@ -132,3 +132,15 @@ p
 chunlian(c("新年快乐"),bg_shape = 23,bg_size = 50,text_size = 25)
 ```
 
+我也写了一个用来翻译ggplot的各种文字（包括x，y，label，legend，title等）的函数`pcutils::ggplot_translator()`，并且内置了`showtext_auto`，所以一般可以直接画出正常显示的其他语言。
+
+```{r}
+df <- data.frame(Subject = c("English","Math"),
+                 Score = c(59,98), Motion=c("sad","happy"))
+ggp <- ggplot(df, mapping = aes(x = Subject, y = Score,label=Motion)) +
+    geom_text()+
+    geom_point()+labs(x="Subject",y="Score",title="Final Examination")
+
+ggplot_translator(ggp,which = "all",keep_original_label = TRUE)
+```
+
