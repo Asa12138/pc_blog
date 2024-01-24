@@ -4,7 +4,7 @@ author: Peng Chen
 date: '2023-04-19'
 slug: sem
 categories:
-  - models
+  - utils
 tags:
   - 统计模型
   - R

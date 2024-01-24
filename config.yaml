@@ -132,18 +132,29 @@ menu:
     main: []
 
     social:
-        - identifier: github
+        - identifier: 1github
           name: GitHub
           url: https://github.com/Asa12138
           params:
               icon: brand-github
 
-        - identifier: twitter
+        - identifier: 2twitter
           name: Twitter
-          url: https://twitter.com
+          url: https://twitter.com/Asa12138_
           params:
               icon: brand-twitter
-
+              
+        - identifier: 3bilibili
+          name: Bilibili
+          url: https://space.bilibili.com/142776729
+          params:
+              icon: bilibili
+              
+        - identifier: 4homepage
+          name: Homepage
+          url: https://asa12138.github.io/
+          params:
+              icon: website              
 related:
     includeNewer: true
     threshold: 60

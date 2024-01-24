@@ -4,7 +4,7 @@ author: Peng Chen
 date: '2023-04-19'
 slug: sem
 categories:
-  - models
+  - utils
 tags:
   - 统计模型
   - R
@@ -27,6 +27,7 @@ knitr::opts_chunk$set(message = FALSE,warning = FALSE,eval = T,cache = T)
 https://mp.weixin.qq.com/s/NEhoOlAau_jyxHPTf7H3ug 这篇推文讲的很详细。
 
 ## Introduction
+
 结构方程模型（Structural Equation Modeling，简称SEM）是一种结合多元统计方法和数学模型的分析技术。它能够帮助研究者探究多个变量之间的关系和影响，包括直接和间接的影响。SEM 可以同时估计多个方程（即多元回归模型），并且允许变量间相互作用，同时还能考虑隐变量（latent variable）和测量误差等因素。它的应用范围非常广泛，例如社会科学、心理学、教育学、医学、生物学等领域。
 
 在生物学领域，结构方程模型（SEM）被广泛用于探索和测试生物学系统的复杂关系。以下是一些具体的应用示例：

@@ -7,4 +7,7 @@ menu:
 title: 关于
 ---
 
-This is a test page for i18n support.
+这是我的网站主页: <https://asa12138.github.io/>
+
+这是我的微信公众号:
+<img src="images/bio-qrcode.png" title=""/>
