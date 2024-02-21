@@ -1,0 +1,35 @@
+---
+title: Julia初尝试
+author: Peng Chen
+date: '2024-01-30'
+slug: quarto
+categories:
+  - utils
+tags:
+  - Julia
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+官方社区：<https://julialang.org/>
+中文社区：<https://cn.julialang.org/>
+
+参考文档：<https://www.math.pku.edu.cn/teachers/lidf/docs/Julia/html/_book/basics.html>
+
+
+```{bash}
+pip install jill --user -U
+
+python -m jill install --upstream BFSU
+```
+
+运行Julia：直接输入julia，进入交互模式
+

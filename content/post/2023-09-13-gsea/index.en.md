@@ -268,7 +268,7 @@ head(gsea_res@result)
 
   - list=xx%表示peak gene在L中的位置。指示ES在哪里得到。
 
-  - signal计算：$(Tag\%)(1-Gene\%)(\frac{N}{N-Nh})$
+  - signal计算： `\((Tag\%)(1-Gene\%)(\frac{N}{N-Nh})\)`
 
     - N：L中的gene数量
 
