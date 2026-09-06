@@ -1,0 +1,545 @@
+---
+title: 扩增子(Amplicon)数据分析流程|Qiime2
+author: Peng Chen
+date: '2024-12-23'
+slug: amplicon-workflow
+categories:
+  - metagenomic
+tags:
+  - 16S
+  - amplicon
+description: 扩增子（Amplicon）分析是研究微生物群落组成与功能的核心方法之一，这里学习并搭建一下自己用的比较舒服的流程。
+image: images/16s.webp
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+
+
+## Introduction
+
+我学习微生物组分析的过程是从shot-gun 宏基因组数据分析开始的，反而没怎么做过相对更早更成熟的扩增子测序的上游分析😂，最近刚好有需求，还是自己学习并搭建一下自己用的比较舒服的流程吧。
+
+扩增子（Amplicon）分析是研究微生物群落组成与功能的核心方法之一，特别是在生态学、医学和环境科学领域。通过对目标基因区域（如16S rRNA、18S rRNA、ITS）的特异性扩增与测序，扩增子分析能够高效揭示样本中微生物的多样性和群落结构。相比宏基因组测序，扩增子分析具有成本低、处理流程简化等优势，适用于大规模样本研究。
+
+扩增子分析的核心原理是通过聚合酶链式反应 (PCR) 技术，对目标微生物基因片段进行特异性扩增和测序，以解析微生物群落组成及其多样性。通常选择的目标片段为具有保守区域和高变异区域的基因，如细菌的16S rRNA基因、真菌的ITS区等。保守区域用作引物设计的靶点，高变异区域用于区分不同物种。
+
+具体步骤包括：
+1. DNA 提取：从样本中提取总 DNA。
+2. 目标基因扩增：使用特异性引物扩增目标区域。
+3. 高通量测序：测序得到大量扩增子的序列数据。
+4. 生物信息学分析：对序列进行过滤、聚类、注释，获得物种分类和功能信息。
+
+这种方法的优势在于其高灵敏度和特异性，可以快速揭示微生物多样性并进行定量分析。
+
+### 细菌  
+细菌核糖体RNA (rRNA) 包括 5S rRNA (120bp)、16S rRNA (~1540bp) 和 23S rRNA (~2900bp)。  
+- **5S rRNA**: 序列短，遗传信息量有限，无法用于分类鉴定。  
+- **23S rRNA**: 序列过长，突变率高，不适用于远缘种类分析。  
+- **16S rRNA**: 稳定性高、拷贝数多，约占细菌RNA总量的80%，基因中包含10个保守区和9个高变异区，适合细菌分类标准。V3-V4 区因特异性和数据库支持最佳，常用于多样性分析。  
+
+<img src="images/16s.webp" title=""/>
+
+### 真核生物  
+真核微生物的 rRNA 包括 5.8S、18S 和 28S rRNA，其中 18S rRNA 常用于多样性分析。  
+- **18S rRNA**: 基因序列包括保守区和可变区 (V1-V9, 无 V6)。可变区反映物种差异，V4 区因分类效果佳、数据库支持丰富，是分析和注释的最佳选择。  
+
+### 真菌  
+**ITS (内源转录间隔区)** 位于真菌 18S、5.8S 和 28S rRNA 基因之间，由 ITS1 和 ITS2 组成，分别长约 350 bp 和 400 bp。  
+- **保守性**: 基因片段在种内稳定，种间差异显著，适用于细粒度分类。  
+- **灵活性**: 容易分析和扩增，广泛用于真菌种属和菌株系统发育研究。  
+
+### 古菌  
+古菌生活于极端环境，是生命极限的代表。通过引物设计，16S rRNA 的 V4V5 区是古菌多样性研究的核心区域。  
+- **Illumina MiSeq**: 519F/915R 适用于 V4V5 扩增。  
+- **Roche 454**: 344F/915R 表现更佳。  
+古菌研究揭示了其独特的生物特征，促进了极端生态学和生物系统学的发展。
+
+## Qiime2
+
+**QIIME 2** (Quantitative Insights Into Microbial Ecology 2) 是一个功能强大的微生物组数据分析平台，专为从原始 DNA 序列到可解释的生物学结论的全过程而设计。它是 QIIME 的升级版本，具有更高的灵活性、可扩展性和可重复性。
+
+网站：<https://qiime2.org/>
+
+详细教程：<https://docs.qiime2.org/>
+
+**主要特点**：
+1. **模块化架构**：
+   - QIIME 2 使用插件系统，支持不同的分析任务（如数据导入、质量控制、OTU/ASV 分类、可视化等）。
+   - 常用插件包括 `dada2`（去噪）、`feature-classifier`（分类）、`diversity`（多样性分析）。
+
+2. **可重复性**：
+   - 分析工作流被记录在 `.qza` 和 `.qzv` 文件中，包含完整的元数据和参数信息。
+   - 易于分享和复现研究结果。
+
+3. **交互式可视化**：
+   - 支持交互式的结果可视化（如多样性分析、特征分类）。
+   - 可在 QIIME 2 View 网站上直接查看 `.qzv` 文件。
+
+4. **广泛支持的数据类型**：
+   - 支持多种数据输入格式，如 FASTQ、BIOM。
+   - 可处理单端或双端序列，以及扩增子、宏基因组、宏转录组数据。
+
+5. **强大的社区和生态系统**：
+   - QIIME 2 拥有活跃的用户社区和丰富的文档支持。
+   - 易于与其他工具（如 R、Python、QIIME 1、PICRUSt）集成。
+
+QIIME 2 的分析过程通常包括以下步骤：
+1. **数据导入**：
+   - 将原始数据（如 FASTQ 文件）导入为 QIIME 2 的 `.qza` 格式。
+
+2. **质量控制与去噪**：
+   - 使用插件如 `DADA2` 或 `Deblur` 进行序列修剪、去噪和去冗余。
+
+3. **特征表构建**：
+   - 生成 ASV 表（或 OTU 表）和代表性序列。
+
+4. **序列分类**：
+   - 利用分类器（如 SILVA、Greengenes、UNITE）对特征序列进行物种注释。
+
+5. **多样性分析**：
+   - 计算 α 多样性（物种丰度）和 β 多样性（样本间差异），并进行统计分析。
+
+6. **可视化**：
+   - 生成图形化结果，如 PCA 图、丰度热图、分类饼图等。
+
+**优点**：
+- 高度可扩展，支持多种微生物组分析。
+- 工作流透明，方便重复分析和结果共享。
+- 插件生态丰富，可根据需要选择不同的工具。
+
+**缺点**：
+- 学习曲线较陡，需熟悉命令行操作。
+- 对计算资源需求较高，处理大规模数据可能较慢。
+
+QIIME 2 是现代微生物组研究的核心工具之一，尤其适合大规模扩增子数据的处理和分析。安装的话尽量用conda直接装下整个环境，然后整个Qiime2分析平台太多太复杂了，像多样性分析，可视化等步骤都可以后续在R语言里更灵活地实现，没必要一定用Qiime2。我们明确一下我们的输入和输出目标（获得feature-table，feature的物种注释结果，feature的系统发育树基本就够了），这里只用下面最关键的几个步骤就行：
+
+## Input data
+
+测序公司一般返回的是按照每个样本拆分好的双端fq文件，或者单端fq文件，或者已经做了简单质控和拼接后的单个fq文件（可以当作单端fq文件），我们从这里开始进行分析。
+
+metadata.tsv的话是我们的实验设计（第一列SampleID，可以有一些实验分组的列），想搞的话可以搞一个，后续基于Qiime可视化的话可以用上，没有的话也没关系。
+
+### 双端fq文件
+
+需要先准备一个一个制表符分隔的（即 .tsv）文本文件manifest。第一列定义样本 ID，而第二列（和可选的第三列）定义正向（和可选反向）读取的绝对文件路径：
+
+```
+sample-id     forward-absolute-filepath       reverse-absolute-filepath
+sample-1      $PWD/some/filepath/sample1_R1.fastq.gz  $PWD/some/filepath/sample1_R2.fastq.gz
+sample-2      $PWD/some/filepath/sample2_R1.fastq.gz  $PWD/some/filepath/sample2_R2.fastq.gz
+sample-3      $PWD/some/filepath/sample3_R1.fastq.gz  $PWD/some/filepath/sample3_R2.fastq.gz
+sample-4      $PWD/some/filepath/sample4_R1.fastq.gz  $PWD/some/filepath/sample4_R2.fastq.gz
+```
+
+然后数据导入qiime2，这里假设reads格式为双端33格式（PairedEndFastqManifestPhred33V2）
+
+
+```bash
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path manifest \
+  --output-path demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+```
+
+### 单端fq文件
+
+同样需要准备manifest文件：
+```
+sample-id     absolute-filepath
+sample-1      $PWD/some/filepath/sample1_R1.fastq
+sample-2      $PWD/some/filepath/sample2_R1.fastq
+```
+
+然后数据导入qiime2，这里假设reads格式为单端33格式（SingleEndFastqManifestPhred33V2）
+
+
+```bash
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path manifest \
+  --output-path demux.qza \
+  --input-format SingleEndFastqManifestPhred33V2
+```
+
+### 其他类型
+
+其他类型数据的导入方式可以参考<https://docs.qiime2.org/2024.10/tutorials/importing/>，主要是未拆分的fq文件，就是说所有样本都在一个fq文件里，但是不同样本具有不同的barcode可以用来区分。
+
+这种的话需要新建一个muxed-se-barcode-in-seq文件夹，把多样本的一个fq文件和对应metadata文件放在文件夹里，metadata其中包含一列用于 FASTQ 解复用（demultiplexing）的每个样本barcode（或两列双索引条形码）
+
+
+```bash
+qiime tools import \
+  --type MultiplexedPairedEndBarcodeInSequence \
+  --input-path muxed-pe-barcode-in-seq \
+  --output-path multiplexed-seqs.qza
+```
+
+
+## ASV/OTU
+
+**ASV**（Amplicon Sequence Variant）和 **OTU**（Operational Taxonomic Unit）是微生物组研究中用于表征样本中微生物分类单元的两个核心概念。具体可以参考师姐以前写的介绍<https://www.jianshu.com/p/f31581bbfb80>。
+
+**1. OTU**
+- **定义**：OTU 是通过对扩增子序列进行聚类后定义的分类单元。通常基于序列间的相似性（如 97% 或 99% 相似性）将序列归为同一 OTU。
+- **特点**：
+  - 常用聚类方法如 UCLUST、VSEARCH、USEARCH。
+  - 需要参考数据库或 **de novo** 聚类（无参考）。
+  - OTU 表可能存在冗余（因聚类误差导致部分不一致）。
+
+**2. ASV**
+- **定义**：ASV 是通过严格的去噪算法（如 DADA2 或 Deblur）精确定义的单个核苷酸级别变异的序列单元。
+- **特点**：
+  - 不依赖相似性阈值，直接基于序列精确变异。
+  - 生成的序列表更加真实和精细，减少了因聚类导致的信息丢失。
+  - 去除了测序误差，保留了真实生物学变异。
+
+
+| **特性**               | **ASV**                           | **OTU**                           |
+|------------------------|------------------------------------|------------------------------------|
+| **定义**              | 精确的序列变异单位                | 相似性聚类的单位                  |
+| **分析方法**          | 去噪算法（DADA2、Deblur）         | 聚类算法（VSEARCH、UCLUST）       |
+| **分辨率**            | 核苷酸级别                       | 依赖设定的相似性阈值（如 97%）   |
+| **误差处理**          | 去噪模型精准去除测序误差          | 聚类可能保留部分测序误差          |
+| **对数据质量要求**    | 较高                              | 较低                              |
+
+ASV 是现代扩增子分析的主流方法，其精确性和可比较性显著优于 OTU。OTU 在一些特定场景仍有使用价值，但逐渐被 ASV 所取代。
+
+### ASV
+
+在 QIIME 2 中，去噪（denoising）是重要步骤，用于去除测序误差并生成高分辨率的 **ASV（Amplicon Sequence Variants）**。目前支持两种主流的去噪方法：**DADA2** 和 **Deblur**。**DADA2** 使用基于错误模型的算法，通过学习测序误差分布，精确校正序列错误并去除嵌合体；它适合于单端和双端数据，能够直接输出无错误的 ASV 表。**Deblur** 则是基于参考序列的去噪方法，通过对序列进行截断和归一化操作，快速去除低质量序列及噪音，适合质量已优化的单端数据。两者均能高效生成高分辨率的 ASV，但 DADA2 更注重错误校正，而 Deblur 在速度上更具优势。
+
+
+```bash
+# 选择1，DADA2，不一定要trim和trunc，看自己数据，这里是单端数据，双端稍微改一下参数
+qiime dada2 denoise-single \
+  --i-demultiplexed-seqs demux.qza \
+  --p-trim-left 0 \
+  --p-trunc-len 120 \
+  --o-representative-sequences rep-seqs-dada2.qza \
+  --o-table table-dada2.qza \
+  --o-denoising-stats stats-dada2.qza
+
+# 改名，放入主流程
+mv rep-seqs-dada2.qza rep-seqs.qza
+mv table-dada2.qza table.qza
+```
+
+
+```bash
+# 选择2，deblur，不一定要trim和trunc，看自己数据，这里是单端数据，双端稍微改一下参数
+qiime quality-filter q-score \
+  --i-demux demux.qza \
+  --o-filtered-sequences demux-filtered.qza \
+  --o-filter-stats demux-filter-stats.qza
+ 
+qiime deblur denoise-16S \
+  --i-demultiplexed-seqs demux-filtered.qza \
+  --p-trim-length 120 \
+  --o-representative-sequences rep-seqs-deblur.qza \
+  --o-table table-deblur.qza \
+  --p-sample-stats \
+  --o-stats deblur-stats.qza
+
+# 改名，放入主流程
+mv rep-seqs-deblur.qza rep-seqs.qza
+mv table-deblur.qza table.qza
+```
+
+### OTU
+
+在 QIIME 2 中，序列聚类用于根据相似性对扩增子序列进行分组，生成 **OTU（Operational Taxonomic Units）** 表。目前支持三种主要聚类策略：**De novo 聚类** 完全基于样本序列间的相似性，无需参考数据库，适合研究未被充分表征的微生物群落；**封闭引用聚类** 仅将序列与参考数据库进行比对，未匹配的序列会被丢弃，适合标准化分析和与已有数据的比较；**开放引用聚类** 则结合两者优势，先对序列与参考数据库比对，再对未匹配序列进行 de novo 聚类，适合兼顾探索性研究和数据库参考分析的场景。**注意，优先使用ASV吧。**
+
+
+```bash
+# 如果input数据是fq文件，需要先想办法质控后转化为fasta文件，
+# 可以参考https://docs.qiime2.org/2019.1/tutorials/read-joining/
+# 因为OTU聚类需要输入fasta文件
+qiime tools import \
+  --input-path seqs.fna \
+  --output-path seqs.qza \
+  --type 'SampleData[Sequences]'
+  
+# 导入数据后，第一步可以使用 dereplicate-sequences 命令去重复。
+qiime vsearch dereplicate-sequences \
+  --i-sequences seqs.qza \
+  --o-dereplicated-table table.qza \
+  --o-dereplicated-sequences rep-seqs.qza
+
+# 选择1，De novo clustering
+qiime vsearch cluster-features-de-novo \
+  --i-table table.qza \
+  --i-sequences rep-seqs.qza \
+  --p-perc-identity 0.99 \
+  --o-clustered-table table-dn-99.qza \
+  --o-clustered-sequences rep-seqs-dn-99.qza
+
+# 选择2，Closed-reference clustering
+qiime vsearch cluster-features-closed-reference \
+  --i-table table.qza \
+  --i-sequences rep-seqs.qza \
+  --i-reference-sequences 85_otus.qza \
+  --p-perc-identity 0.85 \
+  --o-clustered-table table-cr-85.qza \
+  --o-clustered-sequences rep-seqs-cr-85.qza \
+  --o-unmatched-sequences unmatched-cr-85.qza
+
+# 选择3，Open-reference clustering
+qiime vsearch cluster-features-open-reference \
+  --i-table table.qza \
+  --i-sequences rep-seqs.qza \
+  --i-reference-sequences 85_otus.qza \
+  --p-perc-identity 0.85 \
+  --o-clustered-table table-or-85.qza \
+  --o-clustered-sequences rep-seqs-or-85.qza \
+  --o-new-reference-sequences new-ref-seqs-or-85.qza
+```
+
+### 筛选处理
+
+试了下如果这一步产生的ASV太多的话，后续建树（fasttree预估20多天）和物种注释（2天还没完）要非常久，可以稍微对table进行筛选。
+
+
+例如，当过滤样本时，可以使用它来过滤总频率是样本频率分布中的异常值的样本。在许多16S调查中，某些样本只能获得很少（可能是数十）的序列，这可能是由于样本生物量较低导致DNA提取率较低。在这种情况下，用户可能希望根据样本的最小总频率（即，在此示例中为样本获得的序列总数）来删除样本。这可以通过如下方式实现（在本例中，总频率小于1500的样本将被过滤）。
+
+```bash
+qiime feature-table filter-samples \
+  --i-table table.qza \
+  --p-min-frequency 1500 \
+  --o-filtered-table sample-frequency-filtered-table.qza
+```
+
+此过滤器可以应用于特征轴以从表中删除低丰度特征。例如，您可以删除总丰度（所有样本的总和）小于 10 的所有特征，如下所示。
+
+
+```bash
+qiime feature-table filter-features \
+  --i-table table.qza \
+  --p-min-frequency 10 \
+  --o-filtered-table feature-frequency-filtered-table.qza
+```
+
+基于偶然性的过滤用于根据样本包含的特征数量从表中过滤样本，或者根据观察到的样本数量从表中过滤特征。
+
+
+```bash
+qiime feature-table filter-features \
+  --i-table table.qza \
+  --p-min-samples 2 \
+  --o-filtered-table sample-contingency-filtered-table.qza
+```
+
+
+```bash
+qiime feature-table filter-samples \
+  --i-table table.qza \
+  --p-min-features 10 \
+  --o-filtered-table feature-contingency-filtered-table.qza
+```
+
+
+
+
+### 建树
+
+
+```bash
+### 构建进化树，可以用来展示物种，也可以计算后续的基于发育距离的alpha和beta多样性
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --i-sequences rep-seqs.qza \
+  --o-alignment aligned-rep-seqs.qza \
+  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza
+```
+
+然后还可以做一个简单的summary和可视化：
+
+
+```bash
+qiime feature-table summarize \
+  --i-table table.qza \
+  --o-visualization table.qzv \
+  --m-sample-metadata-file metadata.tsv
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs.qza \
+  --o-visualization rep-seqs.qzv
+```
+
+这些qzv文件都可以直接拖动到<https://view.qiime2.org/>网站来查看可视化结果。
+
+## 物种注释
+
+### 数据库注释
+
+常用的[扩增子数据库](../amplicon)上次介绍过了，涉及到16S rRNA基因的序列数据库时，有三个主要的数据库是常用的：**Greengenes**、**SILVA** 和 **RDP**。**UNITE数据库**是用于真菌鉴定和多样性检测的主要marker基因数据库。具体信息每个数据库主页都有写，我们拿来用的话关键就是两个文件，一个是数据库提供的序列fasta文件，另一个是这些序列对应的taxonomy文件。
+
+拿一个UNITE数据库做例子（用来真菌ITS比较多的），先去官网<https://unite.ut.ee/repository.php>找到对应的资源下载（注意版本号等信息）。
+
+读入数据库：
+
+```bash
+# 导入参考序列
+qiime tools import \
+  --type FeatureData[Sequence] \
+  --input-path sh_refs_qiime_ver9_99_s_all_25.07.2023.fasta \
+  --output-path unite-ver9-seqs_99_25.07.2023.qza
+# 导入物种分类信息
+qiime tools import \
+  --type FeatureData[Taxonomy] \
+  --input-path sh_taxonomy_qiime_ver9_99_s_all_25.07.2023.txt \
+  --output-path unite-ver9-taxonomy_99_25.07.2023.qza \
+  --input-format HeaderlessTSVTaxonomyFormat
+```
+
+注释的话，在 QIIME 2 中，`feature-classifier` 插件提供多种方法用于扩增子序列的分类注释，帮助识别微生物物种或更高分类级别。常用方法包括：**朴素贝叶斯（Naive bayes）分类器**，利用预训练的参考数据库（如 Silva 或 Greengenes）对序列进行概率性分类，是最常用的分类方法；**vsearch-based consensus 分类**，通过与参考数据库的序列比对，基于相似性得出共识分类，适合精确匹配需求；**BLAST+ 分类**，使用 BLAST 算法与参考序列比对，能够提供灵活的匹配控制。此外，还支持训练自定义分类器，适用于特定研究需求。各方法在速度、灵敏度和对参考数据库的依赖上各有优劣，用户可根据数据特点和研究目标灵活选择。
+
+
+```bash
+# 选择1，朴素贝叶斯分类器
+# 注意，首先要有训练好的分类器qza文件才能用，可以参考下一节训练分类器
+qiime feature-classifier classify-sklearn \
+  --i-classifier unite-ver9-99-classifier-25.07.2023.qza \
+  --i-reads rep-seqs.qza \
+  --o-classification taxonomy.qza
+  
+# 选择2，vsearch
+qiime feature-classifier classify-consensus-vsearch \
+  --i-query rep-seqs.qza \
+  --i-reference-reads unite-ver9-seqs_99_25.07.2023.qza \
+  --i-reference-taxonomy unite-ver9-taxonomy_99_25.07.2023.qza \
+  --o-classification taxonomy_vsearch.qza
+  
+# 选择3，blast
+qiime feature-classifier classify-consensus-blast \
+  --i-query rep-seqs.qza \
+  --i-reference-reads unite-ver9-seqs_99_25.07.2023.qza \
+  --i-reference-taxonomy unite-ver9-taxonomy_99_25.07.2023.qza \
+  --o-classification taxonomy_blast.qza
+```
+
+简单画个物种堆积柱形图，后续导出数据再R里画也行。上面几种方法的物种注释结果有差异，在合适情况下还是选最常用的第一个吧。
+
+```bash
+# 可视化物种注释
+qiime metadata tabulate \
+  --m-input-file taxonomy.qza \
+  --o-visualization taxonomy.qzv
+  
+# 堆叠柱状图展示
+qiime taxa barplot \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization taxa-bar-plots.qzv
+```
+
+### 训练分类器
+
+注意，这个步骤一般需要较大内存（看数据库，UNITE这个我消耗了100G左右内存），运行时间也比较久，10多个小时
+
+```bash
+qiime feature-classifier fit-classifier-naive-bayes \
+  --i-reference-reads unite-ver9-seqs_99_25.07.2023.qza \
+  --i-reference-taxonomy unite-ver9-taxonomy_99_25.07.2023.qza \
+  --o-classifier unite-ver9-99-classifier-25.07.2023.qza
+```
+
+所以尽可能可以去找别人训练好的结果（因为序列是一样的，拿来用就行，但是要注意是在跟你同版本的Qiime2环境下训练的，不然可能用不了）
+
+这里整理了一些下载路径，可以尝试用用，毕竟不一定每个人都有足够的内存和时间来跑这个分类器：
+
+- UNITE (ITS)：<https://github.com/colinbrislawn/unite-train/releases>
+- Greengenes (16S rRNA)：<http://ftp.microbio.me/greengenes_release/2022.10/sklearn-1.4.2-compatible-nb-classifiers/>
+- Silva (16S/18S rRNA): <https://anw-sh.github.io/silva-138_classifiers/>
+- RDP (16S/28S rRNA): <https://sourceforge.net/projects/rdp-classifier/>
+
+### Kraken物种注释
+
+Qiime2注释可真慢呀😂，赶紧找了Kraken的替代方法，见[使用Kraken进行16S/ITS物种注释（超快）](../kraken-16s-its)
+
+## Export data
+
+qza，qzv文件是Qiime2的标准格式，还是导出成普通的文本文件（表格等）用来后续别的平台分析吧：
+
+
+```bash
+# 导出feature丰度表
+qiime tools export \
+  --input-path feature-table.qza \
+  --output-path exported-feature-table
+# 导出序列，在rep-seqs文件夹下
+qiime tools export \
+  --input-path rep-seqs.qza \
+  --output-path rep-seqs
+# 导出系统发育树
+qiime tools export \
+  --input-path unrooted-tree.qza \
+  --output-path exported-tree
+```
+
+## 功能预测
+
+16S测序的一大缺点就是只能的到物种信息，缺乏功能信息，使用PICRUSt软件进行16S功能预测分析（预测，稍微弥补这一缺点）。
+2018年推出了全新版本的PICRUSt，即PICRUSt2<https://github.com/picrust/picrust2>。
+
+PICRUSt2 (Phylogenetic Investigation of Communities by Reconstruction of Unobserved States)是一款基于标记基因序列来预测功能丰度的软件。
+
+“功能”通常指的是基因家族，如KEGG同源基因，预测通常基于16S rRNA基因测序数据，但也可以使用其他标记基因。
+
+
+```bash
+# 选择1. 使用 bioconda 安装 PICRUSt2 环境
+conda create -n picrust2 -c bioconda -c conda-forge picrust2
+
+#input就是我们上面导出来的otu.fasta和otu_table.txt
+picrust2_pipeline.py -s otu.fasta -i otu_table.txt -o picrust2_result -p 4
+```
+
+
+
+```bash
+# 选择2. 安装q2 picrust2插件（前面提到qiime2的一个特点是插件化，这里刚好可以试试，注意安装对于Qiime2版本的）
+conda install q2-picrust2 \
+  -c conda-forge \
+  -c bioconda \
+  -c picrust 
+
+# 跑整个流程
+qiime picrust2 full-pipeline \
+   --i-table feature-table.qza \
+   --i-seq rep-seqs.qza \
+   --output-dir q2-picrust2_output \
+   --p-placement-tool sepp \
+   --p-threads 1 \
+   --p-hsp-method pic \
+   --p-max-nsti 2 \
+   --verbose
+```
+
+q2-picrust2_output 中的这些输出文件是：
+- ec_metagenome.qza - EC 宏基因组预测（行是 EC 编号，列是样本）。
+- ko_metagenome.qza - KO 宏基因组预测（行是 KO，列是样本）。
+- Pathway_abundance.qza - MetaCyc 途径丰度预测（行是Pathway，列是样本）。
+
+
+```bash
+# 导出功能丰度表
+qiime tools export \
+   --input-path q2-picrust2_output/pathway_abundance.qza \
+   --output-path pathabun_exported
+```
+
+
+这样，整个扩增子上游就差不多了，得到了feature丰度表，feature的物种注释信息，预测的功能丰度表，后续分析就类似宏基因组的部分操作了。
+
+## References
+1. https://docs.qiime2.org/2024.10/
+2. https://www.jianshu.com/p/f31581bbfb80
+3. Evan Bolyen, Jai Ram Rideout, et al. 2019. Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2. **Nature Biotechnology** 37: 852-857. https://doi.org/10.1038/s41587-019-0209-9
+4. Douglas, G.M., Maffei, V.J., Zaneveld, J.R. et al. PICRUSt2 for prediction of metagenome functions. Nat Biotechnol 38, 685–688 (2020). https://doi.org/10.1038/s41587-020-0548-6
+5. https://github.com/YongxinLiu/EasyAmplicon
