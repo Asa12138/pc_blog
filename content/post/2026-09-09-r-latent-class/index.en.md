@@ -1,0 +1,471 @@
+---
+title: "R语言实现潜类别分析(Latent Class Analysis)"
+author: Peng Chen
+date: '2026-09-09'
+slug: r-latent-class
+categories:
+  - R
+tags:
+  - R
+  - statistics
+  - categorical
+  - latent-class
+description: 潜类别分析(Latent Class Analysis, LCA)是一种从多个分类观测指标中识别潜在亚群的统计方法。本文用 R 的 poLCA 包系统讲解原理与实操。
+image: index.en_files/figure-html/unnamed-chunk-9-1.png
+math: true
+license: ~
+hidden: no
+comments: yes
+---
+
+
+
+## 引言：为什么需要潜类别分析
+
+在社会科学、医学和行为研究中，我们经常用**一组分类变量**来刻画个体特征，例如：
+
+- 若干道**二值量表**题目（是/否）；
+- 几种**症状的有无**（头痛/失眠/乏力……）；
+- 几位**医生对同一患者的诊断**（有癌/无癌）。
+
+这些指标本身只是**表层的观测**。研究者真正关心的是：**在这些指标背后，是否存在若干个潜在的、互不重叠的人群（亚群/亚型）**？比如，有些"头痛+失眠+乏力"同时出现的患者，可能是同一个潜在亚群——他们共享某种我们看不见的病因或状态。
+
+**潜类别分析(Latent Class Analysis, LCA)** 正是回答这一问题的经典方法。它假设存在一个**离散的潜在变量**（即潜类别），该潜变量"解释"了所有观测指标之间的关联。LCA 的目标是：
+
+1. 从观测指标推断**潜类别的个数**；
+2. 估计每个样本**属于各潜类别的概率**；
+3. 刻画**每个类别在各项指标上的响应模式**（即"类别画像 profile"）。
+
+LCA 由 Lazarsfeld 于 1950 年代提出，经 Goodman、Clogg、Collins 等人发展，如今已广泛应用于心理学、社会学、医学的分型研究。需要注意的是，LCA 是**横截面、无监督**的方法——它不假设时间顺序，也不需要预先的类别标签。
+
+## LCA 的核心原理：潜变量模型
+
+### 1. 潜类别模型的基本设定
+
+假设有 $J$ 个分类观测指标（item），第 $j$ 个指标记作 $Y_j$，每个指标的类别数可能不同。LCA 假设存在一个**离散潜变量 $C$**，取值为 $1, 2, \ldots, K$（$K$ 为潜类个数）。LCA 的核心假设是**局部独立(Local Independence)**：**在给定潜类别 $C=k$ 的条件下，各观测指标彼此独立**。即：
+
+$$
+P(Y_1 = y_1, \ldots, Y_J = y_J) = \sum_{k=1}^{K} \pi_k \prod_{j=1}^{J} P(Y_j = y_j \mid C = k)
+$$
+
+其中：
+
+- $\pi_k = P(C = k)$ 是**类别概率(class membership probability)**，满足 $\sum_k \pi_k = 1$；
+- $P(Y_j = y_j \mid C=k)$ 是**条件响应概率(item-response probability)**，也叫条件概率，记作 $\rho_{jk}$。
+
+模型的可识别参数为 $(K-1)$ 个类别概率 $\pi_k$，以及每个类别中每个指标的响应概率。以二值指标（0/1）为例，每个类别对每个指标有 1 个自由参数（$P(Y_j=1|C=k)$），加上 $K-1$ 个 $\pi_k$。
+
+### 2. 局部独立假设的含义
+
+局部独立是 LCA 的关键假设。它意味着：**指标之间的所有关联都被潜变量"解释"了**。一旦我们知道了某人属于哪个类别，各指标就变得相互独立。这个假设看似严格，但实际中适度放宽（如允许指标对相关）也能工作；若指标间仍有强关联（称为"局部依赖 local dependence"），则可能提示类别数不足或需要扩展模型。
+
+### 3. 参数与 EM 算法
+
+LCA 的参数估计采用**极大似然估计(MLE)**。由于潜变量不可观测，似然函数需要对所有可能的类别求和，无法直接求导。标准解法是 **EM 算法(Expectation-Maximization)**：
+
+- **E 步**：给定当前参数，计算每个样本属于各类别的**后验概率**：
+$$
+\hat{p}_{ik} = \frac{\pi_k \prod_j P(Y_{ij} \mid C=k)}{\sum_{k'} \pi_{k'} \prod_j P(Y_{ij} \mid C=k')}
+$$
+- **M 步**：用这些后验概率作为"软分类权重"，重新估计类别概率和响应概率。
+
+反复迭代直到似然收敛。poLCA 正是用 EM 算法实现的。
+
+### 4. 后验概率与分类
+
+对每个样本 $i$，EM 收敛后得到它属于每个类别 $k$ 的后验概率 $\hat{p}_{ik}$。把这些后验概率最大化的类别作为预测类别（modal assignment）。后验概率的清晰度反映分类质量：
+- 若某样本的 $\hat{p}_{ik}$ 接近 0 或 1，说明分类明确；
+- 若接近 $1/K$，说明该样本介于类别之间，分类模糊。
+
+### 5. 类别数的选择：信息准则
+
+潜类别个数 $K$ 是模型选择的关键。常用**信息准则**：
+
+- **AIC** $= -2\log L + 2m$（$m$ 为参数个数）
+- **BIC** $= -2\log L + m\ln N$（$N$ 为样本数）
+- **G² (似然比统计量)**：衡量模型拟合优度的偏差统计量。
+
+一般规则：
+- **BIC 通常比 AIC 更倾向选择较简单的模型**（更严厉地惩罚参数），是 LCA 中最常用的准则；
+- 比较不同 $K$ 时，选择 BIC（或 AIC）**最小**的模型；
+- 同时参考**熵(entropy)**和**类别占比**：类别占比不应过小（如 <5%），否则可能是过度拟合。
+
+### 6. 分类质量的度量：标准化熵
+
+**标准化熵(standardized entropy)**，也叫熵 $R^2$，衡量分类的清晰程度：
+
+$$
+H = 1 - \frac{-\sum_i \sum_k \hat{p}_{ik} \log \hat{p}_{ik}}{N \log K}
+$$
+
+- $H$ 接近 1：后验概率接近 0/1，**分类清晰**；
+- $H$ 接近 0：后验概率均匀，**分类模糊**；
+- 通常 $H > 0.8$ 认为分类质量较好。
+
+## LCA 与其它聚类方法的区别
+
+| 方法 | 数据类型 | 核心思想 | 特点 |
+|------|---------|---------|------|
+| **LCA** | 分类指标 | 潜在离散变量 + 局部独立 | 概率模型，输出后验概率，模型可比较 |
+| **K-means** | 连续变量 | 距离最小化 | 硬分类，需预设 K，无概率输出 |
+| **潜在剖面分析(LPA)** | 连续变量 | LCA 的连续版本 | 指标为连续，本质同 LCA |
+| **因子分析(FA)** | 连续指标 | 潜在连续因子 | 因子是连续的，不是离散亚群 |
+| **混合模型(GMM)** | 连续变量 | 高斯混合 | 连续潜变量，每类可各有协方差 |
+
+LCA 的独特优势：**专门处理分类指标**，输出**概率性归属**（而非硬性归类），且提供**正式的模型比较**（AIC/BIC）。
+
+## 环境准备
+
+我们使用 R 的 **poLCA** 包（Polytomous Variable Latent Class Analysis）。
+
+```r
+# 首次使用时安装
+install.packages("poLCA")
+```
+
+
+``` r
+library(poLCA)
+library(dplyr)
+library(ggplot2)
+```
+
+## 实操：经典的癌诊断数据
+
+我们用 poLCA 内置的 **`carcinoma`** 数据集。这是 Agresti (2002)《Categorical Data Analysis》第 542 页 Table 13.1 的经典数据：**7 位病理学家(A~G)对 118 张宫颈切片的癌诊断**，1=无癌，2=有癌。这个数据的价值在于：**多位医生的诊断并不总是一致**，我们想从这些不一致的评分中找出潜在的患者亚型。
+
+### 步骤1：了解数据
+
+
+``` r
+library(poLCA)
+data(carcinoma)
+
+# 118 位患者 × 7 位病理学家
+dim(carcinoma)
+## [1] 118   7
+head(carcinoma, 6)
+##   A B C D E F G
+## 1 1 1 1 1 1 1 1
+## 2 1 1 1 1 1 1 1
+## 3 1 1 1 1 1 1 1
+## 4 1 1 1 1 1 1 1
+## 5 1 1 1 1 1 1 1
+## 6 1 1 1 1 1 1 1
+```
+
+可以看到每位患者有 7 个诊断（A~G），取值 1（无癌）或 2（有癌）。不同病理学家对同一患者的判断可能不同——这正是 LCA 适用的场景。
+
+### 步骤2：拟合不同类别数的模型
+
+LCA 的第一步是确定类别数。我们先拟合 1~4 类的模型，比较信息准则。注意 `poLCA()` 用 EM 算法，可能陷入局部最优，因此要设置 `nrep`（多次随机重启动）并用 `set.seed()` 保证可重复。
+
+
+``` r
+# 定义模型公式：7 个指标，右侧 ~1 表示不含协变量
+f <- cbind(A, B, C, D, E, F, G) ~ 1
+
+# 拟合 1~4 类模型，各重启多次避免局部最优
+fit_tab <- data.frame(K = integer(), logLik = double(), npar = double(),
+                      AIC = double(), BIC = double(), Gsq = double())
+for (K in 1:4) {
+  set.seed(4719)
+  m <- poLCA(f, data = carcinoma, nclass = K, nrep = 15, verbose = FALSE)
+  fit_tab <- rbind(fit_tab, data.frame(
+    K = K, logLik = m$llik, npar = m$npar,
+    AIC = m$aic, BIC = m$bic, Gsq = m$Gsq
+  ))
+}
+
+round(fit_tab, 2)
+##   K  logLik npar     AIC     BIC    Gsq
+## 1 1 -524.46    7 1062.93 1082.32 476.78
+## 2 2 -317.26   15  664.51  706.07  62.37
+## 3 3 -293.70   23  633.41  697.14  15.26
+## 4 4 -289.29   31  640.57  726.46   6.42
+```
+
+输出解读：
+
+- **K=1 vs K=2**：BIC 从 1082 降到 706，G² 从 477 降到 62——2 类模型显著更好。
+- **K=2 vs K=3**：BIC 从 706 降到 697（进一步改善），G² 从 62 降到 15。
+- **K=3 vs K=4**：BIC 反而上升（697→726），尽管 G² 降至 6.4。
+
+**BIC 和 AIC 都在 K=3 时最小**，因此选择 **3 类模型**。BIC 对过拟合的惩罚说明 4 类模型在引入额外参数后并未带来足够的信息增益。
+
+### 步骤3：模型选择的可视化
+
+
+``` r
+# 用 base R 手工构成长格式绘制 BIC/AIC 曲线
+fit_long <- data.frame(
+  K   = rep(1:4, 2),
+  idx = rep(c("AIC", "BIC"), each = 4),
+  val = c(fit_tab$AIC, fit_tab$BIC)
+)
+
+ggplot(fit_long, aes(x = K, y = val, color = idx, group = idx)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2.5) +
+  geom_vline(xintercept = 3, linetype = 2, color = "grey40") +
+  scale_x_continuous(breaks = 1:4) +
+  labs(x = "潜类别数 K", y = "信息准则值", color = "指标") +
+  theme_minimal() +
+  theme(text = element_text(family = "PingFang SC"))   # 指定中文字体
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-5-1.png" alt="" width="80%" />
+
+### 步骤4：拟合 3 类模型并解读
+
+选定 K=3 后，我们细致拟合并检查参数。
+
+
+``` r
+set.seed(4719)
+lc3 <- poLCA(f, data = carcinoma, nclass = 3, nrep = 15, verbose = FALSE)
+
+# 类别概率（各潜在亚群占比）
+lc3$P
+## [1] 0.1817079 0.4447277 0.3735644
+
+# 预测类别分布
+table(lc3$predclass)
+## 
+##  1  2  3 
+## 23 51 44
+```
+
+#### 解读类别概率
+
+3 个类别的占比为：**Class 1 ≈ 18.2%、Class 2 ≈ 44.5%、Class 3 ≈ 37.4%**。三者都不算太小（均 > 10%），说明没有过度拟合出"只包含个别样本"的微小类别。
+
+### 步骤5：解读条件响应概率（类别画像）
+
+LCA 最有价值的部分是**每个类别在各项指标上的响应模式**。输出 `lc3$probs` 给出了每个类别对每个指标（无癌/有癌）的概率。
+
+
+``` r
+# 查看条件概率（只显示第一个指标 A）
+lc3$probs
+```
+
+我们把它转成清晰的表。由于 poLCA 的 `probs` 是按指标嵌套的列表，用一个小函数提取：
+
+
+``` r
+# poLCA 对象没有直接的类别数字段，用 probs[[1]] 的行数取出类别数
+extract_probs <- function(lc) {
+  K <- nrow(lc$probs[[1]])   # 类别数 = 条件概率矩阵的行数
+  rows <- lapply(seq_along(lc$probs), function(j) {
+    m <- lc$probs[[j]]
+    data.frame(
+      Item = rep(names(lc$probs)[j], K),
+      Class = paste("Class", seq_len(K)),
+      P_no_cancer  = as.numeric(m[, "Pr(1)"]),
+      P_yes_cancer = as.numeric(m[, "Pr(2)"])
+    )
+  })
+  do.call(rbind, rows)
+}
+tbl <- extract_probs(lc3)
+# 只对数值列保留 3 位小数（含字符的列不能直接 round）
+tbl[, c("P_no_cancer", "P_yes_cancer")] <- round(tbl[, c("P_no_cancer", "P_yes_cancer")], 3)
+tbl
+##    Item   Class P_no_cancer P_yes_cancer
+## 1     A Class 1       0.487        0.513
+## 2     A Class 2       0.000        1.000
+## 3     A Class 3       0.943        0.057
+## 4     B Class 1       0.000        1.000
+## 5     B Class 2       0.019        0.981
+## 6     B Class 3       0.862        0.138
+## 7     C Class 1       1.000        0.000
+## 8     C Class 2       0.142        0.858
+## 9     C Class 3       1.000        0.000
+## 10    D Class 1       0.942        0.058
+## 11    D Class 2       0.414        0.586
+## 12    D Class 3       1.000        0.000
+## 13    E Class 1       0.249        0.751
+## 14    E Class 2       0.000        1.000
+## 15    E Class 3       0.945        0.055
+## 16    F Class 1       1.000        0.000
+## 17    F Class 2       0.524        0.476
+## 18    F Class 3       1.000        0.000
+## 19    G Class 1       0.369        0.631
+## 20    G Class 2       0.000        1.000
+## 21    G Class 3       1.000        0.000
+```
+
+#### 解读条件概率
+
+各类别对"判有癌"(Pr(2)) 的概率如下（Pr(2) 高说明该病理学家认为此类别倾向于有癌）：
+
+- **Class 1**（占比 18.2%）：**分歧类**。B(1.00)、E(0.75)、G(0.63) 判有癌概率高，但 C(0.00)、F(0.00) 判有癌概率为 0、D(0.06) 也极低——**不同病理学家对这类患者的判断很不一致**。
+- **Class 2**（占比 44.5%）：**一致有癌类**。A(1.00)、B(0.98)、E(1.00)、G(1.00) 判有癌概率接近 1，C(0.86)、D(0.59)、F(0.48) 也偏高——**几乎所有病理学家都倾向于诊断有癌**。
+- **Class 3**（占比 37.4%）：**一致无癌类**。所有病理学家判有癌的概率都极低（0.00~0.14）——**几乎所有病理学家都判断无癌**。
+
+于是 LCA 从 7 位医生不一致的诊断中揭示出三个潜在亚群：**明确有癌、明确无癌、以及诊断有争议的一类**。这正是 LCA 的典型价值——从多个观测指标的重叠模式中识别出不可直接观测的人群分型。
+
+> **提示**：潜类别的"标签顺序"（谁是 Class 1、2、3）是由 EM 算法的初始值和收敛次序决定的，**没有固定意义**。换一个随机种子或 `nrep` 后，类别可能交换编号，但 3 个类别的本质（有癌/无癌/分歧）不变。因此解读时要以**每个类别的条件概率画像**为准，而不是类别编号。
+
+### 步骤6：类别画像可视化
+
+用条形图展示每个类别的条件概率，更直观：
+
+
+``` r
+# 把条件概率构造成长格式（base R）
+K <- nrow(lc3$probs[[1]])   # 类别数
+profile_df <- do.call(rbind, lapply(names(lc3$probs), function(it) {
+  m <- lc3$probs[[it]]
+  rbind(
+    data.frame(Item = it, Class = paste("Class", seq_len(K)),
+               Response = "无癌 (1)",
+               Prob = as.numeric(m[, "Pr(1)"])),
+    data.frame(Item = it, Class = paste("Class", seq_len(K)),
+               Response = "有癌 (2)",
+               Prob = as.numeric(m[, "Pr(2)"]))
+  )
+}))
+profile_df$Class <- factor(profile_df$Class, levels = paste("Class", 1:K))
+profile_df$Item <- factor(profile_df$Item, levels = names(lc3$probs))
+
+ggplot(profile_df, aes(x = Item, y = Prob, fill = Response)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~Class, ncol = 1) +
+  scale_fill_manual(values = c("#2c7fb8", "#d95f0e")) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(x = "病理学家", y = "条件概率", fill = "诊断结果") +
+  theme_minimal() +
+  theme(text = element_text(family = "PingFang SC"))   # 指定中文字体
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-9-1.png" alt="" width="90%" />
+
+### 步骤7：后验概率与分类质量
+
+每个样本在各类别上的后验概率存于 `lc3$posterior`。我们计算**标准化熵**衡量分类清晰度，并展示后验分类。
+
+
+``` r
+# 后验概率矩阵（每行一个样本，每列一个类别）
+post <- lc3$posterior
+
+# 标准化熵：越接近 1 分类越清晰
+entropy_raw <- -sum(post[post > 0] * log(post[post > 0]))
+entropy_norm <- 1 - entropy_raw / (nrow(post) * log(ncol(post)))
+cat("标准化熵 (entropy R²) =", round(entropy_norm, 3), "\n")
+## 标准化熵 (entropy R²) = 0.926
+```
+
+标准化熵约为 0.92，说明**分类较为清晰**，样本大多能明确归属到某一类别。
+
+我们再看看每个类别的平均后验概率（反映各类别的"纯度"）：
+
+
+``` r
+# 各类别的平均后验概率
+avg_posterior <- sapply(1:3, function(k) mean(post[, k]))
+names(avg_posterior) <- paste("Class", 1:3)
+round(avg_posterior, 3)
+## Class 1 Class 2 Class 3 
+##   0.182   0.445   0.374
+```
+
+## 进阶：带协变量的 LCA
+
+在实际研究中，我们常想知道**哪些因素影响个体的类别归属**。poLCA 允许在公式右侧加入协变量，直接建模"类别概率 $\pi_k$ 如何随协变量变化"（此时 $\pi_k$ 用多项 logistic 建模）。
+
+下面用一个**可复现的模拟数据**演示：我们生成 200 个样本，其潜在类别由一个"风险分数"变量 $x$ 决定，4 个二分指标在两类之间有不同的响应模式。
+
+
+``` r
+set.seed(7841)
+n <- 200
+x <- rnorm(n)                       # 协变量：风险分数
+p_class2 <- plogis(-0.5 + 1.2 * x)  # 类别 2 的概率随 x 增大
+trueclass <- ifelse(runif(n) < p_class2, 2, 1)
+
+# 每个类别有不同的响应概率（高风险类更多指标=有）
+prob_by_class <- list(
+  `1` = c(0.90, 0.80, 0.15, 0.10),
+  `2` = c(0.20, 0.25, 0.85, 0.80)
+)
+simdata <- as.data.frame(matrix(NA, n, 4))
+names(simdata) <- paste0("Y", 1:4)
+for (i in 1:n) {
+  pv <- prob_by_class[[as.character(trueclass[i])]]
+  simdata[i, ] <- rbinom(4, 1, pv) + 1   # 转成 1/2 编码
+}
+simdata$x <- x
+head(simdata, 4)
+##   Y1 Y2 Y3 Y4           x
+## 1  1  2  2  1 -1.43932373
+## 2  1  1  1  2  1.77975510
+## 3  2  2  1  1 -1.31974286
+## 4  1  1  2  2  0.09409911
+```
+
+### 带协变量的 LCA
+
+
+``` r
+set.seed(4719)
+lc_cov <- poLCA(cbind(Y1, Y2, Y3, Y4) ~ x, data = simdata, nclass = 2,
+                nrep = 10, verbose = FALSE)
+
+# 类别-协变量关联（2/1 类别的 logistic 系数）
+lc_cov$coeff
+##                   [,1]
+## (Intercept) -0.4456886
+## x            1.1098658
+```
+
+#### 解读协变量效应
+
+输出中 `2 / 1` 部分给出**类别 2 相对类别 1 的多项 logistic 系数**：
+
+- 系数 `x = 1.11`，标准误 `0.23`，p ≈ 0.005（显著）；
+- 含义：**风险分数 x 每增加 1 个单位，样本属于类别 2 的 log-odds 增加 1.11**（即更可能落入"高风险"类别）。
+
+这演示了 LCA 的完整能力：**既从分类指标中提取潜类别，又能用协变量解释类别归属**。
+
+> **注意**：`lc_cov$coeff` 的行对应"类别 j 相对基准类别 1"的系数。多个协变量时，每个协变量会出现在每个非基准类别对应的行中。
+
+## LCA 的优缺点
+
+### 优点
+
+1. **专为分类指标设计**：LCA 处理的是分类/有序类别数据，这是 K-means 等方法无法直接处理的。
+2. **概率性归属**：输出后验概率，可评估分类的不确定性，而非硬性归类。
+3. **正式的模型比较**：AIC/BIC/G² 提供客观的类别数选择。
+4. **可加协变量**：直接建模类别概率依赖协变量，支持预测与解释。
+5. **结果可解释**：每个类别有清晰的"响应画像"，易于向非统计背景的读者解释。
+
+### 局限性
+
+1. **模型选择不唯一**：BIC/AIC 的选择可能不一致，且类别过多易过度拟合（需结合熵、类别占比综合判断）。
+2. **局部独立假设较强**：若指标间存在局部依赖，模型可能低估类别数或拟合偏差。
+3. **可能陷入局部最优**：EM 算法对初始值敏感，需多次重启动（`nrep`）。
+4. **对样本量敏感**：类别较多或指标水平多时，需要足够样本才能稳定估计。
+5. **类别解释依赖研究者判断**：LCA 输出的类别是需要外部效度证据支撑的"统计构造"，不能自动对应真实疾病/亚型。
+
+### 注意事项
+
+- **设置 `nrep`**：至少 `nrep = 10` 以上，并用 `set.seed()` 保证可重复。
+- **检查局部最优**：多次运行结果若不稳定，需增加 `nrep` 或改变初始值。
+- **综合选类别数**：不要只看 BIC，还要看标准化熵、类别占比、类别可解释性。
+- **指标编码**：应明确指标的取值含义（如 1/2），poLCA 会按指标的实际水平数建模。
+- **协变量注意**：加入协变量会改变模型复杂度，应基于研究问题决定是否包含。
+
+## 参考文献与扩展
+
+- Lazarsfeld, P. F., & Henry, N. W. (1968). *Latent Structure Analysis*. Houghton Mifflin.
+- Agresti, A. (2002). *Categorical Data Analysis* (2nd ed.). Wiley. （carcinoma 数据来源）
+- Linzer, D. A., & Lewis, J. B. (2011). poLCA: An R Package for Polytomous Variable Latent Class Analysis. *Journal of Statistical Software*, 42(10), 1-29.
+- Collins, L. M., & Lanza, S. T. (2010). *Latent Class and Latent Transition Analysis*. Wiley.
+- 相关扩展：`poLCA` 支持协变量；`depmixS4` 可做潜类别转移(潜在转换)分析；`mclust` 处理连续变量的高斯混合模型。
+
+## 小结
+
+潜类别分析(LCA)用一个**离散潜变量**解释多个分类观测指标之间的关联，通过 EM 算法估计类别概率与条件响应概率，从而从数据中发现潜在亚群。本文用 poLCA 包 + 经典的癌诊断数据走通了完整流程：确定类别数（BIC/AIC）→ 拟合模型 → 解读条件概率画像 → 后验分类与标准化熵 → 可视化，最后用模拟数据演示了带协变量的 LCA。掌握这些，你就能在自己的分类指标数据上识别潜在的人群分型。

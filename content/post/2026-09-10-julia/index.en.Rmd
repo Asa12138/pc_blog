@@ -1,0 +1,389 @@
+---
+title: Julia初尝试
+author: Peng Chen
+date: '2026-09-10'
+slug: julia
+categories:
+  - utils
+tags:
+  - Julia
+  - programming
+description: Julia 是一门为科学计算设计的高性能动态语言，兼顾脚本语言的易用性与 C/Fortran 级的运行速度。本文记录从安装、REPL、基本语法、多重派发到包管理与 R 互操作的入门路径。
+image: images/julia.jpg
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+## 引言：为什么还要再学一门语言
+
+做数据分析的人通常已经身在 R 或 Python 的生态里，再学一门语言似乎并不划算。Julia 之所以值得一试，是因为它瞄准的是一个长期痛点——**"两语言问题"（two-language problem）**：用易写的动态语言（R / Python）做原型，一旦性能不够，就得用 C / C++ / Fortran 重写热点，于是同一套逻辑要维护两份。
+
+Julia 的目标是让**同一份代码既好写又快**。它是一门动态类型语言，却通过 **JIT（即时编译）** 和 **多重派发（multiple dispatch）** 把性能推到了接近静态编译语言的量级。对科学计算而言，它的几个特点尤其对胃口：
+
+- **为数值而生**：原生支持多维数组、线性代数、复数、有理数，语法贴近数学公式；
+- **快**：类型稳定的代码性能可与 C 媲美，且无需离开这门语言；
+- **多重派发**：函数行为由所有参数的类型共同决定，这是它最核心的设计；
+- **生态互通**：`JuliaCall` / `RCall.jl` / `PythonCall.jl` 让 Julia 可以和 R、Python 互相调用。
+
+官方社区：<https://julialang.org/>；中文社区：<https://cn.julialang.org/>。
+
+> 中文入门参考：<https://www.math.pku.edu.cn/teachers/lidf/docs/Julia/html/_book/basics.html>
+
+## 安装 Julia
+
+### 推荐方式：juliaup
+
+现在官方推荐用 **`juliaup`**（Julia 官方版本管理器）安装，它同时解决了"装哪个版本"和"如何切换版本"两个问题。
+
+macOS / Linux：
+
+```bash
+curl -fsSL https://install.julialang.org | sh
+```
+
+Windows（PowerShell 或 CMD）：
+
+```powershell
+winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore
+```
+
+安装完成后**重启终端**，或手动加载 shell 配置：
+
+```bash
+source ~/.zshrc     # 如果你用 zsh
+source ~/.bashrc    # 如果你用 bash
+```
+
+### 早期方式：jill
+
+`juliaup` 出现之前，社区常用 Python 写的 `jill` 来安装（即本篇最初记录的方法）。它现在仍然可用，但新用户没必要再用：
+
+```bash
+pip install jill --user -U
+
+python -m jill install --upstream BFSU
+```
+
+其中 `--upstream BFSU` 指定从北京外国语大学镜像下载，在校园网 / 国内网络下速度明显更快。
+
+### 验证与版本管理
+
+```bash
+julia --version        # 查看当前版本，例如 julia version 1.12.7
+juliaup status         # 查看已安装的版本与默认 channel
+```
+
+`juliaup` 常用命令：
+
+| 命令 | 作用 |
+|------|------|
+| `juliaup list` | 列出所有可用 channel（`release` / `lts` / `1.10` 等） |
+| `juliaup add 1.10` | 额外安装 1.10 系列 |
+| `juliaup default lts` | 把默认版本切到长期支持版 |
+| `juliaup update` | 更新所有已安装版本 |
+| `juliaup remove 1.10` | 卸载某个版本 |
+| `julia +1.10` | 临时用某个版本启动 |
+
+## 进入 REPL
+
+直接在终端输入 `julia` 即可进入交互式环境（REPL，即 Read-Eval-Print Loop）：
+
+```text
+$ julia
+
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.12.7
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org release
+|__/                   |
+
+julia> 1 + 2
+3
+```
+
+REPL 有几个**模式**，这是 Julia 的鲜明特色：
+
+- `julia>`：默认模式，执行代码；
+- 按 `]` 进入 **Pkg 模式**，提示符变为 `(@v1.12) pkg>`，用于装包、管理环境；
+- 按 `;` 进入 **shell 模式**，可直接执行系统命令；
+- 按 `?` 进入 **help 模式**，输入任意函数名即可查看文档；
+- 按 `Backspace` 退回默认模式，`Ctrl-D` 或 `exit()` 退出。
+
+> 小技巧：REPL 输入被自动补全（Tab），`ans` 变量保存上一次的结果，行尾加 `;` 则不打印返回值。
+
+## 基本语法速览
+
+Julia 的语法对 R / Python 用户来说相当亲切。下面给出常用片段，配合 REPL 逐个敲一遍即可建立手感。
+
+### 变量与类型
+
+Julia 是动态类型语言，变量无需声明类型，但每个值都有具体类型：
+
+```julia
+x = 1            # Int64
+y = 1.0          # Float64
+s = "hello"      # String
+b = true         # Bool
+
+typeof(x)        # 查看类型
+x = 1.5          # 变量可以换类型，动态语言的常规操作
+```
+
+数值字面量支持数学写法，比如 `2im`（复数）、`3//4`（有理数）、`1e-3`（科学计数）。
+
+### 字符串
+
+```julia
+name = "Julia"
+"Hello, $name!"            # 字符串插值，用 $ 引用变量
+"1 + 1 = $(1 + 1)"        # $( ) 里可以放任意表达式
+"abc" * "def"             # 拼接用 * 而不是 +
+```
+
+### 数组与广播
+
+数组是 Julia 的主角。注意两个和 R 不同的地方：**索引从 1 开始**，**列优先（column-major）存储**。
+
+```julia
+a = [1, 2, 3]                  # Vector{Int64}
+m = [1 2; 3 4]                 # 2×2 Matrix{Int64}，分号分行
+a[1]                           # 第一个元素（不是 a[0]）
+m[:, 1]                        # 第一列
+a .+ 1                         # 广播：每个元素加 1，结果 [2, 3, 4]
+a .* 2                         # 广播乘法
+sum(a), length(a), maximum(a)  # 常用聚合函数
+```
+
+点号 `.` 是**广播（broadcasting）**运算符，表示"逐元素"操作。这是 Julia 里极高频率出现的语法。
+
+### 控制流与循环
+
+```julia
+if x > 0
+    println("positive")
+elseif x == 0
+    println("zero")
+else
+    println("negative")
+end
+
+for i in 1:5
+    println(i)
+end
+
+while x > 0
+    global x -= 1      # 循环体里修改外层变量需用 global
+end
+```
+
+### 函数
+
+```julia
+function add(a, b)
+    return a + b
+end
+
+add(1, 2)
+
+# 简洁写法（赋值形式）
+square(x) = x^2
+square(3)
+
+# 支持默认值与关键字参数
+greet(name; greeting = "Hello") = "$greeting, $name!"
+greet("Julia")                          # "Hello, Julia!"
+greet("Julia"; greeting = "Hi")         # "Hi, Julia!"
+```
+
+## 核心特性：多重派发
+
+**多重派发**是 Julia 区别于其他语言的关键设计。同一个函数名可以有一组**方法（method）**，Julia 会根据**所有实参的类型**在运行时选择最匹配的那个：
+
+```julia
+f(x::Int)    = "整数"
+f(x::Float64) = "浮点数"
+f(x::String)  = "字符串"
+
+f(1)        # "整数"
+f(1.0)      # "浮点数"
+f("a")      # "字符串"
+```
+
+在 REPL 里用 `methods(f)` 可以列出某个函数的所有方法。这与 R 的 S3/S4 泛型函数、Python 的单派发有相似之处，但 Julia 让**多个参数**共同参与选择——例如 `*(::Matrix, ::Vector)` 与 `*(::Vector, ::Matrix)` 可以是完全不同的实现。
+
+围绕类型系统，还会用到：
+
+```julia
+abstract type AbstractShape end
+
+struct Circle <: AbstractShape
+    radius::Float64
+end
+
+struct Square <: AbstractShape
+    side::Float64
+end
+
+area(c::Circle) = pi * c.radius^2
+area(s::Square) = s.side^2
+
+area(Circle(1.0))   # 3.141592653589793
+area(Square(2.0))   # 4.0
+```
+
+`struct` 定义复合类型，`<:` 表示子类型关系。**抽象类型 + 具体类型 + 多重派发**的组合，是 Julia 组织大型代码库的基本范式。
+
+## 包管理：Pkg
+
+Julia 内置了包管理器 `Pkg`，无需额外安装。在 REPL 中按 `]` 进入 Pkg 模式后：
+
+```julia
+# 在 Pkg 模式下（提示符形如 (@v1.12) pkg>）
+add DataFrames
+add Plots
+status
+update
+```
+
+等价的脚本写法：
+
+```julia
+using Pkg
+Pkg.add("DataFrames")
+Pkg.status()
+Pkg.update()
+```
+
+### 环境（Project）
+
+Julia 用**环境**隔离不同项目的依赖，核心是两个文件：`Project.toml`（直接依赖）和 `Manifest.toml`（完整依赖图，含精确版本）。为项目创建独立环境：
+
+```julia
+using Pkg
+Pkg.activate(".")        # 在当前目录创建/启用环境
+Pkg.add("DataFrames")    # 依赖写入本项目的 Project.toml
+```
+
+之后启动一个使用该环境的会话：
+
+```bash
+julia --project=.
+```
+
+> 实践建议：**每个项目一个环境**，把 `Project.toml` 和 `Manifest.toml` 都提交到 Git，这样环境可精确复现。这一点和 R 的 `renv`、Python 的虚拟环境思路一致。
+
+常用生态包：
+
+| 领域 | 包 |
+|------|-----|
+| 数据结构 | `DataFrames.jl`、`DataFramesMeta.jl` |
+| 绘图 | `Plots.jl`（易用）、`Makie.jl`（高性能） |
+| 统计 / 贝叶斯 | `Statistics`（标准库）、`Distributions.jl`、`Turing.jl` |
+| 微分方程 | `DifferentialEquations.jl` |
+| 机器学习 | `MLJ.jl`、`Flux.jl` |
+| R / Python 互调 | `RCall.jl`、`PythonCall.jl` |
+
+## 性能：为什么 Julia 快
+
+Julia 的快来自 **JIT 编译 + 类型稳定（type stability）**。所谓类型稳定，是指函数内部变量的类型可以从输入类型推断出来。类型稳定的代码，编译器能生成接近 C 的机器码。
+
+```julia
+using BenchmarkTools
+
+function mysum(a)
+    s = 0
+    for x in a
+        s += x
+    end
+    return s
+end
+
+a = rand(10^6)
+@time mysum(a)          # 首次调用含编译时间
+@time mysum(a)          # 第二次才是纯运行时间
+@btime mysum($a)        # BenchmarkTools：多次采样，结果更可靠
+```
+
+几个诊断工具：
+
+- `@time`：查看耗时与内存分配（注意**首次调用包含编译时间**，测性能要跑第二次）；
+- `@btime` / `@benchmark`：来自 `BenchmarkTools.jl`，多次运行取统计量；
+- `@code_warntype`：高亮类型不稳定的位置，帮助定位性能瓶颈。
+
+另一个易踩的坑是**全局变量**：在脚本顶层定义的全局变量会让编译器难以做类型推断，从而明显变慢。标准做法是把逻辑写进函数，或把全局变量声明为 `const`。
+
+## 与 R / Python 的互操作
+
+Julia 并不要求你把现有代码全部重写。以 R 为例，两个方向都有成熟的桥：
+
+**在 R 里调用 Julia**——用 `JuliaCall`：
+
+```r
+install.packages("JuliaCall")
+library(JuliaCall)
+
+julia_setup()                        # 初始化（需已安装 Julia）
+julia_command("a = [1, 2, 3]")       # 执行 Julia 代码
+julia_eval("sum(a)")                 # 取值，返回 6
+julia_assign("x", 10)                # 把 R 对象传入 Julia
+```
+
+**在 Julia 里调用 R**——用 `RCall.jl`：
+
+```julia
+using Pkg; Pkg.add("RCall")
+using RCall
+
+R"summary(cars)"                     # 直接在 Julia 中执行 R 代码
+@rput a                              # 把 Julia 变量传给 R
+@rget a                              # 从 R 取回变量
+```
+
+同理，`PythonCall.jl` / `PyCall.jl` 让 Julia 可以直接使用 Python 生态。**这意味着可以只把性能热点用 Julia 重写，其余部分留在 R / Python**——正是对"两语言问题"的务实解。
+
+## 优缺点
+
+### 优点
+
+1. **快**：类型稳定的代码性能接近 C，无需为了性能换语言；
+2. **数值友好**：语法贴近数学，原生支持数组、线性代数、复数等；
+3. **多重派发**：表达力强，代码组织清晰，适合构建大型科学计算库；
+4. **包管理器内置且可复现**：环境（Project / Manifest）开箱即用；
+5. **互操作性好**：可与 R、Python、C 相互调用，渐进式采用。
+
+### 局限
+
+1. **首次调用慢**：JIT 编译导致第一次运行有"编译延迟"（time-to-first-plot 是常见吐槽）；
+2. **生态相对年轻**：包的数量和成熟度不及 R / Python，某些细分领域可能缺库；
+3. **全局变量陷阱**：不写成函数就容易踩性能坑，对新手不友好；
+4. **内存占用**：运行时与编译缓存会占用较多内存与磁盘；
+5. **调试体验**：错误栈信息偶尔偏底层，需要时间适应。
+
+### 注意事项
+
+- **测性能要跑第二次**：首次调用包含编译时间，别被吓到；
+- **把逻辑写进函数**：避免顶层全局变量拖慢执行；
+- **固定环境**：提交 `Project.toml` 和 `Manifest.toml`，保证可复现；
+- **别急着全部重写**：先用 `JuliaCall` / `RCall.jl` 做增量替换，性价比更高。
+
+## 学习资源
+
+- 官方文档：<https://docs.julialang.org/>
+- 官方学习页：<https://julialang.org/learning/>
+- 中文社区：<https://cn.julialang.org/>
+- 北大李东风《Julia 语言入门》：<https://www.math.pku.edu.cn/teachers/lidf/docs/Julia/html/_book/basics.html>
+- Modern Julia Workflows（工作流实践）：<https://modernjuliaworkflows.org/>
+- 与 R / Python 的差异速查：官方手册 *Noteworthy Differences from other Languages* 一节值得先读。
+
+## 小结
+
+Julia 用 **JIT + 多重派发 + 类型系统**，试图在"好写"和"快"之间不再二选一。本文走通了从安装（`juliaup`）、REPL 模式、基本语法、多重派发、`Pkg` 环境管理，到性能诊断与 R 互操作的入门路径。对已有 R / Python 工作流的科研人员，最省力的入手方式是：**先把它当作可被 R 调用的"高性能计算后端"**（`JuliaCall`），在真实问题里逐步体会它的设计取舍。

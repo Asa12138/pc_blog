@@ -1,0 +1,322 @@
+---
+title: 差异丰度分析（differential abundance analysis）
+author: Peng Chen
+date: '2026-09-19'
+slug: differential-abundance-analysis
+categories:
+  - R
+tags:
+  - statistics
+  - 差异分析
+  - metagenomic
+description: 差异丰度分析是微生物组研究的核心统计任务，但组成性、稀疏性与文库大小差异让它远比普通差异表达复杂。本文梳理主要方法家族，并用 ALDEx2 与 DESeq2 演示完整流程。
+image: index.en_files/figure-html/unnamed-chunk-5-1.png
+math: true
+license: ~
+hidden: no
+comments: yes
+---
+
+
+
+## 什么是差异丰度分析
+
+**差异丰度分析（differential abundance analysis, DA）** 要回答的问题是：**在不同条件（健康 vs 疾病、处理 vs 对照）下，哪些微生物类群或功能基因的丰度发生了显著变化？**
+
+它表面上与 RNA-seq 的差异表达（DE）很像——输入都是"特征 × 样本"的计数矩阵——但**有三处本质差异**，正是这三处让 DA 成为一个独立的统计问题。
+
+## 为什么 DA 比差异表达难
+
+### 1. 组成性（compositionality）
+
+微生物组数据通常是**相对丰度**：每个样本的各物种占比之和恒等于 1。这意味着：
+
+> 任何一个物种的丰度上升，必然导致其他物种的相对丰度下降——**即使它们的绝对量完全没变**。
+
+这会造成**伪相关**与**伪差异**。例如某个高丰度物种剧烈增长，会让所有其他物种看起来都"下降"了。
+
+**后果**：不能直接把相对丰度当独立变量做 t 检验。
+
+### 2. 稀疏性（sparsity）与零膨胀
+
+扩增子数据里往往有 50%–90% 的零值。这些零有两种来源：
+
+- **结构零（structural zero）**：该环境中确实不存在这个物种；
+- **抽样零（sampling zero）**：存在但测序深度不够没抽到。
+
+两者混在一起，使得"丰度为 0 是否等于不存在"无法判断，直接影响方差估计。
+
+### 3. 文库大小差异（library size）
+
+样本间的测序深度可能相差数倍。如果不归一化，高深度的样本会显得所有物种都更丰富。
+
+> ⚠️ 注意：**归一化不只是为了可比性，更是为了校正上述组成性偏差**。常用的 TSS（总丰度标准化）恰恰会引入组成性偏差，这也是 CLR 等方法存在的理由。
+
+## 方法家族
+
+按统计思想，主流方法可以分成几大家族：
+
+| 家族 | 代表方法 | 核心思想 | 适用数据 |
+|------|----------|----------|----------|
+| **成分数据** | ALDEx2、ANCOM-BC、LinDA | CLR 转换后再检验 | 相对丰度 |
+| **负二项模型** | DESeq2、edgeR | 借用 DE 的框架 | 原始 count |
+| **秩/非参数** | Wilcoxon + FDR、LEfSe | 不假设分布 | 任意 |
+| **混合模型** | MaasLin2、LinDA | 支持协变量与随机效应 | 有混杂变量 |
+
+几点的实践建议：
+
+- **ALDEx2**：对组成性处理得最直接（用 Monte Carlo 从后验分布抽 Dirichlet 样本，每次重做 CLR），结果稳健，是我最常用的起点；
+- **ANCOM-BC / LinDA**：较新，能处理协变量，假阳性控制较好；
+- **DESeq2 / edgeR**：**本质是为 DE 设计的**，直接用于 DA 有争议（因为它们假设总 counts 反映绝对量），但用 `poscounts` 或 `geoMeans` 估计 size factor 后仍是常见做法；
+- **LEfSe**：经典但偏"探索性"，对 FDR 的处理较弱。
+
+## 实操：合成群落数据
+
+用 ALDEx2 与 DESeq2 各跑一遍，对比结果。先构造带已知差异的合成数据。
+
+
+``` r
+set.seed(2029)
+
+n_taxa <- 120
+n_per  <- 20
+n_samp <- n_per * 2
+
+taxa <- paste0("Taxon", sprintf("%03d", seq_len(n_taxa)))
+group <- rep(c("Control", "Treat"), each = n_per)
+samples <- paste0("S", seq_len(n_samp))
+
+# 基础丰度：负二项模拟真实群落的偏态分布
+base <- rnbinom(n_taxa, mu = 500, size = 2.5) + 50
+
+# 生成计数矩阵
+counts <- matrix(0L, nrow = n_taxa, ncol = n_samp,
+                 dimnames = list(taxa, samples))
+for (j in seq_len(n_samp)) {
+  counts[, j] <- rnbinom(n_taxa, mu = base, size = 6)
+}
+
+# 设置真实的差异：前 15 个在 Treat 中上调，第 16-28 个下调
+up   <- 1:15
+down <- 16:28
+counts[up,   group == "Treat"] <- round(counts[up,   group == "Treat"] * 3.5)
+counts[down, group == "Treat"] <- round(counts[down, group == "Treat"] * 0.3)
+
+meta <- data.frame(sample = samples, group = factor(group, levels = c("Control", "Treat")))
+cat("总 counts:", sum(counts), "| 每样本中位深度:", median(colSums(counts)), "\n")
+## 总 counts: 2987863 | 每样本中位深度: 74823.5
+cat("真实上调:", length(up), "| 真实下调:", length(down), "\n")
+## 真实上调: 15 | 真实下调: 13
+```
+
+现在我们知道**真值**：15 个上调、13 个下调、其余无差异。可以用来检验方法好不好用。
+
+### 组成性的直观演示
+
+先看一眼组成性带来的问题：
+
+
+``` r
+rel <- sweep(counts, 2, colSums(counts), "/")
+mean_rel <- data.frame(
+  taxon = taxa,
+  Control = rowMeans(rel[, group == "Control"]),
+  Treat   = rowMeans(rel[, group == "Treat"]),
+  truth   = c(rep("上调", 15), rep("下调", 13), rep("无差异", 92))
+)
+
+ggplot(mean_rel, aes(Control, Treat, color = truth)) +
+  geom_point(alpha = 0.7) +
+  geom_abline(slope = 1, intercept = 0, linetype = 2) +
+  scale_x_log10() + scale_y_log10() +
+  labs(x = "Control 平均相对丰度", y = "Treat 平均相对丰度", color = "真值") +
+  theme_bw()
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" />
+
+注意那些被标为"无差异"的点：它们大多数**落在对角线下方**——这正是组成性造成的系统性偏移。
+
+## 方法一：ALDEx2
+
+ALDEx2 的核心思路是：对每个样本的计数**从 Dirichlet 后验分布抽样**，做 CLR（中心对数比）转换后计算组间差异，重复多次得到差异的分布，再用这个分布做检验。
+
+
+``` r
+library(ALDEx2)
+
+# 1. 运行 ALDEx2
+aldex_res <- aldex(counts, conditions = group, mc.samples = 128, test = "t", effect = TRUE)
+
+# 2. 提取结果
+aldex_out <- aldex_res |>
+  tibble::rownames_to_column("taxon") |>
+  dplyr::select(taxon,
+                diff_btw = diff.btw,
+                effect   = effect,
+                we_pval  = we.ep,        # Welch t 检验 p 值
+                we_qval  = we.eBH) |>    # BH 校正后
+  mutate(truth = c(rep("上调", 15), rep("下调", 13), rep("无差异", 92)))
+
+head(aldex_out[order(aldex_out$we_qval), ], 8)
+##       taxon diff_btw   effect      we_pval      we_qval truth
+## 8  Taxon008 2.006533 2.560063 2.476318e-14 2.669046e-12  上调
+## 6  Taxon006 1.740058 2.580577 1.083873e-13 5.110990e-12  上调
+## 9  Taxon009 2.071822 2.453947 2.046089e-13 7.401610e-12  上调
+## 7  Taxon007 1.847149 2.396227 4.095335e-13 1.035413e-11  上调
+## 2  Taxon002 1.949283 2.834605 7.163818e-13 1.494696e-11  上调
+## 14 Taxon014 1.965163 2.175344 1.100091e-12 2.014673e-11  上调
+## 10 Taxon010 1.666878 2.132955 1.135635e-12 2.087070e-11  上调
+## 15 Taxon015 1.924267 2.047870 5.623182e-12 7.901390e-11  上调
+```
+
+### 用效应量而非只看 p 值
+
+ALDEx2 的一大特点是强调 **effect size（效应量）**。差异是否"有意义"，应结合统计显著性与效应量一起看：
+
+
+``` r
+ggplot(aldex_out, aes(effect, -log10(we_qval), color = truth)) +
+  geom_point(alpha = 0.7) +
+  geom_vline(xintercept = c(-1, 1), linetype = 2, color = "grey40") +
+  geom_hline(yintercept = -log10(0.05), linetype = 2, color = "grey40") +
+  labs(x = "效应量 (effect size)", y = expression(-log[10]("BH 校正 p 值")), color = "真值") +
+  theme_bw()
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672" />
+
+**四象限图的解读**：
+
+- 右上 / 左上：显著且效应量大 → **可信的差异**；
+- 中间横带：显著但效应量小 → 可能只是样本量大带来的"统计显著"，生物学意义有限；
+- 两侧竖带：效应量大但不显著 → 可能样本量不足。
+
+## 方法二：DESeq2
+
+DESeq2 走的是负二项 GLM 路线。用于 DA 时的关键问题是 **size factor 的估计**：
+
+
+``` r
+library(DESeq2)
+
+# poscounts：对所有基因的几何均值估计（对含零较多的数据更稳健）
+dds <- DESeqDataSetFromMatrix(
+  countData = counts,
+  colData   = meta,
+  design    = ~ group
+)
+# 用 poscounts 替代默认的 median-of-ratios
+dds <- estimateSizeFactors(dds, type = "poscounts")
+dds <- DESeq(dds, quiet = TRUE)
+
+deseq_out <- results(dds, contrast = c("group", "Treat", "Control")) |>
+  as.data.frame() |>
+  tibble::rownames_to_column("taxon") |>
+  dplyr::select(taxon, log2FC = log2FoldChange, padj) |>
+  mutate(truth = c(rep("上调", 15), rep("下调", 13), rep("无差异", 92)))
+
+head(deseq_out[order(deseq_out$padj), ], 8)
+##       taxon    log2FC         padj truth
+## 2  Taxon002  2.047274 2.365268e-37  上调
+## 8  Taxon008  2.025925 1.353470e-32  上调
+## 9  Taxon009  2.067353 7.448529e-32  上调
+## 16 Taxon016 -2.009066 1.043715e-27  下调
+## 19 Taxon019 -1.933476 2.262028e-27  下调
+## 6  Taxon006  1.660082 7.145384e-27  上调
+## 7  Taxon007  1.822112 1.869423e-26  上调
+## 3  Taxon003  2.041762 1.991665e-25  上调
+```
+
+## 两种方法的对比
+
+
+``` r
+compare_da <- function(out, method) {
+  out |>
+    mutate(sig = !is.na(padj_col) & padj_col < 0.05) |>
+    dplyr::count(truth, sig, name = "n") |>
+    mutate(method = method)
+}
+
+# 统一列名后比较
+a <- aldex_out |> mutate(padj_col = we_qval)
+d <- deseq_out |> mutate(padj_col = padj)
+
+cmp <- bind_rows(
+  compare_da(a, "ALDEx2"),
+  compare_da(d, "DESeq2")
+) |>
+  pivot_wider(names_from = sig, values_from = n, names_prefix = "sig_")
+
+knitr::kable(cmp, caption = "两种方法在合成数据上的检出情况（sig_TRUE = 判为显著）")
+```
+
+
+
+Table: <span id="tab:unnamed-chunk-7"></span>Table 1: 两种方法在合成数据上的检出情况（sig_TRUE = 判为显著）
+
+|truth  |method | sig_TRUE| sig_FALSE|
+|:------|:------|--------:|---------:|
+|上调   |ALDEx2 |       15|        NA|
+|下调   |ALDEx2 |       13|        NA|
+|无差异 |ALDEx2 |       NA|        92|
+|上调   |DESeq2 |       15|        NA|
+|下调   |DESeq2 |       13|        NA|
+|无差异 |DESeq2 |        1|        91|
+
+
+
+同时报告两者的结论时，更稳健的做法是**取交集**：
+
+
+``` r
+both_sig <- a |> filter(we_qval < 0.05) |> pull(taxon) |>
+  intersect(d |> filter(padj < 0.05) |> pull(taxon))
+
+cat("两方法共同检出的特征数:", length(both_sig), "\n")
+## 两方法共同检出的特征数: 28
+cat("其中真值上/下调的占比:",
+    round(mean(both_sig %in% c(taxa[up], taxa[down])) * 100, 1), "%\n")
+## 其中真值上/下调的占比: 100 %
+```
+
+在合成数据里，两方法共同检出的特征中绝大多数来自真实的差异集合——这说明**当方法一致时，结论更可信**；当两者分歧较大时，需要谨慎解读。
+
+## 结果解读的注意事项
+
+1. **组成性无法完全消除**。CLR 类方法缓解了它，但零值处理、参考系选择仍会影响结果；
+2. **p 值不是终点**。ALDEx2 强调的效应量提醒我们：统计显著 ≠ 生物学重要；
+3. **多重检验必须校正**。几百个物种时，FDR 校正是必需的，不要用未校正的 p 值；
+4. **注意样本量与功效**。DA 的检验功效普遍偏低，小样本研究里的阴性结果不能证明"没有差异"；
+5. **协变量要放进模型**。批次、年龄、性别等混杂变量用 `~ group + batch` 形式纳入，而不是先校正再分析；
+6. **区分相对与绝对变化**。DA 给出的是相对变化，若关心绝对量，需要 qPCR、流式或 spike-in 等外部信息。
+
+## 优缺点
+
+### 优点
+
+1. **有成熟的统计框架**：ALDEx2、ANCOM-BC 等方法专门为组成数据设计；
+2. **可直接用现有工具**：DESeq2 / edgeR 生态成熟，文档丰富；
+3. **结果可复现**：只要设定随机种子（ALDEx2 有 Monte Carlo 抽样），结果可重复；
+4. **可扩展到协变量**：混合模型方法能纳入混杂因素。
+
+### 局限
+
+1. **假阳性率仍偏高**：即使最好的方法，在稀疏数据上也会有一定假阳性；
+2. **功效低**：小样本（每组 < 10）时难以检出中低丰度类群的差异；
+3. **方法间不一致**：不同方法常给出不同结果，缺乏公认的"金标准"；
+4. **零值难以处理**：结构零与抽样零无法区分，是所有方法共同的软肋。
+
+## 小结
+
+差异丰度分析的难点不在"跑哪个函数"，而在理解**组成性、稀疏性与文库大小**这三个特性如何扭曲统计推断。实践路径建议是：**优先用为组成数据设计的 ALDEx2 / ANCOM-BC，同时用 DESeq2 作为对照，取两方法交集作为高置信结果，并始终结合效应量而非只看 p 值**。
+
+## 参考文献与延伸
+
+1. Fernandes, A. D., et al. (2014). Unifying the analysis of high-throughput sequencing datasets: characterizing RNA-seq, 16S rRNA gene sequencing and selective growth experiments by compositional data analysis. *Microbiome*, 2, 15.
+2. Lin, H., & Peddada, S. D. (2020). Analysis of compositions of microbiomes with bias correction. *Nature Communications*, 11, 3514.
+3. Love, M. I., Huber, W., & Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. *Genome Biology*, 15, 550.
+4. Nearing, J. T., et al. (2022). Microbiome differential abundance methods produce different results across 38 datasets. *Nature Communications*, 13, 342.
+5. ALDEx2 文档：<https://bioconductor.org/packages/ALDEx2/>
+6. 本站相关：[MaAsLin 3：微生物组多变量关联分析](../p/maaslin-3)、[组学数据去除批次效应](../p/batch-effect)
